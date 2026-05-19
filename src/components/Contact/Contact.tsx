@@ -10,7 +10,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) {
       alert("Please fill in all fields.");
@@ -19,14 +19,28 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate sending message
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSuccessOpen(true);
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        alert(data.error || "Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      alert("A connection error occurred. Please check your internet connection.");
+    } finally {
       setIsSubmitting(false);
-      setIsSuccessOpen(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-    }, 1200);
+    }
   };
 
   return (
