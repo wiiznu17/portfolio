@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/portfolio/*": ["./src/*"]
+      "@/portfolio/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": [
