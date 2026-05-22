@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import styles from "./Projects.module.css";
 
 export default function Projects() {
@@ -24,80 +25,12 @@ export default function Projects() {
               style={{ bottom: "3rem", right: "3rem", width: "2.5rem", height: "2.5rem" }}
             ></div>
 
-            <div className={styles.mockupCard}>
-              <div className="flex justify-between items-center mb-3" style={{ display: "flex", justifyContent: "between", alignItems: "center", marginBottom: "0.75rem" }}>
-                <div style={{ display: "flex", gap: "0.375rem" }}>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#f87171", display: "inline-block" }}></span>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#facc15", display: "inline-block" }}></span>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4ade80", display: "inline-block" }}></span>
-                </div>
-                <span
-                  style={{
-                    fontSize: "9px",
-                    background: "#e0e7ff",
-                    fontWeight: 800,
-                    color: "#4f46e5",
-                    padding: "2px 8px",
-                    borderRadius: "9999px",
-                  }}
-                >
-                  Ledger System
-                </span>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <div style={{ height: "12px", background: "#e0e7ff", borderRadius: "4px", width: "75%" }}></div>
-                <div style={{ height: "10px", background: "#f1f5f9", borderRadius: "4px", width: "50%" }}></div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.5rem", paddingTop: "0.5rem" }}>
-                  <div
-                    style={{
-                      height: "32px",
-                      borderRadius: "8px",
-                      background: "#e0e7ff",
-                      border: "1px solid #c7d2fe",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      padding: "0 6px",
-                    }}
-                  >
-                    <span style={{ fontSize: "7px", color: "#64748b", fontWeight: 700, textTransform: "uppercase" }}>
-                      Safe Transfer
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "32px",
-                      borderRadius: "8px",
-                      background: "#e0e7ff",
-                      border: "1px solid #c7d2fe",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      padding: "0 6px",
-                    }}
-                  >
-                    <span style={{ fontSize: "7px", color: "#64748b", fontWeight: 700, textTransform: "uppercase" }}>
-                      Double Entry
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "32px",
-                      borderRadius: "8px",
-                      background: "#e0e7ff",
-                      border: "1px solid #c7d2fe",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      padding: "0 6px",
-                    }}
-                  >
-                    <span style={{ fontSize: "7px", color: "#64748b", fontWeight: 700, textTransform: "uppercase" }}>
-                      KYC Auth
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div className={styles.previewContainer}>
+              <img
+                src="/images/projects/p-wallet.png"
+                alt="P-wallet Preview"
+                className={styles.previewImage}
+              />
             </div>
           </div>
 
@@ -143,17 +76,42 @@ export default function Projects() {
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" className="w-3.5 h-3.5" alt="Docker" style={{ width: "0.875rem", height: "0.875rem" }} /> Docker
                 </span>
               </div>
-              <a
-                href="https://github.com/wiiznu17"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.ctaLink} ${styles.ctaLinkBlue}`}
-              >
-                <span>View GitHub</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+              <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+                <Link
+                  href="/projects/p-wallet"
+                  className={`${styles.ctaLink} ${styles.ctaLinkBlue}`}
+                >
+                  <span className={styles.stretchedLink}></span>
+                  <span>View Details</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <a
+                  href="https://p-wallet.wiiznu.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.demoLink}
+                >
+                  <span>Live Demo</span>
+                </a>
+                <a
+                  href="https://video.wiiznu.dev/p-wallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.videoLink}
+                >
+                  <span>Demo Video</span>
+                </a>
+                <a
+                  href="https://github.com/wiiznu17"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubLink}
+                >
+                  <span>GitHub</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -170,47 +128,12 @@ export default function Projects() {
               style={{ bottom: "2.5rem", left: "2.5rem", width: "2rem", height: "2rem" }}
             ></div>
 
-            <div className={styles.mockupBrowser}>
-              <div className={styles.mockupInner}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", borderBottom: "1px solid #f1f5f9", paddingBottom: "0.5rem" }}>
-                  <div style={{ height: "8px", background: "#fde68a", borderRadius: "4px", width: "4rem" }}></div>
-                  <div style={{ height: "8px", background: "#e2e8f0", borderRadius: "4px", width: "2.5rem" }}></div>
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.5rem", marginTop: "0.5rem" }}>
-                  <div
-                    style={{
-                      height: "40px",
-                      background: "#f8fafc",
-                      borderRadius: "4px",
-                      border: "1px solid #f1f5f9",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "8px",
-                      fontWeight: 700,
-                      color: "#94a3b8",
-                    }}
-                  >
-                    Customer
-                  </div>
-                  <div
-                    style={{
-                      height: "40px",
-                      background: "#f8fafc",
-                      borderRadius: "4px",
-                      border: "1px solid #f1f5f9",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "8px",
-                      fontWeight: 700,
-                      color: "#94a3b8",
-                    }}
-                  >
-                    Merchant
-                  </div>
-                </div>
-              </div>
+            <div className={styles.previewContainer}>
+              <img
+                src="/images/projects/digishop.png"
+                alt="DigiShop Preview"
+                className={styles.previewImage}
+              />
             </div>
           </div>
 
@@ -255,17 +178,42 @@ export default function Projects() {
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" className="w-3.5 h-3.5" alt="Azure" style={{ width: "0.875rem", height: "0.875rem" }} /> Azure
                 </span>
               </div>
-              <a
-                href="https://github.com/wiiznu17"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.ctaLink} ${styles.ctaLinkAmber}`}
-              >
-                <span>View GitHub</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+              <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+                <Link
+                  href="/projects/digishop"
+                  className={`${styles.ctaLink} ${styles.ctaLinkAmber}`}
+                >
+                  <span className={styles.stretchedLink}></span>
+                  <span>View Details</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <a
+                  href="https://digishop.wiiznu.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.demoLink}
+                >
+                  <span>Live Demo</span>
+                </a>
+                <a
+                  href="https://video.wiiznu.dev/digishop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.videoLink}
+                >
+                  <span>Demo Video</span>
+                </a>
+                <a
+                  href="https://github.com/wiiznu17"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubLink}
+                >
+                  <span>GitHub</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -273,34 +221,12 @@ export default function Projects() {
         {/* Project 3: StudyBuddy */}
         <div className={`${styles.card} clay-card ${styles.fullWidthCard}`}>
           <div className={`${styles.banner} ${styles.bannerStudybuddy}`}>
-            <div style={{ position: "absolute", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.3 }}>
-              <svg viewBox="0 0 100 100" style={{ width: "10rem", height: "10rem" }}>
-                <circle cx="20" cy="50" r="4" fill="#6366f1" />
-                <circle cx="80" cy="50" r="4" fill="#6366f1" />
-                <circle cx="50" cy="20" r="4" fill="#6366f1" />
-                <circle cx="50" cy="80" r="4" fill="#6366f1" />
-                <path d="M20 50 L50 20 L80 50 L50 80 Z" fill="none" stroke="#6366f1" strokeWidth="1" strokeDasharray="2,2" />
-              </svg>
-            </div>
-            <div
-              style={{
-                position: "relative",
-                padding: "0.375rem 1.5rem",
-                background: "rgba(255, 255, 255, 0.9)",
-                borderRadius: "9999px",
-                border: "1px solid #ffffff",
-                boxShadow: "0 10px 15px -3px rgba(99, 102, 241, 0.1)",
-                fontSize: "0.875rem",
-                fontWeight: 800,
-                color: "#6366f1",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                zIndex: 10,
-              }}
-            >
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#818cf8" }} className="animate-pulse"></span>
-              <span>Matching Platform API</span>
+            <div className={styles.previewContainer}>
+              <img
+                src="/images/projects/studybuddy.png"
+                alt="StudyBuddy Preview"
+                className={styles.previewImage}
+              />
             </div>
           </div>
 
@@ -338,17 +264,42 @@ export default function Projects() {
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" className="w-3.5 h-3.5" alt="PostgreSQL" style={{ width: "0.875rem", height: "0.875rem" }} /> PostgreSQL
                 </span>
               </div>
-              <a
-                href="https://github.com/wiiznu17"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.ctaLink} ${styles.ctaLinkIndigo}`}
-              >
-                <span>View GitHub</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+              <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+                <Link
+                  href="/projects/studybuddy"
+                  className={`${styles.ctaLink} ${styles.ctaLinkIndigo}`}
+                >
+                  <span className={styles.stretchedLink}></span>
+                  <span>View Details</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <a
+                  href="https://studybuddy.wiiznu.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.demoLink}
+                >
+                  <span>Live Demo</span>
+                </a>
+                <a
+                  href="https://video.wiiznu.dev/studybuddy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.videoLink}
+                >
+                  <span>Demo Video</span>
+                </a>
+                <a
+                  href="https://github.com/wiiznu17"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubLink}
+                >
+                  <span>GitHub</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

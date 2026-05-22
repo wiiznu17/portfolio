@@ -1,12 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("about");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    if (!isHome) {
+      setActiveSection("");
+      return;
+    }
+
     const sections = ["about", "experience", "projects", "skills"];
     
     const handleScroll = () => {
@@ -27,51 +36,52 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
         {/* Brand Logo */}
-        <a href="#" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <span>Wiiznu</span>
-        </a>
+        </Link>
 
         {/* Menu Links */}
         <div className={styles.menu}>
-          <a
-            href="#about"
+          <Link
+            href={isHome ? "#about" : "/#about"}
             className={`${styles.menuLink} ${activeSection === "about" ? styles.activeLink : ""}`}
           >
             About
-          </a>
-          <a
-            href="#experience"
+          </Link>
+          <Link
+            href={isHome ? "#experience" : "/#experience"}
             className={`${styles.menuLink} ${activeSection === "experience" ? styles.activeLink : ""}`}
           >
             Experience
-          </a>
-          <a
-            href="#projects"
+          </Link>
+          <Link
+            href={isHome ? "#projects" : "/#projects"}
             className={`${styles.menuLink} ${activeSection === "projects" ? styles.activeLink : ""}`}
           >
             Projects
-          </a>
-          <a
-            href="#skills"
+          </Link>
+          <Link
+            href={isHome ? "#skills" : "/#skills"}
             className={`${styles.menuLink} ${activeSection === "skills" ? styles.activeLink : ""}`}
           >
             Tech Stack
-          </a>
+          </Link>
         </div>
 
         {/* CTA Button */}
         <div>
-          <a href="#contact" className={`${styles.ctaBtn} clay-btn`}>
+          <Link href={isHome ? "#contact" : "/#contact"} className={`${styles.ctaBtn} clay-btn`}>
             Contact Me
-          </a>
+          </Link>
         </div>
       </nav>
     </header>
   );
 }
+

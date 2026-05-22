@@ -6,6 +6,7 @@
   max-width: 64rem; /* 1024px */
   margin: 0 auto;
   padding: 1.5rem;
+  transform-style: flat !important;
 }
 
 @media (min-width: 768px) {
