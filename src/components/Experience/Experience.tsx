@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Experience.module.css";
+import { experienceData } from "@/constants/experience";
 
 export default function Experience() {
   return (
@@ -9,49 +10,38 @@ export default function Experience() {
         <div className="section-title-bar"></div>
       </div>
 
-      {/* Single Experience Card */}
-      <div className={`${styles.experienceCard} clay-card`}>
-        <div className={styles.headerRow}>
-          <div className={styles.companyWrap}>
-            <div className={styles.companyTitleRow}>
-              <h3 className={styles.companyName}>Digio (Thailand) Co., Ltd.</h3>
-              <span className={styles.internBadge}>Internship</span>
+      <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "100%" }}>
+        {experienceData.map((exp, idx) => (
+          <div key={idx} className={`${styles.experienceCard} clay-card`}>
+            <div className={styles.headerRow}>
+              <div className={styles.companyWrap}>
+                <div className={styles.companyTitleRow}>
+                  <h3 className={styles.companyName}>{exp.company}</h3>
+                  <span className={styles.internBadge}>{exp.badge}</span>
+                </div>
+                <p className={styles.roleTitle}>{exp.role}</p>
+              </div>
+              <div className={styles.duration}>{exp.duration}</div>
             </div>
-            <p className={styles.roleTitle}>Web Developer Intern</p>
-          </div>
-          <div className={styles.duration}>Apr 2025 - Oct 2025</div>
-        </div>
 
-        <div className={styles.responsibilities}>
-          <h4 className={styles.respTitle}>Core Responsibilities & Achievements:</h4>
-          <div className={styles.gridList}>
-            <div className={styles.listItem}>
-              <span className={styles.numberCircle}>1</span>
-              <span className={styles.text}>
-                Assisted in maintaining the <strong>SCB Planet X</strong> admin portal by implementing features and resolving defects based on client requirements.
-              </span>
-            </div>
-            <div className={styles.listItem}>
-              <span className={styles.numberCircle}>2</span>
-              <span className={styles.text}>
-                Developed unit tests using <strong>Jest</strong> to ensure code quality while actively studying the existing project architecture.
-              </span>
-            </div>
-            <div className={styles.listItem}>
-              <span className={styles.numberCircle}>3</span>
-              <span className={styles.text}>
-                Integrated <strong>DigiPay</strong> (payment gateway) into the DigiShop project to handle secure payment flows.
-              </span>
-            </div>
-            <div className={styles.listItem}>
-              <span className={styles.numberCircle}>4</span>
-              <span className={styles.text}>
-                Studied financial payment workflows to design and successfully implement solutions on personal projects.
-              </span>
+            <div className={styles.responsibilities}>
+              <h4 className={styles.respTitle}>Core Responsibilities & Achievements:</h4>
+              <div className={styles.gridList}>
+                {exp.responsibilities.map((resp, respIdx) => (
+                  <div key={respIdx} className={styles.listItem}>
+                    <span className={styles.numberCircle}>{respIdx + 1}</span>
+                    <span
+                      className={styles.text}
+                      dangerouslySetInnerHTML={{ __html: resp }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 }
+
