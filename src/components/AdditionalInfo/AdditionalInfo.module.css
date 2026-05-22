@@ -7,6 +7,7 @@
   max-width: 56rem; /* 896px */
   margin: 0 auto;
   padding: 1.5rem;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -210,8 +211,8 @@
 
 .decorationLeft {
   position: absolute;
-  left: -8rem;
-  top: 60%;
+  left: -12.5rem;
+  top: 70%;
   transform: translateY(-50%);
   width: 7rem;
   height: 7rem;
@@ -223,8 +224,8 @@
 
 .decorationRight {
   position: absolute;
-  right: -8rem;
-  top: 45%;
+  right: -10rem;
+  top: 40%;
   transform: translateY(-50%);
   width: 7.5rem;
   height: 7.5rem;

@@ -131,6 +131,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 position: "relative",
                 width: "90%",
                 maxWidth: "34rem",
+                aspectRatio: "16 / 9",
                 borderRadius: "16px",
                 overflow: "hidden",
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
@@ -145,7 +146,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 alt={`${project.title} Preview`}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "100%",
+                  objectFit: "cover",
                   display: "block",
                 }}
               />

@@ -51,25 +51,14 @@
 }
 
 .banner {
-  height: 13rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-@media (min-width: 768px) {
-  .banner {
-    height: 15rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .banner {
-    height: 17rem;
-  }
 }
 
 .bannerPwallet {
@@ -317,7 +306,7 @@
 .previewContainer {
   position: relative;
   width: 85%;
-  height: 80%;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
