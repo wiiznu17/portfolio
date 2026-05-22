@@ -17,12 +17,6 @@ const yearBadgeStyles: Record<string, string> = {
   indigo: styles.yearIndigo,
 }
 
-const ctaLinkStyles: Record<string, string> = {
-  blue: styles.ctaLinkBlue,
-  amber: styles.ctaLinkAmber,
-  indigo: styles.ctaLinkIndigo,
-}
-
 export default function Projects() {
   return (
     <section id="projects" className={styles.section}>
@@ -117,25 +111,8 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div
-                  className={styles.divider}
-                  style={
-                    isFullWidth
-                      ? {
-                          display: "flex",
-                          flexDirection: "row",
-                          flexWrap: "wrap",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          gap: "1rem",
-                        }
-                      : undefined
-                  }
-                >
-                  <div
-                    className={styles.techBadgeGrid}
-                    style={isFullWidth ? { flex: 1 } : undefined}
-                  >
+                <div className={styles.divider}>
+                  <div className={styles.techBadgeGrid}>
                     {project.techStack.map((tech) => (
                       <span key={tech.name} className="tech-badge rounded-md">
                         {tech.logo === "custom-turborepo" ? (
@@ -175,55 +152,27 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <div
-                    style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className={`${styles.ctaLink} ${styles.ctaLinkBlue}`}
                   >
-                    <Link
-                      href={`/projects/${project.id}`}
-                      className={`${styles.ctaLink} ${ctaLinkStyles[project.themeColor]}`}
+                    <span className={styles.stretchedLink}></span>
+                    <span>View Details</span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      style={{ width: "1rem", height: "1rem" }}
                     >
-                      <span className={styles.stretchedLink}></span>
-                      <span>View Details</span>
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        style={{ width: "1rem", height: "1rem" }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2.5"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </Link>
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.demoLink}
-                    >
-                      <span>Live Demo</span>
-                    </a>
-                    <a
-                      href={project.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.videoLink}
-                    >
-                      <span>Demo Video</span>
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.githubLink}
-                    >
-                      <span>GitHub</span>
-                    </a>
-                  </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -179,19 +179,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="clay-btn"
+                    className="clay-btn-emerald"
                     style={{
-                      background: "#059669",
                       padding: "0.5rem 1.25rem",
                       borderRadius: "0.75rem",
                       fontSize: "0.875rem",
                       fontWeight: 700,
-                      color: "#ffffff",
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "0.375rem",
-                      boxShadow:
-                        "inset 2px 2px 4px rgba(255,255,255,0.4), inset -2px -2px 4px rgba(0,0,0,0.15), 0 8px 16px rgba(5,150,105,0.25)",
                     }}
                   >
                     <span>Live Demo</span>
@@ -213,19 +209,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     href={project.videoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="clay-btn"
+                    className="clay-btn-rose"
                     style={{
-                      background: "#dc2626",
                       padding: "0.5rem 1.25rem",
                       borderRadius: "0.75rem",
                       fontSize: "0.875rem",
                       fontWeight: 700,
-                      color: "#ffffff",
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "0.375rem",
-                      boxShadow:
-                        "inset 2px 2px 4px rgba(255,255,255,0.4), inset -2px -2px 4px rgba(0,0,0,0.15), 0 8px 16px rgba(220,38,38,0.25)",
                     }}
                   >
                     <span>Demo Video</span>
@@ -521,19 +513,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="clay-btn"
+              className="clay-btn-emerald"
               style={{
-                background: "#059669",
                 padding: "0.75rem 2rem",
                 borderRadius: "1.25rem",
                 fontSize: "0.95rem",
-                color: "#ffffff",
                 fontWeight: 700,
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                boxShadow:
-                  "inset 2px 2px 4px rgba(255,255,255,0.4), inset -2px -2px 4px rgba(0,0,0,0.15), 0 8px 20px rgba(5,150,105,0.25)",
               }}
             >
               <span>Live Demo</span>
@@ -555,19 +543,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               href={project.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="clay-btn"
+              className="clay-btn-rose"
               style={{
-                background: "#dc2626",
                 padding: "0.75rem 2rem",
                 borderRadius: "1.25rem",
                 fontSize: "0.95rem",
-                color: "#ffffff",
                 fontWeight: 700,
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                boxShadow:
-                  "inset 2px 2px 4px rgba(255,255,255,0.4), inset -2px -2px 4px rgba(0,0,0,0.15), 0 8px 20px rgba(220,38,38,0.25)",
               }}
             >
               <span>Demo Video</span>

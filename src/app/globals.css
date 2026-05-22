@@ -177,6 +177,70 @@ a {
     0 4px 10px -2px rgba(148, 163, 184, 0.15);
 }
 
+/* Reusable Emerald Clay Button */
+.clay-btn-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.25),
+    0 6px 0px #047857,
+    0 12px 24px -5px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.clay-btn-emerald:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.25),
+    0 10px 0px #047857,
+    0 18px 30px -5px rgba(16, 185, 129, 0.4);
+}
+.clay-btn-emerald:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    0 0px 0px #047857,
+    0 5px 10px -2px rgba(16, 185, 129, 0.2);
+}
+
+/* Reusable Rose Clay Button */
+.clay-btn-rose {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: #ffffff;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.25),
+    0 6px 0px #be123c,
+    0 12px 24px -5px rgba(244, 63, 94, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.clay-btn-rose:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.25),
+    0 10px 0px #be123c,
+    0 18px 30px -5px rgba(244, 63, 94, 0.4);
+}
+.clay-btn-rose:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    0 0px 0px #be123c,
+    0 5px 10px -2px rgba(244, 63, 94, 0.2);
+}
+
 /* Clay Social Media Icon Grid Blocks (Physical Block Effect) */
 .social-tile {
   background: rgba(255, 255, 255, 0.85);

@@ -7,14 +7,37 @@ import styles from "./Navbar.module.css"
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("about")
+  const [isVisible, setIsVisible] = useState(true)
   const pathname = usePathname()
   const isHome = pathname === "/"
 
   useEffect(() => {
-    if (!isHome) {
-      setActiveSection("")
-      return
+    let lastScrollY = window.scrollY
+
+    const handleScrollVisibility = () => {
+      const currentScrollY = window.scrollY
+
+      // Prevent triggers on macOS elastic bounce
+      if (currentScrollY < 0) return
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      if (currentScrollY > maxScroll) return
+
+      // Scroll down -> hide, Scroll up -> show
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setIsVisible(false)
+      } else {
+        setIsVisible(true)
+      }
+
+      lastScrollY = currentScrollY
     }
+
+    window.addEventListener("scroll", handleScrollVisibility, { passive: true })
+    return () => window.removeEventListener("scroll", handleScrollVisibility)
+  }, [])
+
+  useEffect(() => {
+    if (!isHome) return
 
     const sections = ["about", "experience", "projects", "skills"]
 
@@ -38,8 +61,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [isHome])
 
+  const currentActiveSection = isHome ? activeSection : ""
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${!isVisible ? styles.hidden : ""}`}>
       <nav className={styles.nav}>
         {/* Brand Logo */}
         <Link href="/" className={styles.logo}>
@@ -50,25 +75,25 @@ export default function Navbar() {
         <div className={styles.menu}>
           <Link
             href={isHome ? "#about" : "/#about"}
-            className={`${styles.menuLink} ${activeSection === "about" ? styles.activeLink : ""}`}
+            className={`${styles.menuLink} ${currentActiveSection === "about" ? styles.activeLink : ""}`}
           >
             About
           </Link>
           <Link
             href={isHome ? "#experience" : "/#experience"}
-            className={`${styles.menuLink} ${activeSection === "experience" ? styles.activeLink : ""}`}
+            className={`${styles.menuLink} ${currentActiveSection === "experience" ? styles.activeLink : ""}`}
           >
             Experience
           </Link>
           <Link
             href={isHome ? "#projects" : "/#projects"}
-            className={`${styles.menuLink} ${activeSection === "projects" ? styles.activeLink : ""}`}
+            className={`${styles.menuLink} ${currentActiveSection === "projects" ? styles.activeLink : ""}`}
           >
             Projects
           </Link>
           <Link
             href={isHome ? "#skills" : "/#skills"}
-            className={`${styles.menuLink} ${activeSection === "skills" ? styles.activeLink : ""}`}
+            className={`${styles.menuLink} ${currentActiveSection === "skills" ? styles.activeLink : ""}`}
           >
             Tech Stack
           </Link>

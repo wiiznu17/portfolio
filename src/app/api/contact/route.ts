@@ -55,10 +55,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, data })
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || "Failed to dispatch email." },
-      { status: 500 }
-    )
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to dispatch email."
+    return NextResponse.json({ error: errorMessage }, { status: 500 })
   }
 }

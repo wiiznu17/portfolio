@@ -73,7 +73,7 @@ export default function Hero() {
               d="M12,2L14.5,9.5L22,12L14.5,14.5L12,22L9.5,14.5L2,12L9.5,9.5Z"
             />
           </svg>
-          Hi, I'm Wissanu Rayayoi
+          Hi, I&apos;m Wissanu Rayayoi
           {/* Decorative Sparkle Bottom Right */}
           <svg viewBox="0 0 24 24" className={`${styles.sparkleRight} floating-shape-1`}>
             <path

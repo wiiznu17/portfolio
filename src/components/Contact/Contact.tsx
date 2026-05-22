@@ -36,7 +36,7 @@ export default function Contact() {
       } else {
         alert(data.error || "Failed to send message. Please try again later.")
       }
-    } catch (error) {
+    } catch {
       alert("A connection error occurred. Please check your internet connection.")
     } finally {
       setIsSubmitting(false)
