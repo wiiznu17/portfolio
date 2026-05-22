@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8f0" />
+      <stop offset="60%" stop-color="#ffedd5" />
+      <stop offset="100%" stop-color="#fdba74" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+  </defs>
+  <!-- Face -->
+  <circle cx="50" cy="42" r="20" fill="url(#skinGrad)" />
+  <!-- Hair -->
+  <path d="M28 42 C26 22, 74 22, 72 42 C67 30, 33 30, 28 42 Z" fill="url(#hairGrad)" />
+  <path d="M28 42 C25 45, 26 35, 32 32" fill="url(#hairGrad)" />
+  <path d="M72 42 C75 45, 74 35, 68 32" fill="url(#hairGrad)" />
+  <!-- Eyes -->
+  <circle cx="43" cy="40" r="3" fill="#0f172a" />
+  <circle cx="57" cy="40" r="3" fill="#0f172a" />
+  <circle cx="44.5" cy="38.5" r="1" fill="#ffffff" />
+  <circle cx="58.5" cy="38.5" r="1" fill="#ffffff" />
+  <!-- Cheeks -->
+  <circle cx="38" cy="45" r="3" fill="#f43f5e" opacity="0.2" />
+  <circle cx="62" cy="45" r="3" fill="#f43f5e" opacity="0.2" />
+  <!-- Smile -->
+  <path
+    d="M46 48 Q50 52 54 48"
+    fill="none"
+    stroke="#0f172a"
+    stroke-dasharray="none"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+  <!-- Neck -->
+  <path d="M44 60 L44 65 C44 69, 56 69, 56 65 L56 60 Z" fill="url(#skinGrad)" />
+  <!-- White Shirt -->
+  <path d="M20 88 C20 68, 80 68, 80 88 Z" fill="url(#shirtGrad)" />
+  <path d="M38 88 L50 68 L62 88 Z" fill="#ffffff" opacity="0.9" />
+</svg>

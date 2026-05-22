@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "TypeScript",
   ],
   authors: [{ name: "Wissanu Rayayoi" }],
+  icons: {
+    icon: "/icon.svg",
+  },
 }
 
 export const viewport: Viewport = {
