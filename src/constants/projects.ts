@@ -160,7 +160,7 @@ export const projectsData: Record<string, Project> = {
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17",
+    githubUrl: "https://github.com/wiiznu17/j-ledger",
     demoUrl: "https://p-wallet.wiiznu.dev",
     videoUrl: "https://video.wiiznu.dev/p-wallet",
     bullets: [
@@ -244,7 +244,7 @@ export const projectsData: Record<string, Project> = {
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17",
+    githubUrl: "https://github.com/wiiznu17/digishop",
     demoUrl: "https://digishop.wiiznu.dev",
     videoUrl: "https://video.wiiznu.dev/digishop",
     bullets: [
@@ -321,8 +321,8 @@ export const projectsData: Record<string, Project> = {
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17",
-    demoUrl: "https://studybuddy.wiiznu.dev",
+    githubUrl: "https://github.com/wiiznu17/study-buddy",
+    demoUrl: "https://study-buddy.space/",
     videoUrl: "https://video.wiiznu.dev/studybuddy",
     bullets: [
       "Developed a social platform to match students with shared academic interests for study groups.",
