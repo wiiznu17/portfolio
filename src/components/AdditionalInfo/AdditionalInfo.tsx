@@ -4,6 +4,106 @@ import styles from "./AdditionalInfo.module.css"
 export default function AdditionalInfo() {
   return (
     <section id="info" className={styles.section}>
+      {/* Decorative Graduation Cap Floating SVG on the left */}
+      <svg viewBox="0 0 100 100" className={styles.decorationLeft}>
+        <defs>
+          <linearGradient id="eduGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--emerald-400)" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="var(--emerald-600)" stopOpacity="0.1" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M50 15 L90 35 L50 55 L10 35 Z"
+          fill="url(#eduGrad)"
+          stroke="var(--emerald-500)"
+          strokeWidth="1.5"
+          opacity="0.8"
+        />
+        <path
+          d="M30 45 L30 70 C30 80, 70 80, 70 70 L70 45"
+          fill="none"
+          stroke="var(--emerald-500)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          opacity="0.8"
+        />
+        <path
+          d="M90 35 L90 65"
+          fill="none"
+          stroke="var(--emerald-500)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          opacity="0.8"
+        />
+        <circle cx="90" cy="65" r="3" fill="var(--emerald-500)" opacity="0.8" />
+        <path
+          d="M20 20 L22 25 L27 27 L22 29 L20 34 L18 29 L13 27 L18 25 Z"
+          fill="var(--emerald-400)"
+          opacity="0.5"
+        />
+        <path
+          d="M75 60 L76.5 64 L80 65 L76.5 66 L75 70 L73.5 66 L70 65 L73.5 64 Z"
+          fill="var(--emerald-400)"
+          opacity="0.5"
+        />
+      </svg>
+
+      {/* Decorative Languages Speech Bubble Floating SVG on the right */}
+      <svg viewBox="0 0 100 100" className={styles.decorationRight}>
+        <defs>
+          <linearGradient id="langGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--blue-400)" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="var(--blue-600)" stopOpacity="0.1" />
+          </linearGradient>
+        </defs>
+        <rect
+          x="15"
+          y="20"
+          width="55"
+          height="40"
+          rx="12"
+          fill="url(#langGrad)"
+          stroke="var(--blue-500)"
+          strokeWidth="1.5"
+          opacity="0.8"
+        />
+        <path
+          d="M25 60 L20 70 L35 60"
+          fill="url(#langGrad)"
+          stroke="var(--blue-500)"
+          strokeWidth="1.5"
+          opacity="0.8"
+        />
+        <rect
+          x="45"
+          y="45"
+          width="40"
+          height="30"
+          rx="10"
+          fill="url(#langGrad)"
+          stroke="var(--blue-400)"
+          strokeWidth="1.5"
+          opacity="0.6"
+        />
+        <path
+          d="M75 75 L80 82 L70 75"
+          fill="url(#langGrad)"
+          stroke="var(--blue-400)"
+          strokeWidth="1.5"
+          opacity="0.6"
+        />
+        <path
+          d="M85 25 L86.5 29 L90 30 L86.5 31 L85 35 L83.5 31 L80 30 L83.5 29 Z"
+          fill="var(--blue-400)"
+          opacity="0.5"
+        />
+        <path
+          d="M15 80 L16 83 L19 84 L16 85 L15 88 L14 85 L11 84 L14 83 Z"
+          fill="var(--blue-400)"
+          opacity="0.5"
+        />
+      </svg>
+
       <div className="section-title-wrap">
         <h2 className="section-title">Additional Information</h2>
         <div className="section-title-bar"></div>
@@ -48,20 +148,11 @@ export default function AdditionalInfo() {
             <div className={styles.contentList}>
               <div className={styles.eduItem}>
                 <div className={styles.eduIcon}>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    style={{ width: "1rem", height: "1rem" }}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
+                  <img
+                    src="/images/projects/kku.png"
+                    alt="KKU Logo"
+                    style={{ width: "90%", height: "90%", objectFit: "contain" }}
+                  />
                 </div>
                 <div>
                   <h4 className={styles.eduName}>Khon Kaen University</h4>
