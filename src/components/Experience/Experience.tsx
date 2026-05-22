@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Experience.module.css";
-import { experienceData } from "@/constants/experience";
+import React from "react"
+import styles from "./Experience.module.css"
+import { experienceData } from "@/constants/experience"
 
 export default function Experience() {
   return (
@@ -30,10 +30,7 @@ export default function Experience() {
                 {exp.responsibilities.map((resp, respIdx) => (
                   <div key={respIdx} className={styles.listItem}>
                     <span className={styles.numberCircle}>{respIdx + 1}</span>
-                    <span
-                      className={styles.text}
-                      dangerouslySetInnerHTML={{ __html: resp }}
-                    />
+                    <span className={styles.text} dangerouslySetInnerHTML={{ __html: resp }} />
                   </div>
                 ))}
               </div>
@@ -42,6 +39,5 @@ export default function Experience() {
         ))}
       </div>
     </section>
-  );
+  )
 }
-

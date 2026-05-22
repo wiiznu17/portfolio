@@ -1,48 +1,48 @@
-"use client";
+"use client"
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react"
 
 interface TiltCardProps {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
+  children: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
 }
 
 export default function TiltCard({ children, className = "", style = {} }: TiltCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [isTouchDevice, setIsTouchDevice] = useState(true)
 
   useEffect(() => {
     const checkTouch = () => {
       const touch =
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        window.matchMedia("(max-width: 768px)").matches;
-      setIsTouchDevice(touch);
-    };
-    checkTouch();
-  }, []);
+        window.matchMedia("(max-width: 768px)").matches
+      setIsTouchDevice(touch)
+    }
+    checkTouch()
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isTouchDevice || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    if (isTouchDevice || !cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
 
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
+    const xc = rect.width / 2
+    const yc = rect.height / 2
 
-    const angleX = (yc - y) / 25;
-    const angleY = (x - xc) / 25;
+    const angleX = (yc - y) / 25
+    const angleY = (x - xc) / 25
 
-    cardRef.current.style.transform = `perspective(1200px) translateY(-10px) scale(1.02) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-  };
+    cardRef.current.style.transform = `perspective(1200px) translateY(-10px) scale(1.02) rotateX(${angleX}deg) rotateY(${angleY}deg)`
+  }
 
   const handleMouseLeave = () => {
-    if (isTouchDevice || !cardRef.current) return;
+    if (isTouchDevice || !cardRef.current) return
     cardRef.current.style.transform =
-      "perspective(1200px) translateY(0px) scale(1) rotateX(0deg) rotateY(0deg)";
-  };
+      "perspective(1200px) translateY(0px) scale(1) rotateX(0deg) rotateY(0deg)"
+  }
 
   return (
     <div
@@ -58,5 +58,5 @@ export default function TiltCard({ children, className = "", style = {} }: TiltC
     >
       {children}
     </div>
-  );
+  )
 }

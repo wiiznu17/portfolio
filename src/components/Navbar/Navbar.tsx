@@ -1,42 +1,42 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import styles from "./Navbar.module.css";
+import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import styles from "./Navbar.module.css"
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("about");
-  const pathname = usePathname();
-  const isHome = pathname === "/";
+  const [activeSection, setActiveSection] = useState("about")
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   useEffect(() => {
     if (!isHome) {
-      setActiveSection("");
-      return;
+      setActiveSection("")
+      return
     }
 
-    const sections = ["about", "experience", "projects", "skills"];
-    
+    const sections = ["about", "experience", "projects", "skills"]
+
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200; // Offset for sticky navbar
-      
+      const scrollPos = window.scrollY + 200 // Offset for sticky navbar
+
       for (const section of sections) {
-        const el = document.getElementById(section);
+        const el = document.getElementById(section)
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
+          const top = el.offsetTop
+          const height = el.offsetHeight
           if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section);
-            break;
+            setActiveSection(section)
+            break
           }
         }
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isHome])
 
   return (
     <header className={styles.header}>
@@ -82,6 +82,5 @@ export default function Navbar() {
         </div>
       </nav>
     </header>
-  );
+  )
 }
-

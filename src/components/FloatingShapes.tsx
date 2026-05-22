@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function FloatingShapes() {
   return (
@@ -24,7 +24,11 @@ export default function FloatingShapes() {
           display: "var(--display-lg, block)",
         }}
       >
-        <svg viewBox="0 0 120 120" className="w-full h-full" style={{ filter: "drop-shadow(0 15px 20px rgba(168,85,247,0.35))" }}>
+        <svg
+          viewBox="0 0 120 120"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 15px 20px rgba(168,85,247,0.35))" }}
+        >
           <defs>
             <linearGradient id="purple3D" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#d8b4fe" />
@@ -36,10 +40,40 @@ export default function FloatingShapes() {
               <stop offset="100%" stopColor="#2e1065" />
             </linearGradient>
           </defs>
-          <path d="M45 40 L25 60 L45 80" fill="none" stroke="url(#purple3DShadow)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" transform="translate(3, 5)" />
-          <path d="M75 40 L95 60 L75 80" fill="none" stroke="url(#purple3DShadow)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" transform="translate(3, 5)" />
-          <path d="M45 40 L25 60 L45 80" fill="none" stroke="url(#purple3D)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M75 40 L95 60 L75 80" fill="none" stroke="url(#purple3D)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M45 40 L25 60 L45 80"
+            fill="none"
+            stroke="url(#purple3DShadow)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            transform="translate(3, 5)"
+          />
+          <path
+            d="M75 40 L95 60 L75 80"
+            fill="none"
+            stroke="url(#purple3DShadow)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            transform="translate(3, 5)"
+          />
+          <path
+            d="M45 40 L25 60 L45 80"
+            fill="none"
+            stroke="url(#purple3D)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M75 40 L95 60 L75 80"
+            fill="none"
+            stroke="url(#purple3D)"
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
 
@@ -56,7 +90,11 @@ export default function FloatingShapes() {
           display: "var(--display-lg, block)",
         }}
       >
-        <svg viewBox="0 0 100 120" className="w-full h-full" style={{ filter: "drop-shadow(0 20px 25px rgba(139,92,246,0.35))" }}>
+        <svg
+          viewBox="0 0 100 120"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 20px 25px rgba(139,92,246,0.35))" }}
+        >
           <defs>
             <linearGradient id="cylinderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#c084fc" />
@@ -91,7 +129,11 @@ export default function FloatingShapes() {
           display: "var(--display-md, block)",
         }}
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: "drop-shadow(0 15px 20px rgba(244,63,94,0.3))" }}>
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 15px 20px rgba(244,63,94,0.3))" }}
+        >
           <defs>
             <linearGradient id="coneLeft" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fbcfe8" />
@@ -120,7 +162,11 @@ export default function FloatingShapes() {
           display: "var(--display-md, block)",
         }}
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: "drop-shadow(0 15px 25px rgba(96,165,250,0.3))" }}>
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 15px 25px rgba(96,165,250,0.3))" }}
+        >
           <defs>
             <linearGradient id="prismFront" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#93c5fd" />
@@ -149,7 +195,11 @@ export default function FloatingShapes() {
           display: "var(--display-lg, block)",
         }}
       >
-        <svg viewBox="0 0 120 120" className="w-full h-full" style={{ filter: "drop-shadow(0 20px 25px rgba(129,140,248,0.35))" }}>
+        <svg
+          viewBox="0 0 120 120"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 20px 25px rgba(129,140,248,0.35))" }}
+        >
           <defs>
             <radialGradient id="torusGlow" cx="35%" cy="35%" r="65%">
               <stop offset="0%" stopColor="#e0e7ff" />
@@ -158,7 +208,10 @@ export default function FloatingShapes() {
               <stop offset="100%" stopColor="#4f46e5" />
             </radialGradient>
           </defs>
-          <path d="M 60,20 A 40,40 0 1,0 60,100 A 40,40 0 1,0 60,20 Z M 60,45 A 15,15 0 1,1 60,75 A 15,15 0 1,1 60,45 Z" fill="url(#torusGlow)" />
+          <path
+            d="M 60,20 A 40,40 0 1,0 60,100 A 40,40 0 1,0 60,20 Z M 60,45 A 15,15 0 1,1 60,75 A 15,15 0 1,1 60,45 Z"
+            fill="url(#torusGlow)"
+          />
         </svg>
       </div>
 
@@ -175,7 +228,11 @@ export default function FloatingShapes() {
           display: "var(--display-lg, block)",
         }}
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: "drop-shadow(0 20px 30px rgba(244,143,177,0.4))" }}>
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full"
+          style={{ filter: "drop-shadow(0 20px 30px rgba(244,143,177,0.4))" }}
+        >
           <defs>
             <radialGradient id="sphere3D" cx="30%" cy="30%" r="70%">
               <stop offset="0%" stopColor="#fff1f2" />
@@ -189,8 +246,9 @@ export default function FloatingShapes() {
       </div>
 
       {/* Inline styles to handle media queries for responsiveness */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
           @media (max-width: 1024px) {
             :root {
               --display-lg: none;
@@ -201,8 +259,9 @@ export default function FloatingShapes() {
               --display-md: none;
             }
           }
-        `
-      }} />
+        `,
+        }}
+      />
     </div>
-  );
+  )
 }

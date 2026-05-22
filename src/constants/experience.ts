@@ -1,9 +1,9 @@
 export interface ExperienceItem {
-  company: string;
-  badge: string;
-  role: string;
-  duration: string;
-  responsibilities: string[];
+  company: string
+  badge: string
+  role: string
+  duration: string
+  responsibilities: string[]
 }
 
 export const experienceData: ExperienceItem[] = [
@@ -16,7 +16,7 @@ export const experienceData: ExperienceItem[] = [
       "Assisted in maintaining the <strong>SCB Planet X</strong> admin portal by implementing features and resolving defects based on client requirements.",
       "Developed unit tests using <strong>Jest</strong> to ensure code quality while actively studying the existing project architecture.",
       "Integrated <strong>DigiPay</strong> (payment gateway) into the DigiShop project to handle secure payment flows.",
-      "Studied financial payment workflows to design and successfully implement solutions on personal projects."
-    ]
-  }
-];
+      "Studied financial payment workflows to design and successfully implement solutions on personal projects.",
+    ],
+  },
+]

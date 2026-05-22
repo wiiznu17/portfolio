@@ -1,0 +1,14 @@
+# Ignore build and dependency folders
+node_modules
+.next
+out
+build
+dist
+
+# Ignore package lock files
+package-lock.json
+
+# Ignore system or editor configs
+.DS_Store
+.idea
+.vscode

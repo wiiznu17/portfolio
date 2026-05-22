@@ -1,47 +1,47 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import styles from "./Contact.module.css";
+import React, { useState } from "react"
+import styles from "./Contact.module.css"
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!name || !email || !message) {
-      alert("Please fill in all fields.");
-      return;
+      alert("Please fill in all fields.")
+      return
     }
 
-    setIsSubmitting(true);
+    setIsSubmitting(true)
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
-      });
+      })
 
-      const data = await response.json();
+      const data = await response.json()
 
       if (response.ok && data.success) {
-        setIsSuccessOpen(true);
-        setName("");
-        setEmail("");
-        setMessage("");
+        setIsSuccessOpen(true)
+        setName("")
+        setEmail("")
+        setMessage("")
       } else {
-        alert(data.error || "Failed to send message. Please try again later.");
+        alert(data.error || "Failed to send message. Please try again later.")
       }
     } catch (error) {
-      alert("A connection error occurred. Please check your internet connection.");
+      alert("A connection error occurred. Please check your internet connection.")
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
     <section id="contact" className={styles.section}>
@@ -51,7 +51,11 @@ export default function Contact() {
 
         {/* Floating 3D Paper Plane */}
         <div className={`${styles.planeContainer} floating-shape-1`}>
-          <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: "drop-shadow(0 10px 15px rgba(99,102,241,0.3))" }}>
+          <svg
+            viewBox="0 0 100 100"
+            className="w-full h-full"
+            style={{ filter: "drop-shadow(0 10px 15px rgba(99,102,241,0.3))" }}
+          >
             <defs>
               <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#ffffff" />
@@ -81,14 +85,36 @@ export default function Contact() {
             {/* Direct Shortcuts */}
             <div className={styles.shortcuts}>
               <a href="mailto:wissanu.rayayoi@gmail.com" className={styles.shortcutLink}>
-                <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg
+                  className="w-4 h-4 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style={{ width: "1rem", height: "1rem" }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
                 </svg>
                 <span>wissanu.rayayoi@gmail.com</span>
               </a>
               <a href="tel:0968984950" className={styles.shortcutLink}>
-                <svg className="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "1rem", height: "1rem" }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                <svg
+                  className="w-4 h-4 text-purple-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style={{ width: "1rem", height: "1rem" }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
                 </svg>
                 <span>096-898-4950</span>
               </a>
@@ -166,7 +192,8 @@ export default function Contact() {
           <div className={styles.modalIcon}>✓</div>
           <h4 className={styles.modalTitle}>Message Sent!</h4>
           <p className={styles.modalText}>
-            Thank you for reaching out. I have received your message and will get back to you as soon as possible.
+            Thank you for reaching out. I have received your message and will get back to you as
+            soon as possible.
           </p>
           <button className={styles.modalCloseBtn} onClick={() => setIsSuccessOpen(false)}>
             Close
@@ -174,5 +201,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  );
+  )
 }
