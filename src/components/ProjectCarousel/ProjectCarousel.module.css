@@ -1,0 +1,417 @@
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* 3D Glassmorphic Slider Frame */
+.sliderFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    inset 2px 2px 6px rgba(255, 255, 255, 0.8),
+    0 20px 40px -15px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrapper:hover .sliderImage {
+  transform: scale(1.04);
+}
+
+/* Zoom Hover Indicator */
+.zoomOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.imageWrapper:hover .zoomOverlay {
+  opacity: 1;
+}
+
+.zoomIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #ffffff;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.imageWrapper:hover .zoomIcon {
+  transform: scale(1);
+}
+
+.zoomOverlay span {
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Clay Glass Nav Buttons */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  color: var(--slate-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navBtn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    0 6px 16px rgba(0, 0, 0, 0.12);
+  color: #000000;
+}
+
+.navBtn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.prevBtn {
+  left: 1rem;
+}
+
+.nextBtn {
+  right: 1rem;
+}
+
+/* Dots Page Panel Indicator */
+.dotsWrapper {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activeDot {
+  background: #ffffff;
+  width: 18px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Slide Transition Classes */
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+/* Reusable Glass Caption Panel */
+.captionPanel {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    0 10px 25px -10px rgba(165, 180, 252, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.captionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.slideIndicator {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  color: var(--slate-400);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.captionTitle {
+  font-size: 1.125rem;
+  font-weight: 850;
+  color: var(--slate-900);
+  letter-spacing: -0.01em;
+}
+
+.captionDesc {
+  font-size: 0.9rem;
+  color: var(--slate-600);
+  line-height: 1.6;
+  font-weight: 550;
+}
+
+/* Dynamic Fullscreen Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightboxBg {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  animation: fadeInBg 0.3s ease-out forwards;
+}
+
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10010;
+  border: none;
+}
+
+.closeBtn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.lightboxNavBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10010;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lightboxNavBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lightboxNavBtn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.lightboxPrev {
+  left: 2rem;
+}
+
+.lightboxNext {
+  right: 2rem;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90%;
+  max-height: 80vh;
+  z-index: 10005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.lightboxCaption {
+  margin-top: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  max-width: 36rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.lightboxTitle {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lightboxDesc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile responsive media queries */
+@media (max-width: 768px) {
+  .navBtn {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .navBtn svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  .prevBtn {
+    left: 0.5rem;
+  }
+  .nextBtn {
+    right: 0.5rem;
+  }
+  .lightbox {
+    padding: 1rem;
+  }
+  .lightboxPrev {
+    left: 0.75rem;
+  }
+  .lightboxNext {
+    right: 0.75rem;
+  }
+  .lightboxNavBtn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .lightboxNavBtn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  .lightboxCaption {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

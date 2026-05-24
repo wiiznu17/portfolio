@@ -58,6 +58,12 @@ export const PROJECT_THEMES: Record<"blue" | "amber" | "indigo", ProjectTheme> =
   },
 }
 
+export interface ProjectImage {
+  url: string
+  title: string
+  description: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -76,6 +82,7 @@ export interface Project {
   demoUrl: string
   videoUrl: string
   bullets: string[]
+  images: ProjectImage[]
 }
 
 export const projectsData: Record<string, Project> = {
@@ -169,6 +176,26 @@ export const projectsData: Record<string, Project> = {
       "Built KYC pipeline using AWS Rekognition & Google Vision API with AES-256 encryption.",
       "Built React Native app and Next.js admin dashboard for monitoring.",
     ],
+    images: [
+      {
+        url: "/images/projects/p-wallet.png",
+        title: "P-wallet Mobile Client & Transaction Center",
+        description:
+          "React Native mobile client allowing users to complete peer-to-peer transfers, monitor suspicious activities, and securely verify transaction status.",
+      },
+      {
+        url: "/images/projects/p-wallet_ledger.png",
+        title: "Double-Entry Ledger Accounting Engine",
+        description:
+          "Strict double-entry accounting ledger engine designed in Java Spring Boot, ensuring mathematical correctness where every transaction maintains balanced assets.",
+      },
+      {
+        url: "/images/projects/p-wallet_kyc.png",
+        title: "Computer Vision Identity (KYC) Pipeline",
+        description:
+          "Advanced KYC automation scanning passport details via Google Vision and AWS Rekognition, protected with full AES-256 envelope database encryption.",
+      },
+    ],
   },
   digishop: {
     id: "digishop",
@@ -252,6 +279,26 @@ export const projectsData: Record<string, Project> = {
       "Developed three distinct Next.js web applications (Customer, Merchant, Admin) supported by synchronized backends.",
       "Implemented Background Workers via BullMQ for asynchronous tasks like payment timeouts and order updates.",
     ],
+    images: [
+      {
+        url: "/images/projects/digishop.png",
+        title: "DigiShop E-Commerce Storefront",
+        description:
+          "Modern, high-performance customer storefront demonstrating lightning-fast Next.js rendering, multi-vendor category browsing, and catalog search.",
+      },
+      {
+        url: "/images/projects/digishop_merchant.png",
+        title: "Merchant Sales & Inventory Dashboard",
+        description:
+          "Clean Next.js Merchant portal tracking daily revenues, order fulfillments, and inventory replenishment limits through optimized Sequelize MySQL indexes.",
+      },
+      {
+        url: "/images/projects/digishop_admin.png",
+        title: "Admin Worker Queue Console",
+        description:
+          "Centralized administrator console interface displaying active BullMQ backend workers, memory consumption, latency metrics, and real-time transaction event logs.",
+      },
+    ],
   },
   studybuddy: {
     id: "studybuddy",
@@ -328,6 +375,26 @@ export const projectsData: Record<string, Project> = {
       "Developed a social platform to match students with shared academic interests for study groups.",
       "Focused on frontend development and backend API refinement for a seamless UX.",
       "Managed database persistence and implemented Row Level Security (RLS) for student data using PostgreSQL via Supabase.",
+    ],
+    images: [
+      {
+        url: "/images/projects/studybuddy.png",
+        title: "StudyBuddy Landing & Community Portal",
+        description:
+          "Secure student match landing layout customized for Khon Kaen University student lists, presenting clear collaborative study opportunities.",
+      },
+      {
+        url: "/images/projects/studybuddy_explore.png",
+        title: "Row-Level-Security Study Partner Grid",
+        description:
+          "Row Level Security (RLS) enabled profiles search board isolating academic student profiles by major, skills, and academic interests securely via Supabase.",
+      },
+      {
+        url: "/images/projects/studybuddy_chat.png",
+        title: "Real-Time WebSocket Group Chat",
+        description:
+          "WebSocket communication channel providing students with real-time text message loops, typing notifications, and instant resource sharing rooms.",
+      },
     ],
   },
 }

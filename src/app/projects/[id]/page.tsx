@@ -5,6 +5,7 @@ import FloatingShapes from "@/components/FloatingShapes"
 import Mascot from "@/components/Mascot"
 import Navbar from "@/components/Navbar/Navbar"
 import Footer from "@/components/Footer/Footer"
+import ProjectCarousel from "@/components/ProjectCarousel/ProjectCarousel"
 
 import { projectsData, PROJECT_THEMES } from "@/constants/projects"
 
@@ -82,17 +83,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           className="clay-card"
           style={{ display: "grid", gridTemplateColumns: "1fr", overflow: "hidden", padding: 0 }}
         >
-          {/* Visual Banner Mockup */}
+          {/* Visual Banner Mockup with Interactive Image Carousel */}
           <div
             style={{
               background: project.bannerGradient,
-              minHeight: "22rem",
+              minHeight: "32rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
               borderBottom: "1px solid rgba(255,255,255,0.4)",
-              padding: "2.5rem",
+              padding: "3rem 1rem",
               overflow: "hidden",
             }}
           >
@@ -102,9 +103,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               style={{
                 position: "absolute",
                 top: "10%",
-                left: "10%",
-                width: "3rem",
-                height: "3rem",
+                left: "5%",
+                width: "3.5rem",
+                height: "3.5rem",
                 background: "rgba(255,255,255,0.4)",
                 borderRadius: "50%",
                 filter: "blur(2px)",
@@ -116,9 +117,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               style={{
                 position: "absolute",
                 bottom: "10%",
-                right: "10%",
-                width: "4rem",
-                height: "4rem",
+                right: "5%",
+                width: "4.5rem",
+                height: "4.5rem",
                 background: "rgba(255,255,255,0.3)",
                 borderRadius: "50%",
                 filter: "blur(3px)",
@@ -129,28 +130,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div
               style={{
                 position: "relative",
-                width: "90%",
-                maxWidth: "34rem",
-                aspectRatio: "16 / 9",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
-                border: "1.5px solid rgba(255, 255, 255, 0.8)",
-                background: "rgba(255, 255, 255, 0.6)",
-                transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                width: "95%",
+                maxWidth: "48rem",
                 zIndex: 10,
               }}
             >
-              <img
-                src={`/images/projects/${project.id}.png`}
-                alt={`${project.title} Preview`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
+              <ProjectCarousel images={project.images} />
             </div>
           </div>
 
