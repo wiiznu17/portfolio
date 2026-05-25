@@ -1,11 +1,16 @@
+"use client"
+
 import React from "react"
 import styles from "./AdditionalInfo.module.css"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 export default function AdditionalInfo() {
+  const { language, t } = useLanguage()
   return (
     <section id="info" className={styles.section}>
       <div className="section-title-wrap">
-        <h2 className="section-title">Additional Information</h2>
+        <h2 className="section-title">{t("info_title", COMMON_TRANSLATIONS)}</h2>
         <div className="section-title-bar"></div>
       </div>
 
@@ -142,7 +147,7 @@ export default function AdditionalInfo() {
                   />
                 </svg>
               </div>
-              <h3 className={styles.title}>Education</h3>
+              <h3 className={styles.title}>{t("info_education", COMMON_TRANSLATIONS)}</h3>
             </div>
 
             <div className={styles.contentList}>
@@ -155,13 +160,19 @@ export default function AdditionalInfo() {
                   />
                 </div>
                 <div>
-                  <h4 className={styles.eduName}>Khon Kaen University</h4>
+                  <h4 className={styles.eduName}>
+                    {language === "th" ? "มหาวิทยาลัยขอนแก่น" : "Khon Kaen University"}
+                  </h4>
                   <p className={styles.eduSubtitle}>
-                    Bachelor of Engineering in Computer Engineering
+                    {language === "th"
+                      ? "ปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์"
+                      : "Bachelor of Engineering in Computer Engineering"}
                   </p>
                   <div className={styles.metaRow}>
                     <span className={styles.metaItem}>2022-2026</span>
-                    <span className={styles.gpaxBadge}>GPAX: 3.07</span>
+                    <span className={styles.gpaxBadge}>
+                      {language === "th" ? "เกรดเฉลี่ยสะสม (GPAX): 3.07" : "GPAX: 3.07"}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -187,7 +198,7 @@ export default function AdditionalInfo() {
                   />
                 </svg>
               </div>
-              <h3 className={styles.title}>Languages</h3>
+              <h3 className={styles.title}>{t("info_languages", COMMON_TRANSLATIONS)}</h3>
             </div>
 
             <div className={styles.contentList}>
@@ -195,24 +206,28 @@ export default function AdditionalInfo() {
               <div className={styles.langItem}>
                 <div className={`${styles.langIconBox} ${styles.langIconTH}`}>TH</div>
                 <div>
-                  <h4 className={styles.langName}>Thai</h4>
-                  <p className={styles.langLevel}>Native</p>
+                  <h4 className={styles.langName}>{language === "th" ? "ภาษาไทย" : "Thai"}</h4>
+                  <p className={styles.langLevel}>{t("info_native", COMMON_TRANSLATIONS)}</p>
                 </div>
               </div>
               {/* English */}
               <div className={styles.langItem}>
                 <div className={`${styles.langIconBox} ${styles.langIconEN}`}>EN</div>
                 <div>
-                  <h4 className={styles.langName}>English</h4>
-                  <p className={styles.langLevel}>Intermediate</p>
+                  <h4 className={styles.langName}>
+                    {language === "th" ? "ภาษาอังกฤษ" : "English"}
+                  </h4>
+                  <p className={styles.langLevel}>{t("info_intermediate", COMMON_TRANSLATIONS)}</p>
                 </div>
               </div>
               {/* Japanese */}
               <div className={styles.langItem}>
                 <div className={`${styles.langIconBox} ${styles.langIconJP}`}>JP</div>
                 <div>
-                  <h4 className={styles.langName}>Japanese</h4>
-                  <p className={styles.langLevel}>Beginner</p>
+                  <h4 className={styles.langName}>
+                    {language === "th" ? "ภาษาญี่ปุ่น" : "Japanese"}
+                  </h4>
+                  <p className={styles.langLevel}>{t("info_beginner", COMMON_TRANSLATIONS)}</p>
                 </div>
               </div>
             </div>

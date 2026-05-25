@@ -1,4 +1,6 @@
-import React from "react"
+"use client"
+
+import React, { use } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import FloatingShapes from "@/components/FloatingShapes"
@@ -8,11 +10,15 @@ import Footer from "@/components/Footer/Footer"
 import ProjectCarousel from "@/components/ProjectCarousel/ProjectCarousel"
 
 import { projectsData, PROJECT_THEMES } from "@/constants/projects"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params
+export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params)
   const projectKey = resolvedParams.id.toLowerCase()
   const project = projectsData[projectKey]
+
+  const { language, t } = useLanguage()
 
   if (!project) {
     notFound()
@@ -20,6 +26,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   // Dynamic Theme Styling Config
   const colors = PROJECT_THEMES[project.themeColor]
+
+  const mappedImages = project.images.map((img) => ({
+    url: img.url,
+    title: img.title[language],
+    description: img.description[language],
+  }))
 
   return (
     <>
@@ -70,11 +82,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            <span>Back to Projects</span>
+            <span>{t("proj_back_to_projects", COMMON_TRANSLATIONS)}</span>
           </Link>
 
           <span style={{ fontSize: "0.875rem", color: "var(--slate-500)", fontWeight: 700 }}>
-            {project.role}
+            {project.role[language]}
           </span>
         </div>
 
@@ -131,11 +143,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               style={{
                 position: "relative",
                 width: "95%",
-                maxWidth: "48rem",
+                maxWidth: "68rem",
                 zIndex: 10,
               }}
             >
-              <ProjectCarousel images={project.images} />
+              <ProjectCarousel images={mappedImages} />
             </div>
           </div>
 
@@ -153,10 +165,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               >
                 <div>
                   <h1 style={{ fontSize: "2rem", fontWeight: 900, color: "var(--slate-900)" }}>
-                    {project.title}
+                    {project.title[language]}
                   </h1>
                   <p style={{ fontSize: "1.125rem", color: "var(--slate-500)", fontWeight: 600 }}>
-                    {project.subtitle}
+                    {project.subtitle[language]}
                   </p>
                 </div>
                 <div
@@ -177,7 +189,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       gap: "0.375rem",
                     }}
                   >
-                    <span>Live Demo</span>
+                    <span>{t("proj_btn_demo", COMMON_TRANSLATIONS)}</span>
                     <svg
                       style={{ width: "1rem", height: "1rem" }}
                       fill="none"
@@ -207,7 +219,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       gap: "0.375rem",
                     }}
                   >
-                    <span>Demo Video</span>
+                    <span>{t("proj_btn_video", COMMON_TRANSLATIONS)}</span>
                     <svg
                       style={{ width: "1rem", height: "1rem" }}
                       fill="currentColor"
@@ -217,7 +229,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     </svg>
                   </a>
                   <span className="yearBadge" style={colors.badgeStyle}>
-                    Released {project.year}
+                    {t("proj_released", COMMON_TRANSLATIONS)} {project.year}
                   </span>
                 </div>
               </div>
@@ -230,7 +242,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   lineHeight: 1.6,
                 }}
               >
-                {project.tagline}
+                {project.tagline[language]}
               </p>
 
               {/* Stack badges */}
@@ -250,7 +262,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     marginBottom: "0.75rem",
                   }}
                 >
-                  Technologies Leveraged
+                  {t("proj_leveraged", COMMON_TRANSLATIONS)}
                 </h3>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                   {project.techStack.map((tech) => (
@@ -287,7 +299,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
               <span style={{ fontSize: "1.75rem" }}>⚠️</span>
               <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                The Problem & Challenge
+                {t("proj_problem", COMMON_TRANSLATIONS)}
               </h2>
             </div>
             <div
@@ -306,7 +318,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 fontWeight: 500,
               }}
             >
-              {project.problem}
+              {project.problem[language]}
             </p>
           </div>
 
@@ -318,7 +330,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
               <span style={{ fontSize: "1.75rem" }}>💡</span>
               <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                The Engineering Solution
+                {t("proj_solution", COMMON_TRANSLATIONS)}
               </h2>
             </div>
             <div
@@ -337,7 +349,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 fontWeight: 500,
               }}
             >
-              {project.solution}
+              {project.solution[language]}
             </p>
           </div>
         </section>
@@ -350,7 +362,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <span style={{ fontSize: "1.75rem" }}>🏗️</span>
             <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--slate-900)" }}>
-              Technical System Architecture
+              {t("proj_architecture", COMMON_TRANSLATIONS)}
             </h2>
           </div>
           <div
@@ -370,7 +382,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               marginTop: "0.5rem",
             }}
           >
-            {project.architecture.map((item, index) => (
+            {project.architecture[language].map((item, index) => (
               <div
                 key={index}
                 style={{
@@ -418,7 +430,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {/* Feature Highlights Grid */}
         <section style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <div className="section-title-wrap" style={{ marginBottom: "1rem" }}>
-            <h2 className="section-title">Key System Highlights</h2>
+            <h2 className="section-title">{t("proj_highlights", COMMON_TRANSLATIONS)}</h2>
             <div className="section-title-bar"></div>
           </div>
 
@@ -440,7 +452,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                   <span style={{ fontSize: "1.5rem" }}>{highlight.icon}</span>
                   <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                    {highlight.title}
+                    {highlight.title[language]}
                   </h3>
                 </div>
                 <p
@@ -451,7 +463,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     fontWeight: 500,
                   }}
                 >
-                  {highlight.description}
+                  {highlight.description[language]}
                 </p>
               </div>
             ))}
@@ -473,7 +485,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           }}
         >
           <h2 style={{ fontSize: "1.5rem", fontWeight: 900, color: "var(--slate-900)" }}>
-            Want to inspect the codebase or demo?
+            {t("proj_footer_cta", COMMON_TRANSLATIONS)}
           </h2>
           <p
             style={{
@@ -484,8 +496,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               margin: "0 auto",
             }}
           >
-            All systems are fully functional. Explore the source repositories on GitHub, or access
-            the active deployment directly.
+            {t("proj_footer_desc", COMMON_TRANSLATIONS)}
           </p>
           <div
             style={{
@@ -511,7 +522,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 gap: "0.5rem",
               }}
             >
-              <span>Live Demo</span>
+              <span>{t("proj_btn_demo", COMMON_TRANSLATIONS)}</span>
               <svg
                 style={{ width: "1.2rem", height: "1.2rem" }}
                 fill="none"
@@ -541,7 +552,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 gap: "0.5rem",
               }}
             >
-              <span>Demo Video</span>
+              <span>{t("proj_btn_video", COMMON_TRANSLATIONS)}</span>
               <svg
                 style={{ width: "1.2rem", height: "1.2rem" }}
                 fill="currentColor"
@@ -565,7 +576,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 gap: "0.5rem",
               }}
             >
-              <span>View Repository</span>
+              <span>{t("proj_btn_view_repo", COMMON_TRANSLATIONS)}</span>
             </a>
             <Link
               href="/#projects"
@@ -577,7 +588,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 fontWeight: 700,
               }}
             >
-              Browse Other Projects
+              {t("proj_btn_other", COMMON_TRANSLATIONS)}
             </Link>
           </div>
         </section>

@@ -2,8 +2,11 @@
 
 import React, { useState } from "react"
 import styles from "./Contact.module.css"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 export default function Contact() {
+  const { language, t } = useLanguage()
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
@@ -13,7 +16,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email || !message) {
-      alert("Please fill in all fields.")
+      alert(language === "th" ? "กรุณากรอกข้อมูลให้ครบถ้วน" : "Please fill in all fields.")
       return
     }
 
@@ -34,10 +37,14 @@ export default function Contact() {
         setEmail("")
         setMessage("")
       } else {
-        alert(data.error || "Failed to send message. Please try again later.")
+        alert(data.error || t("contact_error", COMMON_TRANSLATIONS))
       }
     } catch {
-      alert("A connection error occurred. Please check your internet connection.")
+      alert(
+        language === "th"
+          ? "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ตของคุณ"
+          : "A connection error occurred. Please check your internet connection."
+      )
     } finally {
       setIsSubmitting(false)
     }
@@ -77,9 +84,11 @@ export default function Contact() {
         <div className={styles.cardContent}>
           {/* Header */}
           <div className={styles.headerArea}>
-            <h3 className={styles.title}>Contact Me</h3>
+            <h3 className={styles.title}>{t("contact_title", COMMON_TRANSLATIONS)}</h3>
             <p className={styles.subtitle}>
-              Ready to adapt and collaborate with a team to support system development.
+              {language === "th"
+                ? "พร้อมเรียนรู้และร่วมมือกับทีมเพื่อขับเคลื่อนระบบให้ก้าวหน้า"
+                : "Ready to adapt and collaborate with a team to support system development."}
             </p>
 
             {/* Direct Shortcuts */}
@@ -126,12 +135,12 @@ export default function Contact() {
             <div className={styles.formRow}>
               <div>
                 <label htmlFor="formName" className={styles.label}>
-                  Your Name
+                  {t("contact_name_label", COMMON_TRANSLATIONS)}
                 </label>
                 <input
                   id="formName"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder={language === "th" ? "ชื่อของคุณ" : "John Doe"}
                   className={styles.input}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -140,12 +149,12 @@ export default function Contact() {
               </div>
               <div>
                 <label htmlFor="formEmail" className={styles.label}>
-                  Email Address
+                  {t("contact_email_label", COMMON_TRANSLATIONS)}
                 </label>
                 <input
                   id="formEmail"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="your-email@example.com"
                   className={styles.input}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -156,12 +165,16 @@ export default function Contact() {
 
             <div>
               <label htmlFor="formMessage" className={styles.label}>
-                Message
+                {t("contact_msg_label", COMMON_TRANSLATIONS)}
               </label>
               <textarea
                 id="formMessage"
                 rows={4}
-                placeholder="Hi Wissanu, I'd love to chat about..."
+                placeholder={
+                  language === "th"
+                    ? "สวัสดีวิษณุ ฉันต้องการพูดคุยเกี่ยวกับ..."
+                    : "Hi Wissanu, I'd love to chat about..."
+                }
                 className={styles.textarea}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -175,7 +188,9 @@ export default function Contact() {
                 disabled={isSubmitting}
                 className={`${styles.submitBtn} clay-btn`}
               >
-                {isSubmitting ? "Sending message..." : "Send Message"}
+                {isSubmitting
+                  ? t("contact_btn_sending", COMMON_TRANSLATIONS)
+                  : t("contact_btn_send", COMMON_TRANSLATIONS)}
               </button>
             </div>
           </form>
@@ -190,13 +205,12 @@ export default function Contact() {
         {/* Modal Box */}
         <div className={styles.modalBody} onClick={(e) => e.stopPropagation()}>
           <div className={styles.modalIcon}>✓</div>
-          <h4 className={styles.modalTitle}>Message Sent!</h4>
-          <p className={styles.modalText}>
-            Thank you for reaching out. I have received your message and will get back to you as
-            soon as possible.
-          </p>
+          <h4 className={styles.modalTitle}>
+            {language === "th" ? "ส่งข้อความเรียบร้อยแล้ว!" : "Message Sent!"}
+          </h4>
+          <p className={styles.modalText}>{t("contact_success", COMMON_TRANSLATIONS)}</p>
           <button className={styles.modalCloseBtn} onClick={() => setIsSuccessOpen(false)}>
-            Close
+            {language === "th" ? "ปิด" : "Close"}
           </button>
         </div>
       </div>

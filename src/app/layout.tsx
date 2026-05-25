@@ -38,6 +38,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { LanguageProvider } from "@/context/LanguageContext"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakartaSans.variable} scroll-smooth`}>
-      <body className="antialiased overflow-x-hidden relative min-h-screen">{children}</body>
+      <body className="antialiased overflow-x-hidden relative min-h-screen">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   )
 }

@@ -1,12 +1,19 @@
+"use client"
+
 import React from "react"
 import styles from "./Footer.module.css"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function Footer() {
+  const { language } = useLanguage()
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <p className={styles.text}>
-          © 2026 Wissanu Rayayoi. Built with love using claymorphism components.
+          © 2026 Wissanu Rayayoi.{" "}
+          {language === "th"
+            ? "สร้างสรรค์อย่างตั้งใจด้วยคอมโพเนนต์สไตล์ Claymorphism"
+            : "Built with love using claymorphism components."}
         </p>
 
         {/* Social Link Tiles */}

@@ -4,6 +4,8 @@ import React from "react"
 import Link from "next/link"
 import styles from "./Projects.module.css"
 import { projectsData } from "@/constants/projects"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 const bannerStyles: Record<string, string> = {
   "p-wallet": styles.bannerPwallet,
@@ -18,10 +20,11 @@ const yearBadgeStyles: Record<string, string> = {
 }
 
 export default function Projects() {
+  const { language, t } = useLanguage()
   return (
     <section id="projects" className={styles.section}>
       <div className="section-title-wrap">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title">{t("proj_title", COMMON_TRANSLATIONS)}</h2>
         <div className="section-title-bar"></div>
       </div>
 
@@ -86,7 +89,7 @@ export default function Projects() {
                 >
                   <div className={styles.cardHeader}>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                      <h3 className={styles.cardTitle}>{project.title}</h3>
+                      <h3 className={styles.cardTitle}>{project.title[language]}</h3>
                       {isFullWidth && (
                         <span
                           className={`${styles.yearBadge} ${yearBadgeStyles[project.themeColor]}`}
@@ -103,9 +106,9 @@ export default function Projects() {
                       </span>
                     )}
                   </div>
-                  <p className={styles.subtitle}>{project.subtitle}</p>
+                  <p className={styles.subtitle}>{project.subtitle[language]}</p>
                   <div className={styles.bullets}>
-                    {project.bullets.map((bullet, idx) => (
+                    {project.bullets[language].map((bullet, idx) => (
                       <div key={idx}>• {bullet}</div>
                     ))}
                   </div>
@@ -157,7 +160,7 @@ export default function Projects() {
                     className={`${styles.ctaLink} ${styles.ctaLinkBlue}`}
                   >
                     <span className={styles.stretchedLink}></span>
-                    <span>View Details</span>
+                    <span>{language === "th" ? "ดูรายละเอียด" : "View Details"}</span>
                     <svg
                       className="w-4 h-4"
                       fill="none"

@@ -1,7 +1,12 @@
+"use client"
+
 import React from "react"
 import styles from "./Hero.module.css"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 export default function Hero() {
+  const { t } = useLanguage()
   return (
     <section id="about" className={styles.section}>
       {/* Avatar Container with glowing backdrop ring */}
@@ -73,7 +78,7 @@ export default function Hero() {
               d="M12,2L14.5,9.5L22,12L14.5,14.5L12,22L9.5,14.5L2,12L9.5,9.5Z"
             />
           </svg>
-          Hi, I&apos;m Wissanu Rayayoi
+          {t("hero_title", COMMON_TRANSLATIONS)}
           {/* Decorative Sparkle Bottom Right */}
           <svg viewBox="0 0 24 24" className={`${styles.sparkleRight} floating-shape-1`}>
             <path
@@ -83,15 +88,12 @@ export default function Hero() {
           </svg>
         </h1>
 
-        <h2 className={styles.subtitle}>Software Engineer</h2>
+        <h2 className={styles.subtitle}>{t("hero_subtitle", COMMON_TRANSLATIONS)}</h2>
 
-        <p className={styles.desc}>
-          Computer Engineering graduate from Khon Kaen University. Interested in{" "}
-          <strong>backend development</strong> and <strong>distributed systems</strong>. A
-          disciplined, detail-oriented individual who takes full ownership of work and approaches
-          challenges with a logical mindset. Ready to adapt and collaborate to support system
-          development.
-        </p>
+        <p
+          className={styles.desc}
+          dangerouslySetInnerHTML={{ __html: t("hero_desc", COMMON_TRANSLATIONS) }}
+        />
       </div>
 
       {/* Action Buttons */}
@@ -111,7 +113,7 @@ export default function Hero() {
               d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
             />
           </svg>
-          <span>Explore Projects</span>
+          <span>{t("hero_btn_projects", COMMON_TRANSLATIONS)}</span>
         </a>
         <a href="#contact" className={`${styles.btn} clay-btn-secondary text-slate-700`}>
           <svg
@@ -128,7 +130,7 @@ export default function Hero() {
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
             />
           </svg>
-          <span>Contact Details</span>
+          <span>{t("hero_btn_contact", COMMON_TRANSLATIONS)}</span>
         </a>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react"
 import { createPortal } from "react-dom"
 import styles from "./ProjectCarousel.module.css"
+import { useLanguage } from "@/context/LanguageContext"
 
 export interface ProjectImage {
   url: string
@@ -15,6 +16,7 @@ interface ProjectCarouselProps {
 }
 
 export default function ProjectCarousel({ images }: ProjectCarouselProps) {
+  const { language } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -92,7 +94,7 @@ export default function ProjectCarousel({ images }: ProjectCarouselProps) {
   const currentImage = images[currentIndex]
 
   return (
-    <div className={styles.carouselContainer}>
+    <div className={styles.carouselGrid}>
       {/* 3D Visual Frame for Slider */}
       <div className={styles.sliderFrame}>
         {/* Main Display Image */}
@@ -112,7 +114,7 @@ export default function ProjectCarousel({ images }: ProjectCarouselProps) {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
               />
             </svg>
-            <span>Click to Expand</span>
+            <span>{language === "th" ? "คลิกเพื่อขยายภาพ" : "Click to Expand"}</span>
           </div>
         </div>
 
@@ -176,13 +178,22 @@ export default function ProjectCarousel({ images }: ProjectCarouselProps) {
 
       {/* Explanatory Caption Panel (Rich UI layout details) */}
       <div className={styles.captionPanel}>
-        <div className={styles.captionHeader}>
-          <span className={styles.slideIndicator}>
-            Feature {currentIndex + 1} of {images.length}
-          </span>
-          <h2 className={styles.captionTitle}>{currentImage.title}</h2>
-        </div>
+        <span className={styles.slideIndicator}>
+          {language === "th"
+            ? `คุณสมบัติที่ ${currentIndex + 1} จากทั้งหมด ${images.length} รายการ`
+            : `Feature ${currentIndex + 1} of ${images.length}`}
+        </span>
+        <h2 className={styles.captionTitle}>{currentImage.title}</h2>
+        <div className={styles.captionDivider}></div>
         <p className={styles.captionDesc}>{currentImage.description}</p>
+        <div className={styles.captionTip}>
+          <span className={styles.tipIcon}>🔍</span>
+          <span>
+            {language === "th"
+              ? "คลิกที่รูปเพื่อตรวจสอบรายละเอียดขนาดเต็ม"
+              : "Click image to inspect in full resolution"}
+          </span>
+        </div>
       </div>
 
       {/* Immersive Fullscreen Lightbox Overlay Modal */}

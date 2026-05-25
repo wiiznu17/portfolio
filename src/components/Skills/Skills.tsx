@@ -4,6 +4,8 @@ import React from "react"
 import styles from "./Skills.module.css"
 import TiltCard from "../TiltCard"
 import { skillsData } from "@/constants/skills"
+import { useLanguage } from "@/context/LanguageContext"
+import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 const renderCategoryIcon = (key: "frontend" | "backend" | "database" | "cloud") => {
   switch (key) {
@@ -177,10 +179,19 @@ const renderSkillLogo = (logo: string, name: string, size?: string) => {
 }
 
 export default function Skills() {
+  const { language, t } = useLanguage()
+
+  const categoryTitles: Record<string, { en: string; th: string }> = {
+    Frontend: { en: "Frontend", th: "ฝั่งหน้าบ้าน (Frontend)" },
+    "Backend & Languages": { en: "Backend & Languages", th: "ฝั่งหลังบ้านและภาษาโปรแกรม" },
+    "Database & ORM": { en: "Database & ORM", th: "ฐานข้อมูลและ ORM" },
+    "Cloud & Tools": { en: "Cloud & Tools", th: "ระบบคลาวด์และเครื่องมือ" },
+  }
+
   return (
     <section id="skills" className={styles.section}>
       <div className="section-title-wrap">
-        <h2 className="section-title">Tech Stack & Skills</h2>
+        <h2 className="section-title">{t("skills_title", COMMON_TRANSLATIONS)}</h2>
         <div className="section-title-bar"></div>
       </div>
 
@@ -188,7 +199,9 @@ export default function Skills() {
         {skillsData.map((category) => (
           <TiltCard key={category.title} className={`${styles.card} clay-card`}>
             <div className={styles.iconContainer}>{renderCategoryIcon(category.iconKey)}</div>
-            <h3 className={styles.title}>{category.title}</h3>
+            <h3 className={styles.title}>
+              {categoryTitles[category.title]?.[language] || category.title}
+            </h3>
             <div className={styles.badgeGrid}>
               {category.skills.map((skill) => (
                 <span key={skill.name} className="tech-badge rounded-md">
