@@ -64,8 +64,8 @@ export default function Projects() {
 
                 <div className={styles.previewContainer}>
                   <img
-                    src={`/images/projects/${project.id}.png`}
-                    alt={`${project.title} Preview`}
+                    src={`/images/projects/${project.id}/1_client.png`}
+                    alt={`${project.title[language]} Preview`}
                     className={styles.previewImage}
                   />
                 </div>
