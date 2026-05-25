@@ -418,3 +418,23 @@
     0 0px 0px #be123c,
     0 3px 6px rgba(244, 63, 94, 0.15);
 }
+
+@media (max-width: 480px) {
+  .cardHeader {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .divider {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+  .ctaLink {
+    margin-left: 0 !important;
+    align-self: flex-start !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+}
+

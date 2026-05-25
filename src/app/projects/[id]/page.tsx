@@ -45,7 +45,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       <Navbar />
 
       <main
-        className="container-max py-8 flex flex-col gap-10 md:gap-14"
+        className="container-max py-8 flex flex-col gap-10 md:gap-14 detail-main"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -55,7 +55,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         }}
       >
         {/* Navigation / Header Buttons */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div className="detail-header-row">
           <Link
             href="/#projects"
             className="clay-btn-secondary"
@@ -97,15 +97,11 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         >
           {/* Visual Banner Mockup with Interactive Image Carousel */}
           <div
+            className="detail-banner-area"
             style={{
               background: project.bannerGradient,
-              minHeight: "32rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               position: "relative",
               borderBottom: "1px solid rgba(255,255,255,0.4)",
-              padding: "3rem 1rem",
               overflow: "hidden",
             }}
           >
@@ -152,9 +148,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           {/* Details Content */}
-          <div style={{ padding: "2rem" }}>
+          <div className="detail-body-area">
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <div
+                className="detail-header-row detail-title-row"
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -172,6 +169,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   </p>
                 </div>
                 <div
+                  className="detail-btn-group"
                   style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}
                 >
                   <a
@@ -385,6 +383,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             {project.architecture[language].map((item, index) => (
               <div
                 key={index}
+                className="detail-architecture-item"
                 style={{
                   display: "flex",
                   gap: "1rem",
@@ -472,7 +471,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Footer CTA Banner */}
         <section
-          className="clay-card"
+          className="clay-card detail-footer-cta"
           style={{
             padding: "2.5rem 2rem",
             textAlign: "center",
@@ -499,6 +498,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             {t("proj_footer_desc", COMMON_TRANSLATIONS)}
           </p>
           <div
+            className="detail-footer-cta-buttons"
             style={{
               display: "flex",
               gap: "1rem",
@@ -601,9 +601,78 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       <style
         dangerouslySetInnerHTML={{
           __html: `
+          .detail-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+          }
+          .detail-banner-area {
+            min-height: 32rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 3rem 1rem;
+            overflow: hidden;
+          }
+
           @media (max-width: 768px) {
             .md\\:grid-cols-2 {
               grid-template-columns: 1fr !important;
+            }
+            .detail-main {
+              gap: 1.75rem !important;
+              padding-top: 1rem !important;
+              padding-bottom: 4rem !important;
+            }
+            .detail-header-row {
+              flex-direction: column;
+              align-items: flex-start !important;
+              gap: 0.75rem;
+            }
+            .detail-banner-area {
+              min-height: 20rem !important;
+              padding: 1.5rem 0.5rem !important;
+            }
+            .detail-body-area {
+              padding: 1.25rem !important;
+            }
+            .detail-title-row {
+              flex-direction: column;
+              align-items: flex-start !important;
+              gap: 1rem !important;
+            }
+            .detail-btn-group {
+              width: 100% !important;
+              justify-content: flex-start !important;
+              gap: 0.75rem !important;
+            }
+            .detail-btn-group a, .detail-btn-group span {
+              flex-grow: 1;
+              text-align: center;
+              justify-content: center;
+            }
+            .detail-architecture-item {
+              padding: 0.75rem 1rem !important;
+              gap: 0.75rem !important;
+            }
+            .detail-footer-cta {
+              padding: 2rem 1.25rem !important;
+              gap: 1rem !important;
+            }
+            .detail-footer-cta-buttons {
+              width: 100%;
+              flex-direction: column !important;
+              gap: 0.75rem !important;
+            }
+            .detail-footer-cta-buttons a, .detail-footer-cta-buttons link {
+              width: 100% !important;
+              text-align: center;
+              justify-content: center;
+              margin: 0 !important;
             }
           }
           @media (min-width: 769px) {
