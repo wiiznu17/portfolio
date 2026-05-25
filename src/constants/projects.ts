@@ -88,19 +88,19 @@ export interface Project {
 export const projectsData: Record<string, Project> = {
   "p-wallet": {
     id: "p-wallet",
-    title: { en: "J-Ledger", th: "J-Ledger" },
+    title: { en: "P-Wallet", th: "P-Wallet" },
     subtitle: {
       en: "High-Throughput E-Wallet & Immutable Financial Ledger Engine",
-      th: "ระบบบัญชีแยกประเภทและการโอนเงินสำหรับกระเป๋าเงินดิจิทัลประสิทธิภาพสูง",
+      th: "ระบบบัญชีแยกประเภทและการโอนเงินสำหรับกระเป๋าเงินดิจิทัล",
     },
     year: "2026",
     role: {
-      en: "Lead Backend Architect & Security Engineer",
-      th: "สถาปนิกวิศวกรระบบหลังบ้านและความปลอดภัยทางการเงิน",
+      en: "Fullstack Developer",
+      th: "Fullstack Developer",
     },
     tagline: {
       en: "A bank-grade, double-entry financial ledger and mobile wallet platform built with Java 21 / Spring Boot 3, NestJS, Kafka, and Redis, guaranteeing 100% solvency and deadlock-free transactions.",
-      th: "ระบบบัญชีแยกประเภทและการเงินระดับธนาคารแบบบันทึกคู่และแอปกระเป๋าเงินมือถือ พัฒนาขึ้นด้วย Java 21 / Spring Boot 3, NestJS, Kafka และ Redis รับประกันสภาพคล่องของทุนสำรอง 100% และกระบวนการโอนเงินที่ไร้การล็อกค้างแบบชะงัก (Deadlock-free)",
+      th: "ระบบบัญชีแยกประเภทและการโอนเงินสำหรับกระเป๋าเงินดิจิทัล พัฒนาขึ้นด้วย Java 21 / Spring Boot 3, NestJS, Kafka และ Redis รับประกันสภาพคล่องของทุนสำรอง 100% และกระบวนการโอนเงินที่ไร้การล็อกค้างแบบชะงัก (Deadlock-free)",
     },
     themeColor: "blue",
     bannerGradient: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
@@ -109,8 +109,8 @@ export const projectsData: Record<string, Project> = {
       th: "แอปพลิเคชันทางการเงินต้องการความสอดคล้องของธุรกรรม 100% รวมถึงระบบประมวลผลพร้อมกันที่ปราศจากการล็อกค้าง (Deadlocks) และความสามารถในการตรวจสอบที่ชัดเจน การอัปเดตยอดเงินพร้อมกัน (Race conditions) ในเวลาที่มีผู้ใช้ทำรายการหนาแน่น มักทำให้เกิดการใช้จ่ายซ้ำซ้อน (Double-spending) ยอดเงินขัดแย้ง หรือเกิดการล็อกขัดแย้งแบบวงกลมในฐานข้อมูล นอกจากนี้ การผนวกรวมโมดูลยืนยันตัวตน KYC, ระบบสกัดฟอกเงิน AML และคิวการแจ้งเตือนเข้าไปในเธรดการประมวลผลหลักโดยตรง ก่อให้เกิดคอขวดต่อระบบโดยรวม",
     },
     solution: {
-      en: "We engineered J-Ledger, a bank-grade double-entry financial ledger and mobile wallet platform. The financial core is built in Java 21 / Spring Boot 3 with Hibernate JPA and Flyway migrations, implementing an append-only journal architecture with dual-leg ledger audit entries for every balance mutation. We solved high-contention database concurrency and eliminated circular deadlocks by enforcing a strict lexicographical lock sorting sequencing protocol on UUIDs. The gateway and customer/admin modules are built with NestJS, Prisma ORM, and React/Next.js/React Native. We decoupled transaction updates from notifications using Apache Kafka event-driven workers, secured KYC biometric face matches, and calculated solvency reserve ratios in real-time.",
-      th: "พวกเราพัฒนา J-Ledger ระบบกระเป๋าเงินการเงินแบบบัญชีคู่ระดับธนาคาร โดยแกนหลักด้านการเงินพัฒนาขึ้นด้วย Java 21 / Spring Boot 3 ร่วมกับ Hibernate JPA และการย้ายข้อมูลผ่าน Flyway เพื่อจัดเก็บข้อมูลบัญชีแบบบันทึกเพิ่มเท่านั้น (Append-only) พร้อมรายการตรวจสอบสมการดุลบัญชีสำหรับทุกธุรกรรม เราแก้ไขปัญหาคอขวดบนฐานข้อมูลที่เกิดจากธุรกรรมหนาแน่นและขจัดปัญหา Deadlocks อย่างถาวรด้วยกติกาการเรียงลำดับการล็อกตามพจนานุกรม (Lexicographical lock sorting protocol) ในระดับรหัส UUID ของกระเป๋าเงิน ส่วนบริการจัดการ Auth และ Gateway พัฒนาด้วย NestJS และ Prisma ORM แยกการประมวลผลการส่งแจ้งเตือนออกไปยัง Kafka เพื่อแบ่งเบาภาระงานเบื้องหลัง และทำการคำนวณอัตราส่วนเงินสำรองสุทธิเพื่อเช็คสภาพคล่องแบบเรียลไทม์",
+      en: "I designed and engineered P-Wallet, a bank-grade double-entry financial ledger and mobile wallet platform. The financial core is built in Java 21 / Spring Boot 3 with Hibernate JPA and Flyway migrations, implementing an append-only journal architecture with dual-leg ledger audit entries for every balance mutation. I resolved high-contention database concurrency and eliminated circular deadlocks by enforcing a strict lexicographical lock sorting sequencing protocol on UUIDs. The gateway and customer/admin modules are built with NestJS, Prisma ORM, and React/Next.js/React Native. I decoupled transaction updates from notifications using Apache Kafka event-driven workers, secured KYC biometric face matches, and calculated solvency reserve ratios in real-time.",
+      th: "ผมได้ออกแบบและพัฒนา P-Wallet ระบบกระเป๋าเงินการเงินแบบบัญชีคู่ระดับธนาคาร โดยแกนหลักด้านการเงินพัฒนาขึ้นด้วย Java 21 / Spring Boot 3 ร่วมกับ Hibernate JPA และการย้ายข้อมูลผ่าน Flyway เพื่อจัดเก็บข้อมูลบัญชีแบบบันทึกเพิ่มเท่านั้น (Append-only) พร้อมรายการตรวจสอบสมการดุลบัญชีสำหรับทุกธุรกรรม ผมได้แก้ไขปัญหาคอขวดบนฐานข้อมูลที่เกิดจากธุรกรรมหนาแน่นและขจัดปัญหา Deadlocks อย่างถาวรด้วยกติกาการเรียงลำดับการล็อกตามพจนานุกรม (Lexicographical lock sorting protocol) ในระดับรหัส UUID ของกระเป๋าเงิน ส่วนบริการจัดการ Auth และ Gateway พัฒนาด้วย NestJS และ Prisma ORM แยกการประมวลผลการส่งแจ้งเตือนออกไปยัง Kafka เพื่อแบ่งเบาภาระงานเบื้องหลัง และทำการคำนวณอัตราส่วนเงินสำรองสุทธิเพื่อเช็คสภาพคล่องแบบเรียลไทม์",
     },
     architecture: {
       en: [
@@ -216,8 +216,8 @@ export const projectsData: Record<string, Project> = {
       {
         url: "/images/projects/p-wallet.png",
         title: {
-          en: "J-Ledger Mobile E-Wallet Interface Mockup",
-          th: "ภาพจำลองแอปพลิเคชันกระเป๋าเงินดิจิทัลมือถือ J-Ledger",
+          en: "P-Wallet Mobile E-Wallet Interface Mockup",
+          th: "ภาพจำลองแอปพลิเคชันกระเป๋าเงินดิจิทัลมือถือ P-Wallet",
         },
         description: {
           en: "Premium Glassmorphism Mobile Wallet Dashboard showing active balances, real-time ledger verification, and transaction history tracking.",
@@ -238,7 +238,7 @@ export const projectsData: Record<string, Project> = {
       {
         url: "/images/projects/p-wallet_kyc.png",
         title: {
-          en: "J-Ledger Administrative & Compliance Portal",
+          en: "P-Wallet Administrative & Compliance Portal",
           th: "หน้าจอดูแลระบบตรวจสอบการทำธุรกรรมการเงินและสกัดฟอกเงิน (AML Portal)",
         },
         description: {
