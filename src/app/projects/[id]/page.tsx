@@ -36,13 +36,7 @@ export default function ProjectDetailPage({
   const colors =
     PROJECT_THEMES[project.themeColor]
 
-  const mappedImages = project.images.map(
-    (img) => ({
-      url: img.url,
-      title: img.title[language],
-      description: img.description[language],
-    })
-  )
+  const mappedImages = project.images
 
   return (
     <>

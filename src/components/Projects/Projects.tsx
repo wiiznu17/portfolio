@@ -97,7 +97,7 @@ export default function Projects() {
                     }
                   >
                     <img
-                      src={`/images/projects/${project.id}/1_client.png`}
+                      src={project.images[0]?.url}
                       alt={`${project.title[language]} Preview`}
                       className={
                         styles.previewImage

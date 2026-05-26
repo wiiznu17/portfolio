@@ -11,12 +11,52 @@ import { useLanguage } from "@/context/LanguageContext"
 
 export interface ProjectImage {
   url: string
-  title: string
-  description: string
+  title: { en: string; th: string }
+  description: { en: string; th: string }
+  orientation?: "landscape" | "portrait" | "square"
 }
 
 interface ProjectCarouselProps {
   images: ProjectImage[]
+}
+
+const ASPECT_RATIO: Record<
+  NonNullable<ProjectImage["orientation"]>,
+  string
+> = {
+  landscape: "16 / 9",
+  portrait: "16 / 9",
+  square: "16 / 9",
+}
+
+// Broken-image placeholder shown when a URL fails to load
+function BrokenImagePlaceholder({
+  language,
+}: {
+  language: string
+}) {
+  return (
+    <div className={styles.brokenState}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        className={styles.brokenIcon}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+      <span>
+        {language === "th"
+          ? "ไม่พบรูปภาพ"
+          : "Image not available"}
+      </span>
+    </div>
+  )
 }
 
 export default function ProjectCarousel({
@@ -31,39 +71,51 @@ export default function ProjectCarousel({
     useState(false)
   const [isMounted, setIsMounted] =
     useState(false)
+  // Track which image URLs have failed to load
+  const [erroredUrls, setErroredUrls] = useState<
+    Set<string>
+  >(new Set())
 
   useEffect(() => {
     setIsMounted(true)
     return () => setIsMounted(false)
   }, [])
 
+  // Filter out broken images — only after mount so SSR stays consistent
+  const validImages = isMounted
+    ? images.filter((img) => !erroredUrls.has(img.url))
+    : images
+
+  // Keep currentIndex in-bounds if a broken image was removed
+  useEffect(() => {
+    if (currentIndex >= validImages.length && validImages.length > 0) {
+      setCurrentIndex(validImages.length - 1)
+    }
+  }, [validImages.length, currentIndex])
+
   const handlePrev = useCallback(() => {
-    if (images.length <= 1 || isTransitioning)
+    if (validImages.length <= 1 || isTransitioning)
       return
     setIsTransitioning(true)
     setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0
-          ? images.length - 1
-          : prevIndex - 1
+      setCurrentIndex((prev) =>
+        prev === 0 ? validImages.length - 1 : prev - 1
       )
       setIsTransitioning(false)
     }, 200)
-  }, [images.length, isTransitioning])
+  }, [validImages.length, isTransitioning])
 
   const handleNext = useCallback(() => {
-    if (images.length <= 1 || isTransitioning)
+    if (validImages.length <= 1 || isTransitioning)
       return
     setIsTransitioning(true)
     setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1
-          ? 0
-          : prevIndex + 1
+      setCurrentIndex((prev) =>
+        prev === validImages.length - 1 ? 0 : prev + 1
       )
       setIsTransitioning(false)
     }, 200)
-  }, [images.length, isTransitioning])
+  }, [validImages.length, isTransitioning])
 
   const handleDotClick = useCallback(
     (index: number) => {
@@ -81,7 +133,7 @@ export default function ProjectCarousel({
     [currentIndex, isTransitioning]
   )
 
-  // Keyboard navigation for accessible premium UX
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -92,17 +144,9 @@ export default function ProjectCarousel({
         setIsLightboxOpen(false)
       }
     }
-
-    window.addEventListener(
-      "keydown",
-      handleKeyDown
-    )
-    return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown
-      )
-    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () =>
+      window.removeEventListener("keydown", handleKeyDown)
   }, [handlePrev, handleNext])
 
   // Prevent scroll when lightbox is active
@@ -121,48 +165,89 @@ export default function ProjectCarousel({
     return null
   }
 
-  const currentImage = images[currentIndex]
+  // Before mount, show the first image (no filtering yet — avoids hydration mismatch)
+  const displayImages = isMounted ? validImages : images
+  if (displayImages.length === 0) return null
+
+  const currentImage = displayImages[currentIndex] ?? displayImages[0]
+  const orientation = currentImage.orientation ?? "landscape"
+  const aspectRatio = ASPECT_RATIO[orientation]
+  const isBroken = erroredUrls.has(currentImage.url)
 
   return (
     <div className={styles.carouselGrid}>
-      {/* 3D Visual Frame for Slider */}
-      <div className={styles.sliderFrame}>
+      {/* Slider Frame — aspect ratio driven by orientation */}
+      <div
+        className={`${styles.sliderFrame} ${styles[orientation]}`}
+        style={{ "--slide-ratio": aspectRatio } as React.CSSProperties}
+      >
         {/* Main Display Image */}
         <div
           className={`${styles.imageWrapper} ${isTransitioning ? styles.fadeOut : styles.fadeIn}`}
-          onClick={() => setIsLightboxOpen(true)}
-          title="Click to expand view"
+          onClick={() =>
+            !isBroken && setIsLightboxOpen(true)
+          }
+          title={
+            isBroken
+              ? undefined
+              : "Click to expand view"
+          }
         >
-          <img
-            src={currentImage.url}
-            alt={currentImage.title}
-            className={styles.sliderImage}
-          />
-          {/* Zoom Hover Indicator overlay */}
-          <div className={styles.zoomOverlay}>
-            <svg
-              viewBox="0 0 24 24"
-              className={styles.zoomIcon}
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+          {isBroken ? (
+            <BrokenImagePlaceholder language={language} />
+          ) : (
+            <>
+              {orientation === "portrait" && (
+                <img
+                  src={currentImage.url}
+                  alt=""
+                  className={styles.blurredBackground}
+                  aria-hidden="true"
+                />
+              )}
+              <img
+                src={currentImage.url}
+                alt={
+                  language === "th"
+                    ? currentImage.title.th
+                    : currentImage.title.en
+                }
+                className={styles.sliderImage}
+                onError={() =>
+                  setErroredUrls((prev) => {
+                    const next = new Set(prev)
+                    next.add(currentImage.url)
+                    return next
+                  })
+                }
               />
-            </svg>
-            <span>
-              {language === "th"
-                ? "คลิกเพื่อขยายภาพ"
-                : "Click to Expand"}
-            </span>
-          </div>
+              {/* Zoom overlay */}
+              <div className={styles.zoomOverlay}>
+                <svg
+                  viewBox="0 0 24 24"
+                  className={styles.zoomIcon}
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                  />
+                </svg>
+                <span>
+                  {language === "th"
+                    ? "คลิกเพื่อขยายภาพ"
+                    : "Click to Expand"}
+                </span>
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Prev/Next Navigation Overlay */}
-        {images.length > 1 && (
+        {/* Prev/Next Navigation */}
+        {displayImages.length > 1 && (
           <>
             <button
               onClick={(e) => {
@@ -209,10 +294,10 @@ export default function ProjectCarousel({
           </>
         )}
 
-        {/* Indicators Dots Panel Overlay */}
-        {images.length > 1 && (
+        {/* Dot indicators */}
+        {displayImages.length > 1 && (
           <div className={styles.dotsWrapper}>
-            {images.map((_, idx) => (
+            {displayImages.map((_, idx) => (
               <button
                 key={idx}
                 onClick={(e) => {
@@ -227,53 +312,50 @@ export default function ProjectCarousel({
         )}
       </div>
 
-      {/* Explanatory Caption Panel (Rich UI layout details) */}
+      {/* Caption Panel */}
       <div className={styles.captionPanel}>
         <span className={styles.slideIndicator}>
           {language === "th"
-            ? `คุณสมบัติที่ ${currentIndex + 1} จากทั้งหมด ${images.length} รายการ`
-            : `Feature ${currentIndex + 1} of ${images.length}`}
+            ? `คุณสมบัติที่ ${currentIndex + 1} จากทั้งหมด ${displayImages.length} รายการ`
+            : `Feature ${currentIndex + 1} of ${displayImages.length}`}
         </span>
         <h2 className={styles.captionTitle}>
-          {currentImage.title}
+          {language === "th"
+            ? currentImage.title.th
+            : currentImage.title.en}
         </h2>
-        <div
-          className={styles.captionDivider}
-        ></div>
+        <div className={styles.captionDivider}></div>
         <p className={styles.captionDesc}>
-          {currentImage.description}
+          {language === "th"
+            ? currentImage.description.th
+            : currentImage.description.en}
         </p>
-        <div className={styles.captionTip}>
-          <span className={styles.tipIcon}>
-            🔍
-          </span>
-          <span>
-            {language === "th"
-              ? "คลิกที่รูปเพื่อตรวจสอบรายละเอียดขนาดเต็ม"
-              : "Click image to inspect in full resolution"}
-          </span>
-        </div>
+        {!isBroken && (
+          <div className={styles.captionTip}>
+            <span className={styles.tipIcon}>🔍</span>
+            <span>
+              {language === "th"
+                ? "คลิกที่รูปเพื่อตรวจสอบรายละเอียดขนาดเต็ม"
+                : "Click image to inspect in full resolution"}
+            </span>
+          </div>
+        )}
       </div>
 
-      {/* Immersive Fullscreen Lightbox Overlay Modal */}
+      {/* Lightbox */}
       {isLightboxOpen &&
         isMounted &&
+        !isBroken &&
         createPortal(
           <div
             className={styles.lightbox}
-            onClick={() =>
-              setIsLightboxOpen(false)
-            }
+            onClick={() => setIsLightboxOpen(false)}
           >
-            {/* Lightbox background blur shadow */}
             <div className={styles.lightboxBg} />
 
-            {/* Close button */}
             <button
               className={`${styles.closeBtn} clay-btn-rose`}
-              onClick={() =>
-                setIsLightboxOpen(false)
-              }
+              onClick={() => setIsLightboxOpen(false)}
               aria-label="Close fullscreen"
             >
               <svg
@@ -290,8 +372,7 @@ export default function ProjectCarousel({
               </svg>
             </button>
 
-            {/* Lightbox navigation buttons */}
-            {images.length > 1 && (
+            {displayImages.length > 1 && (
               <>
                 <button
                   onClick={(e) => {
@@ -338,29 +419,29 @@ export default function ProjectCarousel({
               </>
             )}
 
-            {/* Fullscreen Image Canvas */}
             <div
               className={styles.lightboxContent}
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={currentImage.url}
-                alt={currentImage.title}
+                alt={
+                  language === "th"
+                    ? currentImage.title.th
+                    : currentImage.title.en
+                }
                 className={styles.lightboxImage}
               />
-              {/* Overlay description details inside the Lightbox itself */}
-              <div
-                className={styles.lightboxCaption}
-              >
-                <h3
-                  className={styles.lightboxTitle}
-                >
-                  {currentImage.title}
+              <div className={styles.lightboxCaption}>
+                <h3 className={styles.lightboxTitle}>
+                  {language === "th"
+                    ? currentImage.title.th
+                    : currentImage.title.en}
                 </h3>
-                <p
-                  className={styles.lightboxDesc}
-                >
-                  {currentImage.description}
+                <p className={styles.lightboxDesc}>
+                  {language === "th"
+                    ? currentImage.description.th
+                    : currentImage.description.en}
                 </p>
               </div>
             </div>

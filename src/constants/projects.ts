@@ -68,6 +68,7 @@ export interface ProjectImage {
   url: string
   title: { en: string; th: string }
   description: { en: string; th: string }
+  orientation?: "landscape" | "portrait" | "square"
 }
 
 export interface Project {
@@ -237,7 +238,8 @@ export const projectsData: Record<
     },
     images: [
       {
-        url: "/images/projects/p-wallet/1_client.png",
+        url: "/images/projects/p-wallet/1_client.jpg",
+        orientation: "portrait",
         title: {
           en: "Mobile Wallet Client Interface",
           th: "หน้าต่างแอปพลิเคชันสำหรับลูกค้าบนมือถือ P-Wallet",
@@ -249,6 +251,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/p-wallet/2_core.png",
+        orientation: "landscape",
         title: {
           en: "Spring Boot Core Double-Entry Ledger",
           th: "ระบบประมวลผลบัญชีแยกประเภทแบบคู่บน Spring Boot",
@@ -260,6 +263,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/p-wallet/3_admin.png",
+        orientation: "landscape",
         title: {
           en: "Backoffice Admin Dashboard",
           th: "ระบบจัดการและตรวจสอบธุรกรรมหลังบ้านสำหรับเจ้าหน้าที่",
@@ -410,6 +414,7 @@ export const projectsData: Record<
     images: [
       {
         url: "/images/projects/digishop/1_client.png",
+        orientation: "landscape",
         title: {
           en: "Customer E-Commerce Web Storefront",
           th: "หน้าร้านค้าออนไลน์หลัก DigiShop",
@@ -421,6 +426,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/digishop/2_core.png",
+        orientation: "landscape",
         title: {
           en: "Merchant Inventory & Sales Portal",
           th: "แผงควบคุมยอดขายและสต็อกสินค้าของร้านค้าปลีก",
@@ -432,6 +438,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/digishop/3_admin.png",
+        orientation: "landscape",
         title: {
           en: "Centralized Admin Queue Console",
           th: "แผงควบคุมระบบและคิวงานประมวลผลหลังบ้านสำหรับแอดมิน",
@@ -572,6 +579,7 @@ export const projectsData: Record<
     images: [
       {
         url: "/images/projects/studybuddy/1_client.png",
+        orientation: "landscape",
         title: {
           en: "StudyBuddy Community Platform Landing",
           th: "หน้าแรกแพลตฟอร์มชุมชนหาเพื่อนเรียน StudyBuddy",
@@ -583,6 +591,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/studybuddy/2_core.png",
+        orientation: "landscape",
         title: {
           en: "Student Partner Explore Board",
           th: "หน้าค้นหากลุ่มเรียนและรายชื่อผู้เรียนพร้อมระบบสิทธิ์ RLS",
@@ -594,6 +603,7 @@ export const projectsData: Record<
       },
       {
         url: "/images/projects/studybuddy/3_admin.png",
+        orientation: "landscape",
         title: {
           en: "Real-Time Chat & Study Rooms",
           th: "ระบบห้องแชทเรียลไทม์ผ่าน WebSocket",
