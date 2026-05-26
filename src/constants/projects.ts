@@ -179,8 +179,8 @@ export const projectsData: Record<
           th: "คิวงานอะซิงโครนัสด้วย Kafka",
         },
         description: {
-          en: "Pushes email notification dispatches and KYC status change streams off the main transaction thread, processing them asynchronously via Apache Kafka so that transfers are never blocked waiting on background tasks.",
-          th: "ผลักงานส่งการแจ้งเตือนทาง Email และการเปลี่ยนสถานะ KYC ออกจากเธรดหลัก โดยประมวลผลแบบอะซิงโครนัสผ่าน Apache Kafka เพื่อไม่ให้การโอนเงินถูกบล็อกเพื่อรอการทำงานอย่างอื่น",
+          en: "A dedicated Kafka consumer worker handles push notifications (Expo), email fallbacks, KYC status streams, and security alerts asynchronously — keeping the transaction thread completely non-blocking.",
+          th: "Worker แยกต่างหากคอยรับ Kafka events เพื่อส่ง Push Notification (Expo) พร้อม Email เป็น Fallback รวมถึงสตรีมสถานะ KYC และการแจ้งเตือนความปลอดภัย โดยไม่บล็อกเธรดการโอนเงินหลัก",
         },
         icon: "🚀",
       },
