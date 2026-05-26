@@ -295,7 +295,16 @@ export default function AdditionalInfo() {
                 <div
                   className={`${styles.langIconBox} ${styles.langIconTH}`}
                 >
-                  TH
+                  <img
+                    src="/images/flags/th.svg"
+                    alt="Thailand Flag"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "0.5rem",
+                    }}
+                  />
                 </div>
                 <div>
                   <h4 className={styles.langName}>
@@ -316,7 +325,16 @@ export default function AdditionalInfo() {
                 <div
                   className={`${styles.langIconBox} ${styles.langIconEN}`}
                 >
-                  EN
+                  <img
+                    src="/images/flags/gb.svg"
+                    alt="United Kingdom Flag"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "0.5rem",
+                    }}
+                  />
                 </div>
                 <div>
                   <h4 className={styles.langName}>
@@ -337,7 +355,16 @@ export default function AdditionalInfo() {
                 <div
                   className={`${styles.langIconBox} ${styles.langIconJP}`}
                 >
-                  JP
+                  <img
+                    src="/images/flags/jp.svg"
+                    alt="Japan Flag"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "0.5rem",
+                    }}
+                  />
                 </div>
                 <div>
                   <h4 className={styles.langName}>
