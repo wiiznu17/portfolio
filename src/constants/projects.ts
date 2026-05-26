@@ -494,20 +494,20 @@ export const projectsData: Record<
       th: "นักศึกษามักประสบปัญหาการหาเพื่อนร่วมกลุ่มเรียนหรือคู่ติวหนังสือที่มีสไตล์ตารางเรียนหรือวิชาที่ตรงกัน การหาเพื่อนผ่านโซเชียลมีเดียทั่วไปไม่มีระบบคัดกรองข้อมูลเฉพาะทาง และเสี่ยงต่อการรั่วไหลของข้อมูลติดต่อส่วนตัวหากไม่มีระบบจัดการสิทธิ์",
     },
     solution: {
-      en: "I designed and implemented the core features of StudyBuddy using Next.js 16 and NestJS, with Supabase managing client authentication and PostgreSQL security policies. I built a Landing Page with dynamic CTA routing, a 6-step Onboarding form with LocalStorage recovery, a matching dashboard utilizing a Jaccard similarity index algorithm, a Recommended Study Places directory with facility filters, and a WebSockets-enabled Chat system with pinned messages, reactions, edits, and read receipts.",
-      th: "ผมทำฟีเจอร์หลักของระบบด้วย Next.js 16 และ NestJS ใช้ Supabase จัดการยืนยันตัวตนร่วมกับนโยบาย RLS ของ PostgreSQL โดยพัฒนาหน้า Landing Page ที่เปลี่ยนปุ่มตามสถานะการสมัคร, ระบบลงทะเบียนข้อมูล 6 ขั้นตอนที่เก็บข้อมูลชั่วคราวบน LocalStorage, หน้าปัดการ์ดแนะนำผู้ใช้โดยคำนวณจากความสนใจตรงกันด้วย Jaccard Index, ระบบแนะนำสถานที่เรียนพร้อมตัวกรองบริการเสริม และระบบแชทเดี่ยว/กลุ่มผ่าน WebSocket ที่รองรับการปักหมุดข้อความ แก้ไขข้อความ ส่งรีแอคชัน และสถานะอ่านแล้ว",
+      en: "I designed and implemented the core features of StudyBuddy using Next.js 16 and NestJS, with Supabase managing client authentication and PostgreSQL security policies. I built a dynamic Landing Page, a 6-step Onboarding form with LocalStorage recovery, a responsive profile card swipe interface, a Recommended Study Places directory with facility filters, and a WebSockets-enabled Chat system with pinned messages, reactions, edits, and read receipts.",
+      th: "ผมทำฟีเจอร์หลักของระบบด้วย Next.js 16 และ NestJS ใช้ Supabase จัดการยืนยันตัวตนร่วมกับนโยบาย RLS ของ PostgreSQL โดยพัฒนาหน้า Landing Page ที่เปลี่ยนปุ่มตามสถานะการสมัคร, ระบบลงทะเบียนข้อมูล 6 ขั้นตอนที่เก็บข้อมูลชั่วคราวบน LocalStorage, หน้าแสดงการ์ดโปรไฟล์เพื่อนร่วมเรียนที่รองรับแอนิเมชันปัดซ้ายขวา, ระบบแนะนำสถานที่เรียนพร้อมตัวกรองบริการเสริม และระบบแชทเดี่ยว/กลุ่มผ่าน WebSocket ที่รองรับการปักหมุดข้อความ แก้ไขข้อความ ส่งรีแอคชัน และสถานะอ่านแล้ว",
     },
     architecture: {
       en: [
         "Multi-step Onboarding form with LocalStorage cache recovery to prevent data loss on page refreshes.",
-        "Matching dashboard using Framer Motion swipe gestures and a NestJS Jaccard scoring algorithm based on matching interest coefficients (subjects, styles, and places).",
+        "Interactive profile cards interface using Framer Motion drag and swipe gestures to display student profiles.",
         "Curated Recommended Study Places directory featuring categories, toggle-ready facility filters, suggestions query, and favorite bookmarking.",
         "Real-time Chat system leveraging Supabase real-time subscriptions (INSERT, UPDATE) and NestJS backend ChatModule handling message creation, edits, reactions, pins, and a 1-minute unsend window.",
         "Personalized Landing page utilizing next-themes for light/dark theme toggles and Noto Sans Thai typography, routing users based on auth and onboarding progress.",
       ],
       th: [
         "ระบบลงทะเบียนโปรไฟล์ผู้ใช้ 6 ขั้นตอนพร้อมช่วยจดจำข้อมูลลง LocalStorage ป้องกันข้อมูลกรอกหายขณะรีเฟรชหน้าเว็บ",
-        "แดชบอร์ดจับคู่แบบปัดการ์ดแอนิเมชันด้วย Framer Motion ผสานกับอัลกอริทึม Jaccard Index หลังบ้านประเมินวิชา สไตล์อ่าน และสถานที่โปรด",
+        "หน้าแสดงผลโปรไฟล์เพื่อนเรียนแบบการ์ด โดยใช้ Framer Motion ในการทำแอนิเมชันลากและปัดการ์ด",
         "ระบบแนะนำสถานที่อ่านหนังสือ ค้นหา และฟิลเตอร์พิกัดที่มีจุดเสียบปลั๊กไฟ WiFi ฟรี หรือเปิดบริการโต้รุ่ง 24 ชั่วโมง",
         "ระบบแชทสดคุยเดี่ยว/กลุ่ม ซิงค์ข้อมูล WebSocket มีฟังก์ชันปักหมุดข้อความ แก้ไขข้อความ ยกเลิกส่งภายใน 1 นาที รีแอคชัน และสถานะผู้ใช้อ่านแล้ว",
         "หน้าแรก Landing Page รองรับธีมมืดและสว่างด้วยฟอนต์ Noto Sans Thai และตรรกะนำทาง (CTA routing) ส่งตรงไปยังหน้ากรอกข้อมูลหรือหน้าแชทตามความสมบูรณ์ของโปรไฟล์",
@@ -538,14 +538,14 @@ export const projectsData: Record<
       },
       {
         title: {
-          en: "Jaccard Swipe Match",
-          th: "การจับคู่แบบ Jaccard Index",
+          en: "Profile Card Swipe",
+          th: "แอนิเมชันการ์ดโปรไฟล์",
         },
         description: {
-          en: "Computes match percentages between profiles using the Jaccard index on interests, styles, and places.",
-          th: "คำนวณอัตราส่วนความเหมือนกันของความสนใจ วิชาเรียน สไตล์การอ่าน และสถานที่โปรดออกมาเป็นเปอร์เซ็นต์",
+          en: "Displays study profiles utilizing Framer Motion drag/swipe gestures for smooth and responsive interactions.",
+          th: "แสดงผลข้อมูลประวัติเพื่อนร่วมเรียนในรูปแบบการ์ดที่รองรับการลากและปัดหน้าจอเพื่อความสะดวกในการใช้งาน",
         },
-        icon: "🛡️",
+        icon: "🎴",
       },
       {
         title: {
@@ -589,14 +589,14 @@ export const projectsData: Record<
     bullets: {
       en: [
         "Designed and developed the multi-step Onboarding form using a persistent RegistrationContext with LocalStorage data recovery to assure smooth signup flows.",
-        "Created the matching swipe board using Framer Motion animations combined with a NestJS Jaccard scoring algorithm based on matching interest coefficients (subjects, styles, and places).",
+        "Developed the student profile deck and swipe interface using Framer Motion gesture events.",
         "Built the Recommended Study Places directory featuring curated categories, toggle-ready facility filters, suggestions query, and toggle favorite capabilities.",
         "Implemented a real-time WebSocket chat system leveraging Supabase real-time subscriptions for immediate message syncing, unsend within 1 min, message editing, reactions, and pinning.",
         "Designed a dynamic Landing Page with premium dark mode support and custom typography, routing users to welcome, onboarding, or candidate feed based on auth/registration state.",
       ],
       th: [
         "ทำระบบลงทะเบียนข้อมูลผู้ใช้แบบ 6 ขั้นตอน โดยบันทึกข้อมูลแบบชั่วคราวลง LocalStorage เพื่อป้องกันข้อมูลสูญหายเมื่อรีเฟรชหน้าเว็บ",
-        "ทำแดชบอร์ดปัดการ์ดแนะนำเพื่อนร่วมเรียนโดยใช้ Framer Motion และคำนวณสัดส่วนความสนใจที่ตรงกันด้วย Jaccard Index บน NestJS",
+        "ทำแดชบอร์ดการ์ดโปรไฟล์แสดงข้อมูลเพื่อนร่วมเรียน พร้อมใช้ Framer Motion จัดการแอนิเมชันและการตอบสนองต่อการปัดหน้าจอ",
         "ทำระบบแนะนำสถานที่อ่านหนังสือที่สามารถกรองตามประเภทและสิ่งอำนวยความสะดวก เช่น WiFi ปลั๊กไฟ หรือร้านที่เปิด 24 ชั่วโมง",
         "ทำระบบแชทเดี่ยวและกลุ่มผ่าน WebSocket มีระบบปักหมุด แก้ไขข้อความ ยกเลิกการส่งภายใน 1 นาที และการแสดงรีแอคชัน",
         "ทำหน้า Landing Page รองรับทั้งธีมมืดและธีมสว่าง โดยใช้ปุ่ม CTA นำทางผู้ใช้ไปยังหน้าต่าง ๆ ตามสถานะการสมัครและกรอกข้อมูลโปรไฟล์",
@@ -619,12 +619,12 @@ export const projectsData: Record<
         url: "/images/projects/studybuddy/2_core.png",
         orientation: "landscape",
         title: {
-          en: "Matching Cards Dashboard & Jaccard Scoring",
-          th: "บอร์ดปัดการ์ดจับคู่ติวหนังสือตามเปอร์เซ็นต์ Jaccard",
+          en: "Interactive Profile Cards & Swipe Deck",
+          th: "หน้าจอแสดงผลการ์ดโปรไฟล์เพื่อนร่วมเรียน",
         },
         description: {
-          en: "Motion-interactive profile matching swipe card deck utilizing matching score coefficient indexes mapping user preferences.",
-          th: "หน้าจอปัดการ์ดโปรไฟล์เพื่อนเรียนด้วย Framer Motion แสดงเปอร์เซ็นต์ความสนใจที่ตรงกันซึ่งคํานวณด้วย Jaccard Similarity และความสัมพันธ์ของสาขาปีการศึกษา",
+          en: "Card deck interface using Framer Motion drag gestures to display peer details, schedules, and active courses.",
+          th: "ส่วนหน้าต่างโปรไฟล์เพื่อนเรียนแบบการ์ด แสดงข้อมูลวิชาเรียน สไตล์การอ่าน และตารางเวลา พร้อมระบบลากการ์ด",
         },
       },
       {
