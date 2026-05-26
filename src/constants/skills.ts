@@ -77,7 +77,7 @@ export const skillsData: SkillCategory[] = [
         name: "Kafka",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
       },
-      { name: "BullMQ", logo: "custom-bullmq" },
+      { name: "BullMQ", logo: "/images/logos/bullmq.svg" },
     ],
   },
   {
@@ -100,7 +100,7 @@ export const skillsData: SkillCategory[] = [
         name: "Prisma",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
       },
-      { name: "Flyway", logo: "custom-flyway" },
+      { name: "Flyway", logo: "/images/logos/flyway.svg" },
       {
         name: "Sequelize",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg",
