@@ -88,6 +88,8 @@ export interface Project {
   githubUrl: string
   demoUrl: string
   videoUrl: string
+  hasDemo?: boolean
+  hasVideo?: boolean
   bullets: { en: string[]; th: string[] }
   images: ProjectImage[]
 }
@@ -279,87 +281,91 @@ export const projectsData: Record<
     id: "digishop",
     title: { en: "DigiShop", th: "DigiShop" },
     subtitle: {
-      en: "Multi-Vendor E-Commerce Platform & Background Job Engine",
-      th: "แพลตฟอร์มอีคอมเมิร์ซแบบหลายร้านค้าและระบบคิวงานประมวลผลหลังบ้าน",
+      en: "Multi-Vendor E-Commerce & Payment Gateway Demo",
+      th: "เว็บแอปพลิเคชันอีคอมเมิร์ซแบบหลายผู้ขาย & ระบบเชื่อมต่อ Payment Gateway",
     },
     year: "2025",
     role: {
-      en: "Fullstack Developer & DevOps Lead",
-      th: "Fullstack Developer & DevOps Lead",
+      en: "Fullstack Developer (Cooperative Education)",
+      th: "Fullstack Developer (นักศึกษาฝึกงานสหกิจศึกษา)",
     },
     tagline: {
-      en: "A high-performance e-commerce platform built as a Turborepo monorepo with Next.js clients, Express APIs, and BullMQ/Redis to process asynchronous jobs like invoice generation and stock management.",
-      th: "แพลตฟอร์มอีคอมเมิร์ซหลายร้านค้าในรูปแบบ Monorepo ด้วย Turborepo ที่ประกอบด้วยหน้าเว็บลูกค้า ร้านค้า และแอดมินบน Next.js พร้อมบริการหลังบ้านและคิวงานประมวลผลด่วนอย่าง BullMQ และ Redis",
+      en: "A modular multi-vendor e-commerce platform built as a Client-Server web app with Next.js 15, Express.js, and Sequelize to showcase secure integrations of Digio's Payment Gateway (DigiPay) APIs, featuring robust refund workflows and admin security flows.",
+      th: "เว็บแอปพลิเคชันอีคอมเมิร์ซแบบหลายผู้ขาย พัฒนาบนสถาปัตยกรรม Client-Server เพื่อสาธิตการเชื่อมต่อระบบรับชำระเงิน DigiPay Payment Gateway แบบครบวงจร ทั้งการสแกนชำระเงิน การตรวจสอบธุรกรรม ตลอดจนโฟลว์ย้อนกลับทางการเงินแบบมีสิทธิ์ควบคุม",
     },
     themeColor: "amber",
     bannerGradient:
       "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
     problem: {
-      en: "Running customer storefronts, seller inventory portals, and admin management tools in isolation often leads to inconsistent TypeScript definitions, shared UI styling duplication, and redundant configuration files. Furthermore, heavy synchronous processes like PDF invoice generation, stock allocation calculations, and high-frequency notifications directly on HTTP request threads trigger major performance drops during traffic surges.",
-      th: "การพัฒนาเว็บ 3 ตัวแยกกัน (สำหรับลูกค้า, ร้านค้า, และแอดมิน) มักประสบปัญหาเรื่อง Type ข้อมูลไม่ตรงกัน สไตล์อินเตอร์เฟสซ้ำซ้อน และความยากลำบากในการปรับปรุงแก้ไขร่วมกัน อีกทั้งการประมวลผลงานที่ใช้พลังงานเซิร์ฟเวอร์สูง เช่น การเขียนเอกสารใบเสร็จ PDF และการจัดสรรตัดสต็อกแบบเรียลไทม์บน HTTP เธรดหลัก มักส่งผลให้เซิร์ฟเวอร์ตอบสนองช้าและค้างในช่วงที่มีคนเข้ามาจับจ่ายหนาแน่น",
+      en: "Digio needed an interactive multi-vendor demonstration marketplace to help banks and merchant clients visualize the integration and transactional flows of their payment gateway product (DigiPay). The system required high-fidelity vendor portals, secure digital assets, centralized backoffice controls, and reliable financial exception pipelines like refunds and voids without using real money.",
+      th: "บริษัท ดิจิโอ ต้องการแพลตฟอร์มอีคอมเมิร์ซต้นแบบเพื่อใช้สาธิตระบบชำระเงิน DigiPay Payment Gateway ให้กับสถาบันการเงินและผู้ประกอบการ โดยระบบจำเป็นต้องรองรับร้านค้าหลายราย สามารถทำรายการชำระเงินจริงในระบบทดสอบ และที่สำคัญต้องมีตัวอย่างการดำเนินงานยกเลิกและคืนเงิน (Void/Refund) ที่ถูกต้อง ปลอดภัย และตรงตามสเปกของ API จริง",
     },
     solution: {
-      en: "We developed DigiShop using Turborepo to unify the codebase into a single monorepo, sharing TS types and UI components across all three Next.js applications to speed up development and maintain visual consistency. To decouple HTTP traffic from resource-intensive tasks, we integrated BullMQ with Redis to run a fleet of background worker containers that process payments, queue email alerts, and compile PDF invoices asynchronously.",
-      th: "พวกเราออกแบบระบบนี้เป็น Monorepo โดยใช้ Turborepo เพื่อแชร์ Types และ UI Components ร่วมกันระหว่างแอปพลิเคชัน Next.js ทั้ง 3 ตัว ช่วยให้แก้ไขโค้ดร่วมกันได้อย่างง่ายดายและรักษาหน้าตา UI ให้ไปในทิศทางเดียวกัน และแก้ไขปัญหาเซิร์ฟเวอร์ช้าด้วยการนำระบบคิว BullMQ และ Redis มาใช้ประมวลผลงานหลังบ้านที่มีความหน่วง เช่น การสร้างใบเสนอราคา ใบเสร็จ PDF และระบบตัดคิวสต็อกสินค้า เพื่อปล่อยให้ API หลักตอบสนองต่อผู้ใช้งานได้ทันที",
+      en: "Developed the merchant and admin portals using Next.js 15, Express.js, and MySQL via Sequelize. Implemented a robust refund and void transactional pipeline directly integrated with DigiPay APIs, dynamic product image management hosted on Azure Blob Storage, asymmetric JWT authentication using RSA Key Pairs, and automated SHA-256 secure tokens sent via SendGrid for administrator invitations and password resets.",
+      th: "พัฒนาฟีเจอร์ฝั่งร้านค้าและผู้ดูแลหลังบ้านด้วย Next.js 15 และ Express.js ร่วมกับ Sequelize ORM และ MySQL ในรูปแบบ Client-Server พร้อมสร้างระบบจัดการธุรกรรมขอคืนเงินผ่าน DigiPay API (รองรับ Void สำหรับรายการ APPROVED และ Refund สำหรับรายการ SETTLED) เก็บรูปภาพบน Azure Blob Storage ป้องกันการเข้าถึงด้วยสิทธิ์ผู้ใช้ (RBAC) ร่วมกับ JWT อสมมาตร (RSA Key Pair) และส่งคิวเมลความปลอดภัยสูงผ่าน SendGrid",
     },
     architecture: {
       en: [
-        "Turborepo monorepo dividing customer, merchant, and admin Next.js code while sharing helper utilities and UI styles.",
-        "Asynchronous task queue using BullMQ and Redis to isolate and process PDF compile routines outside web requests.",
-        "Optimized Sequelize MySQL queries utilizing compound indexing on high-frequency tables.",
-        "Secure authentication via JWT and Role-Based Access Control (RBAC) to enforce security across merchant workspaces.",
+        "Client-Server architecture separating frontend portals (Next.js 15) from backend REST APIs (Express.js) and database.",
+        "DigiPay API integration managing GET transaction detail checkouts, POST void (un-settled approved), and POST refund (settled captured) flows.",
+        "Asymmetric cryptographic JWT authentication using RSA Key Pairs to secure admin and merchant workspaces.",
+        "Secure file asset storage (products, store profile) on Azure Blob Storage protected via Shared Access Signature (SAS) URLs.",
+        "Time-sensitive SHA-256 secure tokens sent via SendGrid API to handle Admin Onboarding and password resets.",
+        "Containerized development using Docker to standardize environments, deployed on Railway (Backend) and Vercel (Frontend).",
       ],
       th: [
-        "โครงสร้าง Monorepo ด้วย Turborepo ที่แยกการทำงานของทั้ง 3 หน้าเว็บ Next.js ออกจากกันอย่างเป็นสัดส่วน แต่แชร์ส่วนประกอบโค้ดและโมดูลเชื่อมต่อร่วมกัน",
-        "แยกงานหนักที่ใช้โปรเซสเซอร์สูงออกไปรันเบื้องหลังแบบอะซิงโครนัสผ่านระบบคิว BullMQ และ Redis",
-        "ปรับแต่งความเร็วในการดึงข้อมูลของ MySQL ด้วยการทำดัชนี (Indexing) บนตารางธุรกรรมการค้าและตารางข้อมูลสินค้ายอดนิยม",
-        "ระบบยืนยันตัวตน JWT ร่วมกับสิทธิ์ตามบทบาท (RBAC) เพื่อป้องกันการเข้าถึงข้อมูลยอดขายระหว่างผู้ค้าและลูกค้าทั่วไปอย่างเข้มงวด",
+        "สถาปัตยกรรมเว็บแบบ Client-Server แยกฝั่งหน้าบ้านด้วย Next.js 15 ฝั่งหลังบ้านด้วย Express.js และใช้ Sequelize ORM บนฐานข้อมูล MySQL",
+        "การผสานระบบรับชำระเงิน DigiPay และโฟลว์ธุรกรรมทางการเงินย้อนกลับด้วย Void API (ยกเลิกทันที) และ Refund API (คืนเงินหลังตัดยอด)",
+        "ระบบสิทธิ์ความปลอดภัยเข้าถึง API และผู้ใช้งานด้วย JWT แบบกุญแจเข้ารหัสคู่กุญแจอสมมาตร (RSA Key Pair)",
+        "ระบบอัปโหลดไฟล์สื่อสิ่งพิมพ์ รูปภาพสินค้า และโปรไฟล์ร้านค้าไปจัดเก็บอย่างปลอดภัยบน Azure Blob Storage",
+        "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invite) และระบบลืมรหัสผ่านด้วย Secure Tokens ในตาราง DB จัดส่งอัตโนมัติผ่าน SendGrid API",
+        "จัดทำระบบในรูปแบบ Docker Container และทำการติดตั้งเผยแพร่ผ่าน Vercel (Frontend) และ Railway (Backend)",
       ],
     },
     highlights: [
       {
         title: {
-          en: "Turborepo Monorepo",
-          th: "โมโนรีโปด้วย Turborepo",
+          en: "DigiPay Refund Flow",
+          th: "ระบบยกเลิกและคืนเงินผ่าน DigiPay",
         },
         description: {
-          en: "Shares React interfaces and designs between Customer, Merchant, and Admin web applications, drastically improving code reuse.",
-          th: "การจัดเก็บโค้ดในแบบ Monorepo ทำให้แชร์คอมโพเนนต์และโมเดลข้อมูลระหว่างฝั่งลูกค้า ร้านค้า และผู้ดูแลระบบได้เกือบทั้งหมด",
+          en: "Integrates complete financial reversal operations with un-settled Voids and settled Refunds based on DigiPay transaction query APIs.",
+          th: "การทำระบบขอคืนเงินแบบแยกโฟลว์ โดยเรียก Void API (สำหรับสถานะ APPROVED) และ Refund API (สำหรับสถานะ SETTLED) ตรงผ่านระบบ DigiPay",
         },
-        icon: "📦",
+        icon: "💳",
       },
       {
         title: {
-          en: "Redis Background Queues",
-          th: "คิวงานหลังบ้านบน Redis",
+          en: "Asymmetric JWT Security",
+          th: "ระบบความปลอดภัยกุญแจอสมมาตร",
         },
         description: {
-          en: "Offloads delayed operations such as email confirmations and status checks to dedicated background workers via BullMQ.",
-          th: "โอนย้ายงานที่ทำเสร็จในทันทีไม่ได้ เช่น คิวส่งอีเมลสรุปยอด และการกวาดเช็คออเดอร์ค้างชำระ ไปรันเป็นคิวงานเบื้องหลังด้วย BullMQ",
+          en: "Secures sensitive admin and seller API endpoints using RSA Key Pairs for JSON Web Tokens (JWT) and RBAC middleware.",
+          th: "เสริมแกร่งระบบหลังบ้านด้วย JWT แบบคีย์เข้ารหัสคู่อสมมาตร (RSA Key Pair) ร่วมกับสิทธิ์เข้าถึงตามบทบาท (RBAC) กั้นข้อมูลร้านและแอดมิน",
         },
-        icon: "⚙️",
+        icon: "🛡️",
       },
       {
         title: {
-          en: "Database Query Tuning",
-          th: "การจูนคิวรีข้อมูล MySQL",
+          en: "SendGrid Invite Streams",
+          th: "คิวเชิญแอดมินด้วย SendGrid & Tokens",
         },
         description: {
-          en: "Features optimized Sequelize pagination, table joins, and primary key database indexes to ensure snappy listing updates.",
-          th: "การปรับแต่งคิวรีของ Sequelize ORM ด้วยการแบ่งหน้าประวัติการซื้อ การจำกัดฟิลด์เชื่อมตาราง และการทำ Indexing เพื่อรองรับข้อมูลการค้าขนาดใหญ่",
+          en: "Automates admin invite and reset flows with time-sensitive SHA-256 tokens dispatched via SendGrid API.",
+          th: "โฟลว์ความปลอดภัยสูงส่งลิงก์เชิญตั้งรหัสผ่านให้แอดมินคนใหม่ผ่านอีเมล SendGrid ทำงานร่วมกับ Token เข้ารหัส SHA-256 ในตารางฐานข้อมูล",
         },
-        icon: "💾",
+        icon: "📧",
       },
       {
         title: {
-          en: "Containerized Deployments",
-          th: "การติดตั้งแอปผ่านตู้คอนเทนเนอร์",
+          en: "Dockerized DevOps",
+          th: "จำลองระบบจำกัดสภาพแวดล้อมด้วย Docker",
         },
         description: {
-          en: "Packages individual microservices inside Docker containers deployed on Azure App Services for easier scaling.",
-          th: "จัดทำระบบในรูปแบบ Docker Container แยกอิสระต่อกัน และติดตั้งบน Azure App Services เพื่ออำนวยความสะดวกในการขยายและจัดการระบบ",
+          en: "Containerizes Express APIs, MySQL, and Redis using Docker for local parity, deploying seamlessly on Railway and Vercel.",
+          th: "จัดสภาพแวดล้อมบริการ Backend, Database, และ Redis ด้วย Docker Container และเชื่อมต่อ CI/CD ติดตั้งบน Railway และ Vercel",
         },
-        icon: "☁️",
+        icon: "🐳",
       },
     ],
     techStack: [
@@ -384,31 +390,45 @@ export const projectsData: Record<
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
       },
       {
-        name: "Turborepo",
-        logo: "custom-turborepo",
-      },
-      { name: "BullMQ", logo: "custom-bullmq" },
-      {
-        name: "Azure",
+        name: "Azure Blob Storage",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
       },
+      {
+        name: "SendGrid",
+        logo: "custom-sendgrid",
+      },
+      {
+        name: "Docker",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+      },
+      {
+        name: "Railway",
+        logo: "custom-railway",
+      },
+      {
+        name: "Vercel",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+      },
     ],
-    githubUrl:
-      "https://github.com/wiiznu17/digishop",
+    githubUrl: "https://github.com/wiiznu17/digishop",
     demoUrl: "https://digishop.wiiznu.dev",
     videoUrl: "https://video.wiiznu.dev/digishop",
+    hasDemo: false,
+    hasVideo: false,
     bullets: {
       en: [
-        "Built a modular multi-vendor ecommerce codebase inside a Turborepo monorepo structure to unify shared TypeScript interfaces.",
-        "Developed customer storefront, vendor management portal, and system administration cockpit using Next.js.",
-        "Implemented BullMQ and Redis to execute heavy operations like invoice generation asynchronously.",
-        "Optimized MySQL performance by creating targeted compound indices and avoiding N+1 queries in Sequelize.",
+        "Designed and built the multi-vendor Merchant portal (inventories, orders) and central Admin portal (RBAC, approvals) using Next.js 15 and Express.js.",
+        "Integrated DigiPay Payment Gateway APIs to execute un-settled voids and settled refunds.",
+        "Protected administrative APIs and workspaces using asymmetric RSA cryptographic JWT and Role-Based Access Control (RBAC).",
+        "Developed a secure administrator onboarding invitation stream utilizing SHA-256 tokens and SendGrid API.",
+        "Containerized individual services with Docker and deployed via Railway (Express Backend, MySQL, Redis) and Vercel (Next.js Frontend).",
       ],
       th: [
-        "สร้างโครงสร้างโปรเจกต์แบบ Monorepo ด้วย Turborepo เพื่อจัดระเบียบหน้าเว็บทั้ง 3 ตัว และช่วยประหยัดเวลาแชร์โค้ดโมเดลตัวแปร",
-        "พัฒนาส่วนการสั่งซื้อของลูกค้า แผงคลังสินค้าของเจ้าของร้าน และแผงกลางของผู้อำนวยการระบบด้วย Next.js",
-        "ใช้ระบบ BullMQ ร่วมกับ Redis เพื่อผลักภาระงานประมวลผลด่วนจำพวกบิลใบเสร็จ PDF และการตัดระบบบัญชีไปทำหลังบ้านแบบไม่บล็อกหน้าเว็บ",
-        "ปรับปรุงคิวรีฐานข้อมูล MySQL โดยทำระบบดัชนีคีย์ผสม (Compound Indexes) และระงับปัญหาสอบถามวนซ้ำ (N+1 queries) ของ Sequelize",
+        "ออกแบบและพัฒนาฟีเจอร์ฝั่งผู้ค้า (Merchant Portal) และฝั่งผู้ดูแลระบบ (Admin Portal) ตามสถาปัตยกรรม Client-Server ด้วย Next.js 15 และ Express.js",
+        "ผสานระบบชำระเงิน DigiPay Payment Gateway และออกแบบโฟลว์ขอยกเลิกและคืนเงินผ่าน Void API และ Refund API เต็มรูปแบบ",
+        "ปกป้อง API และสิทธิ์การใช้งานแอดมิน/ผู้ขายด้วย JWT แบบอสมมาตร (RSA Key Pair) ร่วมกับสิทธิ์ตามบทบาทหน้าที่ (RBAC)",
+        "พัฒนาโฟลว์ความปลอดภัยในการเชิญผู้ดูแลระบบใหม่ตั้งรหัสผ่านด้วย Secure Tokens เข้ารหัส SHA-256 ผ่านอีเมลอัตโนมัติด้วย SendGrid API",
+        "จัดสภาพแวดล้อมด้วย Docker Container และดีพลอยใช้งานจริงระดับโปรดักชันผ่าน Railway (Backend, MySQL, Redis) และ Vercel (Frontend Next.js)",
       ],
     },
     images: [
@@ -416,36 +436,36 @@ export const projectsData: Record<
         url: "/images/projects/digishop/1_client.png",
         orientation: "landscape",
         title: {
-          en: "Customer E-Commerce Web Storefront",
-          th: "หน้าร้านค้าออนไลน์หลัก DigiShop",
+          en: "Merchant Workspace & Product Dashboard",
+          th: "ระบบจัดการร้านค้าและคลังสินค้าสำหรับผู้ค้า (Merchant Portal)",
         },
         description: {
-          en: "Next.js customer portal with catalog browsing, shopping cart state management, and smooth checkouts.",
-          th: "หน้าเว็บไซต์ฝั่งลูกค้า พัฒนาด้วย Next.js แสดงรายการสินค้าจากผู้ค้าหลายราย มีระบบตัวกรองสินค้า ระบบตะกร้าสินค้า และการเชื่อมต่อชำระเงินที่รวดเร็ว",
+          en: "Next.js 15 seller dashboard to add/edit products, manage orders, and check inventory statuses with assets stored in Azure Blob Storage.",
+          th: "พอร์ทัลร้านค้าที่พัฒนาด้วย Next.js 15 สำหรับเพิ่ม/แก้ไขข้อมูลสินค้า อัปโหลดรูปภาพผ่าน Azure Blob Storage และอัปเดตสถานะการจัดส่งแบบเรียลไทม์",
         },
       },
       {
         url: "/images/projects/digishop/2_core.png",
         orientation: "landscape",
         title: {
-          en: "Merchant Inventory & Sales Portal",
-          th: "แผงควบคุมยอดขายและสต็อกสินค้าของร้านค้าปลีก",
+          en: "DigiPay Refund & Transaction Integration",
+          th: "ระบบจัดการธุรกรรมและโฟลว์การขอคืนเงินผ่าน DigiPay API",
         },
         description: {
-          en: "Next.js workspace for merchants to update products, manage orders, and monitor real-time sales performance through optimized SQL metrics.",
-          th: "พอร์ทัลฝั่งร้านค้าสำหรับจัดการคลังสินค้า อัปโหลดรูปภาพ อัปเดตราคา ตรวจเช็คสถานะคำสั่งซื้อ และดูรายงานยอดขายประจำวัน",
+          en: "Robust order pipeline integrated with DigiPay Payment Gateway, resolving partial refunds and approved voids based on settled statuses.",
+          th: "ระบบสั่งซื้อที่เชื่อมโยงเข้ากับระบบรับชำระเงิน DigiPay API รองรับการยกเลิกรายการด้วย Void API (สถานะ APPROVED) และการคืนเงินด้วย Refund API (สถานะ SETTLED)",
         },
       },
       {
         url: "/images/projects/digishop/3_admin.png",
         orientation: "landscape",
         title: {
-          en: "Centralized Admin Queue Console",
-          th: "แผงควบคุมระบบและคิวงานประมวลผลหลังบ้านสำหรับแอดมิน",
+          en: "Backoffice Admin Console & RBAC Settings",
+          th: "แผงจัดการหลังบ้านและระบบควบคุมสิทธิ์ผู้ดูแล (Admin Portal)",
         },
         description: {
-          en: "Admin cockpit detailing BullMQ background workers, background PDF invoice generator status, Redis cache hits, and systemic log monitoring.",
-          th: "แดชบอร์ดระบบฝั่งแอดมิน แสดงข้อมูลประสิทธิภาพหลังบ้าน เช็คสถานะคิวงานเบื้องหลังของ BullMQ / Redis เช่น คิวสร้างใบเสร็จ PDF และการแจ้งเตือนอีเมลระบบ",
+          en: "Centralized admin workspace managing store requests, RBAC permissions, and secure SendGrid SHA-256 token invitations.",
+          th: "แดชบอร์ดผู้ดูแลระบบเพื่อดูภาพรวมทั้งหมด อนุมัติร้านค้า/สินค้าใหม่ และส่งอีเมลเชิญผู้ดูแลระบบด้วย Secure Tokens เข้ารหัส SHA-256 ผ่าน SendGrid API",
         },
       },
     ],

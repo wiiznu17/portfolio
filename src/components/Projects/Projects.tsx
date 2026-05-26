@@ -229,6 +229,45 @@ export default function Projects() {
                               >
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                               </svg>
+                            ) : tech.logo ===
+                              "custom-sendgrid" ? (
+                              <svg
+                                className="w-3.5 h-3.5 text-sky-500"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{
+                                  width: "0.875rem",
+                                  height: "0.875rem",
+                                }}
+                              >
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                              </svg>
+                            ) : tech.logo ===
+                              "custom-railway" ? (
+                              <svg
+                                className="w-3.5 h-3.5 text-slate-800"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{
+                                  width: "0.875rem",
+                                  height: "0.875rem",
+                                }}
+                              >
+                                <path d="M4 22V4c0-.5.2-1 .6-1.4C5 2.2 5.5 2 6 2h12c.5 0 1 .2 1.4.6.4.4.6.9.6 1.4v18" />
+                                <path d="M12 2v20" />
+                                <path d="M4 12h16" />
+                                <path d="M4 6h16" />
+                                <path d="M4 18h16" />
+                              </svg>
                             ) : (
                               <img
                                 src={tech.logo}

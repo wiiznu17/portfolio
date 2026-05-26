@@ -224,76 +224,154 @@ export default function ProjectDetailPage({
                     flexWrap: "wrap",
                   }}
                 >
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="clay-btn-emerald"
-                    style={{
-                      padding: "0.5rem 1.25rem",
-                      borderRadius: "0.75rem",
-                      fontSize: "0.875rem",
-                      fontWeight: 700,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.375rem",
-                    }}
-                  >
-                    <span>
-                      {t(
-                        "proj_btn_demo",
-                        COMMON_TRANSLATIONS
-                      )}
-                    </span>
-                    <svg
+                  {project.hasDemo !== false ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="clay-btn-emerald"
                       style={{
-                        width: "1rem",
-                        height: "1rem",
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        fontSize: "0.875rem",
+                        fontWeight: 700,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.375rem",
                       }}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.5"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href={project.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="clay-btn-rose"
-                    style={{
-                      padding: "0.5rem 1.25rem",
-                      borderRadius: "0.75rem",
-                      fontSize: "0.875rem",
-                      fontWeight: 700,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.375rem",
-                    }}
-                  >
-                    <span>
-                      {t(
-                        "proj_btn_video",
-                        COMMON_TRANSLATIONS
-                      )}
-                    </span>
-                    <svg
+                      <span>
+                        {t(
+                          "proj_btn_demo",
+                          COMMON_TRANSLATIONS
+                        )}
+                      </span>
+                      <svg
+                        style={{
+                          width: "1rem",
+                          height: "1rem",
+                        }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2.5"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="clay-btn-emerald"
                       style={{
-                        width: "1rem",
-                        height: "1rem",
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        fontSize: "0.875rem",
+                        fontWeight: 700,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.375rem",
+                        opacity: 0.45,
+                        cursor: "not-allowed",
+                        border: "none",
                       }}
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
                     >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </a>
+                      <span>
+                        {t(
+                          "proj_btn_demo",
+                          COMMON_TRANSLATIONS
+                        )}
+                      </span>
+                      <svg
+                        style={{
+                          width: "1rem",
+                          height: "1rem",
+                        }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2.5"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                  {project.hasVideo !== false ? (
+                    <a
+                      href={project.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="clay-btn-rose"
+                      style={{
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        fontSize: "0.875rem",
+                        fontWeight: 700,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.375rem",
+                      }}
+                    >
+                      <span>
+                        {t(
+                          "proj_btn_video",
+                          COMMON_TRANSLATIONS
+                        )}
+                      </span>
+                      <svg
+                        style={{
+                          width: "1rem",
+                          height: "1rem",
+                        }}
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="clay-btn-rose"
+                      style={{
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "0.75rem",
+                        fontSize: "0.875rem",
+                        fontWeight: 700,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.375rem",
+                        opacity: 0.45,
+                        cursor: "not-allowed",
+                        border: "none",
+                      }}
+                    >
+                      <span>
+                        {t(
+                          "proj_btn_video",
+                          COMMON_TRANSLATIONS
+                        )}
+                      </span>
+                      <svg
+                        style={{
+                          width: "1rem",
+                          height: "1rem",
+                        }}
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </button>
+                  )}
                   <span
                     className="yearBadge"
                     style={colors.badgeStyle}
@@ -738,76 +816,154 @@ export default function ProjectDetailPage({
               marginTop: "0.5rem",
             }}
           >
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="clay-btn-emerald"
-              style={{
-                padding: "0.75rem 2rem",
-                borderRadius: "1.25rem",
-                fontSize: "0.95rem",
-                fontWeight: 700,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <span>
-                {t(
-                  "proj_btn_demo",
-                  COMMON_TRANSLATIONS
-                )}
-              </span>
-              <svg
+            {project.hasDemo !== false ? (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="clay-btn-emerald"
                 style={{
-                  width: "1.2rem",
-                  height: "1.2rem",
+                  padding: "0.75rem 2rem",
+                  borderRadius: "1.25rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
                 }}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
-            <a
-              href={project.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="clay-btn-rose"
-              style={{
-                padding: "0.75rem 2rem",
-                borderRadius: "1.25rem",
-                fontSize: "0.95rem",
-                fontWeight: 700,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <span>
-                {t(
-                  "proj_btn_video",
-                  COMMON_TRANSLATIONS
-                )}
-              </span>
-              <svg
+                <span>
+                  {t(
+                    "proj_btn_demo",
+                    COMMON_TRANSLATIONS
+                  )}
+                </span>
+                <svg
+                  style={{
+                    width: "1.2rem",
+                    height: "1.2rem",
+                  }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            ) : (
+              <button
+                disabled
+                className="clay-btn-emerald"
                 style={{
-                  width: "1.2rem",
-                  height: "1.2rem",
+                  padding: "0.75rem 2rem",
+                  borderRadius: "1.25rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  opacity: 0.45,
+                  cursor: "not-allowed",
+                  border: "none",
                 }}
-                fill="currentColor"
-                viewBox="0 0 24 24"
               >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </a>
+                <span>
+                  {t(
+                    "proj_btn_demo",
+                    COMMON_TRANSLATIONS
+                  )}
+                </span>
+                <svg
+                  style={{
+                    width: "1.2rem",
+                    height: "1.2rem",
+                  }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </button>
+            )}
+            {project.hasVideo !== false ? (
+              <a
+                href={project.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="clay-btn-rose"
+                style={{
+                  padding: "0.75rem 2rem",
+                  borderRadius: "1.25rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <span>
+                  {t(
+                    "proj_btn_video",
+                    COMMON_TRANSLATIONS
+                  )}
+                </span>
+                <svg
+                  style={{
+                    width: "1.2rem",
+                    height: "1.2rem",
+                  }}
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </a>
+            ) : (
+              <button
+                disabled
+                className="clay-btn-rose"
+                style={{
+                  padding: "0.75rem 2rem",
+                  borderRadius: "1.25rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 700,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  opacity: 0.45,
+                  cursor: "not-allowed",
+                  border: "none",
+                }}
+              >
+                <span>
+                  {t(
+                    "proj_btn_video",
+                    COMMON_TRANSLATIONS
+                  )}
+                </span>
+                <svg
+                  style={{
+                    width: "1.2rem",
+                    height: "1.2rem",
+                  }}
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            )}
             <a
               href={project.githubUrl}
               target="_blank"
