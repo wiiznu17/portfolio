@@ -330,16 +330,6 @@ export default function ProjectCarousel({
             ? currentImage.description.th
             : currentImage.description.en}
         </p>
-        {!isBroken && (
-          <div className={styles.captionTip}>
-            <span className={styles.tipIcon}>🔍</span>
-            <span>
-              {language === "th"
-                ? "คลิกที่รูปเพื่อตรวจสอบรายละเอียดขนาดเต็ม"
-                : "Click image to inspect in full resolution"}
-            </span>
-          </div>
-        )}
       </div>
 
       {/* Lightbox */}
