@@ -4,6 +4,8 @@ import React, { useState } from "react"
 import styles from "./Contact.module.css"
 import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
+import { Mail, Phone } from "lucide-react"
+import { CONTACT_INFO } from "@/constants/contact"
 
 export default function Contact() {
   const { language, t } = useLanguage()
@@ -164,59 +166,35 @@ export default function Contact() {
             </h3>
             <p className={styles.subtitle}>
               {language === "th"
-                ? "พร้อมเรียนรู้และร่วมมือกับทีมเพื่อขับเคลื่อนระบบให้ก้าวหน้า"
-                : "Ready to adapt and collaborate with a team to support system development."}
+                ? "หากมีข้อเสนอหรือโอกาสในการร่วมงาน สามารถติดต่อผ่านช่องทางด้านล่างหรือกรอกฟอร์มนี้ได้เลยครับ"
+                : "If you have any job offers or collaboration opportunities, feel free to reach out via the channels below or fill out this form."}
             </p>
 
             {/* Direct Shortcuts */}
             <div className={styles.shortcuts}>
               <a
-                href="mailto:wissanu.rayayoi@gmail.com"
+                href={`mailto:${CONTACT_INFO.email}`}
                 className={styles.shortcutLink}
               >
-                <svg
-                  className="w-4 h-4 text-blue-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                  }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
+                <Mail
+                  size={16}
+                  className="text-blue-500"
+                  strokeWidth={2.5}
+                />
                 <span>
-                  wissanu.rayayoi@gmail.com
+                  {CONTACT_INFO.email}
                 </span>
               </a>
               <a
-                href="tel:0968984950"
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
                 className={styles.shortcutLink}
               >
-                <svg
-                  className="w-4 h-4 text-purple-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                  }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                <span>096-898-4950</span>
+                <Phone
+                  size={16}
+                  className="text-purple-500"
+                  strokeWidth={2.5}
+                />
+                <span>{CONTACT_INFO.phone}</span>
               </a>
             </div>
           </div>

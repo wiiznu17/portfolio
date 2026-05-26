@@ -28,7 +28,7 @@ export default function Home() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "5rem",
+          gap: "3.75rem",
           paddingBottom: "4rem",
         }}
       >

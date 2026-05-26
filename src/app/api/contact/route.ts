@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { CONTACT_INFO } from "@/constants/contact"
 
 export async function POST(request: Request) {
   try {
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey)
     const data = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "wissanuray@gmail.com",
+      to: CONTACT_INFO.email,
       replyTo: email,
       subject: `📬 Message from Portfolio Form: ${name}`,
       html: `
