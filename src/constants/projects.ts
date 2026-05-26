@@ -199,6 +199,14 @@ export const projectsData: Record<
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
       },
       {
+        name: "TanStack Query",
+        logo: "/images/logos/tanstack.svg",
+      },
+      {
+        name: "Zustand",
+        logo: "/images/logos/zustand.ico",
+      },
+      {
         name: "Next.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
       },
@@ -228,12 +236,14 @@ export const projectsData: Record<
       en: [
         "Built the transaction engine with Spring Boot and JPA Hibernate, enforcing double-entry ledger bookkeeping rules.",
         "Addressed transaction deadlocks by implementing a lexicographical UUID lock sorting protocol.",
+        "Optimized mobile performance and reduced API overhead by leveraging TanStack Query for caching and Zustand for lightweight global authentication state management.",
         "Offloaded background email sends, SMS dispatches, and KYC status change streams using Apache Kafka workers.",
         "Wrote over 113 JUnit and Mockito tests to cover ledger accuracy, concurrent transfers, and validation rules.",
       ],
       th: [
         "สร้างบริการประมวลผลธุรกรรมทางการเงินด้วย Spring Boot และ Hibernate ในโครงสร้างบัญชีแยกประเภทแบบคู่",
         "ป้องกันปัญหาฐานข้อมูลค้าง (Deadlocks) ด้วยการใช้ระบบเรียงลำดับการล็อกบัญชีตามตัวอักษรของ UUID",
+        "เพิ่มความลื่นไหลของหน้าจอแอปมือถือและลดการโหลดซ้ำซ้อนของ API ด้วยระบบ Caching ของ TanStack Query ร่วมกับการจัดการสิทธิ์ผ่าน Zustand",
         "แยกงานส่งอีเมล/SMS และการอัปเดตสถานะการตรวจสอบ KYC ไปประมวลผลแบบอะซิงโครนัสผ่าน Apache Kafka",
         "เขียนเคสทดสอบด้วย JUnit และ Mockito รวม 113 เคส ครอบคลุมการโอนเงินและความถูกต้องของยอดเงินแยกประเภท",
       ],

@@ -37,11 +37,15 @@ export const skillsData: SkillCategory[] = [
       },
       {
         name: "TanStack Query",
-        logo: "custom-tanstack",
+        logo: "/images/logos/tanstack.svg",
       },
       {
         name: "Redux",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
+      },
+      {
+        name: "Zustand",
+        logo: "/images/logos/zustand.ico",
       },
     ],
   },
