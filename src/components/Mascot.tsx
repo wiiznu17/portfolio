@@ -1,21 +1,40 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 
 export default function Mascot() {
   const mascotRef = useRef<HTMLDivElement>(null)
-  const [isWalking, setIsWalking] = useState(false)
-  const [direction, setDirection] = useState<"left" | "right">("right")
+  const [isWalking, setIsWalking] =
+    useState(false)
+  const [direction, setDirection] = useState<
+    "left" | "right"
+  >("right")
   const lastScrollY = useRef(0)
-  const walkTimeout = useRef<NodeJS.Timeout | null>(null)
+  const walkTimeout =
+    useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const maxScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight
 
       // Calculate scroll percentage (0 to 1)
-      const scrollPercent = maxScroll > 0 ? Math.min(Math.max(currentScrollY / maxScroll, 0), 1) : 0
+      const scrollPercent =
+        maxScroll > 0
+          ? Math.min(
+              Math.max(
+                currentScrollY / maxScroll,
+                0
+              ),
+              1
+            )
+          : 0
 
       // Calculate horizontal positioning
       const maxLeft = window.innerWidth - 60 // Keep a small margin from the right edge
@@ -29,7 +48,9 @@ export default function Mascot() {
       if (currentScrollY > lastScrollY.current) {
         // Scrolling down -> face right
         setDirection("right")
-      } else if (currentScrollY < lastScrollY.current) {
+      } else if (
+        currentScrollY < lastScrollY.current
+      ) {
         // Scrolling up -> face left
         setDirection("left")
       }
@@ -52,12 +73,27 @@ export default function Mascot() {
     // Initial run
     handleScroll()
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    window.addEventListener("resize", handleScroll)
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    )
+    window.addEventListener(
+      "resize",
+      handleScroll
+    )
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleScroll)
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      )
+      window.removeEventListener(
+        "resize",
+        handleScroll
+      )
       if (walkTimeout.current) {
         clearTimeout(walkTimeout.current)
       }
@@ -76,33 +112,80 @@ export default function Mascot() {
         height: "80px",
         pointerEvents: "none",
         left: "-100px",
-        transform: direction === "right" ? "scaleX(1)" : "scaleX(-1)",
-        transition: "left 0.15s linear, transform 0.2s ease-in-out",
+        transform:
+          direction === "right"
+            ? "scaleX(1)"
+            : "scaleX(-1)",
+        transition:
+          "left 0.15s linear, transform 0.2s ease-in-out",
         willChange: "left, transform",
       }}
     >
       <div
         className={`w-full h-full ${isWalking ? "walking" : ""}`}
         style={{
-          filter: "drop-shadow(0 8px 10px rgba(59,130,246,0.4))",
+          filter:
+            "drop-shadow(0 8px 10px rgba(59,130,246,0.4))",
           width: "100%",
           height: "100%",
         }}
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full">
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full"
+        >
           <defs>
-            <linearGradient id="botBody" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#eff6ff" />
-              <stop offset="100%" stopColor="#93c5fd" />
+            <linearGradient
+              id="botBody"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stopColor="#eff6ff"
+              />
+              <stop
+                offset="100%"
+                stopColor="#93c5fd"
+              />
             </linearGradient>
-            <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#1e293b" />
-              <stop offset="100%" stopColor="#0f172a" />
+            <linearGradient
+              id="visorGrad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stopColor="#1e293b"
+              />
+              <stop
+                offset="100%"
+                stopColor="#0f172a"
+              />
             </linearGradient>
-            <linearGradient id="eyeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="50%" stopColor="#bae6fd" />
-              <stop offset="100%" stopColor="#38bdf8" />
+            <linearGradient
+              id="eyeGlow"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop
+                offset="0%"
+                stopColor="#38bdf8"
+              />
+              <stop
+                offset="50%"
+                stopColor="#bae6fd"
+              />
+              <stop
+                offset="100%"
+                stopColor="#38bdf8"
+              />
             </linearGradient>
           </defs>
 
@@ -116,7 +199,12 @@ export default function Mascot() {
             strokeWidth="3"
             strokeLinecap="round"
           />
-          <circle cx="50" cy="8" r="4" fill="#fbbf24" />
+          <circle
+            cx="50"
+            cy="8"
+            r="4"
+            fill="#fbbf24"
+          />
 
           {/* Main Body/Head */}
           <rect
@@ -170,12 +258,29 @@ export default function Mascot() {
             height="6"
             rx="3"
             fill="url(#eyeGlow)"
-            style={{ filter: "drop-shadow(0 0 3px #38bdf8)" }}
+            style={{
+              filter:
+                "drop-shadow(0 0 3px #38bdf8)",
+            }}
           />
 
           {/* Feet */}
-          <rect x="32" y="65" width="12" height="12" rx="4" fill="#64748b" />
-          <rect x="56" y="65" width="12" height="12" rx="4" fill="#64748b" />
+          <rect
+            x="32"
+            y="65"
+            width="12"
+            height="12"
+            rx="4"
+            fill="#64748b"
+          />
+          <rect
+            x="56"
+            y="65"
+            width="12"
+            height="12"
+            rx="4"
+            fill="#64748b"
+          />
         </svg>
       </div>
     </div>

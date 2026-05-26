@@ -56,7 +56,8 @@
     padding-top: 0;
     padding-left: 2rem;
     border-top: none;
-    border-left: 1px solid rgba(226, 232, 240, 0.6);
+    border-left: 1px solid
+      rgba(226, 232, 240, 0.6);
   }
 }
 
@@ -245,19 +246,23 @@
 @keyframes floatLeft {
   0%,
   100% {
-    transform: translateY(-50%) translateY(0) rotate(0deg);
+    transform: translateY(-50%) translateY(0)
+      rotate(0deg);
   }
   50% {
-    transform: translateY(-50%) translateY(-12px) rotate(-6deg);
+    transform: translateY(-50%) translateY(-12px)
+      rotate(-6deg);
   }
 }
 
 @keyframes floatRight {
   0%,
   100% {
-    transform: translateY(-50%) translateY(0) rotate(0deg);
+    transform: translateY(-50%) translateY(0)
+      rotate(0deg);
   }
   50% {
-    transform: translateY(-50%) translateY(14px) rotate(8deg);
+    transform: translateY(-50%) translateY(14px)
+      rotate(8deg);
   }
 }

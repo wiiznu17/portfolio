@@ -4,14 +4,22 @@ import "./globals.css"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: [
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+  ],
   variable: "--font-sans",
 })
 
 import type { Viewport } from "next"
 
 export const metadata: Metadata = {
-  title: "Wissanu Rayayoi - Software Engineer Portfolio",
+  title:
+    "Wissanu Rayayoi - Software Engineer Portfolio",
   description:
     "Computer Engineering graduate from Khon Kaen University. Specialized in backend development, distributed systems, and modern web architectures.",
   keywords: [
@@ -46,9 +54,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} scroll-smooth`}
+    >
       <body className="antialiased overflow-x-hidden relative min-h-screen">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

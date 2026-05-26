@@ -8,8 +8,10 @@ import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 export default function Navbar() {
-  const { language, setLanguage, t } = useLanguage()
-  const [activeSection, setActiveSection] = useState("about")
+  const { language, setLanguage, t } =
+    useLanguage()
+  const [activeSection, setActiveSection] =
+    useState("about")
   const [isVisible, setIsVisible] = useState(true)
   const pathname = usePathname()
   const isHome = pathname === "/"
@@ -22,11 +24,16 @@ export default function Navbar() {
 
       // Prevent triggers on macOS elastic bounce
       if (currentScrollY < 0) return
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const maxScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight
       if (currentScrollY > maxScroll) return
 
       // Scroll down -> hide, Scroll up -> show
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+      if (
+        currentScrollY > lastScrollY &&
+        currentScrollY > 80
+      ) {
         setIsVisible(false)
       } else {
         setIsVisible(true)
@@ -35,24 +42,41 @@ export default function Navbar() {
       lastScrollY = currentScrollY
     }
 
-    window.addEventListener("scroll", handleScrollVisibility, { passive: true })
-    return () => window.removeEventListener("scroll", handleScrollVisibility)
+    window.addEventListener(
+      "scroll",
+      handleScrollVisibility,
+      { passive: true }
+    )
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScrollVisibility
+      )
   }, [])
 
   useEffect(() => {
     if (!isHome) return
 
-    const sections = ["about", "experience", "projects", "skills"]
+    const sections = [
+      "about",
+      "experience",
+      "projects",
+      "skills",
+    ]
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200 // Offset for sticky navbar
 
       for (const section of sections) {
-        const el = document.getElementById(section)
+        const el =
+          document.getElementById(section)
         if (el) {
           const top = el.offsetTop
           const height = el.offsetHeight
-          if (scrollPos >= top && scrollPos < top + height) {
+          if (
+            scrollPos >= top &&
+            scrollPos < top + height
+          ) {
             setActiveSection(section)
             break
           }
@@ -60,14 +84,28 @@ export default function Navbar() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    )
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      )
   }, [isHome])
 
-  const currentActiveSection = isHome ? activeSection : ""
+  const currentActiveSection = isHome
+    ? activeSection
+    : ""
 
   return (
-    <header className={`${styles.header} ${!isVisible ? styles.hidden : ""}`}>
+    <header
+      className={`${styles.header} ${!isVisible ? styles.hidden : ""}`}
+    >
       <nav className={styles.nav}>
         {/* Brand Logo */}
         <Link href="/" className={styles.logo}>
@@ -83,16 +121,28 @@ export default function Navbar() {
             {t("nav_about", COMMON_TRANSLATIONS)}
           </Link>
           <Link
-            href={isHome ? "#experience" : "/#experience"}
+            href={
+              isHome
+                ? "#experience"
+                : "/#experience"
+            }
             className={`${styles.menuLink} ${currentActiveSection === "experience" ? styles.activeLink : ""}`}
           >
-            {t("nav_experience", COMMON_TRANSLATIONS)}
+            {t(
+              "nav_experience",
+              COMMON_TRANSLATIONS
+            )}
           </Link>
           <Link
-            href={isHome ? "#projects" : "/#projects"}
+            href={
+              isHome ? "#projects" : "/#projects"
+            }
             className={`${styles.menuLink} ${currentActiveSection === "projects" ? styles.activeLink : ""}`}
           >
-            {t("nav_projects", COMMON_TRANSLATIONS)}
+            {t(
+              "nav_projects",
+              COMMON_TRANSLATIONS
+            )}
           </Link>
           <Link
             href={isHome ? "#skills" : "/#skills"}
@@ -106,29 +156,50 @@ export default function Navbar() {
         <div className={styles.actionContainer}>
           <div
             className={styles.langToggle}
-            onClick={() => setLanguage(language === "en" ? "th" : "en")}
+            onClick={() =>
+              setLanguage(
+                language === "en" ? "th" : "en"
+              )
+            }
             role="button"
             tabIndex={0}
             aria-label="Toggle language"
             onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                setLanguage(language === "en" ? "th" : "en")
+              if (
+                e.key === "Enter" ||
+                e.key === " "
+              ) {
+                setLanguage(
+                  language === "en" ? "th" : "en"
+                )
               }
             }}
           >
             <div
               className={`${styles.langSlider} ${language === "th" ? styles.thActive : ""}`}
             ></div>
-            <span className={`${styles.langText} ${language === "en" ? styles.activeText : ""}`}>
+            <span
+              className={`${styles.langText} ${language === "en" ? styles.activeText : ""}`}
+            >
               EN
             </span>
-            <span className={`${styles.langText} ${language === "th" ? styles.activeText : ""}`}>
+            <span
+              className={`${styles.langText} ${language === "th" ? styles.activeText : ""}`}
+            >
               TH
             </span>
           </div>
 
-          <Link href={isHome ? "#contact" : "/#contact"} className={`${styles.ctaBtn} clay-btn`}>
-            {t("nav_contact", COMMON_TRANSLATIONS)}
+          <Link
+            href={
+              isHome ? "#contact" : "/#contact"
+            }
+            className={`${styles.ctaBtn} clay-btn`}
+          >
+            {t(
+              "nav_contact",
+              COMMON_TRANSLATIONS
+            )}
           </Link>
         </div>
       </nav>

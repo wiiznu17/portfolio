@@ -9,13 +9,21 @@ import Navbar from "@/components/Navbar/Navbar"
 import Footer from "@/components/Footer/Footer"
 import ProjectCarousel from "@/components/ProjectCarousel/ProjectCarousel"
 
-import { projectsData, PROJECT_THEMES } from "@/constants/projects"
+import {
+  projectsData,
+  PROJECT_THEMES,
+} from "@/constants/projects"
 import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
-export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const resolvedParams = use(params)
-  const projectKey = resolvedParams.id.toLowerCase()
+  const projectKey =
+    resolvedParams.id.toLowerCase()
   const project = projectsData[projectKey]
 
   const { language, t } = useLanguage()
@@ -25,13 +33,16 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
   }
 
   // Dynamic Theme Styling Config
-  const colors = PROJECT_THEMES[project.themeColor]
+  const colors =
+    PROJECT_THEMES[project.themeColor]
 
-  const mappedImages = project.images.map((img) => ({
-    url: img.url,
-    title: img.title[language],
-    description: img.description[language],
-  }))
+  const mappedImages = project.images.map(
+    (img) => ({
+      url: img.url,
+      title: img.title[language],
+      description: img.description[language],
+    })
+  )
 
   return (
     <>
@@ -70,7 +81,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             }}
           >
             <svg
-              style={{ width: "1rem", height: "1rem" }}
+              style={{
+                width: "1rem",
+                height: "1rem",
+              }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -82,10 +96,21 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            <span>{t("proj_back_to_projects", COMMON_TRANSLATIONS)}</span>
+            <span>
+              {t(
+                "proj_back_to_projects",
+                COMMON_TRANSLATIONS
+              )}
+            </span>
           </Link>
 
-          <span style={{ fontSize: "0.875rem", color: "var(--slate-500)", fontWeight: 700 }}>
+          <span
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--slate-500)",
+              fontWeight: 700,
+            }}
+          >
             {project.role[language]}
           </span>
         </div>
@@ -93,7 +118,12 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         {/* Dynamic Project Hero Header */}
         <section
           className="clay-card"
-          style={{ display: "grid", gridTemplateColumns: "1fr", overflow: "hidden", padding: 0 }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            overflow: "hidden",
+            padding: 0,
+          }}
         >
           {/* Visual Banner Mockup with Interactive Image Carousel */}
           <div
@@ -101,7 +131,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             style={{
               background: project.bannerGradient,
               position: "relative",
-              borderBottom: "1px solid rgba(255,255,255,0.4)",
+              borderBottom:
+                "1px solid rgba(255,255,255,0.4)",
               overflow: "hidden",
             }}
           >
@@ -114,7 +145,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 left: "5%",
                 width: "3.5rem",
                 height: "3.5rem",
-                background: "rgba(255,255,255,0.4)",
+                background:
+                  "rgba(255,255,255,0.4)",
                 borderRadius: "50%",
                 filter: "blur(2px)",
                 zIndex: 1,
@@ -128,7 +160,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 right: "5%",
                 width: "4.5rem",
                 height: "4.5rem",
-                background: "rgba(255,255,255,0.3)",
+                background:
+                  "rgba(255,255,255,0.3)",
                 borderRadius: "50%",
                 filter: "blur(3px)",
                 zIndex: 1,
@@ -143,13 +176,21 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 zIndex: 10,
               }}
             >
-              <ProjectCarousel images={mappedImages} />
+              <ProjectCarousel
+                images={mappedImages}
+              />
             </div>
           </div>
 
           {/* Details Content */}
           <div className="detail-body-area">
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
               <div
                 className="detail-header-row detail-title-row"
                 style={{
@@ -161,16 +202,33 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 }}
               >
                 <div>
-                  <h1 style={{ fontSize: "2rem", fontWeight: 900, color: "var(--slate-900)" }}>
+                  <h1
+                    style={{
+                      fontSize: "2rem",
+                      fontWeight: 900,
+                      color: "var(--slate-900)",
+                    }}
+                  >
                     {project.title[language]}
                   </h1>
-                  <p style={{ fontSize: "1.125rem", color: "var(--slate-500)", fontWeight: 600 }}>
+                  <p
+                    style={{
+                      fontSize: "1.125rem",
+                      color: "var(--slate-500)",
+                      fontWeight: 600,
+                    }}
+                  >
                     {project.subtitle[language]}
                   </p>
                 </div>
                 <div
                   className="detail-btn-group"
-                  style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    flexWrap: "wrap",
+                  }}
                 >
                   <a
                     href={project.demoUrl}
@@ -187,9 +245,17 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                       gap: "0.375rem",
                     }}
                   >
-                    <span>{t("proj_btn_demo", COMMON_TRANSLATIONS)}</span>
+                    <span>
+                      {t(
+                        "proj_btn_demo",
+                        COMMON_TRANSLATIONS
+                      )}
+                    </span>
                     <svg
-                      style={{ width: "1rem", height: "1rem" }}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                      }}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -217,17 +283,32 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                       gap: "0.375rem",
                     }}
                   >
-                    <span>{t("proj_btn_video", COMMON_TRANSLATIONS)}</span>
+                    <span>
+                      {t(
+                        "proj_btn_video",
+                        COMMON_TRANSLATIONS
+                      )}
+                    </span>
                     <svg
-                      style={{ width: "1rem", height: "1rem" }}
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                      }}
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </a>
-                  <span className="yearBadge" style={colors.badgeStyle}>
-                    {t("proj_released", COMMON_TRANSLATIONS)} {project.year}
+                  <span
+                    className="yearBadge"
+                    style={colors.badgeStyle}
+                  >
+                    {t(
+                      "proj_released",
+                      COMMON_TRANSLATIONS
+                    )}{" "}
+                    {project.year}
                   </span>
                 </div>
               </div>
@@ -246,7 +327,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               {/* Stack badges */}
               <div
                 style={{
-                  borderTop: "1px solid var(--slate-100)",
+                  borderTop:
+                    "1px solid var(--slate-100)",
                   paddingTop: "1.25rem",
                   marginTop: "0.5rem",
                 }}
@@ -260,24 +342,43 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                     marginBottom: "0.75rem",
                   }}
                 >
-                  {t("proj_leveraged", COMMON_TRANSLATIONS)}
+                  {t(
+                    "proj_leveraged",
+                    COMMON_TRANSLATIONS
+                  )}
                 </h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech.name}
-                      className="tech-badge rounded-md"
-                      style={{ borderRadius: "8px" }}
-                    >
-                      <img
-                        src={tech.logo}
-                        className={tech.size || "w-3.5 h-3.5"}
-                        alt={tech.name}
-                        style={{ width: "0.875rem", height: "0.875rem" }}
-                      />
-                      {tech.name}
-                    </span>
-                  ))}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                  }}
+                >
+                  {project.techStack.map(
+                    (tech) => (
+                      <span
+                        key={tech.name}
+                        className="tech-badge rounded-md"
+                        style={{
+                          borderRadius: "8px",
+                        }}
+                      >
+                        <img
+                          src={tech.logo}
+                          className={
+                            tech.size ||
+                            "w-3.5 h-3.5"
+                          }
+                          alt={tech.name}
+                          style={{
+                            width: "0.875rem",
+                            height: "0.875rem",
+                          }}
+                        />
+                        {tech.name}
+                      </span>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -286,18 +387,46 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Detailed Breakdown: Problem Statement & Solution */}
         <section
-          style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2rem" }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2rem",
+          }}
           className="md:grid-cols-2"
         >
           {/* Problem Block */}
           <div
             className="clay-card"
-            style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}
+            style={{
+              padding: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.25rem",
+            }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <span style={{ fontSize: "1.75rem" }}>⚠️</span>
-              <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                {t("proj_problem", COMMON_TRANSLATIONS)}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}
+            >
+              <span
+                style={{ fontSize: "1.75rem" }}
+              >
+                ⚠️
+              </span>
+              <h2
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: 800,
+                  color: "var(--slate-900)",
+                }}
+              >
+                {t(
+                  "proj_problem",
+                  COMMON_TRANSLATIONS
+                )}
               </h2>
             </div>
             <div
@@ -323,12 +452,36 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           {/* Solution Block */}
           <div
             className="clay-card"
-            style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}
+            style={{
+              padding: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.25rem",
+            }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <span style={{ fontSize: "1.75rem" }}>💡</span>
-              <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                {t("proj_solution", COMMON_TRANSLATIONS)}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}
+            >
+              <span
+                style={{ fontSize: "1.75rem" }}
+              >
+                💡
+              </span>
+              <h2
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: 800,
+                  color: "var(--slate-900)",
+                }}
+              >
+                {t(
+                  "proj_solution",
+                  COMMON_TRANSLATIONS
+                )}
               </h2>
             </div>
             <div
@@ -355,19 +508,42 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         {/* Deep Dive Architecture Details */}
         <section
           className="clay-card"
-          style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          style={{
+            padding: "2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
+          }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <span style={{ fontSize: "1.75rem" }}>🏗️</span>
-            <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--slate-900)" }}>
-              {t("proj_architecture", COMMON_TRANSLATIONS)}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+            }}
+          >
+            <span style={{ fontSize: "1.75rem" }}>
+              🏗️
+            </span>
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: 800,
+                color: "var(--slate-900)",
+              }}
+            >
+              {t(
+                "proj_architecture",
+                COMMON_TRANSLATIONS
+              )}
             </h2>
           </div>
           <div
             style={{
               height: "4px",
               width: "4rem",
-              background: "linear-gradient(to right, #3b82f6, #8a2be2)",
+              background:
+                "linear-gradient(to right, #3b82f6, #8a2be2)",
               borderRadius: "9999px",
             }}
           ></div>
@@ -380,92 +556,139 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               marginTop: "0.5rem",
             }}
           >
-            {project.architecture[language].map((item, index) => (
-              <div
-                key={index}
-                className="detail-architecture-item"
-                style={{
-                  display: "flex",
-                  gap: "1rem",
-                  alignItems: "flex-start",
-                  background: "rgba(255,255,255,0.4)",
-                  padding: "1rem 1.25rem",
-                  borderRadius: "1rem",
-                  border: "1px solid rgba(255,255,255,0.5)",
-                }}
-              >
-                <span
+            {project.architecture[language].map(
+              (item, index) => (
+                <div
+                  key={index}
+                  className="detail-architecture-item"
                   style={{
-                    background: "linear-gradient(to right, #3b82f6, #8a2be2)",
-                    color: "#ffffff",
-                    borderRadius: "50%",
-                    width: "24px",
-                    height: "24px",
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    flexShrink: 0,
+                    gap: "1rem",
+                    alignItems: "flex-start",
+                    background:
+                      "rgba(255,255,255,0.4)",
+                    padding: "1rem 1.25rem",
+                    borderRadius: "1rem",
+                    border:
+                      "1px solid rgba(255,255,255,0.5)",
                   }}
                 >
-                  {index + 1}
-                </span>
-                <p
-                  style={{
-                    fontSize: "0.975rem",
-                    color: "var(--slate-700)",
-                    fontWeight: 600,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {item}
-                </p>
-              </div>
-            ))}
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(to right, #3b82f6, #8a2be2)",
+                      color: "#ffffff",
+                      borderRadius: "50%",
+                      width: "24px",
+                      height: "24px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "11px",
+                      fontWeight: 800,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {index + 1}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "0.975rem",
+                      color: "var(--slate-700)",
+                      fontWeight: 600,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {item}
+                  </p>
+                </div>
+              )
+            )}
           </div>
         </section>
 
         {/* Feature Highlights Grid */}
-        <section style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-          <div className="section-title-wrap" style={{ marginBottom: "1rem" }}>
-            <h2 className="section-title">{t("proj_highlights", COMMON_TRANSLATIONS)}</h2>
+        <section
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
+          }}
+        >
+          <div
+            className="section-title-wrap"
+            style={{ marginBottom: "1rem" }}
+          >
+            <h2 className="section-title">
+              {t(
+                "proj_highlights",
+                COMMON_TRANSLATIONS
+              )}
+            </h2>
             <div className="section-title-bar"></div>
           </div>
 
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1.5rem",
+            }}
             className="md:grid-cols-2"
           >
-            {project.highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="clay-card"
-                style={{
-                  padding: "1.75rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <span style={{ fontSize: "1.5rem" }}>{highlight.icon}</span>
-                  <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--slate-900)" }}>
-                    {highlight.title[language]}
-                  </h3>
-                </div>
-                <p
+            {project.highlights.map(
+              (highlight, index) => (
+                <div
+                  key={index}
+                  className="clay-card"
                   style={{
-                    fontSize: "0.875rem",
-                    color: "var(--slate-600)",
-                    lineHeight: 1.6,
-                    fontWeight: 500,
+                    padding: "1.75rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.75rem",
                   }}
                 >
-                  {highlight.description[language]}
-                </p>
-              </div>
-            ))}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.75rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      {highlight.icon}
+                    </span>
+                    <h3
+                      style={{
+                        fontSize: "1.125rem",
+                        fontWeight: 800,
+                        color: "var(--slate-900)",
+                      }}
+                    >
+                      {highlight.title[language]}
+                    </h3>
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.875rem",
+                      color: "var(--slate-600)",
+                      lineHeight: 1.6,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {
+                      highlight.description[
+                        language
+                      ]
+                    }
+                  </p>
+                </div>
+              )
+            )}
           </div>
         </section>
 
@@ -479,12 +702,23 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             flexDirection: "column",
             alignItems: "center",
             gap: "1.25rem",
-            background: "rgba(255, 255, 255, 0.8)",
-            border: "2px solid rgba(255, 255, 255, 0.95)",
+            background:
+              "rgba(255, 255, 255, 0.8)",
+            border:
+              "2px solid rgba(255, 255, 255, 0.95)",
           }}
         >
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, color: "var(--slate-900)" }}>
-            {t("proj_footer_cta", COMMON_TRANSLATIONS)}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 900,
+              color: "var(--slate-900)",
+            }}
+          >
+            {t(
+              "proj_footer_cta",
+              COMMON_TRANSLATIONS
+            )}
           </h2>
           <p
             style={{
@@ -495,7 +729,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               margin: "0 auto",
             }}
           >
-            {t("proj_footer_desc", COMMON_TRANSLATIONS)}
+            {t(
+              "proj_footer_desc",
+              COMMON_TRANSLATIONS
+            )}
           </p>
           <div
             className="detail-footer-cta-buttons"
@@ -522,9 +759,17 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 gap: "0.5rem",
               }}
             >
-              <span>{t("proj_btn_demo", COMMON_TRANSLATIONS)}</span>
+              <span>
+                {t(
+                  "proj_btn_demo",
+                  COMMON_TRANSLATIONS
+                )}
+              </span>
               <svg
-                style={{ width: "1.2rem", height: "1.2rem" }}
+                style={{
+                  width: "1.2rem",
+                  height: "1.2rem",
+                }}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -552,9 +797,17 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 gap: "0.5rem",
               }}
             >
-              <span>{t("proj_btn_video", COMMON_TRANSLATIONS)}</span>
+              <span>
+                {t(
+                  "proj_btn_video",
+                  COMMON_TRANSLATIONS
+                )}
+              </span>
               <svg
-                style={{ width: "1.2rem", height: "1.2rem" }}
+                style={{
+                  width: "1.2rem",
+                  height: "1.2rem",
+                }}
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -576,7 +829,12 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 gap: "0.5rem",
               }}
             >
-              <span>{t("proj_btn_view_repo", COMMON_TRANSLATIONS)}</span>
+              <span>
+                {t(
+                  "proj_btn_view_repo",
+                  COMMON_TRANSLATIONS
+                )}
+              </span>
             </a>
             <Link
               href="/#projects"
@@ -588,7 +846,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 fontWeight: 700,
               }}
             >
-              {t("proj_btn_other", COMMON_TRANSLATIONS)}
+              {t(
+                "proj_btn_other",
+                COMMON_TRANSLATIONS
+              )}
             </Link>
           </div>
         </section>

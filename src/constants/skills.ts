@@ -6,7 +6,11 @@ export interface SkillItem {
 
 export interface SkillCategory {
   title: string
-  iconKey: "frontend" | "backend" | "database" | "cloud"
+  iconKey:
+    | "frontend"
+    | "backend"
+    | "database"
+    | "cloud"
   skills: SkillItem[]
 }
 
@@ -31,7 +35,10 @@ export const skillsData: SkillCategory[] = [
         name: "Tailwind CSS",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
       },
-      { name: "TanStack Query", logo: "custom-tanstack" },
+      {
+        name: "TanStack Query",
+        logo: "custom-tanstack",
+      },
       {
         name: "Redux",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",

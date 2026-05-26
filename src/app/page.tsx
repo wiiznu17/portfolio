@@ -25,7 +25,12 @@ export default function Home() {
       {/* Central Content Area */}
       <main
         className="container-max py-8 flex flex-col gap-16 md:gap-24"
-        style={{ display: "flex", flexDirection: "column", gap: "5rem", paddingBottom: "4rem" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "5rem",
+          paddingBottom: "4rem",
+        }}
       >
         {/* About / Hero Details */}
         <Hero />

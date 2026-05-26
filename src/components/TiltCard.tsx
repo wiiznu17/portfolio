@@ -1,6 +1,10 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from "react"
+import React, {
+  useRef,
+  useState,
+  useEffect,
+} from "react"
 
 interface TiltCardProps {
   children: React.ReactNode
@@ -8,24 +12,33 @@ interface TiltCardProps {
   style?: React.CSSProperties
 }
 
-export default function TiltCard({ children, className = "", style = {} }: TiltCardProps) {
+export default function TiltCard({
+  children,
+  className = "",
+  style = {},
+}: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [isTouchDevice, setIsTouchDevice] = useState(true)
+  const [isTouchDevice, setIsTouchDevice] =
+    useState(true)
 
   useEffect(() => {
     const checkTouch = () => {
       const touch =
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        window.matchMedia("(max-width: 768px)").matches
+        window.matchMedia("(max-width: 768px)")
+          .matches
       setIsTouchDevice(touch)
     }
     checkTouch()
   }, [])
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     if (isTouchDevice || !cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
+    const rect =
+      cardRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
@@ -53,7 +66,8 @@ export default function TiltCard({ children, className = "", style = {} }: TiltC
       style={{
         ...style,
         transformStyle: "preserve-3d",
-        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        transition:
+          "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
       {children}

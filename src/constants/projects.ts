@@ -22,7 +22,10 @@ export interface ProjectTheme {
   glow: string
 }
 
-export const PROJECT_THEMES: Record<"blue" | "amber" | "indigo", ProjectTheme> = {
+export const PROJECT_THEMES: Record<
+  "blue" | "amber" | "indigo",
+  ProjectTheme
+> = {
   blue: {
     text: "text-blue-600",
     bg: "bg-blue-600",
@@ -30,7 +33,8 @@ export const PROJECT_THEMES: Record<"blue" | "amber" | "indigo", ProjectTheme> =
     badgeStyle: {
       color: "#2563eb",
       background: "rgba(219, 234, 254, 0.8)",
-      border: "1px solid rgba(191, 219, 254, 0.8)",
+      border:
+        "1px solid rgba(191, 219, 254, 0.8)",
     },
     glow: "rgba(37, 99, 235, 0.4)",
   },
@@ -41,7 +45,8 @@ export const PROJECT_THEMES: Record<"blue" | "amber" | "indigo", ProjectTheme> =
     badgeStyle: {
       color: "#d97706",
       background: "rgba(254, 243, 199, 0.8)",
-      border: "1px solid rgba(253, 230, 138, 0.8)",
+      border:
+        "1px solid rgba(253, 230, 138, 0.8)",
     },
     glow: "rgba(217, 119, 6, 0.4)",
   },
@@ -52,7 +57,8 @@ export const PROJECT_THEMES: Record<"blue" | "amber" | "indigo", ProjectTheme> =
     badgeStyle: {
       color: "#4f46e5",
       background: "rgba(224, 231, 255, 0.8)",
-      border: "1px solid rgba(199, 210, 254, 0.8)",
+      border:
+        "1px solid rgba(199, 210, 254, 0.8)",
     },
     glow: "rgba(79, 70, 229, 0.4)",
   },
@@ -85,7 +91,10 @@ export interface Project {
   images: ProjectImage[]
 }
 
-export const projectsData: Record<string, Project> = {
+export const projectsData: Record<
+  string,
+  Project
+> = {
   "p-wallet": {
     id: "p-wallet",
     title: { en: "P-Wallet", th: "P-Wallet" },
@@ -103,7 +112,8 @@ export const projectsData: Record<string, Project> = {
       th: "ระบบกระเป๋าเงินอิเล็กทรอนิกส์และบัญชีแยกประเภทแบบคู่ พัฒนาด้วย Spring Boot, NestJS, Kafka และ Redis โดยใช้โครงสร้างแบบบันทึกคู่และระบบเรียงลำดับคิวล็อกเพื่อป้องกันปัญหาระบบค้างเมื่อโอนเงินพร้อมกันจำนวนมาก",
     },
     themeColor: "blue",
-    bannerGradient: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
+    bannerGradient:
+      "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
     problem: {
       en: "Processing concurrent financial transactions without balance discrepancies or system deadlocks is complex. Under high load, concurrent updates to the same account can cause race conditions or circular database locks (deadlocks). Additionally, running heavy compliance tasks like KYC verification and AML checks synchronously inside main request threads severely degrades transaction throughput.",
       th: "การโอนเงินจำนวนมากพร้อมกันมักทำให้เกิดปัญหาข้อมูลไม่ตรงกันและฐานข้อมูลค้าง เนื่องจากระบบแย่งกันเขียนทับยอดเงินในเวลาเดียวกัน นอกจากนี้ การรันโปรเซสที่ใช้เวลาและพลังประมวลผลสูงอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการวิเคราะห์ธุรกรรมต้องสงสัย (AML) ร่วมกับเธรดโอนเงินหลักโดยตรง ทำให้ระบบทำงานได้ช้าและเสี่ยงต่อการล่ม",
@@ -128,7 +138,10 @@ export const projectsData: Record<string, Project> = {
     },
     highlights: [
       {
-        title: { en: "Zero-Deadlock Concurrency", th: "การประมวลผลไร้ล็อกชะงัก (Zero-Deadlock)" },
+        title: {
+          en: "Zero-Deadlock Concurrency",
+          th: "การประมวลผลไร้ล็อกชะงัก (Zero-Deadlock)",
+        },
         description: {
           en: "Enforces a strict resource locking order using UUID lexicographical sorting to prevent deadlocks during concurrent transfers.",
           th: "บังคับล็อคบัญชีต้นทางและปลายทางเรียงตามลำดับตัวอักษรของ UUID ป้องกันไม่ให้ระบบโอนเงินขัดแย้งและค้างระหว่างทำธุรกรรมพร้อมกัน",
@@ -136,7 +149,10 @@ export const projectsData: Record<string, Project> = {
         icon: "⚡",
       },
       {
-        title: { en: "Append-Only Ledger", th: "ระบบดุลบัญชีแบบคู่และเพิ่มข้อมูลเท่านั้น" },
+        title: {
+          en: "Append-Only Ledger",
+          th: "ระบบดุลบัญชีแบบคู่และเพิ่มข้อมูลเท่านั้น",
+        },
         description: {
           en: "Every transaction writes two matching ledger entries (debit/credit) with no updates or deletions allowed, ensuring a complete audit trail.",
           th: "บันทึกบัญชีแบบคู่และเพิ่มข้อมูลเพิ่มขึ้นเท่านั้นโดยไม่มีการแก้ไขหรือลบ เพื่อรักษาความโปร่งใสและสร้างประวัติที่ตรวจสอบย้อนหลังได้ 100%",
@@ -144,7 +160,10 @@ export const projectsData: Record<string, Project> = {
         icon: "🛡️",
       },
       {
-        title: { en: "Solvency & Liquidity Audits", th: "ระบบตรวจสอบเงินกองทุนและเงินสำรองสุทธิ" },
+        title: {
+          en: "Solvency & Liquidity Audits",
+          th: "ระบบตรวจสอบเงินกองทุนและเงินสำรองสุทธิ",
+        },
         description: {
           en: "Monitors and calculates aggregate balances and reserves automatically to ensure cash flow liquidity matches customer deposits.",
           th: "ระบบรวบรวมยอดเงินสำรองและมอนิเตอร์ยอดในระบบเทียบกับเงินฝากจริงแบบเรียลไทม์ ป้องกันไม่ให้เงินทุนสำรองติดขัด",
@@ -152,7 +171,10 @@ export const projectsData: Record<string, Project> = {
         icon: "📊",
       },
       {
-        title: { en: "AML Compliance Checks", th: "ตัวตรวจจับธุรกรรมที่เข้าข่ายฟอกเงิน" },
+        title: {
+          en: "AML Compliance Checks",
+          th: "ตัวตรวจจับธุรกรรมที่เข้าข่ายฟอกเงิน",
+        },
         description: {
           en: "Flags suspicious transaction patterns such as structuring, layered transfers, and rapid high-volume movements.",
           th: "ตรวจจับพฤติกรรมธุรกรรมผิดปกติ เช่น การโอนยอดเงินจำนวนเท่าๆ กันถี่ผิดปกติเพื่อหลีกเลี่ยงการรายงานตามกฎหมาย หรือการย้ายเงินรวดเร็วผิดสังเกต",
@@ -195,7 +217,8 @@ export const projectsData: Record<string, Project> = {
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17/j-ledger",
+    githubUrl:
+      "https://github.com/wiiznu17/j-ledger",
     demoUrl: "https://p-wallet.wiiznu.dev",
     videoUrl: "https://video.wiiznu.dev/p-wallet",
     bullets: {
@@ -265,7 +288,8 @@ export const projectsData: Record<string, Project> = {
       th: "แพลตฟอร์มอีคอมเมิร์ซหลายร้านค้าในรูปแบบ Monorepo ด้วย Turborepo ที่ประกอบด้วยหน้าเว็บลูกค้า ร้านค้า และแอดมินบน Next.js พร้อมบริการหลังบ้านและคิวงานประมวลผลด่วนอย่าง BullMQ และ Redis",
     },
     themeColor: "amber",
-    bannerGradient: "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
+    bannerGradient:
+      "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
     problem: {
       en: "Running customer storefronts, seller inventory portals, and admin management tools in isolation often leads to inconsistent TypeScript definitions, shared UI styling duplication, and redundant configuration files. Furthermore, heavy synchronous processes like PDF invoice generation, stock allocation calculations, and high-frequency notifications directly on HTTP request threads trigger major performance drops during traffic surges.",
       th: "การพัฒนาเว็บ 3 ตัวแยกกัน (สำหรับลูกค้า, ร้านค้า, และแอดมิน) มักประสบปัญหาเรื่อง Type ข้อมูลไม่ตรงกัน สไตล์อินเตอร์เฟสซ้ำซ้อน และความยากลำบากในการปรับปรุงแก้ไขร่วมกัน อีกทั้งการประมวลผลงานที่ใช้พลังงานเซิร์ฟเวอร์สูง เช่น การเขียนเอกสารใบเสร็จ PDF และการจัดสรรตัดสต็อกแบบเรียลไทม์บน HTTP เธรดหลัก มักส่งผลให้เซิร์ฟเวอร์ตอบสนองช้าและค้างในช่วงที่มีคนเข้ามาจับจ่ายหนาแน่น",
@@ -290,7 +314,10 @@ export const projectsData: Record<string, Project> = {
     },
     highlights: [
       {
-        title: { en: "Turborepo Monorepo", th: "โมโนรีโปด้วย Turborepo" },
+        title: {
+          en: "Turborepo Monorepo",
+          th: "โมโนรีโปด้วย Turborepo",
+        },
         description: {
           en: "Shares React interfaces and designs between Customer, Merchant, and Admin web applications, drastically improving code reuse.",
           th: "การจัดเก็บโค้ดในแบบ Monorepo ทำให้แชร์คอมโพเนนต์และโมเดลข้อมูลระหว่างฝั่งลูกค้า ร้านค้า และผู้ดูแลระบบได้เกือบทั้งหมด",
@@ -298,7 +325,10 @@ export const projectsData: Record<string, Project> = {
         icon: "📦",
       },
       {
-        title: { en: "Redis Background Queues", th: "คิวงานหลังบ้านบน Redis" },
+        title: {
+          en: "Redis Background Queues",
+          th: "คิวงานหลังบ้านบน Redis",
+        },
         description: {
           en: "Offloads delayed operations such as email confirmations and status checks to dedicated background workers via BullMQ.",
           th: "โอนย้ายงานที่ทำเสร็จในทันทีไม่ได้ เช่น คิวส่งอีเมลสรุปยอด และการกวาดเช็คออเดอร์ค้างชำระ ไปรันเป็นคิวงานเบื้องหลังด้วย BullMQ",
@@ -306,7 +336,10 @@ export const projectsData: Record<string, Project> = {
         icon: "⚙️",
       },
       {
-        title: { en: "Database Query Tuning", th: "การจูนคิวรีข้อมูล MySQL" },
+        title: {
+          en: "Database Query Tuning",
+          th: "การจูนคิวรีข้อมูล MySQL",
+        },
         description: {
           en: "Features optimized Sequelize pagination, table joins, and primary key database indexes to ensure snappy listing updates.",
           th: "การปรับแต่งคิวรีของ Sequelize ORM ด้วยการแบ่งหน้าประวัติการซื้อ การจำกัดฟิลด์เชื่อมตาราง และการทำ Indexing เพื่อรองรับข้อมูลการค้าขนาดใหญ่",
@@ -314,7 +347,10 @@ export const projectsData: Record<string, Project> = {
         icon: "💾",
       },
       {
-        title: { en: "Containerized Deployments", th: "การติดตั้งแอปผ่านตู้คอนเทนเนอร์" },
+        title: {
+          en: "Containerized Deployments",
+          th: "การติดตั้งแอปผ่านตู้คอนเทนเนอร์",
+        },
         description: {
           en: "Packages individual microservices inside Docker containers deployed on Azure App Services for easier scaling.",
           th: "จัดทำระบบในรูปแบบ Docker Container แยกอิสระต่อกัน และติดตั้งบน Azure App Services เพื่ออำนวยความสะดวกในการขยายและจัดการระบบ",
@@ -343,14 +379,18 @@ export const projectsData: Record<string, Project> = {
         name: "Redis",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
       },
-      { name: "Turborepo", logo: "custom-turborepo" },
+      {
+        name: "Turborepo",
+        logo: "custom-turborepo",
+      },
       { name: "BullMQ", logo: "custom-bullmq" },
       {
         name: "Azure",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17/digishop",
+    githubUrl:
+      "https://github.com/wiiznu17/digishop",
     demoUrl: "https://digishop.wiiznu.dev",
     videoUrl: "https://video.wiiznu.dev/digishop",
     bullets: {
@@ -420,7 +460,8 @@ export const projectsData: Record<string, Project> = {
       th: "แพลตฟอร์มจับคู่และรับสมัครเพื่อนร่วมกลุ่มทำงานวิจัยและกลุ่มเรียน พัฒนาด้วย Next.js, NestJS และ Supabase โดยใช้ระบบความปลอดภัย PostgreSQL RLS และระบบแชทเรียลไทม์ผ่าน WebSocket",
     },
     themeColor: "indigo",
-    bannerGradient: "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
+    bannerGradient:
+      "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
     problem: {
       en: "University students frequently struggle to find peers with specific academic skills or complementary schedules for group projects. Existing platforms lack security and privacy features, storing sensitive student details and contact information in open collections that are vulnerable to scraping or unauthorized API manipulation.",
       th: "นักศึกษามักหาเพื่อนร่วมกลุ่มหรือผู้ช่วยทำงานวิจัยที่มีทักษะตรงกับความต้องการและเข้ากับตารางเรียนได้ยาก ทว่าระบบที่มีอยู่ทั่วไปมักไม่มีนโยบายการจำกัดสิทธิ์ข้อมูลที่ปลอดภัยพอ ทำให้ข้อมูลติดต่อส่วนตัวและผลการเรียนเสี่ยงต่อการถูกดึงข้อมูลไปใช้ในทางที่ผิด หรือโดนลักลอบแก้ไขผ่าน API",
@@ -445,7 +486,10 @@ export const projectsData: Record<string, Project> = {
     },
     highlights: [
       {
-        title: { en: "Row Level Security (RLS)", th: "ความปลอดภัยระดับแถวข้อมูล (RLS)" },
+        title: {
+          en: "Row Level Security (RLS)",
+          th: "ความปลอดภัยระดับแถวข้อมูล (RLS)",
+        },
         description: {
           en: "Restricts all database reads and writes to authorized owners, securing student contact lists against unauthorized queries.",
           th: "การันตีการซ่อนปิดบังข้อมูลประวัติระดับคีย์หลักในฐานข้อมูล ปิดช่องโหว่การพยายามสุ่ม ID เข้าตรวจดูประวัติข้ามโปรไฟล์อย่างปลอดภัย",
@@ -453,7 +497,10 @@ export const projectsData: Record<string, Project> = {
         icon: "🛡️",
       },
       {
-        title: { en: "Real-Time Group Chat", th: "ระบบห้องแชทเรียลไทม์รวดเร็ว" },
+        title: {
+          en: "Real-Time Group Chat",
+          th: "ระบบห้องแชทเรียลไทม์รวดเร็ว",
+        },
         description: {
           en: "Leverages WebSockets to push group message updates, typing indicators, and matchmaking invites instantly.",
           th: "รับส่งสารพูดคุยความคืบหน้าของงานกลุ่มได้ทันใจด้วยการต่อท่อซิงค์ส่งประวัติผ่าน WebSocket ไร้ความล่าช้าสะดุด",
@@ -461,7 +508,10 @@ export const projectsData: Record<string, Project> = {
         icon: "💬",
       },
       {
-        title: { en: "Modular NestJS Core", th: "โครงสร้างโมดูลาร์ NestJS สะอาด" },
+        title: {
+          en: "Modular NestJS Core",
+          th: "โครงสร้างโมดูลาร์ NestJS สะอาด",
+        },
         description: {
           en: "Built using modular architectures, decoupling routing from service entities to streamline unit testing and codebase scaling.",
           th: "ระบบ API หลังบ้านเป็นหมวดหมู่ตามหลัก Modular ใน NestJS บำรุงรักษาง่าย และรองรับการทำ Unit Testing ในอนาคต",
@@ -469,7 +519,10 @@ export const projectsData: Record<string, Project> = {
         icon: "🧩",
       },
       {
-        title: { en: "Academic Directory Filters", th: "คัดกรองตามหลักสูตร มข." },
+        title: {
+          en: "Academic Directory Filters",
+          th: "คัดกรองตามหลักสูตร มข.",
+        },
         description: {
           en: "Custom integration featuring filters aligned with Khon Kaen University course schedules and departments.",
           th: "เชื่อมต่อข้อมูลกับรายการรหัสรายวิชาจริงของมหาวิทยาลัยขอนแก่น ค้นหาจัดหาเพื่อนร่วมวิชาเอกหรือวิชาโทที่ลงเรียนร่วมกันได้แม่นยำ",
@@ -499,9 +552,11 @@ export const projectsData: Record<string, Project> = {
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17/study-buddy",
+    githubUrl:
+      "https://github.com/wiiznu17/study-buddy",
     demoUrl: "https://study-buddy.space/",
-    videoUrl: "https://video.wiiznu.dev/studybuddy",
+    videoUrl:
+      "https://video.wiiznu.dev/studybuddy",
     bullets: {
       en: [
         "Created an academic matchmaking network utilizing NestJS, Next.js, and Supabase for university environments.",

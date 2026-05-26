@@ -10,17 +10,38 @@ export default function AdditionalInfo() {
   return (
     <section id="info" className={styles.section}>
       <div className="section-title-wrap">
-        <h2 className="section-title">{t("info_title", COMMON_TRANSLATIONS)}</h2>
+        <h2 className="section-title">
+          {t("info_title", COMMON_TRANSLATIONS)}
+        </h2>
         <div className="section-title-bar"></div>
       </div>
 
-      <div className={`${styles.infoCard} clay-card`}>
+      <div
+        className={`${styles.infoCard} clay-card`}
+      >
         {/* Decorative Graduation Cap Floating SVG on the left */}
-        <svg viewBox="0 0 100 100" className={styles.decorationLeft}>
+        <svg
+          viewBox="0 0 100 100"
+          className={styles.decorationLeft}
+        >
           <defs>
-            <linearGradient id="eduGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--emerald-400)" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="var(--emerald-600)" stopOpacity="0.1" />
+            <linearGradient
+              id="eduGrad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stopColor="var(--emerald-400)"
+                stopOpacity="0.45"
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--emerald-600)"
+                stopOpacity="0.1"
+              />
             </linearGradient>
           </defs>
           <path
@@ -46,7 +67,13 @@ export default function AdditionalInfo() {
             strokeLinecap="round"
             opacity="0.8"
           />
-          <circle cx="90" cy="65" r="3" fill="var(--emerald-500)" opacity="0.8" />
+          <circle
+            cx="90"
+            cy="65"
+            r="3"
+            fill="var(--emerald-500)"
+            opacity="0.8"
+          />
           <path
             d="M20 20 L22 25 L27 27 L22 29 L20 34 L18 29 L13 27 L18 25 Z"
             fill="var(--emerald-400)"
@@ -60,11 +87,28 @@ export default function AdditionalInfo() {
         </svg>
 
         {/* Decorative Languages Speech Bubble Floating SVG on the right */}
-        <svg viewBox="0 0 100 100" className={styles.decorationRight}>
+        <svg
+          viewBox="0 0 100 100"
+          className={styles.decorationRight}
+        >
           <defs>
-            <linearGradient id="langGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--blue-400)" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="var(--blue-600)" stopOpacity="0.1" />
+            <linearGradient
+              id="langGrad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stopColor="var(--blue-400)"
+                stopOpacity="0.45"
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--blue-600)"
+                stopOpacity="0.1"
+              />
             </linearGradient>
           </defs>
           <rect
@@ -117,15 +161,24 @@ export default function AdditionalInfo() {
 
         <div className={styles.grid}>
           {/* Education Section */}
-          <div className={`${styles.column} ${styles.columnLeft}`}>
-            <div className={`${styles.titleRow} ${styles.titleRowEmerald}`}>
-              <div className={`${styles.iconBox} ${styles.iconBoxEmerald}`}>
+          <div
+            className={`${styles.column} ${styles.columnLeft}`}
+          >
+            <div
+              className={`${styles.titleRow} ${styles.titleRowEmerald}`}
+            >
+              <div
+                className={`${styles.iconBox} ${styles.iconBoxEmerald}`}
+              >
                 <svg
                   className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  style={{ width: "1.25rem", height: "1.25rem" }}
+                  style={{
+                    width: "1.25rem",
+                    height: "1.25rem",
+                  }}
                 >
                   <path
                     strokeLinecap="round"
@@ -147,7 +200,12 @@ export default function AdditionalInfo() {
                   />
                 </svg>
               </div>
-              <h3 className={styles.title}>{t("info_education", COMMON_TRANSLATIONS)}</h3>
+              <h3 className={styles.title}>
+                {t(
+                  "info_education",
+                  COMMON_TRANSLATIONS
+                )}
+              </h3>
             </div>
 
             <div className={styles.contentList}>
@@ -156,22 +214,38 @@ export default function AdditionalInfo() {
                   <img
                     src="/images/projects/kku.png"
                     alt="KKU Logo"
-                    style={{ width: "90%", height: "90%", objectFit: "contain" }}
+                    style={{
+                      width: "90%",
+                      height: "90%",
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
                 <div>
                   <h4 className={styles.eduName}>
-                    {language === "th" ? "มหาวิทยาลัยขอนแก่น" : "Khon Kaen University"}
+                    {language === "th"
+                      ? "มหาวิทยาลัยขอนแก่น"
+                      : "Khon Kaen University"}
                   </h4>
-                  <p className={styles.eduSubtitle}>
+                  <p
+                    className={styles.eduSubtitle}
+                  >
                     {language === "th"
                       ? "ปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์"
                       : "Bachelor of Engineering in Computer Engineering"}
                   </p>
                   <div className={styles.metaRow}>
-                    <span className={styles.metaItem}>2022-2026</span>
-                    <span className={styles.gpaxBadge}>
-                      {language === "th" ? "เกรดเฉลี่ยสะสม (GPAX): 3.07" : "GPAX: 3.07"}
+                    <span
+                      className={styles.metaItem}
+                    >
+                      2022-2026
+                    </span>
+                    <span
+                      className={styles.gpaxBadge}
+                    >
+                      {language === "th"
+                        ? "เกรดเฉลี่ยสะสม (GPAX): 3.07"
+                        : "GPAX: 3.07"}
                     </span>
                   </div>
                 </div>
@@ -180,15 +254,24 @@ export default function AdditionalInfo() {
           </div>
 
           {/* Languages Section */}
-          <div className={`${styles.column} ${styles.columnRight}`}>
-            <div className={`${styles.titleRow} ${styles.titleRowBlue}`}>
-              <div className={`${styles.iconBox} ${styles.iconBoxBlue}`}>
+          <div
+            className={`${styles.column} ${styles.columnRight}`}
+          >
+            <div
+              className={`${styles.titleRow} ${styles.titleRowBlue}`}
+            >
+              <div
+                className={`${styles.iconBox} ${styles.iconBoxBlue}`}
+              >
                 <svg
                   className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  style={{ width: "1.25rem", height: "1.25rem" }}
+                  style={{
+                    width: "1.25rem",
+                    height: "1.25rem",
+                  }}
                 >
                   <path
                     strokeLinecap="round"
@@ -198,36 +281,76 @@ export default function AdditionalInfo() {
                   />
                 </svg>
               </div>
-              <h3 className={styles.title}>{t("info_languages", COMMON_TRANSLATIONS)}</h3>
+              <h3 className={styles.title}>
+                {t(
+                  "info_languages",
+                  COMMON_TRANSLATIONS
+                )}
+              </h3>
             </div>
 
             <div className={styles.contentList}>
               {/* Thai */}
               <div className={styles.langItem}>
-                <div className={`${styles.langIconBox} ${styles.langIconTH}`}>TH</div>
+                <div
+                  className={`${styles.langIconBox} ${styles.langIconTH}`}
+                >
+                  TH
+                </div>
                 <div>
-                  <h4 className={styles.langName}>{language === "th" ? "ภาษาไทย" : "Thai"}</h4>
-                  <p className={styles.langLevel}>{t("info_native", COMMON_TRANSLATIONS)}</p>
+                  <h4 className={styles.langName}>
+                    {language === "th"
+                      ? "ภาษาไทย"
+                      : "Thai"}
+                  </h4>
+                  <p className={styles.langLevel}>
+                    {t(
+                      "info_native",
+                      COMMON_TRANSLATIONS
+                    )}
+                  </p>
                 </div>
               </div>
               {/* English */}
               <div className={styles.langItem}>
-                <div className={`${styles.langIconBox} ${styles.langIconEN}`}>EN</div>
+                <div
+                  className={`${styles.langIconBox} ${styles.langIconEN}`}
+                >
+                  EN
+                </div>
                 <div>
                   <h4 className={styles.langName}>
-                    {language === "th" ? "ภาษาอังกฤษ" : "English"}
+                    {language === "th"
+                      ? "ภาษาอังกฤษ"
+                      : "English"}
                   </h4>
-                  <p className={styles.langLevel}>{t("info_intermediate", COMMON_TRANSLATIONS)}</p>
+                  <p className={styles.langLevel}>
+                    {t(
+                      "info_intermediate",
+                      COMMON_TRANSLATIONS
+                    )}
+                  </p>
                 </div>
               </div>
               {/* Japanese */}
               <div className={styles.langItem}>
-                <div className={`${styles.langIconBox} ${styles.langIconJP}`}>JP</div>
+                <div
+                  className={`${styles.langIconBox} ${styles.langIconJP}`}
+                >
+                  JP
+                </div>
                 <div>
                   <h4 className={styles.langName}>
-                    {language === "th" ? "ภาษาญี่ปุ่น" : "Japanese"}
+                    {language === "th"
+                      ? "ภาษาญี่ปุ่น"
+                      : "Japanese"}
                   </h4>
-                  <p className={styles.langLevel}>{t("info_beginner", COMMON_TRANSLATIONS)}</p>
+                  <p className={styles.langLevel}>
+                    {t(
+                      "info_beginner",
+                      COMMON_TRANSLATIONS
+                    )}
+                  </p>
                 </div>
               </div>
             </div>

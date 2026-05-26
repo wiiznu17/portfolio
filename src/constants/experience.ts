@@ -10,8 +10,14 @@ export const experienceData: ExperienceItem[] = [
   {
     company: "Digio (Thailand) Co., Ltd.",
     badge: { en: "Internship", th: "ฝึกงาน" },
-    role: { en: "Web Developer Intern", th: "นักศึกษาฝึกงานตำแหน่ง Web Developer" },
-    duration: { en: "Apr 2025 - Oct 2025", th: "เม.ย. 2025 - ต.ค. 2025" },
+    role: {
+      en: "Web Developer Intern",
+      th: "นักศึกษาฝึกงานตำแหน่ง Web Developer",
+    },
+    duration: {
+      en: "Apr 2025 - Oct 2025",
+      th: "เม.ย. 2025 - ต.ค. 2025",
+    },
     responsibilities: {
       en: [
         "Assisted in maintaining the <strong>SCB Planet X</strong> admin portal by implementing features and resolving defects based on client requirements.",

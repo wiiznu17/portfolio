@@ -3,12 +3,16 @@ import { Resend } from "resend"
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json()
+    const { name, email, message } =
+      await request.json()
 
     // 1. Basic validation
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Please fill in all fields (Name, Email, Message)." },
+        {
+          error:
+            "Please fill in all fields (Name, Email, Message).",
+        },
         { status: 400 }
       )
     }
@@ -16,7 +20,10 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY
 
     // 2. Developer friendly fallback check
-    if (!apiKey || apiKey === "re_your_api_key_here") {
+    if (
+      !apiKey ||
+      apiKey === "re_your_api_key_here"
+    ) {
       console.warn(
         "\x1b[33m%s\x1b[0m",
         "⚠️ [Resend Alert]: RESEND_API_KEY is not configured in .env.local! Falling back to simulated successful submission for local testing."
@@ -25,7 +32,8 @@ export async function POST(request: Request) {
       return NextResponse.json({
         success: true,
         simulated: true,
-        message: "Simulated submission successful.",
+        message:
+          "Simulated submission successful.",
       })
     }
 
@@ -51,12 +59,24 @@ export async function POST(request: Request) {
     })
 
     if (data.error) {
-      return NextResponse.json({ error: data.error.message }, { status: 500 })
+      return NextResponse.json(
+        { error: data.error.message },
+        { status: 500 }
+      )
     }
 
-    return NextResponse.json({ success: true, data })
+    return NextResponse.json({
+      success: true,
+      data,
+    })
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : "Failed to dispatch email."
-    return NextResponse.json({ error: errorMessage }, { status: 500 })
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : "Failed to dispatch email."
+    return NextResponse.json(
+      { error: errorMessage },
+      { status: 500 }
+    )
   }
 }
