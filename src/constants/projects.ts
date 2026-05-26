@@ -103,7 +103,7 @@ export const projectsData: Record<
     title: { en: "P-Wallet", th: "P-Wallet" },
     subtitle: {
       en: "E-Wallet & Double-Entry Ledger System",
-      th: "ระบบกระเป๋าเงินจำลองและบัญชีแยกประเภทแบบคู่",
+      th: "ระบบกระเป๋าเงินอิเล็กทรอนิกส์ (E-Wallet) และบัญชีแยกประเภทแบบคู่",
     },
     year: "2026",
     role: {
@@ -111,8 +111,8 @@ export const projectsData: Record<
       th: "Fullstack Developer",
     },
     tagline: {
-      en: "An e-wallet and double-entry ledger system. Developed using Spring Boot, NestJS, Kafka, and Redis, with double-entry bookkeeping and UUID lock-sorting to prevent database deadlocks under concurrent transfers.",
-      th: "ระบบกระเป๋าเงินจำลองและบัญชีแยกประเภทแบบคู่ พัฒนาด้วย Spring Boot, NestJS, Kafka และ Redis โดยจัดลำดับคีย์ล็อกเพื่อป้องกันปัญหาระบบล็อกเมื่อโอนเงินพร้อมกันจำนวนมาก",
+      en: "An e-wallet and mathematically balanced double-entry ledger system. Engineered as a separated service architecture with a Java Spring Boot 3 transaction engine and a NestJS gateway. Utilizes lexicographical UUID lock-sorting to completely eliminate database deadlocks under high-concurrency transfers, and offloads heavy background events like KYC and notifications asynchronously using Apache Kafka and Redis.",
+      th: "ระบบกระเป๋าเงินอิเล็กทรอนิกส์และบัญชีแยกประเภทแบบคู่ที่ออกแบบบนสถาปัตยกรรมแยกส่วนบริการระหว่างการประมวลผลธุรกรรมทางการเงินด้วย Spring Boot 3 และ NestJS สำหรับจัดการระบบหน้าบ้าน ป้องกันปัญหาระบบล็อกจากการทำธุรกรรมซ้อนกันด้วยวิธีเรียงลำดับการล็อกบัญชีแบบ Lock Sorting ตามคีย์ UUID พร้อมทั้งแยกงานตรวจสอบข้อมูลสิทธิ์และการแจ้งเตือนไปประมวลผลเบื้องหลังแบบอะซิงโครนัสผ่าน Kafka และ Redis",
     },
     themeColor: "blue",
     bannerGradient:
@@ -122,8 +122,8 @@ export const projectsData: Record<
       th: "การทำธุรกรรมการเงินพร้อมกันเป็นจำนวนมากมักทำให้เกิดปัญหาข้อมูลยอดเงินไม่ตรงกันหรือฐานข้อมูลค้าง (Deadlocks) จากการแก้ไขข้อมูลในเวลาเดียวกัน นอกจากนี้ การทำงานตรวจสอบอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการตรวจสอบประวัติธุรกรรม (AML) ในเธรดหลักร่วมกับการโอนเงินโดยตรง ส่งผลให้การประมวลผลธุรกรรมช้าลง",
     },
     solution: {
-      en: "I built a double-entry ledger system using append-only journal entries to ensure balance consistency (Assets = Liabilities + Equity). To prevent database deadlocks during concurrent updates, I implemented a lexicographical lock sorting sequence on wallet UUIDs. I separated the system into a Java Spring Boot service for transactions and a NestJS gateway for identity management. Background tasks, such as notifications and KYC status streams, were processed asynchronously using Apache Kafka.",
-      th: "ผมทำระบบบัญชีแยกประเภทแบบคู่ (Double-entry ledger) บันทึกธุรกรรมแบบเพิ่มข้อมูลอย่างเดียว (Append-only) เพื่อรักษาสมดุลบัญชี และแก้ปัญหา Deadlocks โดยจัดลำดับการล็อกบัญชีตามตัวอักษรของ UUID ก่อนทำธุรกรรมเสมอ พร้อมแยกบริการประมวลผลธุรกรรม (Spring Boot) ออกจากส่วนระบบสมาชิกและหลังบ้าน (NestJS) และแยกงานส่งอีเมลกับคิวเปลี่ยนสถานะ KYC ไปประมวลผลเบื้องหลังผ่าน Apache Kafka",
+      en: "I built a double-entry ledger system utilizing append-only journal entries to guarantee strict mathematical balance consistency. To eliminate database deadlocks during concurrent updates, I enforced a lexicographical lock sorting sequence on wallet UUIDs. The architecture separates the Java Spring Boot transaction processor from the NestJS identity gateway, offloading background notification dispatches and KYC state streams asynchronously using Apache Kafka.",
+      th: "ผมพัฒนาและดูแลโครงสร้างบัญชีแยกประเภทแบบคู่ที่บันทึกธุรกรรมแบบเพิ่มข้อมูลอย่างเดียวเพื่อรักษาสมดุลบัญชีอย่างแม่นยำ พร้อมทั้งป้องกันปัญหาฐานข้อมูลค้างจากการทำรายการซ้อนกันโดยการจัดลำดับการล็อกบัญชีด้วยรหัส UUID ก่อนเริ่มทำธุรกรรม และออกแบบสถาปัตยกรรมที่แยกเครื่องมือประมวลผลธุรกรรมไว้ที่ Spring Boot ออกจากส่วนอื่นซึ่งอยู่ที่ NestJS พร้อมทั้งผลักงานเบื้องหลังและการสตรีมข้อมูลสถานะการตรวจสอบตัวตนไปทำงานแบบอะซิงโครนัสผ่าน Apache Kafka",
     },
     architecture: {
       en: [
@@ -135,7 +135,7 @@ export const projectsData: Record<
       th: [
         "ระบบบริการประมวลผลธุรกรรมทางการเงินด้วย Java 21 และ Spring Boot 3 บันทึกข้อมูลบัญชีแบบคู่แบบเพิ่มข้อมูลเท่านั้น (Append-only)",
         "NestJS Gateway ในรูปแบบ Monorepo ใช้ Prisma ORM และแยก PostgreSQL Schema สำหรับข้อมูลทั่วไป คิวงาน และระบบหลังบ้าน",
-        "กำหนดลำดับการล็อกกระเป๋าเงินคู่โอนตามตัวอักษรของ UUID (Lock sorting) เพื่อป้องกันปัญหา Deadlocks",
+        "กำหนดลำดับการล็อกกระเป๋าเงินคู่โอนด้วย UUID (Lock sorting) เพื่อป้องกันปัญหา Deadlocks",
         "ประมวลผลงานเบื้องหลัง เช่น การส่งการแจ้งเตือนและประวัติเปลี่ยนสถานะ KYC แบบอะซิงโครนัสผ่าน Apache Kafka",
       ],
     },
@@ -147,7 +147,7 @@ export const projectsData: Record<
         },
         description: {
           en: "Enforces a resource locking order using UUID lexicographical sorting to prevent deadlocks during concurrent transfers.",
-          th: "บังคับล็อกบัญชีคู่โอนเรียงตามลำดับตัวอักษรของ UUID เพื่อป้องกันปัญหา Deadlocks ระหว่างโอนเงิน",
+          th: "บังคับล็อกบัญชีคู่โอนเรียงลำดับตาม UUID เพื่อป้องกันปัญหา Deadlocks ระหว่างโอนเงิน",
         },
         icon: "⚡",
       },
@@ -175,14 +175,14 @@ export const projectsData: Record<
       },
       {
         title: {
-          en: "AML Compliance Checks",
-          th: "ตรวจสอบประวัติธุรกรรม",
+          en: "Kafka Async Event Bus",
+          th: "คิวงานอะซิงโครนัสด้วย Kafka",
         },
         description: {
-          en: "Identifies transaction patterns such as structuring, layered transfers, and rapid volume movements.",
-          th: "ตรวจจับรูปแบบธุรกรรมที่มีพฤติกรรมโอนถี่ผิดปกติหรือย้ายเงินจำนวนเท่ากันต่อเนื่องเพื่อตรวจสอบความปลอดภัย",
+          en: "Pushes email notification dispatches and KYC status change streams off the main transaction thread, processing them asynchronously via Apache Kafka so that transfers are never blocked waiting on background tasks.",
+          th: "ผลักงานส่งการแจ้งเตือนทาง Email และการเปลี่ยนสถานะ KYC ออกจากเธรดหลัก โดยประมวลผลแบบอะซิงโครนัสผ่าน Apache Kafka เพื่อไม่ให้การโอนเงินถูกบล็อกเพื่อรอการทำงานอย่างอื่น",
         },
-        icon: "🕵️",
+        icon: "🚀",
       },
     ],
     techStack: [
