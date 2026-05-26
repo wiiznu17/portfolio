@@ -618,6 +618,13 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             padding: 3rem 1rem;
             overflow: hidden;
           }
+          .detail-body-area {
+            padding: 2.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+          }
 
           @media (max-width: 768px) {
             .md\\:grid-cols-2 {

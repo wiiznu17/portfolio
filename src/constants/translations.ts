@@ -19,11 +19,11 @@ export const COMMON_TRANSLATIONS: Record<string, Record<Language, string>> = {
   hero_btn_contact: { en: "Contact Details", th: "ข้อมูลติดต่อ" },
 
   // Experience Section
-  exp_title: { en: "Professional Experience", th: "ประสบการณ์การทำงาน" },
+  exp_title: { en: "Experience", th: "ประสบการณ์การทำงาน" },
   exp_intern_badge: { en: "Internship", th: "ฝึกงาน" },
 
   // Projects Section
-  proj_title: { en: "Selected Projects", th: "ผลงานที่ผ่านการคัดสรร" },
+  proj_title: { en: "Selected Projects", th: "ผลงานที่คัดเลือกมาแล้ว" },
   proj_btn_demo: { en: "Live Demo", th: "เดโมจริง" },
   proj_btn_video: { en: "Demo Video", th: "วิดีโอเดโม" },
   proj_btn_view_repo: { en: "View Repository", th: "ดูซอร์สโค้ด" },

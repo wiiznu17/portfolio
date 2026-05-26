@@ -90,8 +90,8 @@ export const projectsData: Record<string, Project> = {
     id: "p-wallet",
     title: { en: "P-Wallet", th: "P-Wallet" },
     subtitle: {
-      en: "High-Throughput E-Wallet & Double-Entry Ledger Core",
-      th: "ระบบกระเป๋าเงินดิจิทัลและระบบบัญชีแยกประเภทแบบคู่",
+      en: "E-Wallet & Double-Entry Ledger System",
+      th: "ระบบกระเป๋าเงินจำลองและบัญชีแยกประเภทแบบคู่",
     },
     year: "2026",
     role: {
@@ -106,24 +106,24 @@ export const projectsData: Record<string, Project> = {
     bannerGradient: "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
     problem: {
       en: "Processing concurrent financial transactions without balance discrepancies or system deadlocks is complex. Under high load, concurrent updates to the same account can cause race conditions or circular database locks (deadlocks). Additionally, running heavy compliance tasks like KYC verification and AML checks synchronously inside main request threads severely degrades transaction throughput.",
-      th: "การโอนเงินจำนวนมากพร้อมกันมักทำให้เกิดปัญหาข้อมูลไม่ตรงกันและฐานข้อมูลค้าง (Deadlocks) เนื่องจากระบบแย่งกันเขียนทับยอดเงินในเวลาเดียวกัน นอกจากนี้ การรันโปรเซสที่ใช้เวลาและพลังประมวลผลสูงอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการวิเคราะห์ธุรกรรมต้องสงสัย (AML) ร่วมกับเธรดโอนเงินหลักโดยตรง ทำให้ระบบทำงานได้ช้าและเสี่ยงต่อการล่ม",
+      th: "การโอนเงินจำนวนมากพร้อมกันมักทำให้เกิดปัญหาข้อมูลไม่ตรงกันและฐานข้อมูลค้าง เนื่องจากระบบแย่งกันเขียนทับยอดเงินในเวลาเดียวกัน นอกจากนี้ การรันโปรเซสที่ใช้เวลาและพลังประมวลผลสูงอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการวิเคราะห์ธุรกรรมต้องสงสัย (AML) ร่วมกับเธรดโอนเงินหลักโดยตรง ทำให้ระบบทำงานได้ช้าและเสี่ยงต่อการล่ม",
     },
     solution: {
-      en: "I developed a double-entry ledger platform to ensure mathematical balance consistency (Assets = Liabilities + Equity) using append-only journal entries. To solve database deadlocks under highly concurrent balance updates, I implemented a strict lexicographical lock sorting sequence on wallet UUIDs. I segregated the project into a Java Spring Boot microservice for core transactions and a NestJS gateway for identity and management. Heavy processes, such as transaction dispatches and KYC image processing, were offloaded using Apache Kafka event-driven workers.",
-      th: "ผมเลือกใช้ระบบบัญชีแยกประเภทแบบคู่ (Double-entry ledger) ซึ่งบันทึกธุรกรรมเป็นแบบเพิ่มข้อมูลเท่านั้น (Append-only journal) เพื่อรักษาสมการสมดุลทางบัญชีเสมอ และป้องกันการแก้ไขข้อมูลย้อนหลัง ปัญหา Deadlocks แก้ไขโดยกำหนดกฎให้ระบบเข้าล็อกกระเป๋าเงินตามลำดับตัวอักษรของ UUID ของคู่โอนเสมอ นอกจากนี้ ผมยังแยกส่วนระบบประมวลผลแกนหลักทางการเงิน (Java Spring Boot) ออกจากระบบประตูหน้าบ้านและจัดการข้อมูลทั่วไป (NestJS) โดยย้ายงานประมวลผลหลังบ้านที่ไม่เร่งด่วน เช่น ระบบส่งข้อมูลยืนยันตัวตน ไปรันแบบอะซิงโครนัสผ่าน Apache Kafka",
+      en: "I developed a double-entry ledger platform to ensure mathematical balance consistency (Assets = Liabilities + Equity) using append-only journal entries. To solve database deadlocks under highly concurrent balance updates, I implemented a strict lexicographical lock sorting sequence on wallet UUIDs. I segregated the project into a Java Spring Boot microservice for core transactions and a NestJS gateway for identity and management. Asynchronous background tasks, such as notification dispatches and KYC status change streams, were offloaded to worker nodes using Apache Kafka.",
+      th: "ผมเลือกใช้ระบบบัญชีแยกประเภทแบบคู่ (Double-entry ledger) ซึ่งบันทึกธุรกรรมเป็นแบบเพิ่มข้อมูลเท่านั้น (Append-only journal) เพื่อรักษาสมการสมดุลทางบัญชีเสมอ และป้องกันการแก้ไขข้อมูลย้อนหลัง ปัญหา Deadlocks แก้ไขโดยกำหนดกฎให้ระบบเข้าล็อกกระเป๋าเงินตามลำดับตัวอักษรของ UUID ของคู่โอนเสมอ นอกจากนี้ ผมยังแยกส่วนระบบประมวลผลแกนหลักทางการเงิน (Java Spring Boot) ออกจากระบบประตูหน้าบ้านและจัดการข้อมูลทั่วไป (NestJS) โดยย้ายงานประมวลผลหลังบ้าน เช่น คิวส่งอีเมลแจ้งเตือน และคิวประมวลผลสถานะผลลัพธ์การยืนยันตัวตน (KYC Events) ไปรันแบบอะซิงโครนัสผ่าน Apache Kafka เพื่อเพิ่มประสิทธิภาพการตอบสนองของระบบหลัก",
     },
     architecture: {
       en: [
         "Java 21 / Spring Boot 3 financial engine managing append-only double-entry transaction journals to guarantee balanced ledger accounts.",
         "NestJS gateway monorepo using Prisma ORM with segregated PostgreSQL schemas for identity, KYC, and admin tasks.",
         "Strict lexicographical lock sorting sequence on wallet UUIDs to eliminate database deadlocks under high-concurrency transfers.",
-        "Asynchronous operations (e.g. notifications and KYC document verification) offloaded to background workers via Apache Kafka.",
+        "Asynchronous operations (e.g. notification workers and KYC state event dispatches) offloaded via Apache Kafka stream pipelines.",
       ],
       th: [
         "ระบบหลังบ้านประมวลผลธุรกรรมการเงินด้วย Java 21 และ Spring Boot 3 บันทึกยอดตามหลักบัญชีคู่แบบเพิ่มข้อมูลเท่านั้น (Append-only journal)",
         "NestJS Gateway ในโครงสร้างแบบ Monorepo ร่วมกับ Prisma ORM แยกฐานข้อมูลแต่ละโมดูลอย่างเป็นสัดส่วนเพื่อความง่ายในการสเกล",
         "กฎการล็อกบัญชีโอนเงินตามลำดับตัวอักษรของ UUID (Lexicographical lock sorting) เพื่อตัดโอกาสเกิด Deadlocks ถาวร",
-        "ส่งงานประมวลผลรอง เช่น การแจ้งเตือนและการจัดส่งเอกสารระบบ ไปรันนอกเธรดหลักแบบอะซิงโครนัสผ่าน Apache Kafka",
+        "ส่งงานประมวลผลรอง เช่น ระบบส่งการแจ้งเตือนและประวัติการเปลี่ยนสถานะ KYC ไปรันแบบอะซิงโครนัสผ่าน Apache Kafka",
       ],
     },
     highlights: [
@@ -202,13 +202,13 @@ export const projectsData: Record<string, Project> = {
       en: [
         "Built the core transactional engine with Spring Boot and JPA Hibernate, enforcing double-entry ledger bookkeeping rules.",
         "Resolved transaction deadlocks by implementing a lexicographical UUID lock sorting protocol.",
-        "Offloaded background email sends, SMS dispatches, and KYC image analysis queues using Apache Kafka workers.",
+        "Offloaded background email sends, SMS dispatches, and KYC status change notifications using Apache Kafka worker nodes.",
         "Wrote over 113 comprehensive JUnit and Mockito tests to cover ledger accuracy, concurrent transfers, and validation rules.",
       ],
       th: [
         "สร้างเอนจิ้นหลักประมวลผลธุรกรรมทางการเงินด้วย Spring Boot และ Hibernate ในโครงสร้างสากลของการบันทึกบัญชีแยกประเภทแบบคู่",
         "ขจัดปัญหาฐานข้อมูลค้าง (Deadlocks) อย่างมีประสิทธิภาพด้วยระบบเรียงลำดับคีย์โอนเงินตามตัวอักษรของ UUID",
-        "แยกงานส่งอีเมล/SMS และงานประมวลผลข้อมูล KYC ย้ายไปรันเบื้องหลังแบบอะซิงโครนัสผ่านคิวงาน Apache Kafka",
+        "แยกงานส่งอีเมล/SMS และการส่งข้อความแจ้งผลการตรวจสอบสถานะ KYC ไปรันเบื้องหลังแบบอะซิงโครนัสผ่านคิวงาน Apache Kafka",
         "เขียนการทดสอบระบบครอบคลุมกว่า 113 เคสด้วย JUnit และ Mockito เพื่อรับประกันความถูกต้องสมบูรณ์ในการโอนเงินทุกรูปแบบ",
       ],
     },
