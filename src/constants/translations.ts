@@ -30,8 +30,8 @@ export const COMMON_TRANSLATIONS: Record<
     th: "วิศวกรซอฟต์แวร์",
   },
   hero_desc: {
-    en: "Computer Engineering graduate from Khon Kaen University. Interested in <strong>backend development</strong> and <strong>distributed systems</strong>. A disciplined, detail-oriented individual who takes full ownership of work and approaches challenges with a logical mindset. Ready to adapt and collaborate to support system development.",
-    th: "สำเร็จการศึกษาจากสาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยขอนแก่น มีความสนใจในด้านการพัฒนา <strong>Backend</strong> และ <strong>Distributed Systems</strong> เป็นคนที่มีวินัย ใส่ใจรายละเอียด พร้อมรับผิดชอบงานอย่างเต็มที่และเผชิญหน้ากับความท้าทายด้วยกระบวนการคิดอย่างเป็นระบบ พร้อมเรียนรู้และร่วมมือกับทีมเพื่อขับเคลื่อนระบบให้ก้าวหน้า",
+    en: "Computer Engineering graduate from Faculty of Engineering, Khon Kaen University. Interested in <strong>Software Development</strong>. A disciplined, detail-oriented individual who takes full ownership of work and approaches challenges with a logical mindset. Ready to adapt and collaborate to support system development.",
+    th: "สำเร็จการศึกษาจากคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยขอนแก่น มีความสนใจในด้านการพัฒนาซอฟต์แวร์ เป็นคนที่มีวินัย ใส่ใจรายละเอียด พร้อมรับผิดชอบงานอย่างเต็มที่และชอบความท้าทายมีกระบวนการคิดที่เป็นระบบ พร้อมเรียนรู้และร่วมมือกับทีมเพื่อช่วยผลักดันและพัฒนาระบบให้ก้าวหน้า",
   },
   hero_btn_projects: {
     en: "Explore Projects",
@@ -94,12 +94,12 @@ export const COMMON_TRANSLATIONS: Record<
     th: "จุดเด่นหลักของระบบ",
   },
   proj_footer_cta: {
-    en: "Want to inspect the codebase or demo?",
-    th: "ต้องการตรวจสอบซอร์สโค้ดหรือเดโมไหม?",
+    en: "Source Code & Demo",
+    th: "ลิงก์ซอร์สโค้ดและเดโม",
   },
   proj_footer_desc: {
-    en: "All systems are fully functional. Explore the source repositories on GitHub, or access the active deployment directly.",
-    th: "ทุกระบบสามารถทำงานได้จริง คุณสามารถเข้าไปสำรวจที่เก็บซอร์สโค้ดใน GitHub หรือเข้าใช้งานเดโมที่เปิดใช้งานอยู่ได้โดยตรง",
+    en: "Access the GitHub repository and active deployment using the links below.",
+    th: "สามารถเข้าดูซอร์สโค้ดใน GitHub และเข้าใช้งานเดโมผ่านลิงก์ด้านล่างนี้",
   },
   proj_back_to_projects: {
     en: "Back to Projects",
