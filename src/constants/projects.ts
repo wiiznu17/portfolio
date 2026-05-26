@@ -111,76 +111,76 @@ export const projectsData: Record<
       th: "Fullstack Developer",
     },
     tagline: {
-      en: "A transactional ledger and mobile e-wallet system. Built with Spring Boot, NestJS, Kafka, and Redis, utilizing double-entry bookkeeping and UUID lock-sorting to prevent database deadlocks under high concurrency.",
-      th: "ระบบกระเป๋าเงินอิเล็กทรอนิกส์และบัญชีแยกประเภทแบบคู่ พัฒนาด้วย Spring Boot, NestJS, Kafka และ Redis โดยใช้โครงสร้างแบบบันทึกคู่และระบบเรียงลำดับคิวล็อกเพื่อป้องกันปัญหาระบบค้างเมื่อโอนเงินพร้อมกันจำนวนมาก",
+      en: "An e-wallet and double-entry ledger system. Developed using Spring Boot, NestJS, Kafka, and Redis, with double-entry bookkeeping and UUID lock-sorting to prevent database deadlocks under concurrent transfers.",
+      th: "ระบบกระเป๋าเงินจำลองและบัญชีแยกประเภทแบบคู่ พัฒนาด้วย Spring Boot, NestJS, Kafka และ Redis โดยจัดลำดับคีย์ล็อกเพื่อป้องกันปัญหาระบบล็อกเมื่อโอนเงินพร้อมกันจำนวนมาก",
     },
     themeColor: "blue",
     bannerGradient:
       "linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)",
     problem: {
-      en: "Processing concurrent financial transactions without balance discrepancies or system deadlocks is complex. Under high load, concurrent updates to the same account can cause race conditions or circular database locks (deadlocks). Additionally, running heavy compliance tasks like KYC verification and AML checks synchronously inside main request threads severely degrades transaction throughput.",
-      th: "การโอนเงินจำนวนมากพร้อมกันมักทำให้เกิดปัญหาข้อมูลไม่ตรงกันและฐานข้อมูลค้าง เนื่องจากระบบแย่งกันเขียนทับยอดเงินในเวลาเดียวกัน นอกจากนี้ การรันโปรเซสที่ใช้เวลาและพลังประมวลผลสูงอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการวิเคราะห์ธุรกรรมต้องสงสัย (AML) ร่วมกับเธรดโอนเงินหลักโดยตรง ทำให้ระบบทำงานได้ช้าและเสี่ยงต่อการล่ม",
+      en: "Processing concurrent financial transactions without balance discrepancies or database deadlocks is complex. Under high load, concurrent updates to the same account can cause race conditions or circular database locks (deadlocks). Additionally, running heavy compliance tasks like KYC verification and AML checks synchronously inside the main request thread slows down transaction processing.",
+      th: "การทำธุรกรรมการเงินพร้อมกันเป็นจำนวนมากมักทำให้เกิดปัญหาข้อมูลยอดเงินไม่ตรงกันหรือฐานข้อมูลค้าง (Deadlocks) จากการแก้ไขข้อมูลในเวลาเดียวกัน นอกจากนี้ การทำงานตรวจสอบอย่างการอัปโหลดเอกสารยืนยันตัวตน (KYC) หรือการตรวจสอบประวัติธุรกรรม (AML) ในเธรดหลักร่วมกับการโอนเงินโดยตรง ส่งผลให้การประมวลผลธุรกรรมช้าลง",
     },
     solution: {
-      en: "I developed a double-entry ledger platform to ensure mathematical balance consistency (Assets = Liabilities + Equity) using append-only journal entries. To solve database deadlocks under highly concurrent balance updates, I implemented a strict lexicographical lock sorting sequence on wallet UUIDs. I segregated the project into a Java Spring Boot microservice for core transactions and a NestJS gateway for identity and management. Asynchronous background tasks, such as notification dispatches and KYC status change streams, were offloaded to worker nodes using Apache Kafka.",
-      th: "ผมเลือกใช้ระบบบัญชีแยกประเภทแบบคู่ (Double-entry ledger) ซึ่งบันทึกธุรกรรมเป็นแบบเพิ่มข้อมูลเท่านั้น (Append-only journal) เพื่อรักษาสมการสมดุลทางบัญชีเสมอ และป้องกันการแก้ไขข้อมูลย้อนหลัง ปัญหา Deadlocks แก้ไขโดยกำหนดกฎให้ระบบเข้าล็อกกระเป๋าเงินตามลำดับตัวอักษรของ UUID ของคู่โอนเสมอ นอกจากนี้ ผมยังแยกส่วนระบบประมวลผลแกนหลักทางการเงิน (Java Spring Boot) ออกจากระบบประตูหน้าบ้านและจัดการข้อมูลทั่วไป (NestJS) โดยย้ายงานประมวลผลหลังบ้าน เช่น คิวส่งอีเมลแจ้งเตือน และคิวประมวลผลสถานะผลลัพธ์การยืนยันตัวตน (KYC Events) ไปรันแบบอะซิงโครนัสผ่าน Apache Kafka เพื่อเพิ่มประสิทธิภาพการตอบสนองของระบบหลัก",
+      en: "I built a double-entry ledger system using append-only journal entries to ensure balance consistency (Assets = Liabilities + Equity). To prevent database deadlocks during concurrent updates, I implemented a lexicographical lock sorting sequence on wallet UUIDs. I separated the system into a Java Spring Boot service for transactions and a NestJS gateway for identity management. Background tasks, such as notifications and KYC status streams, were processed asynchronously using Apache Kafka.",
+      th: "ผมทำระบบบัญชีแยกประเภทแบบคู่ (Double-entry ledger) บันทึกธุรกรรมแบบเพิ่มข้อมูลอย่างเดียว (Append-only) เพื่อรักษาสมดุลบัญชี และแก้ปัญหา Deadlocks โดยจัดลำดับการล็อกบัญชีตามตัวอักษรของ UUID ก่อนทำธุรกรรมเสมอ พร้อมแยกบริการประมวลผลธุรกรรม (Spring Boot) ออกจากส่วนระบบสมาชิกและหลังบ้าน (NestJS) และแยกงานส่งอีเมลกับคิวเปลี่ยนสถานะ KYC ไปประมวลผลเบื้องหลังผ่าน Apache Kafka",
     },
     architecture: {
       en: [
-        "Java 21 / Spring Boot 3 financial engine managing append-only double-entry transaction journals to guarantee balanced ledger accounts.",
-        "NestJS gateway monorepo using Prisma ORM with segregated PostgreSQL schemas for identity, KYC, and admin tasks.",
-        "Strict lexicographical lock sorting sequence on wallet UUIDs to eliminate database deadlocks under high-concurrency transfers.",
-        "Asynchronous operations (e.g. notification workers and KYC state event dispatches) offloaded via Apache Kafka stream pipelines.",
+        "Java 21 / Spring Boot 3 transaction service utilizing append-only double-entry ledger records.",
+        "NestJS gateway monorepo using Prisma ORM with separate PostgreSQL schemas for identity, KYC, and admin tasks.",
+        "Lock sorting sequence on wallet UUIDs to prevent database deadlocks during concurrent transfers.",
+        "Asynchronous tasks, such as notification dispatches and KYC state events, processed using Apache Kafka.",
       ],
       th: [
-        "ระบบหลังบ้านประมวลผลธุรกรรมการเงินด้วย Java 21 และ Spring Boot 3 บันทึกยอดตามหลักบัญชีคู่แบบเพิ่มข้อมูลเท่านั้น (Append-only journal)",
-        "NestJS Gateway ในโครงสร้างแบบ Monorepo ร่วมกับ Prisma ORM แยกฐานข้อมูลแต่ละโมดูลอย่างเป็นสัดส่วนเพื่อความง่ายในการสเกล",
-        "กฎการล็อกบัญชีโอนเงินตามลำดับตัวอักษรของ UUID (Lexicographical lock sorting) เพื่อตัดโอกาสเกิด Deadlocks ถาวร",
-        "ส่งงานประมวลผลรอง เช่น ระบบส่งการแจ้งเตือนและประวัติการเปลี่ยนสถานะ KYC ไปรันแบบอะซิงโครนัสผ่าน Apache Kafka",
+        "ระบบบริการประมวลผลธุรกรรมทางการเงินด้วย Java 21 และ Spring Boot 3 บันทึกข้อมูลบัญชีแบบคู่แบบเพิ่มข้อมูลเท่านั้น (Append-only)",
+        "NestJS Gateway ในรูปแบบ Monorepo ใช้ Prisma ORM และแยก PostgreSQL Schema สำหรับข้อมูลทั่วไป คิวงาน และระบบหลังบ้าน",
+        "กำหนดลำดับการล็อกกระเป๋าเงินคู่โอนตามตัวอักษรของ UUID (Lock sorting) เพื่อป้องกันปัญหา Deadlocks",
+        "ประมวลผลงานเบื้องหลัง เช่น การส่งการแจ้งเตือนและประวัติเปลี่ยนสถานะ KYC แบบอะซิงโครนัสผ่าน Apache Kafka",
       ],
     },
     highlights: [
       {
         title: {
-          en: "Zero-Deadlock Concurrency",
-          th: "การประมวลผลไร้ล็อกชะงัก (Zero-Deadlock)",
+          en: "Concurrency Lock Sorting",
+          th: "ระบบเรียงลำดับการล็อกบัญชี",
         },
         description: {
-          en: "Enforces a strict resource locking order using UUID lexicographical sorting to prevent deadlocks during concurrent transfers.",
-          th: "บังคับล็อคบัญชีต้นทางและปลายทางเรียงตามลำดับตัวอักษรของ UUID ป้องกันไม่ให้ระบบโอนเงินขัดแย้งและค้างระหว่างทำธุรกรรมพร้อมกัน",
+          en: "Enforces a resource locking order using UUID lexicographical sorting to prevent deadlocks during concurrent transfers.",
+          th: "บังคับล็อกบัญชีคู่โอนเรียงตามลำดับตัวอักษรของ UUID เพื่อป้องกันปัญหา Deadlocks ระหว่างโอนเงิน",
         },
         icon: "⚡",
       },
       {
         title: {
           en: "Append-Only Ledger",
-          th: "ระบบดุลบัญชีแบบคู่และเพิ่มข้อมูลเท่านั้น",
+          th: "บัญชีแยกประเภทแบบคู่",
         },
         description: {
-          en: "Every transaction writes two matching ledger entries (debit/credit) with no updates or deletions allowed, ensuring a complete audit trail.",
-          th: "บันทึกบัญชีแบบคู่และเพิ่มข้อมูลเพิ่มขึ้นเท่านั้นโดยไม่มีการแก้ไขหรือลบ เพื่อรักษาความโปร่งใสและสร้างประวัติที่ตรวจสอบย้อนหลังได้ 100%",
+          en: "Every transaction writes two matching ledger entries (debit/credit) with no updates or deletions allowed, creating an audit trail.",
+          th: "บันทึกธุรกรรมเป็นแบบเพิ่มข้อมูลเท่านั้น (Append-only) โดยไม่มีการแก้ไขหรือลบ เพื่อรักษาประวัติการทำรายการอย่างครบถ้วน",
         },
         icon: "🛡️",
       },
       {
         title: {
           en: "Solvency & Liquidity Audits",
-          th: "ระบบตรวจสอบเงินกองทุนและเงินสำรองสุทธิ",
+          th: "ระบบตรวจสอบความถูกต้องของยอดเงิน",
         },
         description: {
-          en: "Monitors and calculates aggregate balances and reserves automatically to ensure cash flow liquidity matches customer deposits.",
-          th: "ระบบรวบรวมยอดเงินสำรองและมอนิเตอร์ยอดในระบบเทียบกับเงินฝากจริงแบบเรียลไทม์ ป้องกันไม่ให้เงินทุนสำรองติดขัด",
+          en: "Monitors aggregate balances and reserves to ensure liquidity matches customer deposits.",
+          th: "มอนิเตอร์และคำนวณยอดเงินรวมในระบบเพื่อตรวจสอบความตรงกันของเงินสำรองกับเงินฝากผู้ใช้งาน",
         },
         icon: "📊",
       },
       {
         title: {
           en: "AML Compliance Checks",
-          th: "ตัวตรวจจับธุรกรรมที่เข้าข่ายฟอกเงิน",
+          th: "ตรวจสอบประวัติธุรกรรม",
         },
         description: {
-          en: "Flags suspicious transaction patterns such as structuring, layered transfers, and rapid high-volume movements.",
-          th: "ตรวจจับพฤติกรรมธุรกรรมผิดปกติ เช่น การโอนยอดเงินจำนวนเท่าๆ กันถี่ผิดปกติเพื่อหลีกเลี่ยงการรายงานตามกฎหมาย หรือการย้ายเงินรวดเร็วผิดสังเกต",
+          en: "Identifies transaction patterns such as structuring, layered transfers, and rapid volume movements.",
+          th: "ตรวจจับรูปแบบธุรกรรมที่มีพฤติกรรมโอนถี่ผิดปกติหรือย้ายเงินจำนวนเท่ากันต่อเนื่องเพื่อตรวจสอบความปลอดภัย",
         },
         icon: "🕵️",
       },
@@ -226,16 +226,16 @@ export const projectsData: Record<
     videoUrl: "https://video.wiiznu.dev/p-wallet",
     bullets: {
       en: [
-        "Built the core transactional engine with Spring Boot and JPA Hibernate, enforcing double-entry ledger bookkeeping rules.",
-        "Resolved transaction deadlocks by implementing a lexicographical UUID lock sorting protocol.",
-        "Offloaded background email sends, SMS dispatches, and KYC status change notifications using Apache Kafka worker nodes.",
-        "Wrote over 113 comprehensive JUnit and Mockito tests to cover ledger accuracy, concurrent transfers, and validation rules.",
+        "Built the transaction engine with Spring Boot and JPA Hibernate, enforcing double-entry ledger bookkeeping rules.",
+        "Addressed transaction deadlocks by implementing a lexicographical UUID lock sorting protocol.",
+        "Offloaded background email sends, SMS dispatches, and KYC status change streams using Apache Kafka workers.",
+        "Wrote over 113 JUnit and Mockito tests to cover ledger accuracy, concurrent transfers, and validation rules.",
       ],
       th: [
-        "สร้างเอนจิ้นหลักประมวลผลธุรกรรมทางการเงินด้วย Spring Boot และ Hibernate ในโครงสร้างสากลของการบันทึกบัญชีแยกประเภทแบบคู่",
-        "ขจัดปัญหาฐานข้อมูลค้าง (Deadlocks) อย่างมีประสิทธิภาพด้วยระบบเรียงลำดับคีย์โอนเงินตามตัวอักษรของ UUID",
-        "แยกงานส่งอีเมล/SMS และการส่งข้อความแจ้งผลการตรวจสอบสถานะ KYC ไปรันเบื้องหลังแบบอะซิงโครนัสผ่านคิวงาน Apache Kafka",
-        "เขียนการทดสอบระบบครอบคลุมกว่า 113 เคสด้วย JUnit และ Mockito เพื่อรับประกันความถูกต้องสมบูรณ์ในการโอนเงินทุกรูปแบบ",
+        "สร้างบริการประมวลผลธุรกรรมทางการเงินด้วย Spring Boot และ Hibernate ในโครงสร้างบัญชีแยกประเภทแบบคู่",
+        "ป้องกันปัญหาฐานข้อมูลค้าง (Deadlocks) ด้วยการใช้ระบบเรียงลำดับการล็อกบัญชีตามตัวอักษรของ UUID",
+        "แยกงานส่งอีเมล/SMS และการอัปเดตสถานะการตรวจสอบ KYC ไปประมวลผลแบบอะซิงโครนัสผ่าน Apache Kafka",
+        "เขียนเคสทดสอบด้วย JUnit และ Mockito รวม 113 เคส ครอบคลุมการโอนเงินและความถูกต้องของยอดเงินแยกประเภท",
       ],
     },
     images: [
@@ -244,11 +244,11 @@ export const projectsData: Record<
         orientation: "portrait",
         title: {
           en: "Mobile Wallet Client Interface",
-          th: "หน้าต่างแอปพลิเคชันสำหรับลูกค้าบนมือถือ P-Wallet",
+          th: "หน้าจอผู้ใช้งานบนมือถือ P-Wallet",
         },
         description: {
-          en: "React Native client dashboard showing account balance, quick transfer action, and real-time transaction tracking.",
-          th: "แดชบอร์ดแอปพลิเคชันมือถือพัฒนาด้วย React Native แสดงยอดเงินคงเหลือ ทางลัดการโอนเงิน และประวัติธุรกรรมที่อัปเดตเรียลไทม์",
+          en: "React Native client dashboard showing account balance, quick transfer action, and transaction tracking.",
+          th: "แดชบอร์ดแอปพลิเคชันมือถือพัฒนาด้วย React Native แสดงยอดเงินคงเหลือ ทางลัดการโอนเงิน และประวัติธุรกรรม",
         },
       },
       {
@@ -260,7 +260,7 @@ export const projectsData: Record<
         },
         description: {
           en: "Append-only database ledger journal records in Java and Spring Boot, maintaining mathematically balanced accounting.",
-          th: "สมุดจดบันทึกประวัติการเงินแบบเพิ่มข้อมูลเท่านั้น พัฒนาด้วย Spring Boot เพื่อรักษาสมดุลสมการดุลบัญชีและรองรับการตรวจสอบย้อนหลัง",
+          th: "สมุดจดบันทึกประวัติการเงินแบบเพิ่มข้อมูลเท่านั้น พัฒนาด้วย Spring Boot เพื่อตรวจสอบยอดเงินสะสมในระบบ",
         },
       },
       {
@@ -290,80 +290,80 @@ export const projectsData: Record<
       th: "Fullstack Developer (นักศึกษาฝึกงานสหกิจศึกษา)",
     },
     tagline: {
-      en: "A modular multi-vendor e-commerce platform built as a Client-Server web app with Next.js 15, Express.js, and Sequelize to showcase secure integrations of Digio's Payment Gateway (DigiPay) APIs, featuring robust refund workflows and admin security flows.",
-      th: "เว็บแอปพลิเคชันอีคอมเมิร์ซแบบหลายผู้ขาย พัฒนาบนสถาปัตยกรรม Client-Server เพื่อสาธิตการเชื่อมต่อระบบรับชำระเงิน DigiPay Payment Gateway แบบครบวงจร ทั้งการสแกนชำระเงิน การตรวจสอบธุรกรรม ตลอดจนโฟลว์ย้อนกลับทางการเงินแบบมีสิทธิ์ควบคุม",
+      en: "A multi-vendor e-commerce platform developed as a Client-Server web app with Next.js 15, Express.js, and Sequelize to demonstrate integration of Digio's Payment Gateway (DigiPay) APIs, featuring refund and void workflows.",
+      th: "เว็บแอปพลิเคชันอีคอมเมิร์ซแบบหลายผู้ขาย พัฒนาบนสถาปัตยกรรม Client-Server เพื่อสาธิตการเชื่อมต่อระบบรับชำระเงิน DigiPay Payment Gateway ทั้งการยกเลิกรายการ (Void) และการคืนเงิน (Refund)",
     },
     themeColor: "amber",
     bannerGradient:
       "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
     problem: {
-      en: "Digio needed an interactive multi-vendor demonstration marketplace to help banks and merchant clients visualize the integration and transactional flows of their payment gateway product (DigiPay). The system required high-fidelity vendor portals, secure digital assets, centralized backoffice controls, and reliable financial exception pipelines like refunds and voids without using real money.",
-      th: "บริษัท ดิจิโอ ต้องการแพลตฟอร์มอีคอมเมิร์ซต้นแบบเพื่อใช้สาธิตระบบชำระเงิน DigiPay Payment Gateway ให้กับสถาบันการเงินและผู้ประกอบการ โดยระบบจำเป็นต้องรองรับร้านค้าหลายราย สามารถทำรายการชำระเงินจริงในระบบทดสอบ และที่สำคัญต้องมีตัวอย่างการดำเนินงานยกเลิกและคืนเงิน (Void/Refund) ที่ถูกต้อง ปลอดภัย และตรงตามสเปกของ API จริง",
+      en: "The payment gateway product required an interactive marketplace demonstration to show banks and merchant clients the integration flow of APIs. The system needed multi-vendor storefronts, digital assets storage, backoffice controls, and reliable flows for transaction refunds and voids without using real money.",
+      th: "ระบบต้องการแพลตฟอร์มตัวอย่างเพื่อแสดงขั้นตอนการเชื่อมต่อ DigiPay Payment Gateway ให้กับลูกค้าและธนาคาร โดยต้องรองรับร้านค้าหลายราย มีระบบควบคุมหลังบ้าน และมีตัวอย่างโฟลว์ยกเลิกและคืนเงิน (Void/Refund) ที่สอดคล้องตามพฤติกรรมจริงของ API",
     },
     solution: {
-      en: "Developed the merchant and admin portals using Next.js 15, Express.js, and MySQL via Sequelize. Implemented a robust refund and void transactional pipeline directly integrated with DigiPay APIs, dynamic product image management hosted on Azure Blob Storage, asymmetric JWT authentication using RSA Key Pairs, and automated SHA-256 secure tokens sent via SendGrid for administrator invitations and password resets.",
-      th: "พัฒนาฟีเจอร์ฝั่งร้านค้าและผู้ดูแลหลังบ้านด้วย Next.js 15 และ Express.js ร่วมกับ Sequelize ORM และ MySQL ในรูปแบบ Client-Server พร้อมสร้างระบบจัดการธุรกรรมขอคืนเงินผ่าน DigiPay API (รองรับ Void สำหรับรายการ APPROVED และ Refund สำหรับรายการ SETTLED) เก็บรูปภาพบน Azure Blob Storage ป้องกันการเข้าถึงด้วยสิทธิ์ผู้ใช้ (RBAC) ร่วมกับ JWT อสมมาตร (RSA Key Pair) และส่งคิวเมลความปลอดภัยสูงผ่าน SendGrid",
+      en: "I built the merchant and admin portals using Next.js 15 and Express.js, with Sequelize ORM and MySQL. I implemented a refund and void flow integrated with DigiPay APIs, product image storage hosted on Azure Blob Storage, JWT authentication using RSA Key Pairs, and SendGrid invitations for administrators.",
+      th: "ผมทำหน้าจัดการร้านค้าและแอดมินหลังบ้านด้วย Next.js 15 และ Express.js เชื่อมต่อฐานข้อมูล MySQL ผ่าน Sequelize ORM โดยระบบรองรับการ Void และ Refund เงินคืนผ่าน DigiPay API เก็บรูปภาพและประวัติร้านค้าบน Azure Blob Storage ใช้กุญแจคู่ RSA ในการออก JWT สำหรับระบุตัวตน และเชิญผู้ดูแลระบบใหม่ผ่าน SendGrid API",
     },
     architecture: {
       en: [
         "Client-Server architecture separating frontend portals (Next.js 15) from backend REST APIs (Express.js) and database.",
-        "DigiPay API integration managing GET transaction detail checkouts, POST void (un-settled approved), and POST refund (settled captured) flows.",
+        "DigiPay API integration managing transaction status queries, voids (un-settled approved), and refunds (settled captured) flows.",
         "Asymmetric cryptographic JWT authentication using RSA Key Pairs to secure admin and merchant workspaces.",
-        "Secure file asset storage (products, store profile) on Azure Blob Storage protected via Shared Access Signature (SAS) URLs.",
-        "Time-sensitive SHA-256 secure tokens sent via SendGrid API to handle Admin Onboarding and password resets.",
+        "File asset storage (products, store profile) on Azure Blob Storage protected via Shared Access Signature (SAS) URLs.",
+        "Time-sensitive secure tokens sent via SendGrid API to handle Admin Onboarding and password resets.",
         "Containerized development using Docker to standardize environments, deployed on Railway (Backend) and Vercel (Frontend).",
       ],
       th: [
-        "สถาปัตยกรรมเว็บแบบ Client-Server แยกฝั่งหน้าบ้านด้วย Next.js 15 ฝั่งหลังบ้านด้วย Express.js และใช้ Sequelize ORM บนฐานข้อมูล MySQL",
-        "การผสานระบบรับชำระเงิน DigiPay และโฟลว์ธุรกรรมทางการเงินย้อนกลับด้วย Void API (ยกเลิกทันที) และ Refund API (คืนเงินหลังตัดยอด)",
-        "ระบบสิทธิ์ความปลอดภัยเข้าถึง API และผู้ใช้งานด้วย JWT แบบกุญแจเข้ารหัสคู่กุญแจอสมมาตร (RSA Key Pair)",
-        "ระบบอัปโหลดไฟล์สื่อสิ่งพิมพ์ รูปภาพสินค้า และโปรไฟล์ร้านค้าไปจัดเก็บอย่างปลอดภัยบน Azure Blob Storage",
-        "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invite) และระบบลืมรหัสผ่านด้วย Secure Tokens ในตาราง DB จัดส่งอัตโนมัติผ่าน SendGrid API",
-        "จัดทำระบบในรูปแบบ Docker Container และทำการติดตั้งเผยแพร่ผ่าน Vercel (Frontend) และ Railway (Backend)",
+        "สถาปัตยกรรมแบบ Client-Server แยกฝั่งหน้าบ้าน (Next.js 15) และฝั่งหลังบ้าน (Express.js) ร่วมกับ MySQL",
+        "เชื่อมต่อบริการ DigiPay API ทำรายการยกเลิกรายการชำระเงิน (Void) และทำรายการคืนเงินเข้าบัญชี (Refund) ตามสถานะธุรกรรม",
+        "ระบบรักษาความปลอดภัยในการยืนยันตัวตนด้วย JWT แบบคู่กุญแจอสมมาตร (RSA Key Pair) และสิทธิ์เข้าถึงตามบทบาท (RBAC)",
+        "ระบบอัปโหลดและเรียกใช้งานรูปภาพร้านค้าและสินค้า จัดเก็บอยู่บน Azure Blob Storage ผ่านสิทธิ์จำกัดอายุ URL (SAS)",
+        "ระบบจัดส่งเมลเพื่อเชิญแอดมินคนใหม่ตั้งรหัสผ่านด้วย Secure Tokens ดำเนินงานหลังบ้านส่งผ่าน SendGrid API",
+        "จัดกลุ่มและแบ่งระบบจำกัดสภาพแวดล้อมด้วย Docker Container ดีพลอยใช้งานผ่าน Railway และ Vercel",
       ],
     },
     highlights: [
       {
         title: {
           en: "DigiPay Refund Flow",
-          th: "ระบบยกเลิกและคืนเงินผ่าน DigiPay",
+          th: "ระบบ Void และ Refund",
         },
         description: {
-          en: "Integrates complete financial reversal operations with un-settled Voids and settled Refunds based on DigiPay transaction query APIs.",
-          th: "การทำระบบขอคืนเงินแบบแยกโฟลว์ โดยเรียก Void API (สำหรับสถานะ APPROVED) และ Refund API (สำหรับสถานะ SETTLED) ตรงผ่านระบบ DigiPay",
+          en: "Integrates financial reversal operations with Voids for un-settled transactions and Refunds for settled transactions based on DigiPay APIs.",
+          th: "ทำโฟลว์ย้อนกลับรายการ Void (รายการ APPROVED) และ Refund (รายการ SETTLED) โดยเรียกผ่าน DigiPay API",
         },
         icon: "💳",
       },
       {
         title: {
           en: "Asymmetric JWT Security",
-          th: "ระบบความปลอดภัยกุญแจอสมมาตร",
+          th: "ความปลอดภัยด้วยกุญแจอสมมาตร",
         },
         description: {
-          en: "Secures sensitive admin and seller API endpoints using RSA Key Pairs for JSON Web Tokens (JWT) and RBAC middleware.",
-          th: "เสริมแกร่งระบบหลังบ้านด้วย JWT แบบคีย์เข้ารหัสคู่อสมมาตร (RSA Key Pair) ร่วมกับสิทธิ์เข้าถึงตามบทบาท (RBAC) กั้นข้อมูลร้านและแอดมิน",
+          en: "Secures admin and seller API endpoints using RSA Key Pairs for JSON Web Tokens (JWT) and RBAC middleware.",
+          th: "กั้นการใช้งาน API เฉพาะแอดมินและผู้ขายด้วย JWT แบบคู่อสมมาตร (RSA Key Pair) และสิทธิ์ตามบทบาท (RBAC)",
         },
         icon: "🛡️",
       },
       {
         title: {
           en: "SendGrid Invite Streams",
-          th: "คิวเชิญแอดมินด้วย SendGrid & Tokens",
+          th: "ระบบเชิญแอดมินใหม่",
         },
         description: {
-          en: "Automates admin invite and reset flows with time-sensitive SHA-256 tokens dispatched via SendGrid API.",
-          th: "โฟลว์ความปลอดภัยสูงส่งลิงก์เชิญตั้งรหัสผ่านให้แอดมินคนใหม่ผ่านอีเมล SendGrid ทำงานร่วมกับ Token เข้ารหัส SHA-256 ในตารางฐานข้อมูล",
+          en: "Dispatches admin invitations and password resets with secure tokens via the SendGrid API.",
+          th: "จัดส่งอีเมลตั้งรหัสผ่านให้แอดมินใหม่ด้วย Token เข้ารหัสผ่านบริการ SendGrid API",
         },
         icon: "📧",
       },
       {
         title: {
           en: "Dockerized DevOps",
-          th: "จำลองระบบจำกัดสภาพแวดล้อมด้วย Docker",
+          th: "Docker Container",
         },
         description: {
-          en: "Containerizes Express APIs, MySQL, and Redis using Docker for local parity, deploying seamlessly on Railway and Vercel.",
-          th: "จัดสภาพแวดล้อมบริการ Backend, Database, และ Redis ด้วย Docker Container และเชื่อมต่อ CI/CD ติดตั้งบน Railway และ Vercel",
+          en: "Manages Express APIs, MySQL, and Redis using Docker, deploying on Railway and Vercel.",
+          th: "จัดทำระบบในรูปแบบ Docker Container และดีพลอยใช้งานผ่าน Railway และ Vercel",
         },
         icon: "🐳",
       },
@@ -417,18 +417,18 @@ export const projectsData: Record<
     hasVideo: false,
     bullets: {
       en: [
-        "Designed and built the multi-vendor Merchant portal (inventories, orders) and central Admin portal (RBAC, approvals) using Next.js 15 and Express.js.",
+        "Designed and built the multi-vendor Merchant portal (inventories, orders) and Admin portal (RBAC, approvals) using Next.js 15 and Express.js.",
         "Integrated DigiPay Payment Gateway APIs to execute un-settled voids and settled refunds.",
         "Protected administrative APIs and workspaces using asymmetric RSA cryptographic JWT and Role-Based Access Control (RBAC).",
-        "Developed a secure administrator onboarding invitation stream utilizing SHA-256 tokens and SendGrid API.",
-        "Containerized individual services with Docker and deployed via Railway (Express Backend, MySQL, Redis) and Vercel (Next.js Frontend).",
+        "Developed an administrator onboarding invitation stream utilizing SHA-256 tokens and SendGrid API.",
+        "Containerized services with Docker and deployed via Railway (Express Backend, MySQL, Redis) and Vercel (Next.js Frontend).",
       ],
       th: [
-        "ออกแบบและพัฒนาฟีเจอร์ฝั่งผู้ค้า (Merchant Portal) และฝั่งผู้ดูแลระบบ (Admin Portal) ตามสถาปัตยกรรม Client-Server ด้วย Next.js 15 และ Express.js",
-        "ผสานระบบชำระเงิน DigiPay Payment Gateway และออกแบบโฟลว์ขอยกเลิกและคืนเงินผ่าน Void API และ Refund API เต็มรูปแบบ",
-        "ปกป้อง API และสิทธิ์การใช้งานแอดมิน/ผู้ขายด้วย JWT แบบอสมมาตร (RSA Key Pair) ร่วมกับสิทธิ์ตามบทบาทหน้าที่ (RBAC)",
-        "พัฒนาโฟลว์ความปลอดภัยในการเชิญผู้ดูแลระบบใหม่ตั้งรหัสผ่านด้วย Secure Tokens เข้ารหัส SHA-256 ผ่านอีเมลอัตโนมัติด้วย SendGrid API",
-        "จัดสภาพแวดล้อมด้วย Docker Container และดีพลอยใช้งานจริงระดับโปรดักชันผ่าน Railway (Backend, MySQL, Redis) และ Vercel (Frontend Next.js)",
+        "ออกแบบและพัฒนาฟีเจอร์ฝั่งร้านค้า (Merchant Portal) และฝั่งแอดมิน (Admin Portal) ตามสถาปัตยกรรม Client-Server ด้วย Next.js 15 และ Express.js",
+        "เชื่อมต่อกับ DigiPay Payment Gateway เพื่อทำรายการยกเลิก (Void) และคืนเงิน (Refund)",
+        "ใช้สิทธิ์ตามบทบาทหน้าที่ (RBAC) ร่วมกับ JWT แบบใช้กุญแจคู่ RSA เพื่อป้องกันสิทธิ์เข้าถึง API",
+        "ทำระบบส่งคำเชิญแอดมินใหม่เพื่อตั้งรหัสผ่านด้วย Secure Token ผ่าน SendGrid API",
+        "จัดสภาพแวดล้อมด้วย Docker Container และดีพลอยใช้งานผ่าน Railway (Backend) และ Vercel (Frontend)",
       ],
     },
     images: [
@@ -441,7 +441,7 @@ export const projectsData: Record<
         },
         description: {
           en: "Next.js 15 seller dashboard to add/edit products, manage orders, and check inventory statuses with assets stored in Azure Blob Storage.",
-          th: "พอร์ทัลร้านค้าที่พัฒนาด้วย Next.js 15 สำหรับเพิ่ม/แก้ไขข้อมูลสินค้า อัปโหลดรูปภาพผ่าน Azure Blob Storage และอัปเดตสถานะการจัดส่งแบบเรียลไทม์",
+          th: "พอร์ทัลร้านค้าที่พัฒนาด้วย Next.js 15 สำหรับเพิ่ม/แก้ไขข้อมูลสินค้า อัปโหลดรูปภาพผ่าน Azure Blob Storage และอัปเดตสถานะการจัดส่ง",
         },
       },
       {
@@ -452,8 +452,8 @@ export const projectsData: Record<
           th: "ระบบจัดการธุรกรรมและโฟลว์การขอคืนเงินผ่าน DigiPay API",
         },
         description: {
-          en: "Robust order pipeline integrated with DigiPay Payment Gateway, resolving partial refunds and approved voids based on settled statuses.",
-          th: "ระบบสั่งซื้อที่เชื่อมโยงเข้ากับระบบรับชำระเงิน DigiPay API รองรับการยกเลิกรายการด้วย Void API (สถานะ APPROVED) และการคืนเงินด้วย Refund API (สถานะ SETTLED)",
+          en: "Order pipeline integrated with DigiPay Payment Gateway, supporting partial refunds and approved voids based on settled statuses.",
+          th: "ระบบสั่งซื้อที่เชื่อมโยงเข้ากับระบบชำระเงิน DigiPay API รองรับการยกเลิกรายการด้วย Void API (รายการ APPROVED) และการคืนเงินด้วย Refund API (รายการ SETTLED)",
         },
       },
       {
@@ -465,7 +465,7 @@ export const projectsData: Record<
         },
         description: {
           en: "Centralized admin workspace managing store requests, RBAC permissions, and secure SendGrid SHA-256 token invitations.",
-          th: "แดชบอร์ดผู้ดูแลระบบเพื่อดูภาพรวมทั้งหมด อนุมัติร้านค้า/สินค้าใหม่ และส่งอีเมลเชิญผู้ดูแลระบบด้วย Secure Tokens เข้ารหัส SHA-256 ผ่าน SendGrid API",
+          th: "แดชบอร์ดผู้ดูแลระบบเพื่อดูภาพรวมทั้งหมด อนุมัติร้านค้า/สินค้าใหม่ และส่งอีเมลเชิญผู้ดูแลระบบด้วย Secure Tokens ผ่าน SendGrid API",
         },
       },
     ],
@@ -474,85 +474,87 @@ export const projectsData: Record<
     id: "studybuddy",
     title: { en: "StudyBuddy", th: "StudyBuddy" },
     subtitle: {
-      en: "Academic Group Recruitment & Real-Time Match Platform",
-      th: "แพลตฟอร์มจับคู่หาเพื่อนร่วมกลุ่มเรียนและทำงานวิจัยวิชาการ",
+      en: "Student Matching & Curated Co-Working Space Directory",
+      th: "แพลตฟอร์มปัดการ์ดจับคู่เพื่อนร่วมเรียนและระบบแนะนำสถานที่อ่านหนังสือ",
     },
     year: "2026",
     role: {
-      en: "Lead Fullstack Developer",
-      th: "Lead Fullstack Developer",
+      en: "Fullstack Developer (Core Features)",
+      th: "Fullstack Developer (ผู้พัฒนาฟีเจอร์หลัก)",
     },
     tagline: {
-      en: "A matching platform for students to find study partners and team recruits. Built with Next.js, NestJS, and Supabase, utilizing PostgreSQL Row-Level Security (RLS) and WebSockets for secure real-time chats.",
-      th: "แพลตฟอร์มจับคู่และรับสมัครเพื่อนร่วมกลุ่มทำงานวิจัยและกลุ่มเรียน พัฒนาด้วย Next.js, NestJS และ Supabase โดยใช้ระบบความปลอดภัย PostgreSQL RLS และระบบแชทเรียลไทม์ผ่าน WebSocket",
+      en: "A matching-style web platform helping university students find study partners, swipe profile cards, explore study spaces, and chat. Built with Next.js, NestJS, and Supabase, utilizing PostgreSQL Row-Level Security (RLS) and WebSockets.",
+      th: "แพลตฟอร์มเว็บหาเพื่อนอ่านหนังสือสำหรับนักศึกษา โดยใช้การปัดการ์ดโปรไฟล์ แนะนำสถานที่เรียน และห้องแชทสด พัฒนาด้วย Next.js, NestJS และ Supabase ใช้ PostgreSQL RLS และ WebSocket",
     },
     themeColor: "indigo",
     bannerGradient:
       "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
     problem: {
-      en: "University students frequently struggle to find peers with specific academic skills or complementary schedules for group projects. Existing platforms lack security and privacy features, storing sensitive student details and contact information in open collections that are vulnerable to scraping or unauthorized API manipulation.",
-      th: "นักศึกษามักหาเพื่อนร่วมกลุ่มหรือผู้ช่วยทำงานวิจัยที่มีทักษะตรงกับความต้องการและเข้ากับตารางเรียนได้ยาก ทว่าระบบที่มีอยู่ทั่วไปมักไม่มีนโยบายการจำกัดสิทธิ์ข้อมูลที่ปลอดภัยพอ ทำให้ข้อมูลติดต่อส่วนตัวและผลการเรียนเสี่ยงต่อการถูกดึงข้อมูลไปใช้ในทางที่ผิด หรือโดนลักลอบแก้ไขผ่าน API",
+      en: "University students struggle to find compatible study buddies with matching schedules or courses. Traditional methods lack structure and privacy controls, exposing personal details and private chats to scraping or unauthorized access.",
+      th: "นักศึกษามักประสบปัญหาการหาเพื่อนร่วมกลุ่มเรียนหรือคู่ติวหนังสือที่มีสไตล์ตารางเรียนหรือวิชาที่ตรงกัน การหาเพื่อนผ่านโซเชียลมีเดียทั่วไปไม่มีระบบคัดกรองข้อมูลเฉพาะทาง และเสี่ยงต่อการรั่วไหลของข้อมูลติดต่อส่วนตัวหากไม่มีระบบจัดการสิทธิ์",
     },
     solution: {
-      en: "We built StudyBuddy with Supabase and PostgreSQL Row Level Security (RLS) to restrict data access directly at the database level. Students can only read and write their own matching requests, profile details, and private chats. We developed a structured NestJS API gateway to filter inputs and prevent script injection, and integrated Supabase Realtime WebSocket channels to support low-latency group messaging.",
-      th: "พวกเราเลือกจัดการปัญหาด้านความปลอดภัยด้วยการใช้ฟีเจอร์ Row Level Security (RLS) ของ PostgreSQL บน Supabase เพื่อจำกัดสิทธิ์การเขียนและอ่านข้อมูลตั้งแต่ระดับฐานข้อมูล ซึ่งทำให้นักศึกษาเข้าถึงได้เฉพาะกลุ่มเรียนและแชทของตนเองเท่านั้น จากนั้นเสริมความแข็งแกร่งด้วยการใช้ NestJS ในการคัดกรองข้อมูลเข้า (Data Validation) และต่อขยายการพูดคุยในทีมด้วยช่องสัญญาณแบบ Real-time ของ Supabase ผ่าน WebSocket",
+      en: "I designed and implemented the core features of StudyBuddy using Next.js 16 and NestJS, with Supabase managing client authentication and PostgreSQL security policies. I built a Landing Page with dynamic CTA routing, a 6-step Onboarding form with LocalStorage recovery, a matching dashboard utilizing a Jaccard similarity index algorithm, a Recommended Study Places directory with facility filters, and a WebSockets-enabled Chat system with pinned messages, reactions, edits, and read receipts.",
+      th: "ผมทำฟีเจอร์หลักของระบบด้วย Next.js 16 และ NestJS ใช้ Supabase จัดการยืนยันตัวตนร่วมกับนโยบาย RLS ของ PostgreSQL โดยพัฒนาหน้า Landing Page ที่เปลี่ยนปุ่มตามสถานะการสมัคร, ระบบลงทะเบียนข้อมูล 6 ขั้นตอนที่เก็บข้อมูลชั่วคราวบน LocalStorage, หน้าปัดการ์ดแนะนำผู้ใช้โดยคำนวณจากความสนใจตรงกันด้วย Jaccard Index, ระบบแนะนำสถานที่เรียนพร้อมตัวกรองบริการเสริม และระบบแชทเดี่ยว/กลุ่มผ่าน WebSocket ที่รองรับการปักหมุดข้อความ แก้ไขข้อความ ส่งรีแอคชัน และสถานะอ่านแล้ว",
     },
     architecture: {
       en: [
-        "PostgreSQL Row Level Security (RLS) to restrict tables access to authorized matching peers and group owners.",
-        "Supabase Realtime WebSockets dispatching instantaneous group chat messages and matchmaking alerts.",
-        "NestJS backend API to validate data schemas, enforce endpoint guards, and run matchmaking logic.",
-        "A modular, tag-based frontend dashboard allowing students to filter partners by skills, class year, and courses.",
+        "Multi-step Onboarding form with LocalStorage cache recovery to prevent data loss on page refreshes.",
+        "Matching dashboard using Framer Motion swipe gestures and a NestJS Jaccard scoring algorithm based on matching interest coefficients (subjects, styles, and places).",
+        "Curated Recommended Study Places directory featuring categories, toggle-ready facility filters, suggestions query, and favorite bookmarking.",
+        "Real-time Chat system leveraging Supabase real-time subscriptions (INSERT, UPDATE) and NestJS backend ChatModule handling message creation, edits, reactions, pins, and a 1-minute unsend window.",
+        "Personalized Landing page utilizing next-themes for light/dark theme toggles and Noto Sans Thai typography, routing users based on auth and onboarding progress.",
       ],
       th: [
-        "ระบบความปลอดภัยระดับแถวข้อมูล (PostgreSQL RLS) เพื่อกั้นสิทธิ์การเปิดอ่านโปรไฟล์เฉพาะกลุ่มคนที่ได้รับสิทธิ์โต้ตอบร่วมกัน",
-        "บริการ Supabase Realtime WebSockets ส่งข้อมูลความเคลื่อนไหวในแผงแชทกลุ่มและแจ้งผลการสมัครทีมด่วนระดับวินาที",
-        "หลังบ้านที่เข้มแข็งด้วย NestJS คอยตรวจเช็คความถูกต้องและคัดกรองความสะอาดของข้อมูลเพื่อกันปัญหา SQL Injection",
-        "ระบบค้นหาหน้าเว็บบอร์ดที่นักศึกษาเลือกฟิลเตอร์คัดสรรผู้ร่วมทีมตามทักษะ ชั้นปี คณะ หรือรหัสวิชาเรียนได้อย่างยืดหยุ่น",
+        "ระบบลงทะเบียนโปรไฟล์ผู้ใช้ 6 ขั้นตอนพร้อมช่วยจดจำข้อมูลลง LocalStorage ป้องกันข้อมูลกรอกหายขณะรีเฟรชหน้าเว็บ",
+        "แดชบอร์ดจับคู่แบบปัดการ์ดแอนิเมชันด้วย Framer Motion ผสานกับอัลกอริทึม Jaccard Index หลังบ้านประเมินวิชา สไตล์อ่าน และสถานที่โปรด",
+        "ระบบแนะนำสถานที่อ่านหนังสือ ค้นหา และฟิลเตอร์พิกัดที่มีจุดเสียบปลั๊กไฟ WiFi ฟรี หรือเปิดบริการโต้รุ่ง 24 ชั่วโมง",
+        "ระบบแชทสดคุยเดี่ยว/กลุ่ม ซิงค์ข้อมูล WebSocket มีฟังก์ชันปักหมุดข้อความ แก้ไขข้อความ ยกเลิกส่งภายใน 1 นาที รีแอคชัน และสถานะผู้ใช้อ่านแล้ว",
+        "หน้าแรก Landing Page รองรับธีมมืดและสว่างด้วยฟอนต์ Noto Sans Thai และตรรกะนำทาง (CTA routing) ส่งตรงไปยังหน้ากรอกข้อมูลหรือหน้าแชทตามความสมบูรณ์ของโปรไฟล์",
       ],
     },
     highlights: [
       {
         title: {
-          en: "Row Level Security (RLS)",
-          th: "ความปลอดภัยระดับแถวข้อมูล (RLS)",
+          en: "WebSocket Chat",
+          th: "แชทสดผ่าน WebSocket",
         },
         description: {
-          en: "Restricts all database reads and writes to authorized owners, securing student contact lists against unauthorized queries.",
-          th: "การันตีการซ่อนปิดบังข้อมูลประวัติระดับคีย์หลักในฐานข้อมูล ปิดช่องโหว่การพยายามสุ่ม ID เข้าตรวจดูประวัติข้ามโปรไฟล์อย่างปลอดภัย",
-        },
-        icon: "🛡️",
-      },
-      {
-        title: {
-          en: "Real-Time Group Chat",
-          th: "ระบบห้องแชทเรียลไทม์รวดเร็ว",
-        },
-        description: {
-          en: "Leverages WebSockets to push group message updates, typing indicators, and matchmaking invites instantly.",
-          th: "รับส่งสารพูดคุยความคืบหน้าของงานกลุ่มได้ทันใจด้วยการต่อท่อซิงค์ส่งประวัติผ่าน WebSocket ไร้ความล่าช้าสะดุด",
+          en: "Sends group messages, reactions, pinned messages, and read receipts using PostgreSQL realtime channel subscriptions.",
+          th: "รับส่งข้อความแชท ซิงค์ประวัติ แก้ไขคำ รีแอคชัน และปักหมุดข่าวในห้องแชทแบบเรียลไทม์ผ่าน WebSocket",
         },
         icon: "💬",
       },
       {
         title: {
-          en: "Modular NestJS Core",
-          th: "โครงสร้างโมดูลาร์ NestJS สะอาด",
+          en: "6-Step Onboarding Form",
+          th: "ลงทะเบียนแบบแบ่งขั้นตอน",
         },
         description: {
-          en: "Built using modular architectures, decoupling routing from service entities to streamline unit testing and codebase scaling.",
-          th: "ระบบ API หลังบ้านเป็นหมวดหมู่ตามหลัก Modular ใน NestJS บำรุงรักษาง่าย และรองรับการทำ Unit Testing ในอนาคต",
+          en: "Registers user profiles with step-by-step state caching on LocalStorage to prevent progress loss.",
+          th: "บันทึกโปรไฟล์แบบ 6 ขั้นตอนพร้อมช่วยจดจำข้อมูลลง LocalStorage ป้องกันข้อมูลกรอกหายขณะรีเฟรช",
         },
         icon: "🧩",
       },
       {
         title: {
-          en: "Academic Directory Filters",
-          th: "คัดกรองตามหลักสูตร มข.",
+          en: "Jaccard Swipe Match",
+          th: "การจับคู่แบบ Jaccard Index",
         },
         description: {
-          en: "Custom integration featuring filters aligned with Khon Kaen University course schedules and departments.",
-          th: "เชื่อมต่อข้อมูลกับรายการรหัสรายวิชาจริงของมหาวิทยาลัยขอนแก่น ค้นหาจัดหาเพื่อนร่วมวิชาเอกหรือวิชาโทที่ลงเรียนร่วมกันได้แม่นยำ",
+          en: "Computes match percentages between profiles using the Jaccard index on interests, styles, and places.",
+          th: "คำนวณอัตราส่วนความเหมือนกันของความสนใจ วิชาเรียน สไตล์การอ่าน และสถานที่โปรดออกมาเป็นเปอร์เซ็นต์",
+        },
+        icon: "🛡️",
+      },
+      {
+        title: {
+          en: "Curated Study Places",
+          th: "พิกัดสถานที่อ่านหนังสือ",
+        },
+        description: {
+          en: "Curates reading places with ratings, favorites, and toggle filters for plugs, WiFi, and 24-hour operations.",
+          th: "รวบรวมสถานที่ติวหนังสือแยกประเภท และตัวกรองสิ่งอำนวยความสะดวก เช่น จุดเสียบปลั๊กไฟ WiFi ฟรี หรือเปิด 24 ชม.",
         },
         icon: "🎓",
       },
@@ -586,14 +588,18 @@ export const projectsData: Record<
       "https://video.wiiznu.dev/studybuddy",
     bullets: {
       en: [
-        "Created an academic matchmaking network utilizing NestJS, Next.js, and Supabase for university environments.",
-        "Implemented PostgreSQL Row Level Security (RLS) policies to keep profile details secure at the database layer.",
-        "Connected team study rooms utilizing Supabase Realtime channels to run immediate group messaging sessions.",
+        "Designed and developed the multi-step Onboarding form using a persistent RegistrationContext with LocalStorage data recovery to assure smooth signup flows.",
+        "Created the matching swipe board using Framer Motion animations combined with a NestJS Jaccard scoring algorithm based on matching interest coefficients (subjects, styles, and places).",
+        "Built the Recommended Study Places directory featuring curated categories, toggle-ready facility filters, suggestions query, and toggle favorite capabilities.",
+        "Implemented a real-time WebSocket chat system leveraging Supabase real-time subscriptions for immediate message syncing, unsend within 1 min, message editing, reactions, and pinning.",
+        "Designed a dynamic Landing Page with premium dark mode support and custom typography, routing users to welcome, onboarding, or candidate feed based on auth/registration state.",
       ],
       th: [
-        "สร้างเครือข่ายหาเพื่อนและรับทีมช่วยทำกลุ่มโครงงานวิชาการสำหรับนักศึกษา โดยเลือกใช้ Next.js, NestJS และ Supabase",
-        "ติดตั้งการรักษาความปลอดภัย RLS ปิดโอกาสการแอบแฝงดึงเบอร์โทรศัพท์และช่องทางติดต่อส่วนตัวของนักศึกษา",
-        "เปิดช่องทางแชทคุยงานระดับกลุ่มโดยการเชื่อมต่อสัญญาณ Real-time ของ Supabase เพื่อประสิทธิภาพที่ดีที่สุดในการประสานงาน",
+        "ทำระบบลงทะเบียนข้อมูลผู้ใช้แบบ 6 ขั้นตอน โดยบันทึกข้อมูลแบบชั่วคราวลง LocalStorage เพื่อป้องกันข้อมูลสูญหายเมื่อรีเฟรชหน้าเว็บ",
+        "ทำแดชบอร์ดปัดการ์ดแนะนำเพื่อนร่วมเรียนโดยใช้ Framer Motion และคำนวณสัดส่วนความสนใจที่ตรงกันด้วย Jaccard Index บน NestJS",
+        "ทำระบบแนะนำสถานที่อ่านหนังสือที่สามารถกรองตามประเภทและสิ่งอำนวยความสะดวก เช่น WiFi ปลั๊กไฟ หรือร้านที่เปิด 24 ชั่วโมง",
+        "ทำระบบแชทเดี่ยวและกลุ่มผ่าน WebSocket มีระบบปักหมุด แก้ไขข้อความ ยกเลิกการส่งภายใน 1 นาที และการแสดงรีแอคชัน",
+        "ทำหน้า Landing Page รองรับทั้งธีมมืดและธีมสว่าง โดยใช้ปุ่ม CTA นำทางผู้ใช้ไปยังหน้าต่าง ๆ ตามสถานะการสมัครและกรอกข้อมูลโปรไฟล์",
       ],
     },
     images: [
@@ -601,36 +607,36 @@ export const projectsData: Record<
         url: "/images/projects/studybuddy/1_client.png",
         orientation: "landscape",
         title: {
-          en: "StudyBuddy Community Platform Landing",
-          th: "หน้าแรกแพลตฟอร์มชุมชนหาเพื่อนเรียน StudyBuddy",
+          en: "StudyBuddy Community Landing & Dynamic Routing",
+          th: "หน้าแรกแพลตฟอร์มหาเพื่อนเรียนพร้อมเส้นทางอัจฉริยะ",
         },
         description: {
-          en: "Landing page showcasing open study groups, user guidelines, and recent study recruitment listings for university students.",
-          th: "หน้าแรกของเว็บแสดงจุดเด่นระบบ แนะนำวิธีการใช้งาน และกลุ่มเรียนที่เปิดรับสมัครล่าสุด เพื่อให้นักศึกษาค้นหาเป้าหมายการอ่านหนังสือร่วมกันได้ง่าย",
+          en: "Light/dark themed landing page featuring personalized call-to-actions, user guidelines, and active study rooms directory listings.",
+          th: "หน้าแรกของเว็บแสดงจุดเด่นระบบ แนะนำวิธีการใช้งาน และปุ่มนำทาง (CTA) ที่เปลี่ยนตามสถานะการเข้าสู่ระบบและข้อมูลผู้ใช้งาน",
         },
       },
       {
         url: "/images/projects/studybuddy/2_core.png",
         orientation: "landscape",
         title: {
-          en: "Student Partner Explore Board",
-          th: "หน้าค้นหากลุ่มเรียนและรายชื่อผู้เรียนพร้อมระบบสิทธิ์ RLS",
+          en: "Matching Cards Dashboard & Jaccard Scoring",
+          th: "บอร์ดปัดการ์ดจับคู่ติวหนังสือตามเปอร์เซ็นต์ Jaccard",
         },
         description: {
-          en: "A secure filter dashboard utilizing Supabase Row-Level Security (RLS) allowing students to query study groups and match partners by major and skills safely.",
-          th: "แดชบอร์ดสำหรับค้นหากลุ่มเรียนตามรหัสวิชาหรือทักษะ ปลอดภัยด้วยการจำกัดสิทธิ์ข้อมูลระดับแถว (Row-Level Security) ป้องกันไม่ให้บุคคลภายนอกเข้าถึงข้อมูลส่วนตัวโดยไม่ได้รับอนุญาต",
+          en: "Motion-interactive profile matching swipe card deck utilizing matching score coefficient indexes mapping user preferences.",
+          th: "หน้าจอปัดการ์ดโปรไฟล์เพื่อนเรียนด้วย Framer Motion แสดงเปอร์เซ็นต์ความสนใจที่ตรงกันซึ่งคํานวณด้วย Jaccard Similarity และความสัมพันธ์ของสาขาปีการศึกษา",
         },
       },
       {
         url: "/images/projects/studybuddy/3_admin.png",
         orientation: "landscape",
         title: {
-          en: "Real-Time Chat & Study Rooms",
-          th: "ระบบห้องแชทเรียลไทม์ผ่าน WebSocket",
+          en: "Real-Time Chat Rooms & Places Directory",
+          th: "ห้องแชทสดด้วย WebSocket และพิกัดแนะนำสถานที่ติว",
         },
         description: {
-          en: "Instant messaging component utilizing WebSockets for real-time study discussions, typing alerts, and shared academic links.",
-          th: "หน้าแชทคุยงานระดับกลุ่ม พัฒนาด้วย WebSocket เพื่อการรับส่งข้อความแชทสดทันใจ การแจ้งเตือนสถานะกำลังพิมพ์ และการส่งลิงก์ทรัพยากรสำหรับการติววิชา",
+          en: "Rich-featured direct and group chat client offering pinned banners, editing, unsend timers, reactions, read notifications, and co-working spaces filters.",
+          th: "ระบบแชทสดคุยเดี่ยว/กลุ่มผ่าน WebSocket มีฟังก์ชันปักหมุดข่าว ยกเลิกส่ง พิมพ์แชทสด รีแอคชันอีโมจิ และระบบบันทึกถูกใจแนะนำร้านกาแฟ/ห้องสมุดสำหรับการเรียน",
         },
       },
     ],

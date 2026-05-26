@@ -97,16 +97,6 @@ export default function ProjectDetailPage({
               )}
             </span>
           </Link>
-
-          <span
-            style={{
-              fontSize: "0.875rem",
-              color: "var(--slate-500)",
-              fontWeight: 700,
-            }}
-          >
-            {project.role[language]}
-          </span>
         </div>
 
         {/* Dynamic Project Hero Header */}
@@ -196,15 +186,41 @@ export default function ProjectDetailPage({
                 }}
               >
                 <div>
-                  <h1
+                  <div
                     style={{
-                      fontSize: "2rem",
-                      fontWeight: 900,
-                      color: "var(--slate-900)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.75rem",
+                      flexWrap: "wrap",
+                      marginBottom: "0.25rem",
                     }}
                   >
-                    {project.title[language]}
-                  </h1>
+                    <h1
+                      style={{
+                        fontSize: "2rem",
+                        fontWeight: 900,
+                        color: "var(--slate-900)",
+                        margin: 0,
+                      }}
+                    >
+                      {project.title[language]}
+                    </h1>
+                    <span
+                      className="roleBadge"
+                      style={{
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        padding: "0.25rem 0.75rem",
+                        borderRadius: "9999px",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        whiteSpace: "nowrap",
+                        ...colors.badgeStyle,
+                      }}
+                    >
+                      {project.role[language]}
+                    </span>
+                  </div>
                   <p
                     style={{
                       fontSize: "1.125rem",
