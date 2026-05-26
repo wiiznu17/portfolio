@@ -108,9 +108,11 @@ export default function Navbar() {
     >
       <nav className={styles.nav}>
         {/* Brand Logo */}
-        <Link href="/" className={styles.logo}>
-          <span>Wiiznu</span>
-        </Link>
+        <div className={styles.logoWrapper}>
+          <Link href="/" className={styles.logo}>
+            <span>Wiiznu</span>
+          </Link>
+        </div>
 
         {/* Menu Links */}
         <div className={styles.menu}>
