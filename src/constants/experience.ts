@@ -26,9 +26,9 @@ export const experienceData: ExperienceItem[] = [
         "Studied financial payment workflows to design and successfully implement solutions on personal projects.",
       ],
       th: [
-        "ทำงานร่วมกับทีมในการดูแลพอร์ทัลผู้ดูแลระบบ <strong>SCB Planet X</strong> โดยพัฒนาฟีเจอร์และแก้ไขข้อผิดพลาดตามความต้องการของลูกค้า",
-        "เขียน Unit Tests ด้วย <strong>Jest</strong> เพื่อความถูกต้องในการทำงานของโค้ด พร้อมทั้งเรียนรู้สถาปัตยกรรมของโครงการจริง",
-        "นำ <strong>DigiPay (Payment Gateway)</strong> มาใช้กับระบบ DigiShop เพื่อพัฒนาฟังก์ชันการชำระเงินและการขอเงินคืนในระบบ",
+        "มีส่วนร่วมในการพัฒนาและดูแลระบบจัดการหลังบ้าน (Admin Portal) ของ <strong>SCB Planet X</strong> โดยพัฒนาฟีเจอร์และแก้ไขข้อผิดพลาดตามความต้องการของลูกค้า",
+        "เขียน Unit Tests ด้วย <strong>Jest</strong> เพื่อทดสอบการทำงานของโค้ด พร้อมเรียนรู้โครงสร้างสถาปัตยกรรมของโปรเจกต์",
+        "เชื่อมต่อระบบชำระเงิน <strong>DigiPay (Payment Gateway)</strong> เข้ากับโปรเจกต์ DigiShop เพื่อรองรับฟังก์ชันการชำระเงินและการขอคืนเงิน",
         "ศึกษาแนวทางการทำงานของระบบธุรกรรมทางการเงิน เพื่อนำความรู้มาออกแบบและพัฒนาบนโปรเจกต์ส่วนตัว",
       ],
     },
