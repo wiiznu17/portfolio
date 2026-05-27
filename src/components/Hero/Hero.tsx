@@ -31,7 +31,7 @@ export default function Hero() {
             >
               <defs>
                 <linearGradient
-                  id="skinGrad"
+                  id="botBody"
                   x1="0%"
                   y1="0%"
                   x2="100%"
@@ -39,27 +39,23 @@ export default function Hero() {
                 >
                   <stop
                     offset="0%"
-                    stopColor="#fff8f0"
-                  />
-                  <stop
-                    offset="60%"
-                    stopColor="#ffedd5"
+                    stopColor="#eff6ff"
                   />
                   <stop
                     offset="100%"
-                    stopColor="#fdba74"
+                    stopColor="#93c5fd"
                   />
                 </linearGradient>
                 <linearGradient
-                  id="hairGrad"
+                  id="visorGrad"
                   x1="0%"
                   y1="0%"
-                  x2="0%"
+                  x2="100%"
                   y2="100%"
                 >
                   <stop
                     offset="0%"
-                    stopColor="#334155"
+                    stopColor="#1e293b"
                   />
                   <stop
                     offset="100%"
@@ -67,104 +63,118 @@ export default function Hero() {
                   />
                 </linearGradient>
                 <linearGradient
-                  id="shirtGrad"
+                  id="eyeGlow"
                   x1="0%"
                   y1="0%"
                   x2="100%"
-                  y2="100%"
+                  y2="0%"
                 >
                   <stop
                     offset="0%"
-                    stopColor="#f8fafc"
+                    stopColor="#38bdf8"
+                  />
+                  <stop
+                    offset="50%"
+                    stopColor="#bae6fd"
                   />
                   <stop
                     offset="100%"
-                    stopColor="#cbd5e1"
+                    stopColor="#38bdf8"
                   />
                 </linearGradient>
               </defs>
-              {/* Face */}
-              <circle
-                cx="50"
-                cy="42"
-                r="20"
-                fill="url(#skinGrad)"
-              />
-              {/* Hair */}
-              <path
-                d="M28 42 C26 22, 74 22, 72 42 C67 30, 33 30, 28 42 Z"
-                fill="url(#hairGrad)"
-              />
-              <path
-                d="M28 42 C25 45, 26 35, 32 32"
-                fill="url(#hairGrad)"
-              />
-              <path
-                d="M72 42 C75 45, 74 35, 68 32"
-                fill="url(#hairGrad)"
-              />
-              {/* Eyes */}
-              <circle
-                cx="43"
-                cy="40"
-                r="3"
-                fill="#0f172a"
-              />
-              <circle
-                cx="57"
-                cy="40"
-                r="3"
-                fill="#0f172a"
-              />
-              <circle
-                cx="44.5"
-                cy="38.5"
-                r="1"
-                fill="#ffffff"
-              />
-              <circle
-                cx="58.5"
-                cy="38.5"
-                r="1"
-                fill="#ffffff"
-              />
-              {/* Cheeks */}
-              <circle
-                cx="38"
-                cy="45"
-                r="3"
-                fill="#f43f5e"
-                opacity="0.2"
-              />
-              <circle
-                cx="62"
-                cy="45"
-                r="3"
-                fill="#f43f5e"
-                opacity="0.2"
-              />
-              {/* Smile */}
-              <path
-                d="M46 48 Q50 52 54 48"
-                fill="none"
-                stroke="#0f172a"
-                strokeWidth="2"
+
+              {/* Antenna */}
+              <line
+                x1="50"
+                y1="20"
+                x2="50"
+                y2="10"
+                stroke="#94a3b8"
+                strokeWidth="3"
                 strokeLinecap="round"
               />
-              {/* Neck */}
-              <path
-                d="M44 60 L44 65 C44 69, 56 69, 56 65 L56 60 Z"
-                fill="url(#skinGrad)"
+              <circle
+                cx="50"
+                cy="8"
+                r="4"
+                fill="#fbbf24"
               />
-              {/* White Shirt */}
-              <path
-                d="M20 88 C20 68, 80 68, 80 88 Z"
-                fill="url(#shirtGrad)"
+
+              {/* Main Body/Head */}
+              <rect
+                x="25"
+                y="20"
+                width="50"
+                height="45"
+                rx="12"
+                fill="url(#botBody)"
+                stroke="#ffffff"
+                strokeWidth="2"
+              />
+              <rect
+                x="25"
+                y="20"
+                width="50"
+                height="45"
+                rx="12"
+                fill="none"
+                stroke="#60a5fa"
+                strokeWidth="1"
+                transform="translate(1, 1)"
+                opacity="0.5"
+              />
+
+              {/* Visor */}
+              <rect
+                x="30"
+                y="32"
+                width="40"
+                height="18"
+                rx="6"
+                fill="url(#visorGrad)"
+                stroke="#334155"
+                strokeWidth="2"
               />
               <path
-                d="M38 88 L50 68 L62 88 Z"
-                fill="#ffffff"
-                opacity="0.9"
+                d="M 32 35 Q 40 33 48 35"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1.5"
+                opacity="0.3"
+                strokeLinecap="round"
+              />
+
+              {/* Glowing Eyes */}
+              <rect
+                x="36"
+                y="38"
+                width="28"
+                height="6"
+                rx="3"
+                fill="url(#eyeGlow)"
+                style={{
+                  filter:
+                    "drop-shadow(0 0 3px #38bdf8)",
+                }}
+              />
+
+              {/* Feet */}
+              <rect
+                x="32"
+                y="65"
+                width="12"
+                height="12"
+                rx="4"
+                fill="#64748b"
+              />
+              <rect
+                x="56"
+                y="65"
+                width="12"
+                height="12"
+                rx="4"
+                fill="#64748b"
               />
             </svg>
           </div>
