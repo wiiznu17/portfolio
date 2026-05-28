@@ -218,6 +218,10 @@ export const projectsData: Record<
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
       },
       {
+        name: "Redis",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/redis/redis-original.svg",
+      },
+      {
         name: "Kafka",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
       },
@@ -402,7 +406,7 @@ export const projectsData: Record<
       },
       {
         name: "Redis",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/redis/redis-original.svg",
       },
       {
         name: "Azure Blob Storage",
