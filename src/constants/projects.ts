@@ -294,8 +294,8 @@ export const projectsData: Record<
     },
     year: "2025",
     role: {
-      en: "Fullstack Developer (Cooperative Education)",
-      th: "Fullstack Developer (นักศึกษาฝึกงานสหกิจศึกษา)",
+      en: "Web Developer (Cooperative Education)",
+      th: "Web Developer (นักศึกษาฝึกงานสหกิจศึกษา)",
     },
     tagline: {
       en: "A multi-vendor e-commerce platform built on a Client-Server architecture to demonstrate deep integration with the DigiPay Payment Gateway, showcasing real-time transaction void and refund workflows.",
@@ -305,8 +305,8 @@ export const projectsData: Record<
     bannerGradient:
       "linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)",
     problem: {
-      en: "The payment gateway team required an interactive, production-grade e-commerce prototype to demonstrate the seamless integration of DigiPay APIs to banking partners and merchant clients. The prototype needed to feature multi-vendor storefronts, robust administrative backoffice controls, and reliable transaction reversal workflows (Voids and Refunds) modeled precisely after live payment gateway API behaviors.",
-      th: "เนื่องจากทีมงานต้องการระบบต้นแบบเพื่อสาธิตขั้นตอนการเชื่อมต่อของ DigiPay Payment Gateway แก่กลุ่มลูกค้าธนาคารและร้านค้าพันธมิตร ระบบจึงจำเป็นต้องจำลองพฤติกรรมของ Multi-Vendor Marketplace จริง ที่รองรับระบบผู้ขายหลายราย, แผงควบคุมหลังบ้านแบบละเอียด, รวมถึงขั้นตอนการขอยกเลิกเงินและคืนเงินย้อนกลับ (Void & Refund) ที่ทำงานตรงตาม API Spec จริงทุกประการ",
+      en: "To demonstrate the DigiPay Payment Gateway integration process to clients, the company proposed developing a Multi-Vendor Marketplace prototype. This system simulates a real-world multi-vendor environment, featuring comprehensive administrative controls and reliable transaction reversal workflows (Voids and Refunds) modeled precisely after live payment gateway API behaviors.",
+      th: "เนื่องจากบริษัทต้องการระบบต้นแบบเพื่อสาธิตขั้นตอนการเชื่อมต่อของ DigiPay Payment Gateway แก่กลุ่มลูกค้า จึงได้เสนอให้พัฒนาระบบ Multi-Vendor Marketplace เพื่อจำลองพฤติกรรมร้านค้าที่มีผู้ขายหลายราย พร้อมระบบควบคุมหลังบ้าน และขั้นตอนการยกเลิกหรือคืนเงิน (Void & Refund) ที่ทำงานตรงตาม API Spec จริงทุกประการ",
     },
     solution: {
       en: "I architected the database schema and system workflows from scratch. I developed the merchant portal and backoffice administrator dashboards using Next.js 15, Express.js, and Sequelize ORM on a MySQL database. I implemented real-time transaction void and refund pipelines integrated with DigiPay APIs, stored product assets securely on Azure Blob Storage, implemented asymmetric JWT security utilizing RSA Key Pairs, and automated administrator onboarding flows via the SendGrid API.",
@@ -487,8 +487,8 @@ export const projectsData: Record<
     },
     year: "2026",
     role: {
-      en: "Fullstack Developer (Core Features)",
-      th: "Fullstack Developer (ผู้พัฒนาฟีเจอร์หลัก)",
+      en: "Web Developer (Core Features)",
+      th: "Web Developer (ผู้พัฒนาฟีเจอร์หลัก)",
     },
     tagline: {
       en: "A student profile directory web platform helping university students find study partners, view interactive profile cards, explore study spaces, and chat in real-time. Built with Next.js, NestJS, and Supabase, utilizing PostgreSQL Row-Level Security (RLS) and WebSockets.",
