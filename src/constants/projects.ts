@@ -85,11 +85,14 @@ export interface Project {
   architecture: { en: string[]; th: string[] }
   highlights: HighlightItem[]
   techStack: TechStackItem[]
-  githubUrl: string
-  demoUrl: string
-  videoUrl: string
+  githubUrl?: string
+  demoUrl?: string
+  videoUrl?: string
+  reportUrl?: string
   hasDemo?: boolean
   hasVideo?: boolean
+  hasSourceCode?: boolean
+  hasReport?: boolean
   bullets: { en: string[]; th: string[] }
   images: ProjectImage[]
 }
@@ -229,9 +232,13 @@ export const projectsData: Record<
       },
     ],
     githubUrl: "https://github.com/wiiznu17/j-ledger",
-    demoUrl: "https://p-wallet.wiiznu.dev",
-    hasDemo: false,
+    // demoUrl: "https://p-wallet.wiiznu.dev",
     videoUrl: "https://drive.google.com/file/d/1qpvlqDPhZ1L4BQeSovWACie49VHHhrVk/view?usp=drive_link",
+    hasReport: false,
+    hasDemo: false,
+    hasVideo: true,
+    hasSourceCode: true,
+    
     bullets: {
       en: [
         "Developed the financial transaction processing engine with Spring Boot and Hibernate within a double-entry ledger architecture.",
@@ -418,11 +425,14 @@ export const projectsData: Record<
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
       },
     ],
-    githubUrl: "https://github.com/wiiznu17/digishop",
-    demoUrl: "https://digishop.wiiznu.dev",
-    videoUrl: "https://video.wiiznu.dev/digishop",
+    // githubUrl: "https://github.com/wiiznu17/digishop",
+    // demoUrl: "https://digishop.wiiznu.dev",
+    // videoUrl: "https://video.wiiznu.dev/digishop",
+    reportUrl: "https://drive.google.com/file/d/1EIyz-zeb8qhczTNdg_SfXzCNbEMu-Veb/view?usp=sharing",
     hasDemo: false,
     hasVideo: false,
+    hasSourceCode: false,
+    hasReport: true,
     bullets: {
       en: [
         "Designed and built the multi-vendor Merchant portal (inventories, orders) and Admin portal (RBAC, approvals) on a Client-Server architecture using Next.js 15 and Express.js.",
@@ -592,6 +602,10 @@ export const projectsData: Record<
     githubUrl: "https://github.com/wiiznu17/study-buddy",
     demoUrl: "https://study-buddy.space/",
     videoUrl: "https://drive.google.com/file/d/1IxOkJpOy2x86zUCFV4xVXX8z7rE9McYQ/view?usp=drive_link",
+    hasReport: false,
+    hasVideo: true,
+    hasDemo: true,
+    hasSourceCode: true,
     bullets: {
       en: [
         "Developed the multi-step Onboarding form using a persistent RegistrationContext with LocalStorage data recovery to assure smooth signup flows.",

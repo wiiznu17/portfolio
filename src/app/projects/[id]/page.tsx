@@ -980,6 +980,7 @@ export default function ProjectDetailPage({
                 </svg>
               </button>
             )}
+            {project.hasSourceCode !== false ? (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -1002,6 +1003,31 @@ export default function ProjectDetailPage({
                 )}
               </span>
             </a>
+            ) : null}
+            {project.hasReport !== false ? (
+            <a
+              href={project.reportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="clay-btn-secondary"
+              style={{
+                padding: "0.75rem 2rem",
+                borderRadius: "1.25rem",
+                fontSize: "0.95rem",
+                fontWeight: 700,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
+              <span>
+                {t(
+                  "proj_btn_view_report",
+                  COMMON_TRANSLATIONS
+                )}
+              </span>
+            </a>
+            ) : null}
             <Link
               href="/#projects"
               className="clay-btn-secondary"

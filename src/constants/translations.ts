@@ -69,6 +69,10 @@ export const COMMON_TRANSLATIONS: Record<
     en: "View Repository",
     th: "ดูซอร์สโค้ด",
   },
+  proj_btn_view_report: {
+    en: "View Report",
+    th: "ดูรายงาน"
+  },
   proj_btn_other: {
     en: "Browse Other Projects",
     th: "ดูผลงานอื่น ๆ",
