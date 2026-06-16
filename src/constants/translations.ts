@@ -23,7 +23,7 @@ export const COMMON_TRANSLATIONS: Record<
   // Hero Section
   hero_title: {
     en: "Hi, I'm Wissanu Rayayoi",
-    th: "สวัสดีครับ ผมวิษณุ ระยาย้อย",
+    th: "สวัสดีครับ ผม วิษณุ ระยาย้อย",
   },
   hero_subtitle: {
     en: "Software Engineer",
