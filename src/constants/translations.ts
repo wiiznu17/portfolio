@@ -169,6 +169,10 @@ export const COMMON_TRANSLATIONS: Record<
     en: "Japanese",
     th: "ภาษาญี่ปุ่น",
   },
+  info_toeic: {
+    en: "TOEIC 780",
+    th: "TOEIC 780",
+  },
 
   // Contact Section
   contact_title: {

@@ -331,6 +331,9 @@ export default function AdditionalInfo() {
                 <div>
                   <h4 className={styles.langName}>
                     {t("info_lang_en", COMMON_TRANSLATIONS)}
+                    <span className={styles.toeicBadge}>
+                      {t("info_toeic", COMMON_TRANSLATIONS)}
+                    </span>
                   </h4>
                   <p className={styles.langLevel}>
                     {t(
