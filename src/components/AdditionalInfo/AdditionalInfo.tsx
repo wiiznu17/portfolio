@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 export default function AdditionalInfo() {
-  const { language, t } = useLanguage()
+  const { t } = useLanguage()
   return (
     <section id="info" className={styles.section}>
       <div className="section-title-wrap">
@@ -223,16 +223,12 @@ export default function AdditionalInfo() {
                 </div>
                 <div>
                   <h4 className={styles.eduName}>
-                    {language === "th"
-                      ? "มหาวิทยาลัยขอนแก่น"
-                      : "Khon Kaen University"}
+                    {t("info_kku", COMMON_TRANSLATIONS)}
                   </h4>
                   <p
                     className={styles.eduSubtitle}
                   >
-                    {language === "th"
-                      ? "ปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์"
-                      : "Bachelor of Engineering in Computer Engineering"}
+                    {t("info_kku_degree", COMMON_TRANSLATIONS)}
                   </p>
                   <div className={styles.metaRow}>
                     <span
@@ -243,9 +239,7 @@ export default function AdditionalInfo() {
                     <span
                       className={styles.gpaxBadge}
                     >
-                      {language === "th"
-                        ? "เกรดเฉลี่ยสะสม (GPAX): 3.07"
-                        : "GPAX: 3.07"}
+                      {t("info_gpax", COMMON_TRANSLATIONS)}
                     </span>
                   </div>
                 </div>
@@ -308,9 +302,7 @@ export default function AdditionalInfo() {
                 </div>
                 <div>
                   <h4 className={styles.langName}>
-                    {language === "th"
-                      ? "ภาษาไทย"
-                      : "Thai"}
+                    {t("info_lang_th", COMMON_TRANSLATIONS)}
                   </h4>
                   <p className={styles.langLevel}>
                     {t(
@@ -338,9 +330,7 @@ export default function AdditionalInfo() {
                 </div>
                 <div>
                   <h4 className={styles.langName}>
-                    {language === "th"
-                      ? "ภาษาอังกฤษ"
-                      : "English"}
+                    {t("info_lang_en", COMMON_TRANSLATIONS)}
                   </h4>
                   <p className={styles.langLevel}>
                     {t(
@@ -368,9 +358,7 @@ export default function AdditionalInfo() {
                 </div>
                 <div>
                   <h4 className={styles.langName}>
-                    {language === "th"
-                      ? "ภาษาญี่ปุ่น"
-                      : "Japanese"}
+                    {t("info_lang_jp", COMMON_TRANSLATIONS)}
                   </h4>
                   <p className={styles.langLevel}>
                     {t(

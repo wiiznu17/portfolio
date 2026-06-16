@@ -145,6 +145,30 @@ export const COMMON_TRANSLATIONS: Record<
     en: "Beginner",
     th: "ระดับเริ่มต้น",
   },
+  info_kku: {
+    en: "Khon Kaen University",
+    th: "มหาวิทยาลัยขอนแก่น",
+  },
+  info_kku_degree: {
+    en: "Bachelor of Engineering in Computer Engineering",
+    th: "ปริญญาวิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์",
+  },
+  info_gpax: {
+    en: "GPAX: 3.07",
+    th: "เกรดเฉลี่ยสะสม (GPAX): 3.07",
+  },
+  info_lang_th: {
+    en: "Thai",
+    th: "ภาษาไทย",
+  },
+  info_lang_en: {
+    en: "English",
+    th: "ภาษาอังกฤษ",
+  },
+  info_lang_jp: {
+    en: "Japanese",
+    th: "ภาษาญี่ปุ่น",
+  },
 
   // Contact Section
   contact_title: {
@@ -178,5 +202,9 @@ export const COMMON_TRANSLATIONS: Record<
   contact_error: {
     en: "Oops! Something went wrong, please try again.",
     th: "ขออภัย! มีข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง",
+  },
+  footer_text: {
+    en: "Designed & Built with passion using Next.js & Claymorphism.",
+    th: "ออกแบบและพัฒนาอย่างตั้งใจด้วย Next.js และสไตล์ Claymorphism",
   },
 }
