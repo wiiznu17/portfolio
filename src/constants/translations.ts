@@ -179,6 +179,34 @@ export const COMMON_TRANSLATIONS: Record<
     en: "Get In Touch",
     th: "ติดต่อฉัน",
   },
+  contact_subtitle: {
+    en: "If you have any job offers or collaboration opportunities, feel free to reach out via the channels below or fill out this form.",
+    th: "หากมีข้อเสนอหรือโอกาสในการร่วมงาน สามารถติดต่อผ่านช่องทางด้านล่างหรือกรอกฟอร์มนี้ได้เลยครับ",
+  },
+  contact_name_placeholder: {
+    en: "John Doe",
+    th: "ชื่อของคุณ",
+  },
+  contact_msg_placeholder: {
+    en: "Hi Wissanu, I'd love to chat about...",
+    th: "สวัสดีวิษณุ ฉันต้องการพูดคุยเกี่ยวกับ...",
+  },
+  contact_modal_title: {
+    en: "Message Sent!",
+    th: "ส่งข้อความเรียบร้อยแล้ว!",
+  },
+  contact_modal_close: {
+    en: "Close",
+    th: "ปิด",
+  },
+  contact_alert_fill: {
+    en: "Please fill in all fields.",
+    th: "กรุณากรอกข้อมูลให้ครบถ้วน",
+  },
+  contact_alert_connection: {
+    en: "A connection error occurred. Please check your internet connection.",
+    th: "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ตของคุณ",
+  },
   contact_name_label: {
     en: "Your Full Name",
     th: "ชื่อ-นามสกุลของคุณ",

@@ -8,7 +8,7 @@ import { Mail, Phone } from "lucide-react"
 import { CONTACT_INFO } from "@/constants/contact"
 
 export default function Contact() {
-  const { language, t } = useLanguage()
+  const { t } = useLanguage()
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
@@ -22,11 +22,7 @@ export default function Contact() {
   ) => {
     e.preventDefault()
     if (!name || !email || !message) {
-      alert(
-        language === "th"
-          ? "กรุณากรอกข้อมูลให้ครบถ้วน"
-          : "Please fill in all fields."
-      )
+      alert(t("contact_alert_fill", COMMON_TRANSLATIONS))
       return
     }
 
@@ -65,11 +61,7 @@ export default function Contact() {
         )
       }
     } catch {
-      alert(
-        language === "th"
-          ? "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาตรวจสอบอินเทอร์เน็ตของคุณ"
-          : "A connection error occurred. Please check your internet connection."
-      )
+      alert(t("contact_alert_connection", COMMON_TRANSLATIONS))
     } finally {
       setIsSubmitting(false)
     }
@@ -165,9 +157,7 @@ export default function Contact() {
               )}
             </h3>
             <p className={styles.subtitle}>
-              {language === "th"
-                ? "หากมีข้อเสนอหรือโอกาสในการร่วมงาน สามารถติดต่อผ่านช่องทางด้านล่างหรือกรอกฟอร์มนี้ได้เลยครับ"
-                : "If you have any job offers or collaboration opportunities, feel free to reach out via the channels below or fill out this form."}
+              {t("contact_subtitle", COMMON_TRANSLATIONS)}
             </p>
 
             {/* Direct Shortcuts */}
@@ -218,11 +208,7 @@ export default function Contact() {
                 <input
                   id="formName"
                   type="text"
-                  placeholder={
-                    language === "th"
-                      ? "ชื่อของคุณ"
-                      : "John Doe"
-                  }
+                  placeholder={t("contact_name_placeholder", COMMON_TRANSLATIONS)}
                   className={styles.input}
                   value={name}
                   onChange={(e) =>
@@ -268,11 +254,7 @@ export default function Contact() {
               <textarea
                 id="formMessage"
                 rows={4}
-                placeholder={
-                  language === "th"
-                    ? "สวัสดีวิษณุ ฉันต้องการพูดคุยเกี่ยวกับ..."
-                    : "Hi Wissanu, I'd love to chat about..."
-                }
+                placeholder={t("contact_msg_placeholder", COMMON_TRANSLATIONS)}
                 className={styles.textarea}
                 value={message}
                 onChange={(e) =>
@@ -312,16 +294,14 @@ export default function Contact() {
       >
         {/* Modal Box */}
         <div
-          className={styles.modalBody}
+          className={`${styles.modalBody} clay-card`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.modalIcon}>
             ✓
           </div>
           <h4 className={styles.modalTitle}>
-            {language === "th"
-              ? "ส่งข้อความเรียบร้อยแล้ว!"
-              : "Message Sent!"}
+            {t("contact_modal_title", COMMON_TRANSLATIONS)}
           </h4>
           <p className={styles.modalText}>
             {t(
@@ -330,12 +310,12 @@ export default function Contact() {
             )}
           </p>
           <button
-            className={styles.modalCloseBtn}
+            className={`${styles.modalCloseBtn} clay-btn-emerald`}
             onClick={() =>
               setIsSuccessOpen(false)
             }
           >
-            {language === "th" ? "ปิด" : "Close"}
+            {t("contact_modal_close", COMMON_TRANSLATIONS)}
           </button>
         </div>
       </div>
