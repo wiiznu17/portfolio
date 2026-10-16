@@ -156,6 +156,7 @@ export default function Navbar() {
 
         {/* Action area: Language toggle + CTA Button */}
         <div className={styles.actionContainer}>
+          {/* Language toggle temporarily hidden
           <div
             className={styles.langToggle}
             onClick={() =>
@@ -191,6 +192,7 @@ export default function Navbar() {
               TH
             </span>
           </div>
+          */}
 
           <Link
             href={
