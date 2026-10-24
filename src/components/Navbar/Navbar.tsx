@@ -111,6 +111,7 @@ export default function Navbar() {
         <div className={styles.logoWrapper}>
           <Link href="/" className={styles.logo}>
             <span>Wiiznu</span>
+            <span className={styles.logoSparkle}>✦</span>
           </Link>
         </div>
 
@@ -196,12 +197,26 @@ export default function Navbar() {
             href={
               isHome ? "#contact" : "/#contact"
             }
-            className={`${styles.ctaBtn} clay-btn`}
+            className={styles.contactBtn}
           >
-            {t(
-              "nav_contact",
-              COMMON_TRANSLATIONS
-            )}
+            <svg
+              className={styles.contactIcon}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <span>
+              {t(
+                "nav_contact",
+                COMMON_TRANSLATIONS
+              )}
+            </span>
           </Link>
         </div>
       </nav>

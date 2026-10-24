@@ -29,8 +29,8 @@ export default function Footer() {
               fill="currentColor"
               viewBox="0 0 24 24"
               style={{
-                width: "1.25rem",
-                height: "1.25rem",
+                width: "1.1rem",
+                height: "1.1rem",
               }}
             >
               <path
@@ -54,8 +54,8 @@ export default function Footer() {
               fill="currentColor"
               viewBox="0 0 24 24"
               style={{
-                width: "1.25rem",
-                height: "1.25rem",
+                width: "1.1rem",
+                height: "1.1rem",
               }}
             >
               <path

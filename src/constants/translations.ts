@@ -21,6 +21,14 @@ export const COMMON_TRANSLATIONS: Record<
   },
 
   // Hero Section
+  hero_greeting: {
+    en: "Hi, I'm",
+    th: "สวัสดีครับ ผม",
+  },
+  hero_fullname: {
+    en: "Wissanu Rayayoi",
+    th: "วิษณุ ระยาย้อย",
+  },
   hero_title: {
     en: "Hi, I'm Wissanu Rayayoi",
     th: "สวัสดีครับ ผม วิษณุ ระยาย้อย",
@@ -236,7 +244,7 @@ export const COMMON_TRANSLATIONS: Record<
     th: "ขออภัย! มีข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง",
   },
   footer_text: {
-    en: "Designed & Built with passion using Next.js & Claymorphism.",
-    th: "ออกแบบและพัฒนาอย่างตั้งใจด้วย Next.js และสไตล์ Claymorphism",
+    en: "Designed & Built with Next.js",
+    th: "ออกแบบและพัฒนาด้วย Next.js",
   },
 }

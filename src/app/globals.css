@@ -6,10 +6,10 @@
     sans-serif;
   --bg-gradient: linear-gradient(
     135deg,
-    #e0ebfc 0%,
-    #fdecf6 40%,
-    #faeefd 70%,
-    #e2eafb 100%
+    #edf3fd 0%,
+    #f8fbfe 30%,
+    #ffffff 60%,
+    #eef4fc 100%
   );
 
   /* Slate Colors */
@@ -395,10 +395,10 @@ a {
 
 /* Shared structural layout helpers */
 .container-max {
-  max-width: 80rem; /* 1280px */
+  max-width: 84rem; /* 1344px */
   margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .section-title-wrap {

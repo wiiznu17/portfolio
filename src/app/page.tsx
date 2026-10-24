@@ -22,6 +22,9 @@ export default function Home() {
       {/* Main Glassmorphic Navigation */}
       <Navbar />
 
+      {/* About / Hero Details - Full bleed to top-right */}
+      <Hero />
+
       {/* Central Content Area */}
       <main
         className="container-max py-8 flex flex-col gap-16 md:gap-24"
@@ -29,12 +32,9 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           gap: "3.75rem",
-          paddingBottom: "4rem",
+          paddingBottom: "2rem",
         }}
       >
-        {/* About / Hero Details */}
-        <Hero />
-
         {/* Work Intern History */}
         <Experience />
 
