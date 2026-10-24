@@ -87,6 +87,24 @@
   );
 }
 
+.bannerNida {
+  background: linear-gradient(
+    135deg,
+    #faf7f2 0%,
+    #fef3c7 50%,
+    #fed7aa 100%
+  );
+}
+
+.bannerUpcoming {
+  background: linear-gradient(
+    135deg,
+    #eff6ff 0%,
+    #f5f3ff 50%,
+    #ede9fe 100%
+  );
+}
+
 .blob {
   position: absolute;
   border-radius: 50%;

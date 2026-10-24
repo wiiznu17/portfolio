@@ -665,4 +665,168 @@ export const projectsData: Record<
       },
     ],
   },
+  nida: {
+    id: "nida",
+    title: { en: "Nida", th: "Nida" },
+    subtitle: {
+      en: "E-Commerce Platform for Fashion Brand",
+      th: "ระบบอีคอมเมิร์ซสำหรับแบรนด์แฟชั่น",
+    },
+    year: "2026",
+    role: {
+      en: "Fullstack Engineer & System Architect",
+      th: "Fullstack Engineer & System Architect",
+    },
+    tagline: {
+      en: "An e-commerce platform engineered on a Turborepo monorepo architecture, featuring a Next.js customer storefront, a React back-office admin portal, dual decoupled NestJS APIs, and PostgreSQL with Prisma ORM. Powered by deterministic background job automation via BullMQ and Redis for auto-cancellation of unpaid orders and stock restocking, accompanied by a Dual-Token authentication engine with Refresh Token Rotation and Redis session invalidation.",
+      th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาบนสถาปัตยกรรม Monorepo ด้วย Turborepo ที่รวมหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ เข้ากับฐานข้อมูล PostgreSQL และ Prisma ORM โดดเด่นด้วยระบบประมวลผลงานเบื้องหลังอัตโนมัติผ่าน BullMQ และ Redis จัดการวงจรชีวิตออเดอร์ (ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงิน) พร้อมระบบรักษาความปลอดภัย Dual-Token (JWT + Redis Session) และ Refresh Token Rotation ป้องกันการขโมยสิทธิ์เข้าถึงระบบ",
+    },
+    themeColor: "amber",
+    bannerGradient: "linear-gradient(135deg, #faf7f2 0%, #fef3c7 50%, #fed7aa 100%)",
+    problem: {
+      en: "E-commerce retail faces severe operational challenges: stock-hoarding by unpaid orders and bots locking up inventory, unreviewed return requests leading to customer dissatisfaction, payment gateway webhook race conditions, and vulnerabilities in administrative access that could compromise customer financial transactions and stock accuracy.",
+      th: "ธุรกิจอีคอมเมิร์ซสินค้าแฟชั่นมักประสบปัญหาการกั๊กสต็อกสินค้าจากออเดอร์ที่ค้างชำระ (Stock Hoarding) ทำให้ร้านค้าเสียโอกาสในการขาย, คำขอยกเลิกและคืนสินค้าที่ตกค้างหากไม่มีระบบติดตามอัตโนมัติ, ปัญหา Race Conditions จากการแจ้งเตือนชำระเงินของ Payment Gateway และความเสี่ยงด้านความปลอดภัยในการเข้าถึงระบบหลังบ้านของแอดมิน ซึ่งอาจส่งผลกระทบต่อสต็อกสินค้าและข้อมูลธุรกรรม",
+    },
+    solution: {
+      en: "I engineered a unified Turborepo monorepo with automated background job queues using @nestjs/bullmq and Redis to deterministically govern order timeouts (auto-cancelling unpaid orders and restocking within 15 mins for PromptPay). Additionally, I implemented a Dual-Token authentication architecture featuring Refresh Token Rotation with token reuse detection, one-time token admin invitation onboarding, a pro-rated net price calculation engine for partial refunds, and Omise payment webhook idempotency.",
+      th: "ผมได้ออกแบบและพัฒนาระบบบนสถาปัตยกรรม Turborepo Monorepo พร้อมติดตั้งระบบคิวงานเบื้องหลังอัตโนมัติด้วย BullMQ และ Redis เพื่อควบคุมวงจรชีวิตคำสั่งซื้ออย่างแม่นยำ (ยกเลิกออเดอร์ที่ค้างชำระเกินกำหนด 15 นาทีพร้อมคืนสต็อกอัตโนมัติ) และพัฒนาระบบความปลอดภัย Dual-Token Authentication พร้อม Refresh Token Rotation ใน Redis ตรวจจับการขโมย Token, ระบบเชิญแอดมินด้วย One-Time Token, ระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund และระบบยืนยันความถูกต้องของ Webhook ป้องกันการยิงซ้ำ (Idempotency)",
+    },
+    architecture: {
+      en: [
+        "Turborepo Monorepo structure managing Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API, and shared Prisma/Zod validation packages.",
+        "BullMQ & Redis 7 background worker cluster managing delayed jobs for unpaid order auto-cancellation, 48-hour return review timeouts, and 5-day delivery auto-completion.",
+        "Dual-Token Authentication (15-min Access Token + 7-day Refresh Token) with cryptographic Token Family Rotation, replay attack revocation, and Redis-backed session invalidation.",
+        "Zero-Knowledge Admin Onboarding via Redis-backed One-Time Setup Tokens (48h TTL) sent through automated email invitations without hardcoded initial passwords.",
+        "E-Commerce Core Engines: Pre-Order reservation quotas, Coupon abuse-prevention engine, pro-rated net cost refund ledger, and weight-based shipping matrix.",
+        "PostgreSQL 16 relational database with Prisma ORM, implementing comprehensive audit trails (StockMovement and AdminAuditLog) for 100% operational traceability.",
+      ],
+      th: [
+        "สถาปัตยกรรม Turborepo Monorepo แยกโมดูลแอปพลิเคชัน (Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API) ร่วมกับแพ็กเกจฐานข้อมูล Prisma และ Zod Validators",
+        "ระบบคิวงานอัตโนมัติด้วย BullMQ และ Redis 7 จัดการ Delayed Jobs: ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงินในเวลา, อนุมัติคำขอยกเลิกอัตโนมัติใน 48 ชม., และปิดจ็อบจัดส่งสำเร็จใน 5 วัน",
+        "ระบบรักษาความปลอดภัย Dual-Token Authentication ร่วมกับ Refresh Token Rotation ใน Redis พร้อมระบบตรวจจับ Token Replay และสั่งตัด Session ทุกอุปกรณ์เมื่อตรวจพบความผิดปกติ",
+        "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invitation) ด้วย One-Time Token ผ่าน Redis (TTL 48 ชม.) ให้ผู้ใช้ตั้งรหัสผ่านเองอย่างปลอดภัย",
+        "ระบบคำนวณราคาสุทธิถัวเฉลี่ยต่อชิ้น (Pro-rated Net Price Calculation) เพื่อการคืนเงินบางส่วน (Partial Refund) และระบบ Ledger บันทึกประวัติคะแนนสะสมและสต็อกสินค้าอย่างแม่นยำ",
+        "ฐานข้อมูล PostgreSQL 16 ผ่าน Prisma ORM พร้อมระบบบันทึก AuditLog และ StockMovement ทุกครั้งที่มีการเปลี่ยนแปลงสถานะหรือสต็อก เพื่อความโปร่งใสตรวจสอบได้ 100%",
+      ],
+    },
+    highlights: [
+      {
+        title: {
+          en: "Automated Order Lifecycles",
+          th: "ระบบควบคุมวงจรชีวิตออเดอร์อัตโนมัติ",
+        },
+        description: {
+          en: "BullMQ & Redis delayed workers handle auto-cancellation, restocking, and return timeouts deterministically.",
+          th: "ประมวลผลงานเบื้องหลังด้วย BullMQ + Redis จัดการคืนสต็อกและยกเลิกออเดอร์ค้างชำระอัตโนมัติโดยไม่ต้องใช้คนกวาดงาน",
+        },
+        icon: "Clock",
+      },
+      {
+        title: {
+          en: "Dual-Token Authentication",
+          th: "ระบบความปลอดภัย Dual-Token",
+        },
+        description: {
+          en: "15-min JWTs + 7-day Refresh Tokens with cryptographic rotation, replay attack detection, and instant multi-device revocation.",
+          th: "สถาปัตยกรรม Dual-Token พร้อม Refresh Token Rotation ใน Redis และระบบเพิกถอน Token ทันทีเมื่อถูก Replay",
+        },
+        icon: "Shield",
+      },
+      {
+        title: {
+          en: "Turborepo Modular Monorepo",
+          th: "สถาปัตยกรรม Monorepo ประสิทธิภาพสูง",
+        },
+        description: {
+          en: "Decoupled Next.js storefront, React admin back-office, and separate NestJS APIs sharing Prisma and Zod packages.",
+          th: "รวมหน้าร้าน Next.js, หลังบ้าน React, และ NestJS APIs ไว้ใน Monorepo เดียวกัน พร้อมแชร์ Schema และ Validation",
+        },
+        icon: "Layers",
+      },
+      {
+        title: {
+          en: "Pro-Rated Refund Ledger",
+          th: "ระบบคำนวณและบันทึกบัญชีคืนเงิน",
+        },
+        description: {
+          en: "Automated item-level net cost breakdown ensuring precise partial refunds and immutable transaction audit trails.",
+          th: "คำนวณส่วนลดเฉลี่ยรายชิ้นเพื่อคืนเงินบางส่วนได้อย่างถูกต้องตามจริง พร้อมบันทึกบัญชีแยกประเภทอย่างแม่นยำ",
+        },
+        icon: "DollarSign",
+      },
+    ],
+    techStack: [
+      {
+        name: "Turborepo",
+        logo: "custom-turborepo",
+      },
+      {
+        name: "Next.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "NestJS",
+        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        name: "Prisma",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+      },
+      {
+        name: "Redis",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        name: "BullMQ",
+        logo: "custom-bullmq",
+      },
+      {
+        name: "Docker",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        name: "TypeScript",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "TailwindCSS",
+        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
+      },
+    ],
+    githubUrl: "https://github.com/wiiznu17",
+    hasSourceCode: false,
+    hasDemo: false,
+    bullets: {
+      en: [
+        "Architected a scalable Turborepo Monorepo unifying Next.js Storefront, React Admin, and dual NestJS APIs.",
+        "Engineered BullMQ & Redis delayed queues for automated unpaid order cancellation, restocking, and fulfillment timeouts.",
+        "Implemented Dual-Token authentication with Token Family Rotation, replay attack detection, and multi-device revocation.",
+        "Built specialized e-commerce engines: Pre-Order reservation quotas, coupon abuse-prevention, and pro-rated net cost partial refunds.",
+      ],
+      th: [
+        "ออกแบบและพัฒนาสถาปัตยกรรม Turborepo Monorepo ผสานหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ",
+        "พัฒนาระบบคิวงาน Delayed Jobs ด้วย BullMQ และ Redis จัดการตัดและคืนสต็อกอัตโนมัติเมื่อออเดอร์ค้างชำระเกินกำหนดเวลา",
+        "วางระบบความปลอดภัย Dual-Token (JWT + Redis Session) พร้อม Refresh Token Rotation ตรวจจับการขโมย Token และสั่งตัด Session ทุกอุปกรณ์",
+        "พัฒนาระบบเฉพาะทาง: จัดการโควตาจองสินค้า Pre-Order, ระบบป้องกันการใช้คูปองซ้ำซ้อน, และระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund",
+      ],
+    },
+    images: [
+      {
+        url: "/images/projects/nida/logo.png",
+        orientation: "landscape",
+        title: {
+          en: "Nida Brand & Architectural Overview",
+          th: "ภาพรวมสถาปัตยกรรมและอัตลักษณ์แบรนด์ Nida",
+        },
+        description: {
+          en: "Apparel & Lifestyle E-Commerce Platform built with Next.js, NestJS, Prisma, and BullMQ.",
+          th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาด้วย Next.js, NestJS, Prisma และ BullMQ",
+        },
+      },
+    ],
+  },
 }

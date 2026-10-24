@@ -11,6 +11,8 @@ const bannerStyles: Record<string, string> = {
   "p-wallet": styles.bannerPwallet,
   digishop: styles.bannerDigishop,
   studybuddy: styles.bannerStudybuddy,
+  nida: styles.bannerNida,
+  "upcoming-project": styles.bannerUpcoming,
 }
 
 const yearBadgeStyles: Record<string, string> = {
@@ -36,15 +38,13 @@ export default function Projects() {
       <div className={styles.grid}>
         {Object.values(projectsData).map(
           (project) => {
-            const isFullWidth =
-              project.id === "studybuddy"
             return (
               <div
                 key={project.id}
-                className={`${styles.card} clay-card ${isFullWidth ? styles.fullWidthCard : ""}`}
+                className={`${styles.card} clay-card`}
               >
                 <div
-                  className={`${styles.banner} ${bannerStyles[project.id]}`}
+                  className={`${styles.banner} ${bannerStyles[project.id] || styles.bannerUpcoming}`}
                 >
                   {project.id === "p-wallet" && (
                     <>
@@ -106,18 +106,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div
-                  className={styles.body}
-                  style={
-                    isFullWidth
-                      ? {
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "1.5rem",
-                        }
-                      : undefined
-                  }
-                >
+                <div className={styles.body}>
                   <div
                     style={{
                       display: "flex",
@@ -126,11 +115,7 @@ export default function Projects() {
                       width: "100%",
                     }}
                   >
-                    <div
-                      className={
-                        styles.cardHeader
-                      }
-                    >
+                    <div className={styles.cardHeader}>
                       <div
                         style={{
                           display: "flex",
@@ -138,36 +123,17 @@ export default function Projects() {
                           gap: "0.75rem",
                         }}
                       >
-                        <h3
-                          className={
-                            styles.cardTitle
-                          }
-                        >
-                          {
-                            project.title[
-                              language
-                            ]
-                          }
+                        <h3 className={styles.cardTitle}>
+                          {project.title[language]}
                         </h3>
-                        {isFullWidth && (
-                          <span
-                            className={`${styles.yearBadge} ${yearBadgeStyles[project.themeColor]}`}
-                          >
-                            {project.year}
-                          </span>
-                        )}
                       </div>
-                      {!isFullWidth && (
-                        <span
-                          className={`${styles.yearBadge} ${yearBadgeStyles[project.themeColor]}`}
-                        >
-                          {project.year}
-                        </span>
-                      )}
+                      <span
+                        className={`${styles.yearBadge} ${yearBadgeStyles[project.themeColor]}`}
+                      >
+                        {project.year}
+                      </span>
                     </div>
-                    <p
-                      className={styles.subtitle}
-                    >
+                    <p className={styles.subtitle}>
                       {project.subtitle[language]}
                     </p>
                     <div
