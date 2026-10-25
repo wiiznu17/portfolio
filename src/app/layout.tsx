@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans } from "next/font/google"
+import { Plus_Jakarta_Sans, IBM_Plex_Sans_Thai } from "next/font/google"
 import "./globals.css"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -12,7 +12,21 @@ const plusJakartaSans = Plus_Jakarta_Sans({
     "700",
     "800",
   ],
-  variable: "--font-sans",
+  variable: "--font-plus-jakarta",
+  display: "swap",
+})
+
+const ibmPlexSansThai = IBM_Plex_Sans_Thai({
+  subsets: ["thai", "latin"],
+  weight: [
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+  ],
+  variable: "--font-ibm-plex-thai",
+  display: "swap",
 })
 
 import type { Viewport } from "next"
@@ -56,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} scroll-smooth`}
+      className={`${plusJakartaSans.variable} ${ibmPlexSansThai.variable} scroll-smooth`}
     >
       <body className="antialiased overflow-x-hidden relative min-h-screen">
         <LanguageProvider>
