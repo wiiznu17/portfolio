@@ -152,7 +152,7 @@ export const projectsData: Record<
           en: "Enforces resource locking order based on wallet UUIDs to prevent database deadlocks during highly concurrent transfers.",
           th: "กำหนดลำดับการล็อกทรัพยากรของคู่โอนเงินตามคีย์ UUID เพื่อป้องกันปัญหาฐานข้อมูลติดล็อก (Deadlocks) เมื่อมีการทำรายการพร้อมกันในปริมาณสูง",
         },
-        icon: "⚡",
+        icon: "Zap",
       },
       {
         title: {
@@ -163,7 +163,7 @@ export const projectsData: Record<
           en: "Every transaction is recorded using append-only double-entry bookkeeping with no modifications or deletions allowed, preserving a complete audit trail.",
           th: "บันทึกข้อมูลธุรกรรมแบบเพิ่มข้อมูลอย่างเดียว (Append-Only Journaling) โดยห้ามแก้ไขหรือลบ เพื่อรักษาประวัติบัญชีแยกประเภทแบบคู่ที่ตรวจสอบย้อนกลับได้สมบูรณ์แบบ",
         },
-        icon: "🛡️",
+        icon: "ShieldCheck",
       },
       {
         title: {
@@ -174,7 +174,7 @@ export const projectsData: Record<
           en: "Monitors and calculates aggregate balances to verify consistency between system reserves and total user deposits.",
           th: "ติดตามความถูกต้องของยอดคงเหลือรวมในระบบแบบเรียลไทม์ เพื่อตรวจสอบความสอดคล้องระหว่างเงินสำรองของระบบและยอดเงินฝากทั้งหมดของผู้ใช้งาน",
         },
-        icon: "📊",
+        icon: "BarChart3",
       },
       {
         title: {
@@ -185,7 +185,7 @@ export const projectsData: Record<
           en: "Decouples event handling into dedicated background workers that process Kafka streams to dispatch push notifications (Expo) with email fallbacks, stream KYC changes, and trigger alerts without blocking core transaction threads.",
           th: "ใช้ระบบประมวลผลส่วนหลัง (Kafka Event Worker) แยกต่างหากเพื่อรับสตรีม Event ในการส่ง Push Notification (Expo), สำรองข้อมูลทางอีเมล, อัปเดตสถานะ KYC และแจ้งความปลอดภัยโดยไม่บล็อกเธรดหลักการทำธุรกรรม",
         },
-        icon: "🚀",
+        icon: "Rocket",
       },
     ],
     techStack: [
@@ -351,7 +351,7 @@ export const projectsData: Record<
           en: "Executes transaction reversals with Voids for APPROVED transactions and Refunds for SETTLED transactions using the DigiPay API.",
           th: "จำลองและสร้างโฟลว์ย้อนกลับรายการชำระเงินโดยอัตโนมัติด้วย Void API สำหรับธุรกรรมที่อนุมัติแล้วแต่ยังไม่ได้ตัดยอด (APPROVED) และ Refund API สำหรับรายการที่เก็บเงินเรียบร้อยแล้ว (SETTLED) ผ่านช่องทาง DigiPay API",
         },
-        icon: "💳",
+        icon: "CreditCard",
       },
       {
         title: {
@@ -362,7 +362,7 @@ export const projectsData: Record<
           en: "Protects administrative and merchant API endpoints using RSA Key Pairs for JSON Web Tokens (JWT) and RBAC middleware.",
           th: "ป้องกันการเข้าถึง API และพอร์ทัลหลังบ้านด้วย JWT แบบคู่อสมมาตร RSA (Asymmetric RSA Key Pairs) ร่วมกับการควบคุมสิทธิ์ตามบทบาทผู้ใช้งาน (RBAC Middleware)",
         },
-        icon: "🛡️",
+        icon: "ShieldCheck",
       },
       {
         title: {
@@ -373,7 +373,7 @@ export const projectsData: Record<
           en: "Dispatches administrative invitations and password setup flows using secure, encrypted tokens via the SendGrid API.",
           th: "ส่งคำเชิญลงทะเบียนแอดมินรายใหม่ และส่งลิงก์รีเซ็ตรหัสผ่านด้วย Secure Tokens เข้ารหัสทางอีเมลผ่านระบบของ SendGrid API",
         },
-        icon: "📧",
+        icon: "Mail",
       },
       {
         title: {
@@ -384,7 +384,7 @@ export const projectsData: Record<
           en: "Containerizes system components using Docker to simplify setup and deployment across Railway and Vercel.",
           th: "จำลองและบรรจุเซิร์ฟเวอร์ Express.js, MySQL และ Redis ให้อยู่ภายใต้ Docker Containers เพื่อความสะดวกในการติดตั้งระบบ และนำไปรันบน Railway",
         },
-        icon: "🐳",
+        icon: "Server",
       },
     ],
     techStack: [
@@ -545,7 +545,7 @@ export const projectsData: Record<
           en: "Sends and syncs direct or group messages, rich reactions, pinned alerts, and message editing in real-time using secure WebSockets.",
           th: "ระบบรับส่งข้อความในห้องแชทเดี่ยวและกลุ่มแบบเรียลไทม์ ซิงค์ประวัติ แก้ไขคำ ส่ง Emoji รีแอคชัน และปักหมุดข้อความสำคัญได้อย่างราบรื่นผ่านการเชื่อมต่อ WebSocket",
         },
-        icon: "💬",
+        icon: "MessageSquare",
       },
       {
         title: {
@@ -556,7 +556,7 @@ export const projectsData: Record<
           en: "Registers detailed user profiles with step-by-step state caching on LocalStorage to systematically prevent progress loss.",
           th: "ฟอร์มตั้งค่าโปรไฟล์ผู้ใช้แบบละเอียด 6 ขั้นตอน พร้อมระบบช่วยบันทึกประวัติการกรอกข้อมูลชั่วคราวไว้บน LocalStorage ป้องกันสเตทกรอกสูญหายเมื่อหน้าจอดับหรือรีเฟรช",
         },
-        icon: "🧩",
+        icon: "Puzzle",
       },
       {
         title: {
@@ -567,7 +567,7 @@ export const projectsData: Record<
           en: "Displays detailed study schedules, course loads, and academic styles in a clean, user-friendly card layout.",
           th: "ออกแบบดีไซน์ UI ของการ์ดโปรไฟล์นักศึกษา จัดลำดับแสดงวิชาเรียนที่สนใจ รูปแบบการอ่านหนังสือ และสไตล์การเรียนได้อย่างชัดเจน และใช้งานง่าย",
         },
-        icon: "🎴",
+        icon: "Sparkles",
       },
       {
         title: {
@@ -578,7 +578,7 @@ export const projectsData: Record<
           en: "A localized directory grouping student study spaces with toggle filters for WiFi, power outlets, and 24-hour operations.",
           th: "ศูนย์รวมสถานที่สำหรับอ่านหนังสือ ค้นหา และคัดกรองร้านค้า พร้อมแสดงสิ่งอำนวยความสะดวกที่จำเป็น เช่น จุดเสียบปลั๊กไฟ, สตรีม Free WiFi หรือพิกัดเปิดบริการ 24 ชั่วโมง",
         },
-        icon: "🎓",
+        icon: "GraduationCap",
       },
     ],
     techStack: [

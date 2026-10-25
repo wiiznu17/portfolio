@@ -15,6 +15,54 @@ import {
 } from "@/constants/projects"
 import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
+import {
+  AlertTriangle,
+  Lightbulb,
+  Cpu,
+  Zap,
+  ShieldCheck,
+  Shield,
+  BarChart3,
+  Rocket,
+  CreditCard,
+  Mail,
+  Server,
+  MessageSquare,
+  Puzzle,
+  Sparkles,
+  GraduationCap,
+  Clock,
+  Layers,
+  DollarSign,
+  Box,
+} from "lucide-react"
+
+const highlightIconMap: Record<
+  string,
+  React.ComponentType<{
+    size?: number
+    className?: string
+    strokeWidth?: number
+    style?: React.CSSProperties
+  }>
+> = {
+  Zap,
+  ShieldCheck,
+  Shield,
+  BarChart3,
+  Rocket,
+  CreditCard,
+  Mail,
+  Server,
+  MessageSquare,
+  Puzzle,
+  Sparkles,
+  GraduationCap,
+  Clock,
+  Layers,
+  DollarSign,
+  Box,
+}
 
 export default function ProjectDetailPage({
   params,
@@ -499,11 +547,23 @@ export default function ProjectDetailPage({
                 gap: "0.75rem",
               }}
             >
-              <span
-                style={{ fontSize: "1.75rem" }}
+              <div
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "0.75rem",
+                  background: "#fee2e2",
+                  color: "#ef4444",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow:
+                    "inset 1px 1px 2px rgba(255,255,255,0.8), 2px 4px 8px rgba(239,68,68,0.15)",
+                  flexShrink: 0,
+                }}
               >
-                ⚠️
-              </span>
+                <AlertTriangle size={20} strokeWidth={2.5} />
+              </div>
               <h2
                 style={{
                   fontSize: "1.25rem",
@@ -554,11 +614,23 @@ export default function ProjectDetailPage({
                 gap: "0.75rem",
               }}
             >
-              <span
-                style={{ fontSize: "1.75rem" }}
+              <div
+                style={{
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "0.75rem",
+                  background: "#dcfce7",
+                  color: "#10b981",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow:
+                    "inset 1px 1px 2px rgba(255,255,255,0.8), 2px 4px 8px rgba(16,185,129,0.15)",
+                  flexShrink: 0,
+                }}
               >
-                💡
-              </span>
+                <Lightbulb size={20} strokeWidth={2.5} />
+              </div>
               <h2
                 style={{
                   fontSize: "1.25rem",
@@ -610,9 +682,23 @@ export default function ProjectDetailPage({
               gap: "0.75rem",
             }}
           >
-            <span style={{ fontSize: "1.75rem" }}>
-              🏗️
-            </span>
+            <div
+              style={{
+                width: "2.5rem",
+                height: "2.5rem",
+                borderRadius: "0.75rem",
+                background: "#e0e7ff",
+                color: "#6366f1",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow:
+                  "inset 1px 1px 2px rgba(255,255,255,0.8), 2px 4px 8px rgba(99,102,241,0.15)",
+                flexShrink: 0,
+              }}
+            >
+              <Cpu size={20} strokeWidth={2.5} />
+            </div>
             <h2
               style={{
                 fontSize: "1.5rem",
@@ -725,41 +811,55 @@ export default function ProjectDetailPage({
             className="md:grid-cols-2"
           >
             {project.highlights.map(
-              (highlight, index) => (
-                <div
-                  key={index}
-                  className="clay-card"
-                  style={{
-                    padding: "1.75rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.75rem",
-                  }}
-                >
+              (highlight, index) => {
+                const IconComponent =
+                  highlightIconMap[highlight.icon] || Sparkles
+                return (
                   <div
+                    key={index}
+                    className="clay-card"
                     style={{
+                      padding: "1.75rem",
                       display: "flex",
-                      alignItems: "center",
+                      flexDirection: "column",
                       gap: "0.75rem",
                     }}
                   >
-                    <span
+                    <div
                       style={{
-                        fontSize: "1.5rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.75rem",
                       }}
                     >
-                      {highlight.icon}
-                    </span>
-                    <h3
-                      style={{
-                        fontSize: "1.125rem",
-                        fontWeight: 800,
-                        color: "var(--slate-900)",
-                      }}
-                    >
-                      {highlight.title[language]}
-                    </h3>
-                  </div>
+                      <div
+                        style={{
+                          width: "2.25rem",
+                          height: "2.25rem",
+                          borderRadius: "0.625rem",
+                          background: "rgba(255, 255, 255, 0.85)",
+                          border: "1px solid rgba(255, 255, 255, 0.9)",
+                          color: "var(--slate-800)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow:
+                            "inset -1px -1px 3px rgba(0,0,0,0.05), 2px 3px 6px rgba(0,0,0,0.04)",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <IconComponent size={18} strokeWidth={2.2} />
+                      </div>
+                      <h3
+                        style={{
+                          fontSize: "1.125rem",
+                          fontWeight: 800,
+                          color: "var(--slate-900)",
+                        }}
+                      >
+                        {highlight.title[language]}
+                      </h3>
+                    </div>
                   <p
                     style={{
                       fontSize: "0.875rem",
@@ -776,7 +876,7 @@ export default function ProjectDetailPage({
                   </p>
                 </div>
               )
-            )}
+            })}
           </div>
         </section>
 
