@@ -803,15 +803,15 @@ export const projectsData: Record<
     bullets: {
       en: [
         "Architected a scalable Turborepo Monorepo unifying Next.js Storefront, React Admin, and dual NestJS APIs.",
-        "Engineered BullMQ & Redis delayed queues for automated unpaid order cancellation, restocking, and fulfillment timeouts.",
+        "Implemented BullMQ & Redis delayed queues for automated unpaid order cancellation, restocking, and fulfillment timeouts.",
         "Implemented Dual-Token authentication with Token Family Rotation, replay attack detection, and multi-device revocation.",
-        "Built specialized e-commerce engines: Pre-Order reservation quotas, coupon abuse-prevention, and pro-rated net cost partial refunds.",
+        "Developed special features for the admin management system, such as Pre-Order reservation quotas to manage reservations, coupon abuse-prevention, and pro-rated net cost partial refunds.",
       ],
       th: [
-        "ออกแบบและพัฒนาสถาปัตยกรรม Turborepo Monorepo ผสานหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ",
+        "ออกแบบและพัฒนาหน้าร้านด้วย Next.js, ส่วนของ Admin ด้วย React, และระบบหลังบ้าน NestJS",
         "พัฒนาระบบคิวงาน Delayed Jobs ด้วย BullMQ และ Redis จัดการตัดและคืนสต็อกอัตโนมัติเมื่อออเดอร์ค้างชำระเกินกำหนดเวลา",
         "วางระบบความปลอดภัย Dual-Token (JWT + Redis Session) พร้อม Refresh Token Rotation ตรวจจับการขโมย Token และสั่งตัด Session ทุกอุปกรณ์",
-        "พัฒนาระบบเฉพาะทาง: จัดการโควตาจองสินค้า Pre-Order, ระบบป้องกันการใช้คูปองซ้ำซ้อน, และระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund",
+        "พัฒนาฟีเจอร์พิเศษของระบบจัดการร้านค้า เช่น ระบบจองสินค้าล่วงหน้า (Pre-Order) เพื่อจัดการโควตา, ระบบป้องกันการใช้คูปองซ้ำซ้อน, และระบบคำนวณราคาสุทธิเฉลี่ยสำหรับการคืนเงินบางส่วน",
       ],
     },
     images: [
