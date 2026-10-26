@@ -20,15 +20,15 @@ export const experienceData: ExperienceItem[] = [
     },
     responsibilities: {
       en: [
-        "Assisted in maintaining the <strong>SCB Planet X</strong> admin portal by implementing features and resolving defects based on client requirements.",
+        "Assisted in maintaining the admin portal of Mobile Banking Application by implementing features and resolving defects based on client requirements.",
         "Developed unit tests using <strong>Jest</strong> to ensure code quality while actively studying the existing project architecture.",
         "Integrated <strong>DigiPay</strong> (payment gateway) into the DigiShop project(Co-op project) to handle secure payment flows.",
         "Studied financial payment workflows to design and successfully implement solutions on personal projects.",
       ],
       th: [
-        "มีส่วนร่วมในการพัฒนาและดูแลระบบจัดการหลังบ้าน (Admin Portal) ของ <strong>SCB Planet X</strong> โดยพัฒนาฟีเจอร์และแก้ไขข้อผิดพลาดตามความต้องการของลูกค้า",
+        "มีส่วนร่วมในการพัฒนาและดูแลระบบจัดการหลังบ้าน (Admin Portal) ของ Mobile Banking Application โดยพัฒนาฟีเจอร์และแก้ไขข้อผิดพลาดตามความต้องการของลูกค้า",
         "เขียน Unit Tests ด้วย <strong>Jest</strong> เพื่อทดสอบการทำงานของโค้ด พร้อมเรียนรู้โครงสร้างสถาปัตยกรรมของโปรเจกต์",
-        "เชื่อมต่อระบบชำระเงิน <strong>DigiPay (Payment Gateway)</strong> เข้ากับโปรเจกต์ DigiShop(โปรเจ็คสหกิจศึกษา) เพื่อรองรับฟังก์ชันการชำระเงินและการขอคืนเงิน",
+        "เชื่อมต่อระบบชำระเงิน <strong>DigiPay (Payment Gateway)</strong> เข้ากับโปรเจกต์ DigiShop (โปรเจ็คสหกิจศึกษา) เพื่อรองรับฟังก์ชันการชำระเงินและการขอคืนเงิน",
         "ศึกษาแนวทางการทำงานของระบบธุรกรรมทางการเงิน เพื่อนำความรู้มาออกแบบและพัฒนาบนโปรเจกต์ส่วนตัว",
       ],
     },
