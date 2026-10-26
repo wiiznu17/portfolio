@@ -8,10 +8,10 @@ import { useLanguage } from "@/context/LanguageContext"
 import { COMMON_TRANSLATIONS } from "@/constants/translations"
 
 const bannerStyles: Record<string, string> = {
-  "p-wallet": styles.bannerPwallet,
-  digishop: styles.bannerDigishop,
-  studybuddy: styles.bannerStudybuddy,
   nida: styles.bannerNida,
+  "p-wallet": styles.bannerPwallet,
+  studybuddy: styles.bannerStudybuddy,
+  digishop: styles.bannerDigishop,
   "upcoming-project": styles.bannerUpcoming,
 }
 

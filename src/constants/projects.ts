@@ -101,6 +101,194 @@ export const projectsData: Record<
   string,
   Project
 > = {
+  nida: {
+    id: "nida",
+    title: { en: "Nida", th: "Nida" },
+    subtitle: {
+      en: "E-Commerce Platform for Fashion Brand",
+      th: "ระบบอีคอมเมิร์ซสำหรับแบรนด์แฟชั่น",
+    },
+    year: "2026",
+    role: {
+      en: "Fullstack Engineer & System Architect",
+      th: "Fullstack Engineer & System Architect",
+    },
+    tagline: {
+      en: "An e-commerce platform engineered on a Turborepo monorepo architecture, featuring a Next.js customer storefront, a React back-office admin portal, dual decoupled NestJS APIs, and PostgreSQL with Prisma ORM. Powered by deterministic background job automation via BullMQ and Redis for auto-cancellation of unpaid orders and stock restocking, accompanied by a Dual-Token authentication engine with Refresh Token Rotation and Redis session invalidation.",
+      th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาบนสถาปัตยกรรม Monorepo ด้วย Turborepo ที่รวมหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ เข้ากับฐานข้อมูล PostgreSQL และ Prisma ORM โดดเด่นด้วยระบบประมวลผลงานเบื้องหลังอัตโนมัติผ่าน BullMQ และ Redis จัดการวงจรชีวิตออเดอร์ (ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงิน) พร้อมระบบรักษาความปลอดภัย Dual-Token (JWT + Redis Session) และ Refresh Token Rotation ป้องกันการขโมยสิทธิ์เข้าถึงระบบ",
+    },
+    themeColor: "amber",
+    bannerGradient: "linear-gradient(135deg, #faf7f2 0%, #fef3c7 50%, #fed7aa 100%)",
+    problem: {
+      en: "E-commerce retail faces severe operational challenges: stock-hoarding by unpaid orders and bots locking up inventory, unreviewed return requests leading to customer dissatisfaction, payment gateway webhook race conditions, and vulnerabilities in administrative access that could compromise customer financial transactions and stock accuracy.",
+      th: "ธุรกิจอีคอมเมิร์ซสินค้าแฟชั่นมักประสบปัญหาการกั๊กสต็อกสินค้าจากออเดอร์ที่ค้างชำระ (Stock Hoarding) ทำให้ร้านค้าเสียโอกาสในการขาย, คำขอยกเลิกและคืนสินค้าที่ตกค้างหากไม่มีระบบติดตามอัตโนมัติ, ปัญหา Race Conditions จากการแจ้งเตือนชำระเงินของ Payment Gateway และความเสี่ยงด้านความปลอดภัยในการเข้าถึงระบบหลังบ้านของแอดมิน ซึ่งอาจส่งผลกระทบต่อสต็อกสินค้าและข้อมูลธุรกรรม",
+    },
+    solution: {
+      en: "I engineered a unified Turborepo monorepo with automated background job queues using @nestjs/bullmq and Redis to deterministically govern order timeouts (auto-cancelling unpaid orders and restocking within 15 mins for PromptPay). Additionally, I implemented a Dual-Token authentication architecture featuring Refresh Token Rotation with token reuse detection, one-time token admin invitation onboarding, a pro-rated net price calculation engine for partial refunds, and Omise payment webhook idempotency.",
+      th: "ผมได้ออกแบบและพัฒนาระบบบนสถาปัตยกรรม Turborepo Monorepo พร้อมติดตั้งระบบคิวงานเบื้องหลังอัตโนมัติด้วย BullMQ และ Redis เพื่อควบคุมวงจรชีวิตคำสั่งซื้ออย่างแม่นยำ (ยกเลิกออเดอร์ที่ค้างชำระเกินกำหนด 15 นาทีพร้อมคืนสต็อกอัตโนมัติ) และพัฒนาระบบความปลอดภัย Dual-Token Authentication พร้อม Refresh Token Rotation ใน Redis ตรวจจับการขโมย Token, ระบบเชิญแอดมินด้วย One-Time Token, ระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund และระบบยืนยันความถูกต้องของ Webhook ป้องกันการยิงซ้ำ (Idempotency)",
+    },
+    architecture: {
+      en: [
+        "Turborepo Monorepo structure managing Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API, and shared Prisma/Zod validation packages.",
+        "BullMQ & Redis 7 background worker cluster managing delayed jobs for unpaid order auto-cancellation, 48-hour return review timeouts, and 5-day delivery auto-completion.",
+        "Dual-Token Authentication (15-min Access Token + 7-day Refresh Token) with cryptographic Token Family Rotation, replay attack revocation, and Redis-backed session invalidation.",
+        "Zero-Knowledge Admin Onboarding via Redis-backed One-Time Setup Tokens (48h TTL) sent through automated email invitations without hardcoded initial passwords.",
+        "E-Commerce Core Engines: Pre-Order reservation quotas, Coupon abuse-prevention engine, pro-rated net cost refund ledger, and weight-based shipping matrix.",
+        "PostgreSQL 16 relational database with Prisma ORM, implementing comprehensive audit trails (StockMovement and AdminAuditLog) for 100% operational traceability.",
+      ],
+      th: [
+        "สถาปัตยกรรม Turborepo Monorepo แยกโมดูลแอปพลิเคชัน (Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API) ร่วมกับแพ็กเกจฐานข้อมูล Prisma และ Zod Validators",
+        "ระบบคิวงานอัตโนมัติด้วย BullMQ และ Redis 7 จัดการ Delayed Jobs: ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงินในเวลา, อนุมัติคำขอยกเลิกอัตโนมัติใน 48 ชม., และปิดจ็อบจัดส่งสำเร็จใน 5 วัน",
+        "ระบบรักษาความปลอดภัย Dual-Token Authentication ร่วมกับ Refresh Token Rotation ใน Redis พร้อมระบบตรวจจับ Token Replay และสั่งตัด Session ทุกอุปกรณ์เมื่อตรวจพบความผิดปกติ",
+        "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invitation) ด้วย One-Time Token ผ่าน Redis (TTL 48 ชม.) ให้ผู้ใช้ตั้งรหัสผ่านเองอย่างปลอดภัย",
+        "ระบบคำนวณราคาสุทธิถัวเฉลี่ยต่อชิ้น (Pro-rated Net Price Calculation) เพื่อการคืนเงินบางส่วน (Partial Refund) และระบบ Ledger บันทึกประวัติคะแนนสะสมและสต็อกสินค้าอย่างแม่นยำ",
+        "ฐานข้อมูล PostgreSQL 16 ผ่าน Prisma ORM พร้อมระบบบันทึก AuditLog และ StockMovement ทุกครั้งที่มีการเปลี่ยนแปลงสถานะหรือสต็อก เพื่อความโปร่งใสตรวจสอบได้ 100%",
+      ],
+    },
+    highlights: [
+      {
+        title: {
+          en: "Automated Order Lifecycles",
+          th: "ระบบควบคุมวงจรชีวิตออเดอร์อัตโนมัติ",
+        },
+        description: {
+          en: "BullMQ & Redis delayed workers handle auto-cancellation, restocking, and return timeouts deterministically.",
+          th: "ประมวลผลงานเบื้องหลังด้วย BullMQ + Redis จัดการคืนสต็อกและยกเลิกออเดอร์ค้างชำระอัตโนมัติโดยไม่ต้องใช้คนกวาดงาน",
+        },
+        icon: "Clock",
+      },
+      {
+        title: {
+          en: "Dual-Token Authentication",
+          th: "ระบบความปลอดภัย Dual-Token",
+        },
+        description: {
+          en: "15-min JWTs + 7-day Refresh Tokens with cryptographic rotation, replay attack detection, and instant multi-device revocation.",
+          th: "สถาปัตยกรรม Dual-Token พร้อม Refresh Token Rotation ใน Redis และระบบเพิกถอน Token ทันทีเมื่อถูก Replay",
+        },
+        icon: "Shield",
+      },
+      {
+        title: {
+          en: "Turborepo Modular Monorepo",
+          th: "สถาปัตยกรรม Monorepo ประสิทธิภาพสูง",
+        },
+        description: {
+          en: "Decoupled Next.js storefront, React admin back-office, and separate NestJS APIs sharing Prisma and Zod packages.",
+          th: "รวมหน้าร้าน Next.js, หลังบ้าน React, และ NestJS APIs ไว้ใน Monorepo เดียวกัน พร้อมแชร์ Schema และ Validation",
+        },
+        icon: "Layers",
+      },
+      {
+        title: {
+          en: "Pro-Rated Refund Ledger",
+          th: "ระบบคำนวณและบันทึกบัญชีคืนเงิน",
+        },
+        description: {
+          en: "Automated item-level net cost breakdown ensuring precise partial refunds and immutable transaction audit trails.",
+          th: "คำนวณส่วนลดเฉลี่ยรายชิ้นเพื่อคืนเงินบางส่วนได้อย่างถูกต้องตามจริง พร้อมบันทึกบัญชีแยกประเภทอย่างแม่นยำ",
+        },
+        icon: "DollarSign",
+      },
+    ],
+    techStack: [
+      {
+        name: "Turborepo",
+        logo: "custom-turborepo",
+      },
+      {
+        name: "Next.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "NestJS",
+        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        name: "Prisma",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+      },
+      {
+        name: "Redis",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        name: "BullMQ",
+        logo: "custom-bullmq",
+      },
+      {
+        name: "Docker",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        name: "TypeScript",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "TailwindCSS",
+        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
+      },
+    ],
+    githubUrl: "https://github.com/wiiznu17",
+    hasSourceCode: false,
+    hasDemo: false,
+    bullets: {
+      en: [
+        "Architected a scalable Turborepo Monorepo unifying Next.js Storefront, React Admin, and dual NestJS APIs.",
+        "Implemented BullMQ & Redis delayed queues for automated unpaid order cancellation, restocking, and fulfillment timeouts.",
+        "Implemented Dual-Token authentication with Token Family Rotation, replay attack detection, and multi-device revocation.",
+        "Developed special features for the admin management system, such as Pre-Order reservation quotas to manage reservations, coupon abuse-prevention, and pro-rated net cost partial refunds.",
+      ],
+      th: [
+        "ออกแบบและพัฒนาหน้าร้านด้วย Next.js, ส่วนของ Admin ด้วย React, และระบบหลังบ้าน NestJS",
+        "พัฒนาระบบคิวงาน Delayed Jobs ด้วย BullMQ และ Redis จัดการตัดและคืนสต็อกอัตโนมัติเมื่อออเดอร์ค้างชำระเกินกำหนดเวลา",
+        "วางระบบความปลอดภัย Dual-Token (JWT + Redis Session) พร้อม Refresh Token Rotation ตรวจจับการขโมย Token และสั่งตัด Session ทุกอุปกรณ์",
+        "พัฒนาฟีเจอร์พิเศษของระบบจัดการร้านค้า เช่น ระบบจองสินค้าล่วงหน้า (Pre-Order) เพื่อจัดการโควตา, ระบบป้องกันการใช้คูปองซ้ำซ้อน, และระบบคำนวณราคาสุทธิเฉลี่ยสำหรับการคืนเงินบางส่วน",
+      ],
+    },
+    images: [
+      {
+        url: "/images/projects/nida/1_client.png",
+        orientation: "landscape",
+        title: {
+          en: "Next.js Fashion Storefront & Shopping Experience",
+          th: "หน้าร้านค้าออนไลน์และระบบสั่งซื้อสินค้า (Storefront)",
+        },
+        description: {
+          en: "High-performance customer storefront featuring responsive product catalog, coupon promotions, pre-order reservation engine, and PromptPay checkout.",
+          th: "หน้าร้านค้าออนไลน์พัฒนาด้วย Next.js รองรับการเลือกชมสินค้าแฟชั่น การใช้คูปองส่วนลด การสั่งซื้อแบบ Pre-Order และการชำระเงินผ่านระบบ PromptPay",
+        },
+      },
+      {
+        url: "/images/projects/nida/3_admin.png",
+        orientation: "landscape",
+        title: {
+          en: "Back-Office Admin Portal & Operations Hub",
+          th: "ระบบจัดการหลังบ้านและควบคุมการปฏิบัติการ (Admin Portal)",
+        },
+        description: {
+          en: "React administrative portal managing real-time inventory tracking, BullMQ automated order lifecycles, pro-rated partial refunds, and audit logging.",
+          th: "พอร์ทัลแอดมินสำหรับบริหารจัดการสต็อกสินค้า ติดตามสถานะคิวงาน BullMQ ตรวจสอบประวัติการทำงาน (Audit Logs) และจัดการการคืนเงินอย่างแม่นยำ",
+        },
+      },
+      {
+        url: "/images/projects/nida/logo.png",
+        orientation: "landscape",
+        title: {
+          en: "Nida Brand Identity & Architecture Overview",
+          th: "ภาพรวมสถาปัตยกรรมและอัตลักษณ์แบรนด์ Nida",
+        },
+        description: {
+          en: "Apparel & Lifestyle E-Commerce Platform built with Next.js, NestJS, Prisma, and BullMQ.",
+          th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาด้วย Next.js, NestJS, Prisma และ BullMQ",
+        },
+      },
+    ],
+  },
   "p-wallet": {
     id: "p-wallet",
     title: { en: "P-Wallet", th: "P-Wallet" },
@@ -292,6 +480,179 @@ export const projectsData: Record<
         description: {
           en: "Next.js backoffice dashboard displaying system reserves, active Kafka queue metrics, and administrative utilities to let operations teams manage and inspect system details.",
           th: "แดชบอร์ดหลังบ้านพัฒนาด้วย Next.js แสดงสถานะเงินสำรองในระบบ สัญญาณสุขภาพของคิวงาน Kafka และระบบอื่นๆ เพื่อให้ทีมปฏิบัติการสามารถตรวจสอบและควบคุมการทำงานของระบบได้อย่างมีประสิทธิภาพ",
+        },
+      },
+    ],
+  },
+  studybuddy: {
+    id: "studybuddy",
+    title: { en: "StudyBuddy", th: "StudyBuddy" },
+    subtitle: {
+      en: "Student Matching & Curated Co-Working Space Directory",
+      th: "แพลตฟอร์มจับคู่หาเพื่อนร่วมเรียน และระบบแนะนำสถานที่อ่านหนังสือ",
+    },
+    year: "2026",
+    role: {
+      en: "Web Developer (Core Features)",
+      th: "Web Developer (ผู้พัฒนาฟีเจอร์หลัก)",
+    },
+    tagline: {
+      en: "A student profile directory web platform helping university students find study partners, view interactive profile cards, explore study spaces, and chat in real-time. Built with Next.js, NestJS, and Supabase, utilizing PostgreSQL Row-Level Security (RLS) and WebSockets.",
+      th: "เว็บแพลตฟอร์มช่วยค้นหาและจับกลุ่มเพื่อทำการบ้าน ติวสอบ หรือทำโปรเจกต์สำหรับนักศึกษา โดยใช้หน้าแสดงข้อมูลการ์ดโปรไฟล์ผู้เรียนหลัก, ระบบแนะนำสถานที่นั่งอ่านหนังสือ, และห้องแชทสื่อสารแบบเรียลไทม์ พัฒนาขึ้นด้วย Next.js, NestJS และ Supabase มีระบบความปลอดภัยข้อมูลด้วย PostgreSQL Row-Level Security (RLS) และซิงค์ข้อมูลแชทเรียลไทม์ผ่าน WebSocket",
+    },
+    themeColor: "indigo",
+    bannerGradient:
+      "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
+    problem: {
+      en: "University students frequently struggle to find compatible study partners, tutoring peers, or project group members with matching course loads, study styles, and schedules. Traditional communication methods lack academic-specific filtering and fail to enforce robust data privacy boundaries, exposing students' sensitive contact details to unauthorized access.",
+      th: "นักศึกษามหาวิทยาลัยมักเผชิญความท้าทายในการค้นหาเพื่อนร่วมชั้น คู่ติวสอบ หรือหาสมาชิกทีมทำโปรเจกต์ที่มีสไตล์การเรียน ตารางตารางเรียน หรือวิชาลงทะเบียนเรียนสอดคล้องกัน การโพสต์ประกาศหาเพื่อนผ่านโซเชียลมีเดียทั่วไปมักขาดระบบการคัดกรองที่มีประสิทธิภาพ และยังเสี่ยงต่อความปลอดภัยของข้อมูลติดต่อส่วนตัวอันเกิดจากการไม่มีระบบจำกัดการเข้าใช้งานที่รัดกุม",
+    },
+    solution: {
+      en: "I designed and developed the core application features using Next.js 16 and NestJS, leveraging Supabase and PostgreSQL Row-Level Security (RLS) policies to secure data. I implemented an intelligent landing page featuring dynamic Call-to-Action (CTA) routing based on user state, a persistent 6-step onboarding form with LocalStorage recovery, a custom student profile card component, a curated directory of co-working study spaces with facility filters, and a WebSocket-driven real-time chat client supporting pinned messages, edits, reactions, and read receipts.",
+      th: "ผมได้รับหน้าที่พัฒนาฟีเจอร์หลักของระบบด้วย Next.js 16 และ NestJS โดยเลือกใช้ Supabase จัดการเรื่องการยืนยันตัวตนร่วมกับการควบคุมสิทธิ์ข้อมูลแถวฐานข้อมูลด้วย PostgreSQL RLS ซึ่งระบบหลักประกอบด้วย: หน้า Landing Page อัจฉริยะที่แปรผันการนำทางตามสถานะการสมัครใช้งานของผู้ใช้, แบบฟอร์มลงทะเบียนข้อมูล 6 ขั้นตอนที่จดจำสเตทชั่วคราวบน LocalStorage, คอมโพเนนต์การ์ดโปรไฟล์หลักแสดงสไตล์การติวของผู้เรียน, ระบบแนะนำสถานที่อ่านหนังสือพร้อมตัวกรองตามอำนวยความสะดวก, และระบบห้องแชทเรียลไทม์เดี่ยวและกลุ่มผ่าน WebSocket ที่รองรับฟังก์ชันการปักหมุดข้อความ, ส่ง Emoji รีแอคชัน, แก้ไขข้อความย้อนหลัง และตัวบ่งชี้สถานะผู้ใช้อ่านแล้ว (Read Indicators)",
+    },
+    architecture: {
+      en: [
+        "A 6-step Onboarding form with LocalStorage cache recovery to prevent progress loss during page refreshes.",
+        "Custom student profile card component designed to clearly present course loads, schedules, and study styles in a clean, responsive layout.",
+        "Curated Study Places directory supporting categories, toggle-ready facility filters (power plugs, free WiFi, 24h service), search queries, and bookmarked favorites.",
+        "Real-time direct and group Chat system utilizing NestJS ChatModule over WebSockets, supporting message pinning, editing, a 1-minute unsend window, rich reactions, and live read indicators.",
+        "Dynamic Landing Page featuring a customizable call-to-action routing engine to direct users to onboarding or chat based on their profile status.",
+      ],
+      th: [
+        "แบบฟอร์มลงข้อมูลแบบ 6 ขั้นตอน (Onboarding Flow) พร้อมระบบช่วยจดจำข้อมูลชั่วคราวบน LocalStorage เพื่อป้องกันปัญหากรอกข้อมูลหายหากรีเฟรชหน้าเว็บ",
+        "ออกแบบคอมโพเนนต์หลักของการ์ดโปรไฟล์นักศึกษา (Student Profile Card Component) จัดวางเลย์เอาต์รายวิชา ตารางตารางเรียน และความชอบในการศึกษาได้อย่างสวยงาม สะอาดตา และเป็นสัดส่วน",
+        "ระบบแนะนำและรีวิวสถานที่อ่านหนังสือ ค้นหา และฟิลเตอร์สถานที่นั่งอ่านหนังสือที่มีสิ่งอำนวยความสะดวกเฉพาะ เช่น พิกัดที่มีจุดเสียบปลั๊กไฟ, บริการ Free WiFi หรือร้านที่เปิดตลอด 24 ชั่วโมง",
+        "ระบบห้องแชทสื่อสารส่วนตัวและแชทกลุ่ม ซิงค์ข้อมูลผ่าน WebSocket ร่วมกับ NestJS ChatModule รองรับฟังก์ชันปักหมุดข้อความสำคัญ, แก้ไขข้อความย้อนหลัง, ยกเลิกการส่งข้อความภายใน 1 นาที, ส่งข้อความรีแอคชันด้วย Emoji และอัปเดตสถานะผู้ใช้อ่านแล้วแบบเรียลไทม์",
+        "หน้า Landing Page ที่ติดตั้งระบบนำทางอัจฉริยะ (CTA Button Routing) เพื่อเปลี่ยนเส้นทางผู้ใช้ไปยังหน้าตั้งค่าโปรไฟล์ หรือพอร์ทัลหลักตามระดับสเตทการลงทะเบียนของตนเอง",
+      ],
+    },
+    highlights: [
+      {
+        title: {
+          en: "WebSocket Chat",
+          th: "ระบบห้องแชทเรียลไทม์",
+        },
+        description: {
+          en: "Sends and syncs direct or group messages, rich reactions, pinned alerts, and message editing in real-time using secure WebSockets.",
+          th: "ระบบรับส่งข้อความในห้องแชทเดี่ยวและกลุ่มแบบเรียลไทม์ ซิงค์ประวัติ แก้ไขคำ ส่ง Emoji รีแอคชัน และปักหมุดข้อความสำคัญได้อย่างราบรื่นผ่านการเชื่อมต่อ WebSocket",
+        },
+        icon: "MessageSquare",
+      },
+      {
+        title: {
+          en: "6-Step Onboarding Form",
+          th: "ระบบ Onboarding แบบจดจำสเตทชั่วคราว (6-Step Form)",
+        },
+        description: {
+          en: "Registers detailed user profiles with step-by-step state caching on LocalStorage to systematically prevent progress loss.",
+          th: "ฟอร์มตั้งค่าโปรไฟล์ผู้ใช้แบบละเอียด 6 ขั้นตอน พร้อมระบบช่วยบันทึกประวัติการกรอกข้อมูลชั่วคราวไว้บน LocalStorage ป้องกันสเตทกรอกสูญหายเมื่อหน้าจอดับหรือรีเฟรช",
+        },
+        icon: "Puzzle",
+      },
+      {
+        title: {
+          en: "Profile Card Component",
+          th: "ดีไซน์การ์ดโปรไฟล์หลัก",
+        },
+        description: {
+          en: "Displays detailed study schedules, course loads, and academic styles in a clean, user-friendly card layout.",
+          th: "ออกแบบดีไซน์ UI ของการ์ดโปรไฟล์นักศึกษา จัดลำดับแสดงวิชาเรียนที่สนใจ รูปแบบการอ่านหนังสือ และสไตล์การเรียนได้อย่างชัดเจน และใช้งานง่าย",
+        },
+        icon: "Sparkles",
+      },
+      {
+        title: {
+          en: "Curated Study Places",
+          th: "ระบบพิกัดสถานที่อ่านหนังสือ",
+        },
+        description: {
+          en: "A localized directory grouping student study spaces with toggle filters for WiFi, power outlets, and 24-hour operations.",
+          th: "ศูนย์รวมสถานที่สำหรับอ่านหนังสือ ค้นหา และคัดกรองร้านค้า พร้อมแสดงสิ่งอำนวยความสะดวกที่จำเป็น เช่น จุดเสียบปลั๊กไฟ, สตรีม Free WiFi หรือพิกัดเปิดบริการ 24 ชั่วโมง",
+        },
+        icon: "GraduationCap",
+      },
+    ],
+    techStack: [
+      {
+        name: "Next.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+      },
+      {
+        name: "NestJS",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+      },
+      {
+        name: "TypeScript",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+      },
+      {
+        name: "Supabase",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+      },
+      {
+        name: "PostgreSQL",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+      },
+    ],
+    githubUrl: "https://github.com/wiiznu17/study-buddy",
+    demoUrl: "https://study-buddy.space/",
+    videoUrl: "https://drive.google.com/file/d/1IxOkJpOy2x86zUCFV4xVXX8z7rE9McYQ/view?usp=drive_link",
+    hasReport: false,
+    hasVideo: true,
+    hasDemo: true,
+    hasSourceCode: true,
+    bullets: {
+      en: [
+        "Developed the multi-step Onboarding form using a persistent RegistrationContext with LocalStorage data recovery to assure smooth signup flows.",
+        "Designed and developed the primary student profile card component showcasing student details, schedules, and study styles clearly.",
+        "Built the Recommended Study Places directory featuring curated categories, toggle-ready facility filters, suggestions query, and toggle favorite capabilities.",
+        "Implemented a real-time WebSocket chat system leveraging NestJS backend ChatModule supporting pinned messages, edits, reactions, and a 1-minute unsend window.",
+        "Designed the dynamic Landing Page featuring customized call-to-action routing based on user registration and profile completion states.",
+      ],
+      th: [
+        "พัฒนาระบบลงข้อมูลผู้ใช้แบบ 6 ขั้นตอน (Onboarding Flow) โดยสร้างระบบเก็บประวัติการกรอกชั่วคราวลง LocalStorage ป้องกันปัญหากรอกข้อมูลสูญหายจากการรีเฟรชหน้าเว็บ",
+        "ออกแบบและพัฒนาโครงสร้างคอมโพเนนต์หลักของการ์ดโปรไฟล์ผู้ใช้ จัดระเบียบการจัดวางรายละเอียดรายวิชาและความสนใจบนการ์ดได้อย่างชัดเจน",
+        "พัฒนาระบบรวบรวมสถานที่อ่านหนังสือ ที่มีความยืดหยุ่นในการกรองตามประเภทสถานที่ และสิ่งอำนวยความสะดวกทางวิชาการ (WiFi, ปลั๊กไฟ, เปิดบริการ 24 ชั่วโมง)",
+        "วางโครงสร้างระบบแชทสนทนาเดี่ยวและแชทกลุ่มผ่าน WebSocket ร่วมกับ NestJS รองรับฟังก์ชันสำคัญ เช่น ปักหมุดข้อความ, แก้ไขคำ, ยกเลิกการส่งภายใน 1 นาที และส่งรีแอคชัน",
+        "ออกแบบหน้า Landing Page และระบบปุ่มนำทาง (CTA Routing Logic) เพื่อทำหน้าที่ส่งผู้ใช้ไปยังพอร์ทัลหน้าลงทะเบียนหรือแชทหลักโดยอิงตามสถานะโปรไฟล์และข้อมูลล็อกอิน",
+      ],
+    },
+    images: [
+      {
+        url: "/images/projects/studybuddy/1_client.png",
+        orientation: "landscape",
+        title: {
+          en: "StudyBuddy Community Landing & Dynamic Routing",
+          th: "หน้าแรกแนะนำบริการและปุ่มนำทางอัจฉริยะ",
+        },
+        description: {
+          en: "Light/dark themed landing page displaying platform highlights, user guidelines, and dynamic Call-To-Action buttons linked to user registration status.",
+          th: "หน้าแรกของเว็บแสดงจุดเด่นและวิธีการใช้งานระบบ พร้อมปุ่มนำทาง (CTA) ที่เปลี่ยนการแสดงผลตามสถานะเข้าสู่ระบบและการสมัครใช้งานจริง",
+        },
+      },
+      {
+        url: "/images/projects/studybuddy/2_core.png",
+        orientation: "landscape",
+        title: {
+          en: "Interactive Student Profile Card Component",
+          th: "คอมโพเนนต์การ์ดโปรไฟล์หลัก",
+        },
+        description: {
+          en: "Interactive card component displaying peer details, course interested, study preferences, and essential contact details.",
+          th: "ส่วนแสดงผลข้อมูลของเพื่อนร่วมเรียนในลักษณะการ์ดโปรไฟล์ จัดวางข้อมูลวิชาที่สนใจ รูปแบบการติว และข้อมูลติดต่อที่จำเป็นอย่างชัดเจน",
+        },
+      },
+      {
+        url: "/images/projects/studybuddy/3_admin.png",
+        orientation: "landscape",
+        title: {
+          en: "Real-Time Chat Rooms & Places Directory",
+          th: "ระบบแชท WebSocket และสถานที่แนะนำ",
+        },
+        description: {
+          en: "Rich-featured direct and group chat client offering pinned messages, edits, unsend timers, reactions, read indicators, and a directory of bookmarked libraries or coffee shops recommended for studying.",
+          th: "ระบบห้องแชทเรียลไทม์เดี่ยวและกลุ่มผ่าน WebSocket ที่รองรับการปักหมุด แก้ไข ยกเลิกส่ง ส่งรีแอคชัน และบริการแสดงแนะนำสถานที่นั่งอ่านหนังสือยอดนิยมสำหรับนักศึกษา",
         },
       },
     ],
@@ -488,367 +849,6 @@ export const projectsData: Record<
         description: {
           en: "Centralized admin workspace managing store requests, RBAC permissions, and secure SendGrid SHA-256 token invitations.",
           th: "แผงควบคุมหลักสำหรับผู้ดูแลระบบเพื่อติดตามภาพรวม อนุมัติการเปิดร้านค้าหรือลงสินค้าใหม่ และส่งอีเมลคำเชิญผู้ดูแลระบบรายใหม่ผ่าน SendGrid API",
-        },
-      },
-    ],
-  },
-  studybuddy: {
-    id: "studybuddy",
-    title: { en: "StudyBuddy", th: "StudyBuddy" },
-    subtitle: {
-      en: "Student Matching & Curated Co-Working Space Directory",
-      th: "แพลตฟอร์มจับคู่หาเพื่อนร่วมเรียน และระบบแนะนำสถานที่อ่านหนังสือ",
-    },
-    year: "2026",
-    role: {
-      en: "Web Developer (Core Features)",
-      th: "Web Developer (ผู้พัฒนาฟีเจอร์หลัก)",
-    },
-    tagline: {
-      en: "A student profile directory web platform helping university students find study partners, view interactive profile cards, explore study spaces, and chat in real-time. Built with Next.js, NestJS, and Supabase, utilizing PostgreSQL Row-Level Security (RLS) and WebSockets.",
-      th: "เว็บแพลตฟอร์มช่วยค้นหาและจับกลุ่มเพื่อทำการบ้าน ติวสอบ หรือทำโปรเจกต์สำหรับนักศึกษา โดยใช้หน้าแสดงข้อมูลการ์ดโปรไฟล์ผู้เรียนหลัก, ระบบแนะนำสถานที่นั่งอ่านหนังสือ, และห้องแชทสื่อสารแบบเรียลไทม์ พัฒนาขึ้นด้วย Next.js, NestJS และ Supabase มีระบบความปลอดภัยข้อมูลด้วย PostgreSQL Row-Level Security (RLS) และซิงค์ข้อมูลแชทเรียลไทม์ผ่าน WebSocket",
-    },
-    themeColor: "indigo",
-    bannerGradient:
-      "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
-    problem: {
-      en: "University students frequently struggle to find compatible study partners, tutoring peers, or project group members with matching course loads, study styles, and schedules. Traditional communication methods lack academic-specific filtering and fail to enforce robust data privacy boundaries, exposing students' sensitive contact details to unauthorized access.",
-      th: "นักศึกษามหาวิทยาลัยมักเผชิญความท้าทายในการค้นหาเพื่อนร่วมชั้น คู่ติวสอบ หรือหาสมาชิกทีมทำโปรเจกต์ที่มีสไตล์การเรียน ตารางตารางเรียน หรือวิชาลงทะเบียนเรียนสอดคล้องกัน การโพสต์ประกาศหาเพื่อนผ่านโซเชียลมีเดียทั่วไปมักขาดระบบการคัดกรองที่มีประสิทธิภาพ และยังเสี่ยงต่อความปลอดภัยของข้อมูลติดต่อส่วนตัวอันเกิดจากการไม่มีระบบจำกัดการเข้าใช้งานที่รัดกุม",
-    },
-    solution: {
-      en: "I designed and developed the core application features using Next.js 16 and NestJS, leveraging Supabase and PostgreSQL Row-Level Security (RLS) policies to secure data. I implemented an intelligent landing page featuring dynamic Call-to-Action (CTA) routing based on user state, a persistent 6-step onboarding form with LocalStorage recovery, a custom student profile card component, a curated directory of co-working study spaces with facility filters, and a WebSocket-driven real-time chat client supporting pinned messages, edits, reactions, and read receipts.",
-      th: "ผมได้รับหน้าที่พัฒนาฟีเจอร์หลักของระบบด้วย Next.js 16 และ NestJS โดยเลือกใช้ Supabase จัดการเรื่องการยืนยันตัวตนร่วมกับการควบคุมสิทธิ์ข้อมูลแถวฐานข้อมูลด้วย PostgreSQL RLS ซึ่งระบบหลักประกอบด้วย: หน้า Landing Page อัจฉริยะที่แปรผันการนำทางตามสถานะการสมัครใช้งานของผู้ใช้, แบบฟอร์มลงทะเบียนข้อมูล 6 ขั้นตอนที่จดจำสเตทชั่วคราวบน LocalStorage, คอมโพเนนต์การ์ดโปรไฟล์หลักแสดงสไตล์การติวของผู้เรียน, ระบบแนะนำสถานที่อ่านหนังสือพร้อมตัวกรองตามอำนวยความสะดวก, และระบบห้องแชทเรียลไทม์เดี่ยวและกลุ่มผ่าน WebSocket ที่รองรับฟังก์ชันการปักหมุดข้อความ, ส่ง Emoji รีแอคชัน, แก้ไขข้อความย้อนหลัง และตัวบ่งชี้สถานะผู้ใช้อ่านแล้ว (Read Indicators)",
-    },
-    architecture: {
-      en: [
-        "A 6-step Onboarding form with LocalStorage cache recovery to prevent progress loss during page refreshes.",
-        "Custom student profile card component designed to clearly present course loads, schedules, and study styles in a clean, responsive layout.",
-        "Curated Study Places directory supporting categories, toggle-ready facility filters (power plugs, free WiFi, 24h service), search queries, and bookmarked favorites.",
-        "Real-time direct and group Chat system utilizing NestJS ChatModule over WebSockets, supporting message pinning, editing, a 1-minute unsend window, rich reactions, and live read indicators.",
-        "Dynamic Landing Page featuring a customizable call-to-action routing engine to direct users to onboarding or chat based on their profile status.",
-      ],
-      th: [
-        "แบบฟอร์มลงข้อมูลแบบ 6 ขั้นตอน (Onboarding Flow) พร้อมระบบช่วยจดจำข้อมูลชั่วคราวบน LocalStorage เพื่อป้องกันปัญหากรอกข้อมูลหายหากรีเฟรชหน้าเว็บ",
-        "ออกแบบคอมโพเนนต์หลักของการ์ดโปรไฟล์นักศึกษา (Student Profile Card Component) จัดวางเลย์เอาต์รายวิชา ตารางตารางเรียน และความชอบในการศึกษาได้อย่างสวยงาม สะอาดตา และเป็นสัดส่วน",
-        "ระบบแนะนำและรีวิวสถานที่อ่านหนังสือ ค้นหา และฟิลเตอร์สถานที่นั่งอ่านหนังสือที่มีสิ่งอำนวยความสะดวกเฉพาะ เช่น พิกัดที่มีจุดเสียบปลั๊กไฟ, บริการ Free WiFi หรือร้านที่เปิดตลอด 24 ชั่วโมง",
-        "ระบบห้องแชทสื่อสารส่วนตัวและแชทกลุ่ม ซิงค์ข้อมูลผ่าน WebSocket ร่วมกับ NestJS ChatModule รองรับฟังก์ชันปักหมุดข้อความสำคัญ, แก้ไขข้อความย้อนหลัง, ยกเลิกการส่งข้อความภายใน 1 นาที, ส่งข้อความรีแอคชันด้วย Emoji และอัปเดตสถานะผู้ใช้อ่านแล้วแบบเรียลไทม์",
-        "หน้า Landing Page ที่ติดตั้งระบบนำทางอัจฉริยะ (CTA Button Routing) เพื่อเปลี่ยนเส้นทางผู้ใช้ไปยังหน้าตั้งค่าโปรไฟล์ หรือพอร์ทัลหลักตามระดับสเตทการลงทะเบียนของตนเอง",
-      ],
-    },
-    highlights: [
-      {
-        title: {
-          en: "WebSocket Chat",
-          th: "ระบบห้องแชทเรียลไทม์",
-        },
-        description: {
-          en: "Sends and syncs direct or group messages, rich reactions, pinned alerts, and message editing in real-time using secure WebSockets.",
-          th: "ระบบรับส่งข้อความในห้องแชทเดี่ยวและกลุ่มแบบเรียลไทม์ ซิงค์ประวัติ แก้ไขคำ ส่ง Emoji รีแอคชัน และปักหมุดข้อความสำคัญได้อย่างราบรื่นผ่านการเชื่อมต่อ WebSocket",
-        },
-        icon: "MessageSquare",
-      },
-      {
-        title: {
-          en: "6-Step Onboarding Form",
-          th: "ระบบ Onboarding แบบจดจำสเตทชั่วคราว (6-Step Form)",
-        },
-        description: {
-          en: "Registers detailed user profiles with step-by-step state caching on LocalStorage to systematically prevent progress loss.",
-          th: "ฟอร์มตั้งค่าโปรไฟล์ผู้ใช้แบบละเอียด 6 ขั้นตอน พร้อมระบบช่วยบันทึกประวัติการกรอกข้อมูลชั่วคราวไว้บน LocalStorage ป้องกันสเตทกรอกสูญหายเมื่อหน้าจอดับหรือรีเฟรช",
-        },
-        icon: "Puzzle",
-      },
-      {
-        title: {
-          en: "Profile Card Component",
-          th: "ดีไซน์การ์ดโปรไฟล์หลัก",
-        },
-        description: {
-          en: "Displays detailed study schedules, course loads, and academic styles in a clean, user-friendly card layout.",
-          th: "ออกแบบดีไซน์ UI ของการ์ดโปรไฟล์นักศึกษา จัดลำดับแสดงวิชาเรียนที่สนใจ รูปแบบการอ่านหนังสือ และสไตล์การเรียนได้อย่างชัดเจน และใช้งานง่าย",
-        },
-        icon: "Sparkles",
-      },
-      {
-        title: {
-          en: "Curated Study Places",
-          th: "ระบบพิกัดสถานที่อ่านหนังสือ",
-        },
-        description: {
-          en: "A localized directory grouping student study spaces with toggle filters for WiFi, power outlets, and 24-hour operations.",
-          th: "ศูนย์รวมสถานที่สำหรับอ่านหนังสือ ค้นหา และคัดกรองร้านค้า พร้อมแสดงสิ่งอำนวยความสะดวกที่จำเป็น เช่น จุดเสียบปลั๊กไฟ, สตรีม Free WiFi หรือพิกัดเปิดบริการ 24 ชั่วโมง",
-        },
-        icon: "GraduationCap",
-      },
-    ],
-    techStack: [
-      {
-        name: "Next.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-      },
-      {
-        name: "NestJS",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
-      },
-      {
-        name: "TypeScript",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-      },
-      {
-        name: "Supabase",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
-      },
-      {
-        name: "PostgreSQL",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-      },
-    ],
-    githubUrl: "https://github.com/wiiznu17/study-buddy",
-    demoUrl: "https://study-buddy.space/",
-    videoUrl: "https://drive.google.com/file/d/1IxOkJpOy2x86zUCFV4xVXX8z7rE9McYQ/view?usp=drive_link",
-    hasReport: false,
-    hasVideo: true,
-    hasDemo: true,
-    hasSourceCode: true,
-    bullets: {
-      en: [
-        "Developed the multi-step Onboarding form using a persistent RegistrationContext with LocalStorage data recovery to assure smooth signup flows.",
-        "Designed and developed the primary student profile card component showcasing student details, schedules, and study styles clearly.",
-        "Built the Recommended Study Places directory featuring curated categories, toggle-ready facility filters, suggestions query, and toggle favorite capabilities.",
-        "Implemented a real-time WebSocket chat system leveraging NestJS backend ChatModule supporting pinned messages, edits, reactions, and a 1-minute unsend window.",
-        "Designed the dynamic Landing Page featuring customized call-to-action routing based on user registration and profile completion states.",
-      ],
-      th: [
-        "พัฒนาระบบลงข้อมูลผู้ใช้แบบ 6 ขั้นตอน (Onboarding Flow) โดยสร้างระบบเก็บประวัติการกรอกชั่วคราวลง LocalStorage ป้องกันปัญหากรอกข้อมูลสูญหายจากการรีเฟรชหน้าเว็บ",
-        "ออกแบบและพัฒนาโครงสร้างคอมโพเนนต์หลักของการ์ดโปรไฟล์ผู้ใช้ จัดระเบียบการจัดวางรายละเอียดรายวิชาและความสนใจบนการ์ดได้อย่างชัดเจน",
-        "พัฒนาระบบรวบรวมสถานที่อ่านหนังสือ ที่มีความยืดหยุ่นในการกรองตามประเภทสถานที่ และสิ่งอำนวยความสะดวกทางวิชาการ (WiFi, ปลั๊กไฟ, เปิดบริการ 24 ชั่วโมง)",
-        "วางโครงสร้างระบบแชทสนทนาเดี่ยวและแชทกลุ่มผ่าน WebSocket ร่วมกับ NestJS รองรับฟังก์ชันสำคัญ เช่น ปักหมุดข้อความ, แก้ไขคำ, ยกเลิกการส่งภายใน 1 นาที และส่งรีแอคชัน",
-        "ออกแบบหน้า Landing Page และระบบปุ่มนำทาง (CTA Routing Logic) เพื่อทำหน้าที่ส่งผู้ใช้ไปยังพอร์ทัลหน้าลงทะเบียนหรือแชทหลักโดยอิงตามสถานะโปรไฟล์และข้อมูลล็อกอิน",
-      ],
-    },
-    images: [
-      {
-        url: "/images/projects/studybuddy/1_client.png",
-        orientation: "landscape",
-        title: {
-          en: "StudyBuddy Community Landing & Dynamic Routing",
-          th: "หน้าแรกแนะนำบริการและปุ่มนำทางอัจฉริยะ",
-        },
-        description: {
-          en: "Light/dark themed landing page displaying platform highlights, user guidelines, and dynamic Call-To-Action buttons linked to user registration status.",
-          th: "หน้าแรกของเว็บแสดงจุดเด่นและวิธีการใช้งานระบบ พร้อมปุ่มนำทาง (CTA) ที่เปลี่ยนการแสดงผลตามสถานะเข้าสู่ระบบและการสมัครใช้งานจริง",
-        },
-      },
-      {
-        url: "/images/projects/studybuddy/2_core.png",
-        orientation: "landscape",
-        title: {
-          en: "Interactive Student Profile Card Component",
-          th: "คอมโพเนนต์การ์ดโปรไฟล์หลัก",
-        },
-        description: {
-          en: "Interactive card component displaying peer details, course interested, study preferences, and essential contact details.",
-          th: "ส่วนแสดงผลข้อมูลของเพื่อนร่วมเรียนในลักษณะการ์ดโปรไฟล์ จัดวางข้อมูลวิชาที่สนใจ รูปแบบการติว และข้อมูลติดต่อที่จำเป็นอย่างชัดเจน",
-        },
-      },
-      {
-        url: "/images/projects/studybuddy/3_admin.png",
-        orientation: "landscape",
-        title: {
-          en: "Real-Time Chat Rooms & Places Directory",
-          th: "ระบบแชท WebSocket และสถานที่แนะนำ",
-        },
-        description: {
-          en: "Rich-featured direct and group chat client offering pinned messages, edits, unsend timers, reactions, read indicators, and a directory of bookmarked libraries or coffee shops recommended for studying.",
-          th: "ระบบห้องแชทเรียลไทม์เดี่ยวและกลุ่มผ่าน WebSocket ที่รองรับการปักหมุด แก้ไข ยกเลิกส่ง ส่งรีแอคชัน และบริการแสดงแนะนำสถานที่นั่งอ่านหนังสือยอดนิยมสำหรับนักศึกษา",
-        },
-      },
-    ],
-  },
-  nida: {
-    id: "nida",
-    title: { en: "Nida", th: "Nida" },
-    subtitle: {
-      en: "E-Commerce Platform for Fashion Brand",
-      th: "ระบบอีคอมเมิร์ซสำหรับแบรนด์แฟชั่น",
-    },
-    year: "2026",
-    role: {
-      en: "Fullstack Engineer & System Architect",
-      th: "Fullstack Engineer & System Architect",
-    },
-    tagline: {
-      en: "An e-commerce platform engineered on a Turborepo monorepo architecture, featuring a Next.js customer storefront, a React back-office admin portal, dual decoupled NestJS APIs, and PostgreSQL with Prisma ORM. Powered by deterministic background job automation via BullMQ and Redis for auto-cancellation of unpaid orders and stock restocking, accompanied by a Dual-Token authentication engine with Refresh Token Rotation and Redis session invalidation.",
-      th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาบนสถาปัตยกรรม Monorepo ด้วย Turborepo ที่รวมหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ เข้ากับฐานข้อมูล PostgreSQL และ Prisma ORM โดดเด่นด้วยระบบประมวลผลงานเบื้องหลังอัตโนมัติผ่าน BullMQ และ Redis จัดการวงจรชีวิตออเดอร์ (ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงิน) พร้อมระบบรักษาความปลอดภัย Dual-Token (JWT + Redis Session) และ Refresh Token Rotation ป้องกันการขโมยสิทธิ์เข้าถึงระบบ",
-    },
-    themeColor: "amber",
-    bannerGradient: "linear-gradient(135deg, #faf7f2 0%, #fef3c7 50%, #fed7aa 100%)",
-    problem: {
-      en: "E-commerce retail faces severe operational challenges: stock-hoarding by unpaid orders and bots locking up inventory, unreviewed return requests leading to customer dissatisfaction, payment gateway webhook race conditions, and vulnerabilities in administrative access that could compromise customer financial transactions and stock accuracy.",
-      th: "ธุรกิจอีคอมเมิร์ซสินค้าแฟชั่นมักประสบปัญหาการกั๊กสต็อกสินค้าจากออเดอร์ที่ค้างชำระ (Stock Hoarding) ทำให้ร้านค้าเสียโอกาสในการขาย, คำขอยกเลิกและคืนสินค้าที่ตกค้างหากไม่มีระบบติดตามอัตโนมัติ, ปัญหา Race Conditions จากการแจ้งเตือนชำระเงินของ Payment Gateway และความเสี่ยงด้านความปลอดภัยในการเข้าถึงระบบหลังบ้านของแอดมิน ซึ่งอาจส่งผลกระทบต่อสต็อกสินค้าและข้อมูลธุรกรรม",
-    },
-    solution: {
-      en: "I engineered a unified Turborepo monorepo with automated background job queues using @nestjs/bullmq and Redis to deterministically govern order timeouts (auto-cancelling unpaid orders and restocking within 15 mins for PromptPay). Additionally, I implemented a Dual-Token authentication architecture featuring Refresh Token Rotation with token reuse detection, one-time token admin invitation onboarding, a pro-rated net price calculation engine for partial refunds, and Omise payment webhook idempotency.",
-      th: "ผมได้ออกแบบและพัฒนาระบบบนสถาปัตยกรรม Turborepo Monorepo พร้อมติดตั้งระบบคิวงานเบื้องหลังอัตโนมัติด้วย BullMQ และ Redis เพื่อควบคุมวงจรชีวิตคำสั่งซื้ออย่างแม่นยำ (ยกเลิกออเดอร์ที่ค้างชำระเกินกำหนด 15 นาทีพร้อมคืนสต็อกอัตโนมัติ) และพัฒนาระบบความปลอดภัย Dual-Token Authentication พร้อม Refresh Token Rotation ใน Redis ตรวจจับการขโมย Token, ระบบเชิญแอดมินด้วย One-Time Token, ระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund และระบบยืนยันความถูกต้องของ Webhook ป้องกันการยิงซ้ำ (Idempotency)",
-    },
-    architecture: {
-      en: [
-        "Turborepo Monorepo structure managing Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API, and shared Prisma/Zod validation packages.",
-        "BullMQ & Redis 7 background worker cluster managing delayed jobs for unpaid order auto-cancellation, 48-hour return review timeouts, and 5-day delivery auto-completion.",
-        "Dual-Token Authentication (15-min Access Token + 7-day Refresh Token) with cryptographic Token Family Rotation, replay attack revocation, and Redis-backed session invalidation.",
-        "Zero-Knowledge Admin Onboarding via Redis-backed One-Time Setup Tokens (48h TTL) sent through automated email invitations without hardcoded initial passwords.",
-        "E-Commerce Core Engines: Pre-Order reservation quotas, Coupon abuse-prevention engine, pro-rated net cost refund ledger, and weight-based shipping matrix.",
-        "PostgreSQL 16 relational database with Prisma ORM, implementing comprehensive audit trails (StockMovement and AdminAuditLog) for 100% operational traceability.",
-      ],
-      th: [
-        "สถาปัตยกรรม Turborepo Monorepo แยกโมดูลแอปพลิเคชัน (Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API) ร่วมกับแพ็กเกจฐานข้อมูล Prisma และ Zod Validators",
-        "ระบบคิวงานอัตโนมัติด้วย BullMQ และ Redis 7 จัดการ Delayed Jobs: ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงินในเวลา, อนุมัติคำขอยกเลิกอัตโนมัติใน 48 ชม., และปิดจ็อบจัดส่งสำเร็จใน 5 วัน",
-        "ระบบรักษาความปลอดภัย Dual-Token Authentication ร่วมกับ Refresh Token Rotation ใน Redis พร้อมระบบตรวจจับ Token Replay และสั่งตัด Session ทุกอุปกรณ์เมื่อตรวจพบความผิดปกติ",
-        "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invitation) ด้วย One-Time Token ผ่าน Redis (TTL 48 ชม.) ให้ผู้ใช้ตั้งรหัสผ่านเองอย่างปลอดภัย",
-        "ระบบคำนวณราคาสุทธิถัวเฉลี่ยต่อชิ้น (Pro-rated Net Price Calculation) เพื่อการคืนเงินบางส่วน (Partial Refund) และระบบ Ledger บันทึกประวัติคะแนนสะสมและสต็อกสินค้าอย่างแม่นยำ",
-        "ฐานข้อมูล PostgreSQL 16 ผ่าน Prisma ORM พร้อมระบบบันทึก AuditLog และ StockMovement ทุกครั้งที่มีการเปลี่ยนแปลงสถานะหรือสต็อก เพื่อความโปร่งใสตรวจสอบได้ 100%",
-      ],
-    },
-    highlights: [
-      {
-        title: {
-          en: "Automated Order Lifecycles",
-          th: "ระบบควบคุมวงจรชีวิตออเดอร์อัตโนมัติ",
-        },
-        description: {
-          en: "BullMQ & Redis delayed workers handle auto-cancellation, restocking, and return timeouts deterministically.",
-          th: "ประมวลผลงานเบื้องหลังด้วย BullMQ + Redis จัดการคืนสต็อกและยกเลิกออเดอร์ค้างชำระอัตโนมัติโดยไม่ต้องใช้คนกวาดงาน",
-        },
-        icon: "Clock",
-      },
-      {
-        title: {
-          en: "Dual-Token Authentication",
-          th: "ระบบความปลอดภัย Dual-Token",
-        },
-        description: {
-          en: "15-min JWTs + 7-day Refresh Tokens with cryptographic rotation, replay attack detection, and instant multi-device revocation.",
-          th: "สถาปัตยกรรม Dual-Token พร้อม Refresh Token Rotation ใน Redis และระบบเพิกถอน Token ทันทีเมื่อถูก Replay",
-        },
-        icon: "Shield",
-      },
-      {
-        title: {
-          en: "Turborepo Modular Monorepo",
-          th: "สถาปัตยกรรม Monorepo ประสิทธิภาพสูง",
-        },
-        description: {
-          en: "Decoupled Next.js storefront, React admin back-office, and separate NestJS APIs sharing Prisma and Zod packages.",
-          th: "รวมหน้าร้าน Next.js, หลังบ้าน React, และ NestJS APIs ไว้ใน Monorepo เดียวกัน พร้อมแชร์ Schema และ Validation",
-        },
-        icon: "Layers",
-      },
-      {
-        title: {
-          en: "Pro-Rated Refund Ledger",
-          th: "ระบบคำนวณและบันทึกบัญชีคืนเงิน",
-        },
-        description: {
-          en: "Automated item-level net cost breakdown ensuring precise partial refunds and immutable transaction audit trails.",
-          th: "คำนวณส่วนลดเฉลี่ยรายชิ้นเพื่อคืนเงินบางส่วนได้อย่างถูกต้องตามจริง พร้อมบันทึกบัญชีแยกประเภทอย่างแม่นยำ",
-        },
-        icon: "DollarSign",
-      },
-    ],
-    techStack: [
-      {
-        name: "Turborepo",
-        logo: "custom-turborepo",
-      },
-      {
-        name: "Next.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-      },
-      {
-        name: "NestJS",
-        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-original.svg",
-      },
-      {
-        name: "PostgreSQL",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-      },
-      {
-        name: "Prisma",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
-      },
-      {
-        name: "Redis",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
-      },
-      {
-        name: "BullMQ",
-        logo: "custom-bullmq",
-      },
-      {
-        name: "Docker",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-      },
-      {
-        name: "TypeScript",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      },
-      {
-        name: "TailwindCSS",
-        logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
-      },
-    ],
-    githubUrl: "https://github.com/wiiznu17",
-    hasSourceCode: false,
-    hasDemo: false,
-    bullets: {
-      en: [
-        "Architected a scalable Turborepo Monorepo unifying Next.js Storefront, React Admin, and dual NestJS APIs.",
-        "Implemented BullMQ & Redis delayed queues for automated unpaid order cancellation, restocking, and fulfillment timeouts.",
-        "Implemented Dual-Token authentication with Token Family Rotation, replay attack detection, and multi-device revocation.",
-        "Developed special features for the admin management system, such as Pre-Order reservation quotas to manage reservations, coupon abuse-prevention, and pro-rated net cost partial refunds.",
-      ],
-      th: [
-        "ออกแบบและพัฒนาหน้าร้านด้วย Next.js, ส่วนของ Admin ด้วย React, และระบบหลังบ้าน NestJS",
-        "พัฒนาระบบคิวงาน Delayed Jobs ด้วย BullMQ และ Redis จัดการตัดและคืนสต็อกอัตโนมัติเมื่อออเดอร์ค้างชำระเกินกำหนดเวลา",
-        "วางระบบความปลอดภัย Dual-Token (JWT + Redis Session) พร้อม Refresh Token Rotation ตรวจจับการขโมย Token และสั่งตัด Session ทุกอุปกรณ์",
-        "พัฒนาฟีเจอร์พิเศษของระบบจัดการร้านค้า เช่น ระบบจองสินค้าล่วงหน้า (Pre-Order) เพื่อจัดการโควตา, ระบบป้องกันการใช้คูปองซ้ำซ้อน, และระบบคำนวณราคาสุทธิเฉลี่ยสำหรับการคืนเงินบางส่วน",
-      ],
-    },
-    images: [
-      {
-        url: "/images/projects/nida/1_client.png",
-        orientation: "landscape",
-        title: {
-          en: "Next.js Fashion Storefront & Shopping Experience",
-          th: "หน้าร้านค้าออนไลน์และระบบสั่งซื้อสินค้า (Storefront)",
-        },
-        description: {
-          en: "High-performance customer storefront featuring responsive product catalog, coupon promotions, pre-order reservation engine, and PromptPay checkout.",
-          th: "หน้าร้านค้าออนไลน์พัฒนาด้วย Next.js รองรับการเลือกชมสินค้าแฟชั่น การใช้คูปองส่วนลด การสั่งซื้อแบบ Pre-Order และการชำระเงินผ่านระบบ PromptPay",
-        },
-      },
-      {
-        url: "/images/projects/nida/3_admin.png",
-        orientation: "landscape",
-        title: {
-          en: "Back-Office Admin Portal & Operations Hub",
-          th: "ระบบจัดการหลังบ้านและควบคุมการปฏิบัติการ (Admin Portal)",
-        },
-        description: {
-          en: "React administrative portal managing real-time inventory tracking, BullMQ automated order lifecycles, pro-rated partial refunds, and audit logging.",
-          th: "พอร์ทัลแอดมินสำหรับบริหารจัดการสต็อกสินค้า ติดตามสถานะคิวงาน BullMQ ตรวจสอบประวัติการทำงาน (Audit Logs) และจัดการการคืนเงินอย่างแม่นยำ",
-        },
-      },
-      {
-        url: "/images/projects/nida/logo.png",
-        orientation: "landscape",
-        title: {
-          en: "Nida Brand Identity & Architecture Overview",
-          th: "ภาพรวมสถาปัตยกรรมและอัตลักษณ์แบรนด์ Nida",
-        },
-        description: {
-          en: "Apparel & Lifestyle E-Commerce Platform built with Next.js, NestJS, Prisma, and BullMQ.",
-          th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาด้วย Next.js, NestJS, Prisma และ BullMQ",
         },
       },
     ],

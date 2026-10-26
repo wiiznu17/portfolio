@@ -227,10 +227,10 @@ export default function Hero() {
       <div className={styles.imageCol}>
         <div className={styles.imageFrame}>
           <Image
-            src="/images/profile.png"
+            src="/images/profile.jpeg"
             alt="Developer illustration working at desk"
-            width={1024}
-            height={765}
+            width={2398}
+            height={1792}
             priority
             className={styles.heroImg}
           />
