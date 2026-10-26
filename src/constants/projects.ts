@@ -816,10 +816,34 @@ export const projectsData: Record<
     },
     images: [
       {
+        url: "/images/projects/nida/1_client.png",
+        orientation: "landscape",
+        title: {
+          en: "Next.js Fashion Storefront & Shopping Experience",
+          th: "หน้าร้านค้าออนไลน์และระบบสั่งซื้อสินค้า (Storefront)",
+        },
+        description: {
+          en: "High-performance customer storefront featuring responsive product catalog, coupon promotions, pre-order reservation engine, and PromptPay checkout.",
+          th: "หน้าร้านค้าออนไลน์พัฒนาด้วย Next.js รองรับการเลือกชมสินค้าแฟชั่น การใช้คูปองส่วนลด การสั่งซื้อแบบ Pre-Order และการชำระเงินผ่านระบบ PromptPay",
+        },
+      },
+      {
+        url: "/images/projects/nida/3_admin.png",
+        orientation: "landscape",
+        title: {
+          en: "Back-Office Admin Portal & Operations Hub",
+          th: "ระบบจัดการหลังบ้านและควบคุมการปฏิบัติการ (Admin Portal)",
+        },
+        description: {
+          en: "React administrative portal managing real-time inventory tracking, BullMQ automated order lifecycles, pro-rated partial refunds, and audit logging.",
+          th: "พอร์ทัลแอดมินสำหรับบริหารจัดการสต็อกสินค้า ติดตามสถานะคิวงาน BullMQ ตรวจสอบประวัติการทำงาน (Audit Logs) และจัดการการคืนเงินอย่างแม่นยำ",
+        },
+      },
+      {
         url: "/images/projects/nida/logo.png",
         orientation: "landscape",
         title: {
-          en: "Nida Brand & Architectural Overview",
+          en: "Nida Brand Identity & Architecture Overview",
           th: "ภาพรวมสถาปัตยกรรมและอัตลักษณ์แบรนด์ Nida",
         },
         description: {
