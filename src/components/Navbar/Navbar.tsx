@@ -111,7 +111,6 @@ export default function Navbar() {
         <div className={styles.logoWrapper}>
           <Link href="/" className={styles.logo}>
             <span>Wiiznu</span>
-            <span className={styles.logoSparkle}>✦</span>
           </Link>
         </div>
 
