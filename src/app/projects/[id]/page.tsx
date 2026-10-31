@@ -440,10 +440,6 @@ export default function ProjectDetailPage({
                     className="yearBadge"
                     style={colors.badgeStyle}
                   >
-                    {t(
-                      "proj_released",
-                      COMMON_TRANSLATIONS
-                    )}{" "}
                     {project.year}
                   </span>
                 </div>
