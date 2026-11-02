@@ -234,8 +234,9 @@ export const projectsData: Record<
       },
     ],
     githubUrl: "https://github.com/wiiznu17",
+    demoUrl: "https://nida.potayyr.site",
     hasSourceCode: false,
-    hasDemo: false,
+    hasDemo: true,
     bullets: {
       en: [
         "Architected a scalable Turborepo Monorepo unifying Next.js Storefront, React Admin, and dual NestJS APIs.",
