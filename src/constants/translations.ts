@@ -94,8 +94,8 @@ export const COMMON_TRANSLATIONS: Record<
     th: "ปัญหาและความท้าทาย",
   },
   proj_solution: {
-    en: "The Engineering Solution",
-    th: "แนวทางแก้ไขทางวิศวกรรม",
+    en: "The Solution",
+    th: "แนวทางแก้ไขท",
   },
   proj_architecture: {
     en: "Technical System Architecture",
