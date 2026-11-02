@@ -39,7 +39,7 @@ export const COMMON_TRANSLATIONS: Record<
   },
   hero_desc: {
     en: "Computer Engineering graduate from Faculty of Engineering, Khon Kaen University. Interested in <strong>Software Development</strong>. A disciplined, detail-oriented individual who takes full ownership of work and approaches challenges with a logical mindset. Ready to adapt and collaborate to support system development.",
-    th: "สำเร็จการศึกษาจากคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยขอนแก่น มีความสนใจในด้านการพัฒนาซอฟต์แวร์ เป็นคนที่มีวินัย ใส่ใจรายละเอียด พร้อมรับผิดชอบงานอย่างเต็มที่และชอบความท้าทาย พร้อมเรียนรู้และร่วมมือกับทีมเพื่อช่วยผลักดันและพัฒนาระบบให้ก้าวหน้าครับ",
+    th: "สำเร็จการศึกษาจากคณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยขอนแก่น มีความสนใจในด้านการพัฒนาซอฟต์แวร์ เป็นคนที่มีวินัย ใส่ใจรายละเอียด รับผิดชอบงานอย่างเต็มที่และชอบความท้าทาย มุ่งมั่นเรียนรู้และร่วมมือกับทีมเพื่อช่วยผลักดันและพัฒนาระบบให้ก้าวหน้า",
   },
   hero_btn_projects: {
     en: "Explore Projects",
@@ -63,7 +63,7 @@ export const COMMON_TRANSLATIONS: Record<
   // Projects Section
   proj_title: {
     en: "Selected Projects",
-    th: "ผลงานที่คัดเลือกมาแล้ว",
+    th: "ผลงานเด่น",
   },
   proj_btn_demo: {
     en: "Live Demo",
@@ -95,7 +95,7 @@ export const COMMON_TRANSLATIONS: Record<
   },
   proj_solution: {
     en: "The Solution",
-    th: "แนวทางแก้ไขท",
+    th: "แนวทางแก้ไข",
   },
   proj_architecture: {
     en: "Technical System Architecture",

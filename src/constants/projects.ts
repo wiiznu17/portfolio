@@ -110,11 +110,11 @@ export const projectsData: Record<
     },
     year: "2026",
     role: {
-      en: "Fullstack Engineer & System Architect",
-      th: "Fullstack Engineer & System Architect",
+      en: "Fullstack Developer",
+      th: "Fullstack Developer",
     },
     tagline: {
-      en: "An e-commerce platform engineered on a Turborepo monorepo architecture, featuring a Next.js customer storefront, a React back-office admin portal, dual decoupled NestJS APIs, and PostgreSQL with Prisma ORM. Powered by deterministic background job automation via BullMQ and Redis for auto-cancellation of unpaid orders and stock restocking, accompanied by a Dual-Token authentication engine with Refresh Token Rotation and Redis session invalidation.",
+      en: "An e-commerce platform engineered on a Turborepo monorepo architecture, featuring a Next.js customer storefront, a React back-office admin portal, dual decoupled NestJS APIs, and PostgreSQL with Prisma ORM. Powered by automated background queues via BullMQ and Redis for auto-cancellation of unpaid orders and stock restocking, accompanied by a Dual-Token authentication system with Refresh Token Rotation and Redis session invalidation.",
       th: "แพลตฟอร์มอีคอมเมิร์ซสินค้าแฟชั่น พัฒนาบนสถาปัตยกรรม Monorepo ด้วย Turborepo ที่รวมหน้าร้าน Next.js, พอร์ทัลแอดมิน React, และระบบหลังบ้าน NestJS 2 บริการ เข้ากับฐานข้อมูล PostgreSQL และ Prisma ORM โดดเด่นด้วยระบบประมวลผลงานเบื้องหลังอัตโนมัติผ่าน BullMQ และ Redis จัดการวงจรชีวิตออเดอร์ (ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงิน) พร้อมระบบรักษาความปลอดภัย Dual-Token (JWT + Redis Session) และ Refresh Token Rotation ป้องกันการขโมยสิทธิ์เข้าถึงระบบ",
     },
     themeColor: "amber",
@@ -124,25 +124,25 @@ export const projectsData: Record<
       th: "ธุรกิจอีคอมเมิร์ซสินค้าแฟชั่นมักประสบปัญหาการกั๊กสต็อกสินค้าจากออเดอร์ที่ค้างชำระ (Stock Hoarding) ทำให้ร้านค้าเสียโอกาสในการขาย, คำขอยกเลิกและคืนสินค้าที่ตกค้างหากไม่มีระบบติดตามอัตโนมัติ, ปัญหา Race Conditions จากการแจ้งเตือนชำระเงินของ Payment Gateway และความเสี่ยงด้านความปลอดภัยในการเข้าถึงระบบหลังบ้านของแอดมิน ซึ่งอาจส่งผลกระทบต่อสต็อกสินค้าและข้อมูลธุรกรรม",
     },
     solution: {
-      en: "I engineered a unified Turborepo monorepo with automated background job queues using @nestjs/bullmq and Redis to deterministically govern order timeouts (auto-cancelling unpaid orders and restocking within 15 mins for PromptPay). Additionally, I implemented a Dual-Token authentication architecture featuring Refresh Token Rotation with token reuse detection, one-time token admin invitation onboarding, a pro-rated net price calculation engine for partial refunds, and Omise payment webhook idempotency.",
+      en: "I engineered a unified Turborepo monorepo with automated background job queues using @nestjs/bullmq and Redis to manage order lifecycle timeouts (auto-cancelling unpaid orders and restocking within 15 mins for PromptPay). Additionally, I implemented a Dual-Token authentication architecture featuring Refresh Token Rotation with token reuse detection, one-time token admin invitation onboarding, a pro-rated net price calculation engine for partial refunds, and Omise payment webhook idempotency.",
       th: "ผมได้ออกแบบและพัฒนาระบบบนสถาปัตยกรรม Turborepo Monorepo พร้อมติดตั้งระบบคิวงานเบื้องหลังอัตโนมัติด้วย BullMQ และ Redis เพื่อควบคุมวงจรชีวิตคำสั่งซื้ออย่างแม่นยำ (ยกเลิกออเดอร์ที่ค้างชำระเกินกำหนด 15 นาทีพร้อมคืนสต็อกอัตโนมัติ) และพัฒนาระบบความปลอดภัย Dual-Token Authentication พร้อม Refresh Token Rotation ใน Redis ตรวจจับการขโมย Token, ระบบเชิญแอดมินด้วย One-Time Token, ระบบคำนวณราคาสุทธิถัวเฉลี่ยสำหรับ Partial Refund และระบบยืนยันความถูกต้องของ Webhook ป้องกันการยิงซ้ำ (Idempotency)",
     },
     architecture: {
       en: [
         "Turborepo Monorepo structure managing Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API, and shared Prisma/Zod validation packages.",
         "BullMQ & Redis 7 background worker cluster managing delayed jobs for unpaid order auto-cancellation, 48-hour return review timeouts, and 5-day delivery auto-completion.",
-        "Dual-Token Authentication (15-min Access Token + 7-day Refresh Token) with cryptographic Token Family Rotation, replay attack revocation, and Redis-backed session invalidation.",
-        "Zero-Knowledge Admin Onboarding via Redis-backed One-Time Setup Tokens (48h TTL) sent through automated email invitations without hardcoded initial passwords.",
+        "Dual-Token Authentication (15-min Access Token + 7-day Refresh Token) with Token Family Rotation, replay attack revocation, and Redis-backed session invalidation.",
+        "Secure Admin Onboarding via Redis-backed One-Time Setup Tokens (48h TTL) sent through automated email invitations without hardcoded initial passwords.",
         "Pre-Order reservation quotas, Coupon abuse-prevention engine, pro-rated net cost refund ledger, and weight-based shipping matrix.",
-        "PostgreSQL relational database with Prisma ORM, implementing comprehensive audit trails (StockMovement and AdminAuditLog) for 100% operational traceability.",
+        "PostgreSQL relational database with Prisma ORM, implementing comprehensive audit trails (StockMovement and AdminAuditLog) for full operational traceability.",
       ],
       th: [
         "สถาปัตยกรรม Turborepo Monorepo แยกโมดูลแอปพลิเคชัน (Next.js Storefront, React Admin Portal, NestJS Store API, NestJS Admin API) ร่วมกับแพ็กเกจฐานข้อมูล Prisma และ Zod Validators",
-        "ระบบคิวงานอัตโนมัติด้วย BullMQ และ Redis 7 จัดการ Delayed Jobs การตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงินในเวลา, อนุมัติคำขอยกเลิกอัตโนมัติใน 48 ชม., และปิดจ็อบจัดส่งสำเร็จใน 5 วัน",
+        "ระบบคิวงานอัตโนมัติด้วย BullMQ และ Redis 7 จัดการ Delayed Jobs: ตัดและคืนสต็อกอัตโนมัติเมื่อไม่ชำระเงินในเวลา, อนุมัติคำขอยกเลิกอัตโนมัติใน 48 ชม., และปิดจ็อบจัดส่งสำเร็จใน 5 วัน",
         "ระบบรักษาความปลอดภัย Dual-Token Authentication ร่วมกับ Refresh Token Rotation ใน Redis พร้อมระบบตรวจจับ Token Replay และสั่งตัด Session ทุกอุปกรณ์เมื่อตรวจพบความผิดปกติ",
         "ระบบเชิญผู้ดูแลระบบใหม่ (Admin Invitation) ด้วย One-Time Token ผ่าน Redis (TTL 48 ชม.) ให้ผู้ใช้ตั้งรหัสผ่านเองอย่างปลอดภัย",
         "ระบบจัดการโควตาสินค้าสั่งจองล่วงหน้า (Pre-Order), ระบบป้องกันการใช้คูปองซ้ำซ้อน, บัญชีแยกประเภทคำนวณราคาสุทธิเฉลี่ยสำหรับคืนเงินบางส่วน (Pro-rated Refund Ledger) และระบบคำนวณค่าจัดส่งตามน้ำหนักสินค้าจริง",
-        "ฐานข้อมูล PostgreSQL ผ่าน Prisma ORM พร้อมระบบบันทึก AuditLog และ StockMovement ทุกครั้งที่มีการเปลี่ยนแปลงสถานะหรือสต็อก เพื่อความโปร่งใสตรวจสอบได้ 100%",
+        "ฐานข้อมูล PostgreSQL ผ่าน Prisma ORM พร้อมระบบบันทึก AuditLog และ StockMovement ทุกครั้งที่มีการเปลี่ยนแปลงสถานะหรือสต็อก เพื่อความโปร่งใสและตรวจสอบย้อนหลังได้ครบถ้วน",
       ],
     },
     highlights: [
@@ -152,7 +152,7 @@ export const projectsData: Record<
           th: "ระบบควบคุมวงจรชีวิตออเดอร์อัตโนมัติ",
         },
         description: {
-          en: "BullMQ & Redis delayed workers handle auto-cancellation, restocking, and return timeouts deterministically.",
+          en: "BullMQ & Redis delayed workers handle auto-cancellation, restocking, and return timeouts automatically.",
           th: "ประมวลผลงานเบื้องหลังด้วย BullMQ + Redis จัดการคืนสต็อกและยกเลิกออเดอร์ค้างชำระอัตโนมัติโดยไม่ต้องใช้คนกวาดงาน",
         },
         icon: "Clock",
@@ -163,7 +163,7 @@ export const projectsData: Record<
           th: "ระบบความปลอดภัย Dual-Token",
         },
         description: {
-          en: "15-min JWTs + 7-day Refresh Tokens with cryptographic rotation, replay attack detection, and instant multi-device revocation.",
+          en: "15-min JWTs + 7-day Refresh Tokens with token rotation, replay attack detection, and instant multi-device revocation.",
           th: "สถาปัตยกรรม Dual-Token พร้อม Refresh Token Rotation ใน Redis และระบบเพิกถอน Token ทันทีเมื่อถูก Replay",
         },
         icon: "Shield",
@@ -314,7 +314,7 @@ export const projectsData: Record<
       th: "การประมวลผลธุรกรรมทางการเงินพร้อมกันในปริมาณมาก มักส่งผลให้เกิดปัญหายอดคงเหลือไม่ตรงกัน (Race Conditions) หรือเกิดปัญหาฐานข้อมูลติดล็อก (Deadlocks) จากการเข้าแก้ไขข้อมูลพร้อมกัน นอกจากนี้ การรันงานตรวจสอบความสอดคล้อง เช่น การยืนยันตัวตน (KYC) หรือการตรวจสอบประวัติธุรกรรม (AML) บนเธรดหลัก (Main Request Thread) ควบคู่กับการโอนเงินโดยตรง ยังส่งผลกระทบต่อประสิทธิภาพและความเร็วในการประมวลผลธุรกรรม",
     },
     solution: {
-      en: "I architected the platform with NestJS acting as a centralized API Gateway that aggregates modular services and routes financial operations to a decoupled core transaction engine built with Spring Boot 3 and Hibernate. The transaction engine utilizes append-only double-entry ledger journaling to guarantee absolute balance consistency, eliminating database deadlocks through a lexicographical UUID lock-sorting sequence on wallet entries before execution, and offloading heavy tasks asynchronously via Apache Kafka and Redis.",
+      en: "I architected the platform with NestJS acting as a centralized API Gateway that aggregates modular services and routes financial operations to a decoupled core transaction engine built with Spring Boot 3 and Hibernate. The transaction engine utilizes append-only double-entry ledger journaling to guarantee strict balance consistency, eliminating database deadlocks through a lexicographical UUID lock-sorting sequence on wallet entries before execution, and offloading heavy tasks asynchronously via Apache Kafka and Redis.",
       th: "ผมได้ออกแบบสถาปัตยกรรมระบบโดยมี NestJS เป็น API Gateway ศูนย์กลางที่คอยบริหารจัดการรวบรวมโมดูลบริการต่างๆ และส่งต่อคำขอธุรกรรมการเงินไปประมวลผลที่ระบบบริการบันทึกบัญชีแยกประเภทแบบคู่ (Finance Service) ที่พัฒนาด้วย Spring Boot 3 แบบแยกส่วน โดยระบบบันทึกข้อมูลธุรกรรมแบบเพิ่มอย่างเดียว (Append-Only Journaling) เพื่อรักษาสมดุลบัญชีแยกประเภทแบบคู่อย่างแม่นยำ และหลีกเลี่ยงปัญหาฐานข้อมูลติดล็อก (Deadlocks) ด้วยการใช้ UUID Lock Sorting",
     },
     architecture: {
@@ -569,7 +569,7 @@ export const projectsData: Record<
         },
         description: {
           en: "A localized directory grouping student study spaces with toggle filters for WiFi, power outlets, and 24-hour operations.",
-          th: "ศูนย์รวมสถานที่สำหรับอ่านหนังสือ ค้นหา และคัดกรองร้านค้า พร้อมแสดงสิ่งอำนวยความสะดวกที่จำเป็น เช่น จุดเสียบปลั๊กไฟ, สตรีม Free WiFi หรือพิกัดเปิดบริการ 24 ชั่วโมง",
+          th: "ศูนย์รวมสถานที่สำหรับอ่านหนังสือ ค้นหา และคัดกรองร้านค้า พร้อมแสดงสิ่งอำนวยความสะดวกที่จำเป็น เช่น จุดเสียบปลั๊กไฟ, บริการ Free WiFi หรือร้านที่เปิดบริการ 24 ชั่วโมง",
         },
         icon: "GraduationCap",
       },
@@ -615,7 +615,7 @@ export const projectsData: Record<
         "พัฒนาระบบลงข้อมูลผู้ใช้แบบ 6 ขั้นตอน (Onboarding Flow) โดยสร้างระบบเก็บประวัติการกรอกชั่วคราวลง LocalStorage ป้องกันปัญหากรอกข้อมูลสูญหายจากการรีเฟรชหน้าเว็บ",
         "ออกแบบและพัฒนาโครงสร้างคอมโพเนนต์หลักของการ์ดโปรไฟล์ผู้ใช้ จัดระเบียบการจัดวางรายละเอียดรายวิชาและความสนใจบนการ์ดได้อย่างชัดเจน",
         "พัฒนาระบบรวบรวมสถานที่อ่านหนังสือ ที่มีความยืดหยุ่นในการกรองตามประเภทสถานที่ และสิ่งอำนวยความสะดวกทางวิชาการ (WiFi, ปลั๊กไฟ, เปิดบริการ 24 ชั่วโมง)",
-        "วางโครงสร้างระบบแชทสนทนาเดี่ยวและแชทกลุ่มผ่าน WebSocket ร่วมกับ NestJS รองรับฟังก์ชันสำคัญ เช่น ปักหมุดข้อความ, แก้ไขคำ, ยกเลิกการส่งภายใน 1 นาที และส่งรีแอคชัน",
+        "วางโครงสร้างระบบแชทสนทนาเดี่ยวและแชทกลุ่มผ่าน WebSocket ร่วมกับ NestJS รองรับฟังก์ชันสำคัญ เช่น ปักหมุดข้อความ, แก้ไขข้อความ, ยกเลิกการส่งภายใน 1 นาที และส่งรีแอคชัน",
         "ออกแบบหน้า Landing Page และระบบปุ่มนำทาง (CTA Routing Logic) เพื่อทำหน้าที่ส่งผู้ใช้ไปยังพอร์ทัลหน้าลงทะเบียนหรือแชทหลักโดยอิงตามสถานะโปรไฟล์และข้อมูลล็อกอิน",
       ],
     },
@@ -848,7 +848,7 @@ export const projectsData: Record<
           th: "แผงจัดการและควบคุมสิทธิ์หลังบ้าน (Admin Portal)",
         },
         description: {
-          en: "Centralized admin workspace managing store requests, RBAC permissions, and secure SendGrid SHA-256 token invitations.",
+          en: "Centralized admin workspace managing store requests, RBAC permissions, and secure email invitations via SendGrid.",
           th: "แผงควบคุมหลักสำหรับผู้ดูแลระบบเพื่อติดตามภาพรวม อนุมัติการเปิดร้านค้าหรือลงสินค้าใหม่ และส่งอีเมลคำเชิญผู้ดูแลระบบรายใหม่ผ่าน SendGrid API",
         },
       },
